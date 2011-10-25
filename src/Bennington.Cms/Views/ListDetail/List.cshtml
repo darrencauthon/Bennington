@@ -1,13 +1,6 @@
 ﻿@using System.Web.Mvc.Html
 @model Bennington.Core.List.ListViewModel
 
-@section currentUser {
-    <ul class="current-user-items">
-        <li>Welcome, Young Man</li>
-        <li>Kansas City Institute of Bacon</li>
-        <li><a href="?Logout=1">Logout</a></li>
-    </ul>
-}
 <div id="content_container" style="display: block;">
     <div id="titlebar" class="clearfix">
         @{Html.RenderPartial(Model.TitleViewName, Model);}
