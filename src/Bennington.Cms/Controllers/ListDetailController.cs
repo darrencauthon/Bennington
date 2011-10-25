@@ -14,6 +14,8 @@ namespace Bennington.Cms.Controllers
         public virtual ActionResult Index()
         {
             var listViewModel = ListViewModelProviders.Providers.GetListViewModelForType(typeof(TListItem), ControllerContext, new CmsListViewModelOptions());
+            listViewModel.Items = GetPagedListItemsCore(listViewModel);
+            
             OnPreRenderModel(listViewModel);
 
             return ViewOrDefaultView("List", "~/Views/ListDetail/List.cshtml", listViewModel);
