@@ -156,12 +156,6 @@
     <EmbeddedResource Include="Content\dataTable\sort_desc_disabled.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bennington.Core\Bennington.Core.csproj">
-      <Project>{AAB424EE-5CFA-42BE-9F9A-2350C5C8E715}</Project>
-      <Name>Bennington.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Views\Shared\ManageSite.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -205,19 +199,25 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\ListDetail\Buttons.cshtml" />
-    <Content Include="Views\ListDetail\Create.cshtml" />
-    <Content Include="Views\ListDetail\Helpers.cshtml">
+    <EmbeddedResource Include="Views\ListDetail\Buttons.cshtml" />
+    <EmbeddedResource Include="Views\ListDetail\Create.cshtml" />
+    <EmbeddedResource Include="Views\ListDetail\Helpers.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Helpers.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\ListDetail\List.cshtml" />
-    <Content Include="Views\ListDetail\Manage.cshtml" />
-    <Content Include="Views\ListDetail\Pager.cshtml" />
-    <Content Include="Views\ListDetail\Rows.cshtml" />
-    <Content Include="Views\ListDetail\SearchForm.cshtml" />
-    <Content Include="Views\ListDetail\Title.cshtml" />
-    <Content Include="Views\ListDetail\ValueDisplay.cshtml" />
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ListDetail\List.cshtml" />
+    <EmbeddedResource Include="Views\ListDetail\Manage.cshtml" />
+    <EmbeddedResource Include="Views\ListDetail\Pager.cshtml" />
+    <EmbeddedResource Include="Views\ListDetail\Rows.cshtml" />
+    <EmbeddedResource Include="Views\ListDetail\SearchForm.cshtml" />
+    <EmbeddedResource Include="Views\ListDetail\Title.cshtml" />
+    <EmbeddedResource Include="Views\ListDetail\ValueDisplay.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bennington.Core\Bennington.Core.csproj">
+      <Project>{AAB424EE-5CFA-42BE-9F9A-2350C5C8E715}</Project>
+      <Name>Bennington.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
