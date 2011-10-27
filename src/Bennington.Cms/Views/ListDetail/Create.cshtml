@@ -1,6 +1,8 @@
-﻿@using (Html.BeginForm())
+﻿@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@using (Html.BeginForm(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.EditorForModel()
 
-    <input type="submit" value="Create" />
+    <input type="submit" class="button" value="Create" />
 }
