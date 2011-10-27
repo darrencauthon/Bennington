@@ -21,13 +21,13 @@ namespace Bennington.Cms.Controllers
             return ViewOrDefaultView("List", "~/Views/ListDetail/List.cshtml", listViewModel);
         }
 
-        public ActionResult Create()
+        public virtual ActionResult Create()
         {
             return ViewOrDefaultView("Create", "~/Views/ListDetail/Create.cshtml", CreateForm());
         }
 
         [HttpPost]
-        public ActionResult Create(TForm form)
+        public virtual ActionResult Create(TForm form)
         {
             if(!ModelState.IsValid)
                 return ViewOrDefaultView("Create", "~/Views/ListDetail/Create.cshtml", form);
@@ -37,7 +37,7 @@ namespace Bennington.Cms.Controllers
             return RedirectToAction("Manage", new {id = GetId(form)});
         }
 
-        public ActionResult Manage()
+        public virtual ActionResult Manage()
         {
             var id = ValueProvider.GetValue("id").ConvertTo(GetFormIdType());
 
@@ -45,7 +45,7 @@ namespace Bennington.Cms.Controllers
         }
 
         [HttpPost]
-        public ActionResult Manage(TForm form)
+        public virtual ActionResult Manage(TForm form)
         {
             if(!ModelState.IsValid)
                 return ViewOrDefaultView("Manage", "~/Views/ListDetail/Manage.cshtml", form);
@@ -55,7 +55,7 @@ namespace Bennington.Cms.Controllers
             return RedirectToAction("Manage", new {id = GetId(form)});
         }
 
-        public ActionResult Delete(object id)
+        public virtual ActionResult Delete(object id)
         {
             DeleteItem(id);
             return RedirectToAction("Index");
