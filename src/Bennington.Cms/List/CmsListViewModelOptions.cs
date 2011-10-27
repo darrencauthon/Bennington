@@ -12,11 +12,11 @@ namespace Bennington.Cms.List
             PagerViewName = "Pager";
             RowsViewName = "Rows";
             SearchFormViewName = "SearchForm";
-            DefaultTitleViewName = "~/Views/ListDetail/Title.cshtml";
-            DefaultButtonsViewName = "~/Views/ListDetail/Buttons.cshtml";
-            DefaultPagerViewName = "~/Views/ListDetail/Pager.cshtml";
-            DefaultRowsViewName = "~/Views/ListDetail/Rows.cshtml";
-            DefaultSearchFormViewName = "~/Views/ListDetail/SearchForm.cshtml";
+            DefaultTitleViewName = "~/Views/ListManage/Title.cshtml";
+            DefaultButtonsViewName = "~/Views/ListManage/Buttons.cshtml";
+            DefaultPagerViewName = "~/Views/ListManage/Pager.cshtml";
+            DefaultRowsViewName = "~/Views/ListManage/Rows.cshtml";
+            DefaultSearchFormViewName = "~/Views/ListManage/SearchForm.cshtml";
         }
     }
 }

@@ -9,7 +9,7 @@ using PagedList;
 
 namespace Bennington.Cms.Controllers
 {
-    public abstract class ListDetailController<TListItem, TForm> : Controller
+    public abstract class ListManageController<TListItem, TForm> : Controller
     {
         public virtual ActionResult Index()
         {
@@ -18,19 +18,19 @@ namespace Bennington.Cms.Controllers
             
             OnPreRenderModel(listViewModel);
 
-            return ViewOrDefaultView("List", "~/Views/ListDetail/List.cshtml", listViewModel);
+            return ViewOrDefaultView("List", "~/Views/ListManage/List.cshtml", listViewModel);
         }
 
         public virtual ActionResult Create()
         {
-            return ViewOrDefaultView("Create", "~/Views/ListDetail/Create.cshtml", CreateForm());
+            return ViewOrDefaultView("Create", "~/Views/ListManage/Create.cshtml", CreateForm());
         }
 
         [HttpPost]
         public virtual ActionResult Create(TForm form)
         {
             if(!ModelState.IsValid)
-                return ViewOrDefaultView("Create", "~/Views/ListDetail/Create.cshtml", form);
+                return ViewOrDefaultView("Create", "~/Views/ListManage/Create.cshtml", form);
 
             InsertForm(form);
 
@@ -41,14 +41,14 @@ namespace Bennington.Cms.Controllers
         {
             var id = ValueProvider.GetValue("id").ConvertTo(GetFormIdType());
 
-            return ViewOrDefaultView("Manage", "~/Views/ListDetail/Manage.cshtml", GetFormById(id));
+            return ViewOrDefaultView("Manage", "~/Views/ListManage/Manage.cshtml", GetFormById(id));
         }
 
         [HttpPost]
         public virtual ActionResult Manage(TForm form)
         {
             if(!ModelState.IsValid)
-                return ViewOrDefaultView("Manage", "~/Views/ListDetail/Manage.cshtml", form);
+                return ViewOrDefaultView("Manage", "~/Views/ListManage/Manage.cshtml", form);
 
             UpdateForm(form);
 

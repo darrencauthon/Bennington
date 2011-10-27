@@ -91,7 +91,7 @@
     <Compile Include="Mocks\MockModelValidatorProvider.cs" />
     <Compile Include="ModelValidtorProvidersExtensions.cs" />
     <Compile Include="DefaultListColumnProviderTests.cs" />
-    <Compile Include="ListDetailControllerTests.cs" />
+    <Compile Include="ListManageControllerTests.cs" />
     <Compile Include="MenuRegistryTests.cs" />
     <Compile Include="Mocks\MockHttpContext.cs" />
     <Compile Include="Mocks\MockHttpRequest.cs" />

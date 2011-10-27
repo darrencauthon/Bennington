@@ -16,7 +16,7 @@ using Moq;
 namespace Bennington.Cms.Tests
 {
     [TestClass]
-    public class ListDetailControllerTests
+    public class ListManageControllerTests
     {
         private AutoMoqer mocker;
         private NameValueCollection queryString;
@@ -72,17 +72,17 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_default_list_view_if_no_index_view_is_found()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Index();
 
-            Assert.AreEqual("~/Views/ListDetail/List.cshtml", viewResult.ViewName);
+            Assert.AreEqual("~/Views/ListManage/List.cshtml", viewResult.ViewName);
         }
 
         [TestMethod]
         public void Index_action_returns_index_view_if_an_index_view_is_found()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var view = new MockView();
 
             viewEngine.MakeViewExists("List", view);
@@ -95,7 +95,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_list_view_model_if_an_index_view_is_found()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             mocker.GetMock<IViewEngine>()
                 .Setup(ve => ve.FindView(controller.ControllerContext, "Index", null, It.IsAny<bool>()))
@@ -109,7 +109,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Index();
 
@@ -119,7 +119,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_page_index_set()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             queryString.Add("pageindex", "3");
 
             dynamic viewResult = controller.Index();
@@ -130,7 +130,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_page_size()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             queryString.Add("pagesize", "40");
 
             dynamic viewResult = controller.Index();
@@ -141,7 +141,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_default_page_size()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Index();
 
@@ -151,7 +151,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_sort_by_set()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             queryString.Add("sortby", "mycolumn");
 
             dynamic viewResult = controller.Index();
@@ -162,7 +162,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_sort_direction_set_to_ascending()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             queryString.Add("sortdirection", "ascending");
 
             dynamic viewResult = controller.Index();
@@ -173,7 +173,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_sort_direction_set_to_descending()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             queryString.Add("sortdirection", "descending");
 
             dynamic viewResult = controller.Index();
@@ -184,7 +184,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_sort_direction_set_to_ascending_by_default()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Index();
 
@@ -194,7 +194,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_title_set()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Index();
 
@@ -204,7 +204,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_search_form_value_set()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             form.Add("SearchValue", "Southeast");
 
@@ -216,7 +216,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_search_form_column_set()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             form.Add("SearchBy", "Region");
 
@@ -228,7 +228,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_search_form_with_the_search_url_set()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             queryString.Add("sortby", "mycolumn");
             queryString.Add("sortdirection", "descending");
@@ -245,7 +245,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_columns_set()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var columns = new ListColumns();
 
             mocker.GetMock<IListColumnProvider>()
@@ -260,7 +260,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_list_header_columns_set()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var columns = new ListColumns();
 
             mocker.GetMock<IListColumnProvider>()
@@ -275,7 +275,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_a_list_view_model_with_the_list_items_set()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var listItem1 = new RegionalSalesReportsListItem();
             var listItem2 = new RegionalSalesReportsListItem();
             var expectedItems = new List<RegionalSalesReportsListItem> {listItem1, listItem2};
@@ -292,7 +292,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_passes_the_sortby_to_get_paged_list_items_method()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             queryString.Add("sortby", "somevalue");
 
@@ -304,7 +304,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_passes_the_sort_direction_desc_to_get_paged_list_items_method()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             queryString.Add("sortdirection", "descending");
 
@@ -316,7 +316,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_passes_the_sort_direction_asc_to_get_paged_list_items_method()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             queryString.Add("sortorder", "asc");
 
@@ -328,7 +328,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_passes_the_page_index_to_get_paged_list_items_method()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             queryString.Add("pageindex", "5");
 
@@ -340,7 +340,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_passes_the_page_size_to_get_paged_list_items_method()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             queryString.Add("pagesize", "67");
 
@@ -352,7 +352,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_passes_the_search_by_to_get_paged_list_items_method()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             form.Add("SearchBy", "Region");
 
@@ -364,7 +364,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_passes_the_search_by_to_get_paged_list_items_method_if_its_in_the_query_string()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             queryString.Add("searchby", "Region2");
 
@@ -376,7 +376,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_passes_the_search_value_to_get_paged_list_items_method()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             form.Add("SearchValue", "Houston");
 
@@ -388,7 +388,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_passes_the_search_value_to_get_paged_list_items_method_if_its_in_the_query_string()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             queryString.Add("searchvalue", "Topeka");
 
@@ -400,17 +400,17 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Create_action_returns_the_default_create_view()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Create();
 
-            Assert.AreEqual("~/Views/ListDetail/Create.cshtml", viewResult.ViewName);
+            Assert.AreEqual("~/Views/ListManage/Create.cshtml", viewResult.ViewName);
         }
 
         [TestMethod]
         public void Create_action_returns_the_create_view_if_it_exists()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var view = new MockView();
 
             viewEngine.MakeViewExists("Create", view);
@@ -423,7 +423,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Create_action_returns_a_new_form_when_the_default_manage_view_is_returned()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
 
             controller.CreatedForm = exceptedForm;
@@ -436,7 +436,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Create_action_returns_a_new_form_when_the_manage_view_is_returned()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
 
             mocker.GetMock<IViewEngine>()
@@ -453,19 +453,19 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Create_action_returns_to_the_default_create_view_if_the_model_state_is_invalid()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             controller.ModelState.AddModelError("Key", "Error");
 
             dynamic viewResult = controller.Create(new RegionalSalesReportsForm());
 
-            Assert.AreEqual("~/Views/ListDetail/Create.cshtml", viewResult.ViewName);
+            Assert.AreEqual("~/Views/ListManage/Create.cshtml", viewResult.ViewName);
         }
 
         [TestMethod]
         public void Create_action_returns_the_create_view_if_it_exists_and_the_model_state_is_invalid()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var view = new MockView();
 
             viewEngine.MakeViewExists("Create", view);
@@ -480,7 +480,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Create_action_returns_to_the_form_if_the_model_state_is_invalid()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
 
             controller.ModelState.AddModelError("Key", "Error");
@@ -493,7 +493,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Create_action_returns_form_if_the_create_view_exists_and_the_model_state_is_invalid()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
             var view = mocker.GetMock<IView>().Object;
 
@@ -511,7 +511,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Create_action_redirects_to_the_manage_action()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Create(new RegionalSalesReportsForm());
 
@@ -521,7 +521,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void The_no_id_is_returned_when_the_model_is_null()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic id = controller.GetId(null);
 
@@ -531,7 +531,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void The_no_id_is_returned_when_the_model_does_not_have_an_id()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic id = controller.GetId(new ModelWithNoId());
 
@@ -541,7 +541,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void The_no_id_is_returned_when_the_model_has_no_identifier_attribute()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic id = controller.GetId(new ModelWithNoIdAttribute {Id = "myvalue1"});
 
@@ -551,7 +551,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void The_id_property_is_returned_when_the_model_has_an_id_property()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic id = controller.GetId(new ModelWithId {Id = "myvalue"});
 
@@ -561,7 +561,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void The_myid_property_is_returned_when_the_model_has_an_myid_property_with_the_identifier_attribute_on_it()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic id = controller.GetId(new ModelWithMyId {MyId = "myvalue"});
 
@@ -571,7 +571,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void The_form_is_inserted_when_the_create_method_is_called()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
 
             controller.Create(exceptedForm);
@@ -582,7 +582,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void The_form_is_not_inserted_when_the_create_method_is_called_and_the_model_state_is_invalid()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
 
             controller.ModelState.AddModelError("Key", "Error");
@@ -595,7 +595,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Create_action_redirects_to_the_manage_action_with_the_id()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Create(new RegionalSalesReportsForm {Id = 56});
 
@@ -606,19 +606,19 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Manage_action_returns_the_default_manage_view()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             queryString.Add("id", "5");
 
             dynamic viewResult = controller.Manage();
 
-            Assert.AreEqual("~/Views/ListDetail/Manage.cshtml", viewResult.ViewName);
+            Assert.AreEqual("~/Views/ListManage/Manage.cshtml", viewResult.ViewName);
         }
 
         [TestMethod]
         public void Manage_action_returns_the_form()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
 
             queryString.Add("id", "2");
@@ -634,7 +634,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Manage_action_returns_the_default_manage_view_if_the_model_state_is_invalid()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
 
             controller.ModelState.AddModelError("Key", "Error");
@@ -642,13 +642,13 @@ namespace Bennington.Cms.Tests
 
             dynamic viewResult = controller.Manage(exceptedForm);
 
-            Assert.AreEqual("~/Views/ListDetail/Manage.cshtml", viewResult.ViewName);
+            Assert.AreEqual("~/Views/ListManage/Manage.cshtml", viewResult.ViewName);
         }
 
         [TestMethod]
         public void Manage_action_returns_the_manage_view_if_the_manage_view_exists_and_the_model_state_is_invalid()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
             var view = new MockView();
 
@@ -665,7 +665,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Manage_action_returns_the_form_if_the_model_state_is_invalid()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
 
             controller.ModelState.AddModelError("Key", "Error");
@@ -679,7 +679,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Manage_action_returns_the_form_if_the_manage_view_exists_and_the_model_state_is_invalid()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
 
             mocker.GetMock<IViewEngine>()
@@ -697,7 +697,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Manage_action_returns_the_manage_view_if_it_exists()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var view = new MockView();
 
             queryString.Add("id", "3");
@@ -712,7 +712,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Manage_action_returns_the_form_if_the_manage_view_exists()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
 
             mocker.GetMock<IViewEngine>()
@@ -732,7 +732,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Manage_action_redirects_to_the_manage_action()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Manage(new RegionalSalesReportsForm());
 
@@ -742,7 +742,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Manage_action_redirects_to_the_manage_action_with_the_id()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Manage(new RegionalSalesReportsForm {Id = 765});
 
@@ -753,7 +753,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Manage_action_updates_the_form()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
 
             controller.Manage(exceptedForm);
@@ -764,7 +764,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Manage_action_does_not_updates_the_form_when_the_model_state_is_invalid()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var exceptedForm = new RegionalSalesReportsForm();
 
             controller.ModelState.AddModelError("Key", "Error");
@@ -777,7 +777,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Delete_action_redirects_to_index_action()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             controller.Delete("my id");
 
@@ -787,17 +787,17 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_sets_the_title_view_name_to_the_default_title_view_name()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Index();
 
-            Assert.AreEqual("~/Views/ListDetail/Title.cshtml", viewResult.Model.TitleViewName);
+            Assert.AreEqual("~/Views/ListManage/Title.cshtml", viewResult.Model.TitleViewName);
         }
 
         [TestMethod]
         public void Index_action_sets_the_title_view_name_if_a_title_view_is_found()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             viewEngine.MakeViewExists("Title");
 
@@ -809,17 +809,17 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_sets_the_search_form_view_name_to_the_default_search_form_view_name()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Index();
 
-            Assert.AreEqual("~/Views/ListDetail/SearchForm.cshtml", viewResult.Model.SearchViewName);
+            Assert.AreEqual("~/Views/ListManage/SearchForm.cshtml", viewResult.Model.SearchViewName);
         }
 
         [TestMethod]
         public void Index_action_sets_the_search_form_view_name_if_a_search_form_view_is_found()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             viewEngine.MakeViewExists("SearchForm");
 
@@ -831,17 +831,17 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_sets_the_buttons_view_name_to_the_default_buttons_view_name()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Index();
 
-            Assert.AreEqual("~/Views/ListDetail/Buttons.cshtml", viewResult.Model.ButtonsViewName);
+            Assert.AreEqual("~/Views/ListManage/Buttons.cshtml", viewResult.Model.ButtonsViewName);
         }
 
         [TestMethod]
         public void Index_action_sets_the_buttons_view_name_if_a_buttons_view_is_found()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             viewEngine.MakeViewExists("Buttons");
 
@@ -853,17 +853,17 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_sets_the_pager_view_name_to_the_default_buttons_view_name()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Index();
 
-            Assert.AreEqual("~/Views/ListDetail/Pager.cshtml", viewResult.Model.PagerViewName);
+            Assert.AreEqual("~/Views/ListManage/Pager.cshtml", viewResult.Model.PagerViewName);
         }
 
         [TestMethod]
         public void Index_action_sets_the_pager_view_name_if_a_pager_view_is_found()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             viewEngine.MakeViewExists("Pager");
 
@@ -875,17 +875,17 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_sets_the_rows_view_name_to_the_default_rows_view_name()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             dynamic viewResult = controller.Index();
 
-            Assert.AreEqual("~/Views/ListDetail/Rows.cshtml", viewResult.Model.RowsViewName);
+            Assert.AreEqual("~/Views/ListManage/Rows.cshtml", viewResult.Model.RowsViewName);
         }
 
         [TestMethod]
         public void Index_action_sets_the_rows_view_name_if_a_rows_view_is_found()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             viewEngine.MakeViewExists("Rows");
 
@@ -897,7 +897,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_the_items_sorted_by_the_sort_by_property()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var listItem1 = new RegionalSalesReportsListItem {Region = "Southwest"};
             var listItem2 = new RegionalSalesReportsListItem {Region = "Midwest"};
             var listItem3 = new RegionalSalesReportsListItem {Region = "Northeast"};
@@ -920,7 +920,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_the_items_unsorted_when_sorted_by_a_property_that_does_not_exists()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var listItem1 = new RegionalSalesReportsListItem {Region = "Southwest"};
             var listItem2 = new RegionalSalesReportsListItem {Region = "Midwest"};
             var listItem3 = new RegionalSalesReportsListItem {Region = "Northeast"};
@@ -941,7 +941,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_the_items_sorted_descending_when_sort_by_and_sort_direction_exists()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var listItem1 = new RegionalSalesReportsListItem {Region = "Southwest"};
             var listItem2 = new RegionalSalesReportsListItem {Region = "Midwest"};
             var listItem3 = new RegionalSalesReportsListItem {Region = "Northeast"};
@@ -964,7 +964,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_the_items_sorted_descending_when_sort_by_and_sort_ascending_exists()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var listItem1 = new RegionalSalesReportsListItem {Region = "Southwest"};
             var listItem2 = new RegionalSalesReportsListItem {Region = "Midwest"};
             var listItem3 = new RegionalSalesReportsListItem {Region = "Northeast"};
@@ -987,7 +987,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_the_items_that_match_the_search_criteria_exactly()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var listItem1 = new RegionalSalesReportsListItem {Region = "Southwest"};
             var listItem2 = new RegionalSalesReportsListItem {Region = "Midwest"};
             var listItem3 = new RegionalSalesReportsListItem {Region = "Northwest"};
@@ -1008,7 +1008,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_the_items_that_match_the_search_criteria_the_beginning()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var listItem1 = new RegionalSalesReportsListItem {Region = "Mile High"};
             var listItem2 = new RegionalSalesReportsListItem {Region = "Midwest"};
             var listItem3 = new RegionalSalesReportsListItem {Region = "Mid-Alantic"};
@@ -1030,7 +1030,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_the_items_that_match_the_search_criteria_when_no_value_is_provided()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var listItem1 = new RegionalSalesReportsListItem {Region = "Mile High"};
             var listItem2 = new RegionalSalesReportsListItem {Region = "Midwest"};
             var listItem3 = new RegionalSalesReportsListItem {Region = "Mid-Alantic"};
@@ -1052,7 +1052,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_the_items_that_match_the_search_criteria_when_search_value_is_empty_string()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var listItem1 = new RegionalSalesReportsListItem {Region = "Mile High"};
             var listItem2 = new RegionalSalesReportsListItem {Region = "Midwest"};
             var listItem3 = new RegionalSalesReportsListItem {Region = "Mid-Alantic"};
@@ -1075,7 +1075,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_the_items_paged()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var listItems = new List<RegionalSalesReportsListItem>();
             listItems.AddRange(Enumerable.Repeat(new RegionalSalesReportsListItem(), 1000));
 
@@ -1094,7 +1094,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_no_error_when_sort_direction_is_invalid()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             queryString.Add("sortdirection", "dd");
 
@@ -1104,7 +1104,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_the_items_that_match_the_items_the_have_a_date_value_after_search_value()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var listItem1 = new RegionalSalesReportsListItem {Region = "Mile High", ReportRunDate = DateTime.Parse("10/2/2011")};
             var listItem2 = new RegionalSalesReportsListItem {Region = "Midwest", ReportRunDate = DateTime.Parse("10/3/2011")};
             var listItem3 = new RegionalSalesReportsListItem {Region = "Mid-Alantic", ReportRunDate = DateTime.Parse("9/4/2011")};
@@ -1126,7 +1126,7 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_returns_the_items_that_match_the_items_the_have_a_nullable_date_time_value_after_search_value()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
             var listItem1 = new RegionalSalesReportsListItem {Region = "Mile High", ReportRunDate = DateTime.Parse("10/2/2011")};
             var listItem2 = new RegionalSalesReportsListItem {Region = "Midwest", ReportRunDate = DateTime.Parse("10/3/2011")};
             var listItem3 = new RegionalSalesReportsListItem {Region = "Mid-Alantic", ReportRunDate = DateTime.Parse("9/4/2011")};
@@ -1148,14 +1148,14 @@ namespace Bennington.Cms.Tests
         [TestMethod]
         public void Index_action_validates_the_model()
         {
-            var controller = CreateListDetailController();
+            var controller = CreateListManageController();
 
             controller.Index();
 
             Assert.IsTrue(modelValidatorProvider.TypeWasValidated(typeof(ListViewModel)));
         }
 
-        private RegionalSalesReportsController CreateListDetailController()
+        private RegionalSalesReportsController CreateListManageController()
         {
             var controller = mocker.Resolve<RegionalSalesReportsController>();
             controller.ControllerContext = new ControllerContext(httpContext, routeData, controller);
@@ -1165,7 +1165,7 @@ namespace Bennington.Cms.Tests
         }
     }
 
-    public class RegionalSalesReportsController : ListDetailController<RegionalSalesReportsListItem, RegionalSalesReportsForm>
+    public class RegionalSalesReportsController : ListManageController<RegionalSalesReportsListItem, RegionalSalesReportsForm>
     {
         public RegionalSalesReportsController(IListColumnProvider listColumnProvider)
         {
