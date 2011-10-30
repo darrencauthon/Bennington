@@ -22,7 +22,7 @@
     }
 }
 @helper SortClass(ListColumn column)
-{
+{ 
     if (column.IsSorted)
     {
         @:class="@(column.SortDirection.GetValueOrDefault().ToString().ToLower())"

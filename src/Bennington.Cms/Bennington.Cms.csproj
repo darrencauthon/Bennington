@@ -64,7 +64,7 @@
     <Compile Include="Attributes\DoNotUseTheDefaultMasterPage.cs" />
     <Compile Include="Attributes\IdentifierAttribute.cs" />
     <Compile Include="Attributes\NoIdentifierAttribute.cs" />
-    <Compile Include="Controllers\ListDetailController.cs" />
+    <Compile Include="Controllers\ListManageController.cs" />
     <Compile Include="Helpers\ValidationSummaryHelpers.cs" />
     <Compile Include="List\CmsListViewModelOptions.cs" />
     <Compile Include="MenuSystem\ActionIconMenuItem.cs" />
@@ -98,7 +98,7 @@
     <Compile Include="Routing\EmptyDashboardRoute.cs" />
     <Compile Include="Routing\RegisterMenuSystemRoute.cs" />
     <Compile Include="Filters\DefaultTheMasterPageToTheManageSite.cs" />
-    <Compile Include="Views\ListDetail\Helpers.generated.cs">
+    <Compile Include="Views\ListManage\Helpers.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Helpers.cshtml</DependentUpon>
@@ -195,19 +195,19 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ListDetail\Buttons.cshtml" />
-    <EmbeddedResource Include="Views\ListDetail\Create.cshtml" />
-    <EmbeddedResource Include="Views\ListDetail\Helpers.cshtml">
+    <EmbeddedResource Include="Views\ListManage\Buttons.cshtml" />
+    <EmbeddedResource Include="Views\ListManage\Create.cshtml" />
+    <EmbeddedResource Include="Views\ListManage\Helpers.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Helpers.generated.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ListDetail\List.cshtml" />
-    <EmbeddedResource Include="Views\ListDetail\Manage.cshtml" />
-    <EmbeddedResource Include="Views\ListDetail\Pager.cshtml" />
-    <EmbeddedResource Include="Views\ListDetail\Rows.cshtml" />
-    <EmbeddedResource Include="Views\ListDetail\SearchForm.cshtml" />
-    <EmbeddedResource Include="Views\ListDetail\Title.cshtml" />
-    <EmbeddedResource Include="Views\ListDetail\ValueDisplay.cshtml" />
+    <EmbeddedResource Include="Views\ListManage\List.cshtml" />
+    <EmbeddedResource Include="Views\ListManage\Manage.cshtml" />
+    <EmbeddedResource Include="Views\ListManage\Pager.cshtml" />
+    <EmbeddedResource Include="Views\ListManage\Rows.cshtml" />
+    <EmbeddedResource Include="Views\ListManage\SearchForm.cshtml" />
+    <EmbeddedResource Include="Views\ListManage\Title.cshtml" />
+    <EmbeddedResource Include="Views\ListManage\ValueDisplay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bennington.Core\Bennington.Core.csproj">
