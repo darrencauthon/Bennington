@@ -1,23 +1,28 @@
-﻿using MvcTurbine.ComponentModel;
-using System.Collections.Generic;
+﻿using System.Reflection;
+using MvcTurbine.ComponentModel;
 
 namespace Bennington.Core.Configuration
 {
     public class Configurer
     {
-        private static readonly Configurer DefaultConfigurer = new Configurer(null);
-        private readonly List<Configurer> configurers = new List<Configurer>();
-
+        private readonly Configurer parentConfigurer;
+        
         public Configurer(Configurer parentConfigurer)
         {
-            if(parentConfigurer != null)
-                parentConfigurer.configurers.Add(this);
+            this.parentConfigurer = parentConfigurer;
+        }
+
+        private Configurer(Assembly applicationAssembly)
+        {
+           ApplicationAssembly = applicationAssembly;
         }
 
         public static Configurer Configure
         {
-            get { return DefaultConfigurer; }
+            get { return new Configurer(Assembly.GetCallingAssembly()); }
         }
+
+        public static Assembly ApplicationAssembly { get; private set; }
 
         public IServiceLocator ServiceLocator
         {
@@ -26,7 +31,8 @@ namespace Bennington.Core.Configuration
 
         public virtual void Run()
         {
-            configurers.ForEach(configurer => configurer.Run());
+            if(parentConfigurer != null)
+                parentConfigurer.Run();
         }
     }
 }
