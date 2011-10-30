@@ -53,6 +53,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\Configurer.cs" />
     <Compile Include="EntityFramework\EntityConnectionInformation.cs" />
     <Compile Include="Extensions\MetadataExtensions.cs" />
     <Compile Include="Extensions\ValueProviderExtensions.cs" />
