@@ -9,7 +9,7 @@ namespace Bennington.Content.Internal
     internal class TreeNode
     {
         private int maxDepth = 1;
-        private readonly IDictionary<ContentRouteNode, TreeNode> values = new Dictionary<ContentRouteNode, TreeNode>(new ContentRouteNodeComparer());
+        private readonly IDictionary<ContentRouteNode, TreeNode> values = new Dictionary<ContentRouteNode, TreeNode>();
 
         public TreeNode(ContentRouteNode value)
         {
@@ -38,9 +38,10 @@ namespace Bennington.Content.Internal
 
         public TreeNode Find(string action, string controller)
         {
-            TreeNode treeNode;
-            values.TryGetValue(new ContentRouteNode {Action = action, Controller = controller}, out treeNode);
-            return treeNode;
+            return (from entry in values
+                    where entry.Key.Action.Equals(action, StringComparison.InvariantCultureIgnoreCase)
+                    where entry.Key.Controller.Equals(controller, StringComparison.InvariantCultureIgnoreCase)
+                    select entry.Value).FirstOrDefault();
         }
 
         public TreeNode FindPath(string[] segments)
@@ -143,19 +144,6 @@ namespace Bennington.Content.Internal
             public TreeNode Find(string segment)
             {
                 return nodes.SingleOrDefault(node => node.Value.Segment.Equals(segment, StringComparison.InvariantCultureIgnoreCase));
-            }
-        }
-
-        public class ContentRouteNodeComparer : EqualityComparer<ContentRouteNode>
-        {
-            public override bool Equals(ContentRouteNode x, ContentRouteNode y)
-            {
-                return x.Action.Equals(y.Action, StringComparison.InvariantCultureIgnoreCase) && x.Controller.Equals(y.Controller, StringComparison.InvariantCultureIgnoreCase);
-            }
-
-            public override int GetHashCode(ContentRouteNode obj)
-            {
-                return obj == null ? 0 : obj.GetHashCode();
             }
         }
     }
