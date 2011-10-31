@@ -8,7 +8,6 @@ namespace Bennington.ContentTree.Domain.CommandHandlers
 	{
 		public override void Handle(DeletePageCommand command, Page aggregateRoot)
 		{
-            aggregateRoot.SetLastModifyBy(command.LastModifyBy);
 			aggregateRoot.Delete(command.AggregateRootId);
 		}
 	}
