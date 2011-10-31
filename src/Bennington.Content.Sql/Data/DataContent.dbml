@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="APICWEB_private" Class="ContentDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.ContentTypes" Member="ContentTypeItems">
+    <Type Name="ContentTypeItem">
+      <Column Name="Type" Type="System.String" DbType="NVarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DisplayName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ControllerName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="ContentTypeItem_ContentActionItem" Member="ContentActionItems" Storage="_ContentActions" ThisKey="Type" OtherKey="ContentType" Type="ContentActionItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ContentActions" Member="ContentActionItems">
+    <Type Name="ContentActionItem">
+      <Column Name="ContentType" Type="System.String" DbType="NVarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Action" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DisplayName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="ContentTypeItem_ContentActionItem" Member="ContentTypeItem" Storage="_ContentType1" ThisKey="ContentType" OtherKey="Type" Type="ContentTypeItem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ContentTree" Member="ContentTreeItems">
+    <Type Name="ContentTreeItem">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Segment" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Action" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Controller" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
