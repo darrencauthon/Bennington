@@ -6,7 +6,7 @@ namespace Bennington.Core.Caching
     [ServiceContract]
     public interface IInvalidateCacheService
     {
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void Invalidate(string cacheKey);
     }
 
