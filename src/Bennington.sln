@@ -62,6 +62,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCmsWebsite", "SampleC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.ContentTree.Providers.ContentNodeProvider.Routing", "Bennington.ContentTree.Providers.ContentNodeProvider.Routing\Bennington.ContentTree.Providers.ContentNodeProvider.Routing.csproj", "{55B46DAA-0659-4486-B350-DF312147305A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.Content", "Bennington.Content\Bennington.Content.csproj", "{790E0A90-8C75-42D3-B53B-11AD9332BF30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.Content.MongoDB", "Bennington.Content.MongoDB\Bennington.Content.MongoDB.csproj", "{5195CABD-7EA4-4E61-B94B-7D7B3AFF42BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.Content.Sql", "Bennington.Content.Sql\Bennington.Content.Sql.csproj", "{2932BB2B-8274-4E38-9EB0-EAB81659D0C4}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Bennington.vsmdi
@@ -175,6 +181,18 @@ Global
 		{55B46DAA-0659-4486-B350-DF312147305A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55B46DAA-0659-4486-B350-DF312147305A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55B46DAA-0659-4486-B350-DF312147305A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{790E0A90-8C75-42D3-B53B-11AD9332BF30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{790E0A90-8C75-42D3-B53B-11AD9332BF30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{790E0A90-8C75-42D3-B53B-11AD9332BF30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{790E0A90-8C75-42D3-B53B-11AD9332BF30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5195CABD-7EA4-4E61-B94B-7D7B3AFF42BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5195CABD-7EA4-4E61-B94B-7D7B3AFF42BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5195CABD-7EA4-4E61-B94B-7D7B3AFF42BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5195CABD-7EA4-4E61-B94B-7D7B3AFF42BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2932BB2B-8274-4E38-9EB0-EAB81659D0C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2932BB2B-8274-4E38-9EB0-EAB81659D0C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2932BB2B-8274-4E38-9EB0-EAB81659D0C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2932BB2B-8274-4E38-9EB0-EAB81659D0C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
