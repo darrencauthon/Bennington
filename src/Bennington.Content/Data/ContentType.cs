@@ -1,4 +1,4 @@
-﻿namespace Bennington.Content
+﻿namespace Bennington.Content.Data
 {
     public class ContentType
     {

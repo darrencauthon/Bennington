@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using Bennington.Content.Data;
+using MongoDB.Driver;
 
 namespace Bennington.Content.MongoDB
 {

@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Bennington.Content.Routing
+namespace Bennington.Content
 {
     [Serializable]
-    public class ContentRouteNode
+    public class ContentNode
     {
         public object Id { get; set; }
         public object ParentId { get; set; }

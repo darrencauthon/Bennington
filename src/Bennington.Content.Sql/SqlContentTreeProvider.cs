@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
-using System.Web.Routing;
-using Bennington.Content.Routing;
+using Bennington.Content.Data;
 using Bennington.Content.Sql.Data;
 using Bennington.Core.Caching;
 
@@ -32,12 +31,12 @@ namespace Bennington.Content.Sql
             InvalidateCache(string.Empty);
         }
 
-        public ContentRouteTree GetRouteTree(Route route, IRouteHandler routeHandler)
+        public ContentTree GetContentTree()
         {
             using(var dataContext = new ContentDataContext(connectionString))
             {
                 var nodes = (from contentTreeItem in dataContext.ContentTreeItems
-                             select new ContentRouteNode
+                             select new ContentNode
                                         {
                                             Action = contentTreeItem.Action,
                                             Controller = contentTreeItem.Controller,
@@ -46,7 +45,7 @@ namespace Bennington.Content.Sql
                                             Segment = contentTreeItem.Segment,
                                         });
 
-                return new ContentRouteTree(nodes, route, routeHandler);
+                return ContentTree.BuildTree(nodes);
             }
         }
 
