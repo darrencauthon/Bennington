@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web;
 using System.Web.Routing;
 using Bennington.ContentTree.Contexts;
@@ -41,7 +42,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Routing
 		private TreeNodeSummary FindByUrlSegment(string urlSegment, string parentTreeNodeId)
 		{
 			var children = treeNodeSummaryContext.GetChildren(parentTreeNodeId).Where(a => a.MayHaveChildNodes).ToArray(); //.Where(a => a.Type == typeof(ContentNodeProvider).AssemblyQualifiedName);)
-			return children.Where(a => a.UrlSegment == urlSegment).FirstOrDefault();
+            return children.Where(a => string.Equals(a.UrlSegment, urlSegment, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
 		}
     }
 }
