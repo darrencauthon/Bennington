@@ -78,6 +78,32 @@ namespace Bennington.ContentTree.Tests.Helpers
 			Assert.AreEqual(pageId.ToString(), result.Id);
 		}
 
+        [TestMethod]
+        public void Returns_correct_tree_node_summary_when_passed_a_url_1_deep_with_non_matching_case()
+        {
+            var pageId = Guid.NewGuid();
+            mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(Constants.RootNodeId))
+                .Returns(new TreeNodeSummary[]
+				         	{
+				         		new TreeNodeSummary()
+				         			{
+										ParentTreeNodeId = Constants.RootNodeId,
+				         				Id = pageId.ToString(),
+										UrlSegment = "testpage",
+				         			},
+								new TreeNodeSummary()
+				         			{
+										ParentTreeNodeId = Constants.RootNodeId,
+				         				Id = pageId.ToString(),
+										UrlSegment = "testpage2",
+				         			}
+							});
+
+            var result = mocker.Resolve<UrlToTreeNodeSummaryMapper>().CreateInstance("/TESTPAGE");
+
+            Assert.AreEqual(pageId.ToString(), result.Id);
+        }
+
 		[TestMethod]
 		public void Returns_correct_tree_node_summary_when_passed_a_url_2_deep()
 		{
