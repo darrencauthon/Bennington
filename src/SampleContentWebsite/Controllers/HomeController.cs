@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using System.Web.UI.WebControls;
-using Bennington.Core.List;
 
 namespace SampleContentWebsite.Controllers
 {
@@ -9,10 +8,8 @@ namespace SampleContentWebsite.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Welcome to ASP.NET MVC!";
-
-            var listViewModel = ListViewModelProviders.Providers.GetListViewModelForType(typeof(ListItem), ControllerContext);
             
-            return View("Index", listViewModel);
+            return View("Index");
         }
 
         public ActionResult About()

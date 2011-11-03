@@ -11,7 +11,8 @@ namespace Bennington.Content
         private ContentTree(List<ContentTreeNode> treeNodes)
         {
             this.treeNodes = treeNodes;
-            MaxDepth = treeNodes.Max(t => t.GetPath().Length);
+            if (treeNodes.Count == 0) MaxDepth = 0;
+            else MaxDepth = treeNodes.Max(t => t.GetPath().Length);
         }
 
         public int MaxDepth { get; private set; }

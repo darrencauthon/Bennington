@@ -88,6 +88,7 @@ namespace Bennington.Content.Routing
 
         public string GetUrlPattern()
         {
+            if (contentTree.MaxDepth == 0) return string.Empty;
             return Enumerable.Range(0, contentTree.MaxDepth).Aggregate(new StringBuilder(), (builder, depth) => builder.AppendFormat("{{{0}}}/", depth), url => url.Remove(url.Length - 1, 1)).ToString();
         }
 
