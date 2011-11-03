@@ -104,6 +104,7 @@
     <Compile Include="Registration\TreeNodeExtensionProviderRegistration.cs" />
     <Compile Include="ContentNodeProvider.cs" />
     <Compile Include="Context\ContentTreeNodeVersionContext.cs" />
+    <Compile Include="Routing\ContentTreeRouteRegistrator.cs" />
     <Compile Include="Validation\ContentTreeInputModelValidator.cs" />
     <Compile Include="ViewModelBuilders\ContentTreeNodeDisplayViewModelBuilder.cs" />
   </ItemGroup>
@@ -402,9 +403,7 @@
     <EmbeddedResource Include="Scripts\ContentNodeProvider\tiny_mce\utils\mctabs.js" />
     <EmbeddedResource Include="Scripts\ContentNodeProvider\tiny_mce\utils\validate.js" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Routing\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
