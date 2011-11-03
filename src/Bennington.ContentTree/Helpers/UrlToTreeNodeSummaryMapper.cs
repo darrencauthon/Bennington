@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Models;
 
@@ -27,7 +28,7 @@ namespace Bennington.ContentTree.Helpers
 			var workingTreeNodeId = Constants.RootNodeId;
 			foreach(var nodeSegment in nodeSegments)
 			{
-				treeNodeSummary = treeNodeSummaryContext.GetChildren(workingTreeNodeId).Where(a => a.UrlSegment == nodeSegment).FirstOrDefault();
+				treeNodeSummary = treeNodeSummaryContext.GetChildren(workingTreeNodeId).Where(a => string.Equals(a.UrlSegment, nodeSegment, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
 				if (treeNodeSummary == null) return null;
 				if (treeNodeSummary.MayHaveChildNodes == false) return treeNodeSummary;
 				workingTreeNodeId = treeNodeSummary.Id;

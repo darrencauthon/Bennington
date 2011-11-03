@@ -197,7 +197,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Controlle
             if (treeNodeSummary == null) return false;
 
             // if the last nodesegment doesn't match treeNodeSummary.UrlSegment then return false
-            if (FindLastNodeSegmentInRouteData(values) != treeNodeSummary.UrlSegment) return false;
+            if (!string.Equals(FindLastNodeSegmentInRouteData(values), treeNodeSummary.UrlSegment, StringComparison.CurrentCultureIgnoreCase)) return false;
 
             return (treeNodeSummary.Type == GetType().AssemblyQualifiedName);
         }
