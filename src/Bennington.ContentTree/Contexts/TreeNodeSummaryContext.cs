@@ -14,6 +14,7 @@ namespace Bennington.ContentTree.Contexts
 	{
 		TreeNodeSummary GetTreeNodeSummaryByTreeNodeId(string nodeId);
 		IEnumerable<TreeNodeSummary> GetChildren(string parentNodeId);
+	    IEnumerable<TreeNodeSummary> GetRootNodes();
 		string Create(string parentNodeId, string providerTypeAssemblyQualifiedName);
 	}
 
@@ -35,7 +36,12 @@ namespace Bennington.ContentTree.Contexts
 			this.treeNodeRepository = treeNodeRepository;
 		}
 
-		public string Create(string parentNodeId, string providerTypeAssemblyQualifiedName)
+	    public IEnumerable<TreeNodeSummary> GetRootNodes()
+	    {
+	        return GetChildren(Constants.RootNodeId);
+	    }
+
+	    public string Create(string parentNodeId, string providerTypeAssemblyQualifiedName)
 		{
 			ThrowExceptionIfTheProviderTypeDoesNotImplementIAmATreeNodeExtensionProvider(Type.GetType(providerTypeAssemblyQualifiedName));
 
