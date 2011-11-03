@@ -25,8 +25,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.ContentTree.Prov
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.ContentTree.Providers.ToolLinkNodeProvider", "Bennington.ContentTree.Providers.ToolLinkNodeProvider\Bennington.ContentTree.Providers.ToolLinkNodeProvider.csproj", "{BD01E5D0-D160-4E39-B18B-61D2B375977B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleFeature", "SampleFeature\SampleFeature.csproj", "{0124D513-5EBF-4CA9-9DA4-EC0A75E0C629}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{DECE7245-2CB4-4F20-86DB-28FC05BFF23A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.Cms.PrincipalProvider", "Bennington.Cms.PrincipalProvider\Bennington.Cms.PrincipalProvider.csproj", "{BE0B07EB-DEA9-4CA0-9D0D-E6892A1453B3}"
@@ -60,13 +58,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleContentWebsite", "Sam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCmsWebsite", "SampleCmsWebsite\SampleCmsWebsite.csproj", "{45E3DF26-F5F8-41D5-83A0-AA97A69148BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.ContentTree.Providers.ContentNodeProvider.Routing", "Bennington.ContentTree.Providers.ContentNodeProvider.Routing\Bennington.ContentTree.Providers.ContentNodeProvider.Routing.csproj", "{55B46DAA-0659-4486-B350-DF312147305A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.Content", "Bennington.Content\Bennington.Content.csproj", "{790E0A90-8C75-42D3-B53B-11AD9332BF30}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.Content.MongoDB", "Bennington.Content.MongoDB\Bennington.Content.MongoDB.csproj", "{5195CABD-7EA4-4E61-B94B-7D7B3AFF42BC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.Content.Sql", "Bennington.Content.Sql\Bennington.Content.Sql.csproj", "{2932BB2B-8274-4E38-9EB0-EAB81659D0C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.ContentTree.Providers.ContentNodeProvider.Routing", "Bennington.ContentTree.Providers.ContentNodeProvider.Routing\Bennington.ContentTree.Providers.ContentNodeProvider.Routing.csproj", "{55B46DAA-0659-4486-B350-DF312147305A}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -125,10 +123,6 @@ Global
 		{BD01E5D0-D160-4E39-B18B-61D2B375977B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD01E5D0-D160-4E39-B18B-61D2B375977B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD01E5D0-D160-4E39-B18B-61D2B375977B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0124D513-5EBF-4CA9-9DA4-EC0A75E0C629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0124D513-5EBF-4CA9-9DA4-EC0A75E0C629}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0124D513-5EBF-4CA9-9DA4-EC0A75E0C629}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0124D513-5EBF-4CA9-9DA4-EC0A75E0C629}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE0B07EB-DEA9-4CA0-9D0D-E6892A1453B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE0B07EB-DEA9-4CA0-9D0D-E6892A1453B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE0B07EB-DEA9-4CA0-9D0D-E6892A1453B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -177,10 +171,6 @@ Global
 		{45E3DF26-F5F8-41D5-83A0-AA97A69148BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45E3DF26-F5F8-41D5-83A0-AA97A69148BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45E3DF26-F5F8-41D5-83A0-AA97A69148BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{55B46DAA-0659-4486-B350-DF312147305A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55B46DAA-0659-4486-B350-DF312147305A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55B46DAA-0659-4486-B350-DF312147305A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55B46DAA-0659-4486-B350-DF312147305A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{790E0A90-8C75-42D3-B53B-11AD9332BF30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{790E0A90-8C75-42D3-B53B-11AD9332BF30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{790E0A90-8C75-42D3-B53B-11AD9332BF30}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -193,12 +183,15 @@ Global
 		{2932BB2B-8274-4E38-9EB0-EAB81659D0C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2932BB2B-8274-4E38-9EB0-EAB81659D0C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2932BB2B-8274-4E38-9EB0-EAB81659D0C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55B46DAA-0659-4486-B350-DF312147305A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55B46DAA-0659-4486-B350-DF312147305A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55B46DAA-0659-4486-B350-DF312147305A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55B46DAA-0659-4486-B350-DF312147305A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0124D513-5EBF-4CA9-9DA4-EC0A75E0C629} = {DECE7245-2CB4-4F20-86DB-28FC05BFF23A}
 		{78192D6F-A8DF-43E0-B3BA-DD25AE1EA2A4} = {DECE7245-2CB4-4F20-86DB-28FC05BFF23A}
 		{45E3DF26-F5F8-41D5-83A0-AA97A69148BE} = {DECE7245-2CB4-4F20-86DB-28FC05BFF23A}
 	EndGlobalSection
