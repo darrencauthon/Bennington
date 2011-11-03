@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Security;
+using Bennington.Content.Attributes;
 using SampleContentWebsite.Models;
 
 namespace SampleContentWebsite.Controllers
 {
+    [Engine("Accounts")]
     public class AccountController : Controller
     {
 

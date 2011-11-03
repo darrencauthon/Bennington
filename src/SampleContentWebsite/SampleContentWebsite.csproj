@@ -93,6 +93,9 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Routes.aspx.cs">
+      <DependentUpon>Routes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Routing\SampeContentSiteControllersRouteRegistrator.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +127,7 @@
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="Routes.aspx" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
@@ -173,6 +177,10 @@
     <ProjectReference Include="..\Bennington.Content.Sql\Bennington.Content.Sql.csproj">
       <Project>{2932BB2B-8274-4E38-9EB0-EAB81659D0C4}</Project>
       <Name>Bennington.Content.Sql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bennington.ContentTree.Providers.ContentNodeProvider\Bennington.ContentTree.Providers.ContentNodeProvider.csproj">
+      <Project>{BA1AC304-5E93-4EE3-ACE1-E1E2DEC5C93D}</Project>
+      <Name>Bennington.ContentTree.Providers.ContentNodeProvider</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bennington.Content\Bennington.Content.csproj">
       <Project>{790E0A90-8C75-42D3-B53B-11AD9332BF30}</Project>
