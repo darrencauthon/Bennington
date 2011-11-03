@@ -256,6 +256,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 
         public ActionResult Index()
         {
+            var routeData = RouteData;
             return View();
         }
 

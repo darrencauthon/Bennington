@@ -1,6 +1,7 @@
 ﻿using System;
 using Bennington.Content.Configuration;
 using Bennington.Content.Data;
+using Bennington.Content.Sql.Denormalizers;
 using Bennington.Core.Configuration;
 
 namespace Bennington.Content.Sql.Configuration
@@ -31,6 +32,7 @@ namespace Bennington.Content.Sql.Configuration
 
         public override void Run()
         {
+
             ServiceLocator.Register<IContentTreeProvider>(new SqlContentTreeProvider(connectionString, invalidateCacheUrl));
             ServiceLocator.Register<IContentTypeRegistry>(new SqlContentTypeRegistry(connectionString));
 
