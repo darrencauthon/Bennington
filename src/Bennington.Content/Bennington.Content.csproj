@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bennington.Core">
-      <HintPath>..\..\..\lib\Bennington.Core.dll</HintPath>
-    </Reference>
     <Reference Include="MvcTurbine, Version=3.4.0.0, Culture=neutral, PublicKeyToken=0e426322531bc5b0, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.dll</HintPath>
@@ -66,7 +63,12 @@
     <Compile Include="ContentTree.cs" />
     <Compile Include="ContentTreeNode.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Bennington.Core\Bennington.Core.csproj">
+      <Project>{AAB424EE-5CFA-42BE-9F9A-2350C5C8E715}</Project>
+      <Name>Bennington.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
