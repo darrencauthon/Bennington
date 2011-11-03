@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
+using Bennington.Content.Data;
 
 namespace Bennington.Content.Attributes
 {
@@ -28,6 +29,7 @@ namespace Bennington.Content.Attributes
         {
             return (from method in controllerType.GetMethods()
                     where method.ReturnType == typeof(ActionResult)
+                    where method.GetCustomAttributes(typeof(HttpPostAttribute), true).Length == 0
                     where !ignoredActions.Contains(method.Name)
                     let attributes = (ContentActionAttribute[])method.GetCustomAttributes(typeof(ContentActionAttribute), true)
                     where attributes.Length == 0 || !attributes[0].Ignore

@@ -30,12 +30,12 @@ namespace Bennington.Content.Sql.Data
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertContentTypeItem(ContentTypeItem instance);
-    partial void UpdateContentTypeItem(ContentTypeItem instance);
-    partial void DeleteContentTypeItem(ContentTypeItem instance);
     partial void InsertContentActionItem(ContentActionItem instance);
     partial void UpdateContentActionItem(ContentActionItem instance);
     partial void DeleteContentActionItem(ContentActionItem instance);
+    partial void InsertContentTypeItem(ContentTypeItem instance);
+    partial void UpdateContentTypeItem(ContentTypeItem instance);
+    partial void DeleteContentTypeItem(ContentTypeItem instance);
     partial void InsertContentTreeItem(ContentTreeItem instance);
     partial void UpdateContentTreeItem(ContentTreeItem instance);
     partial void DeleteContentTreeItem(ContentTreeItem instance);
@@ -65,19 +65,19 @@ namespace Bennington.Content.Sql.Data
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<ContentTypeItem> ContentTypeItems
-		{
-			get
-			{
-				return this.GetTable<ContentTypeItem>();
-			}
-		}
-		
 		public System.Data.Linq.Table<ContentActionItem> ContentActionItems
 		{
 			get
 			{
 				return this.GetTable<ContentActionItem>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ContentTypeItem> ContentTypeItems
+		{
+			get
+			{
+				return this.GetTable<ContentTypeItem>();
 			}
 		}
 		
@@ -90,149 +90,15 @@ namespace Bennington.Content.Sql.Data
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ContentTypes")]
-	public partial class ContentTypeItem : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Type;
-		
-		private string _DisplayName;
-		
-		private string _ControllerName;
-		
-		private EntitySet<ContentActionItem> _ContentActions;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnTypeChanging(string value);
-    partial void OnTypeChanged();
-    partial void OnDisplayNameChanging(string value);
-    partial void OnDisplayNameChanged();
-    partial void OnControllerNameChanging(string value);
-    partial void OnControllerNameChanged();
-    #endregion
-		
-		public ContentTypeItem()
-		{
-			this._ContentActions = new EntitySet<ContentActionItem>(new Action<ContentActionItem>(this.attach_ContentActions), new Action<ContentActionItem>(this.detach_ContentActions));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisplayName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string DisplayName
-		{
-			get
-			{
-				return this._DisplayName;
-			}
-			set
-			{
-				if ((this._DisplayName != value))
-				{
-					this.OnDisplayNameChanging(value);
-					this.SendPropertyChanging();
-					this._DisplayName = value;
-					this.SendPropertyChanged("DisplayName");
-					this.OnDisplayNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ControllerName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ControllerName
-		{
-			get
-			{
-				return this._ControllerName;
-			}
-			set
-			{
-				if ((this._ControllerName != value))
-				{
-					this.OnControllerNameChanging(value);
-					this.SendPropertyChanging();
-					this._ControllerName = value;
-					this.SendPropertyChanged("ControllerName");
-					this.OnControllerNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ContentTypeItem_ContentActionItem", Storage="_ContentActions", ThisKey="Type", OtherKey="ContentType")]
-		public EntitySet<ContentActionItem> ContentActionItems
-		{
-			get
-			{
-				return this._ContentActions;
-			}
-			set
-			{
-				this._ContentActions.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ContentActions(ContentActionItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.ContentTypeItem = this;
-		}
-		
-		private void detach_ContentActions(ContentActionItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.ContentTypeItem = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ContentActions")]
 	public partial class ContentActionItem : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ContentActionId;
+		
+		private int _ContentTypeId;
 		
 		private string _ContentType;
 		
@@ -240,12 +106,16 @@ namespace Bennington.Content.Sql.Data
 		
 		private string _DisplayName;
 		
-		private EntityRef<ContentTypeItem> _ContentType1;
+		private EntityRef<ContentTypeItem> _ContentTypeItem;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnContentActionIdChanging(int value);
+    partial void OnContentActionIdChanged();
+    partial void OnContentTypeIdChanging(int value);
+    partial void OnContentTypeIdChanged();
     partial void OnContentTypeChanging(string value);
     partial void OnContentTypeChanged();
     partial void OnActionChanging(string value);
@@ -256,11 +126,55 @@ namespace Bennington.Content.Sql.Data
 		
 		public ContentActionItem()
 		{
-			this._ContentType1 = default(EntityRef<ContentTypeItem>);
+			this._ContentTypeItem = default(EntityRef<ContentTypeItem>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContentType", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContentActionId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ContentActionId
+		{
+			get
+			{
+				return this._ContentActionId;
+			}
+			set
+			{
+				if ((this._ContentActionId != value))
+				{
+					this.OnContentActionIdChanging(value);
+					this.SendPropertyChanging();
+					this._ContentActionId = value;
+					this.SendPropertyChanged("ContentActionId");
+					this.OnContentActionIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContentTypeId", DbType="Int NOT NULL")]
+		public int ContentTypeId
+		{
+			get
+			{
+				return this._ContentTypeId;
+			}
+			set
+			{
+				if ((this._ContentTypeId != value))
+				{
+					if (this._ContentTypeItem.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnContentTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._ContentTypeId = value;
+					this.SendPropertyChanged("ContentTypeId");
+					this.OnContentTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContentType", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string ContentType
 		{
 			get
@@ -271,10 +185,6 @@ namespace Bennington.Content.Sql.Data
 			{
 				if ((this._ContentType != value))
 				{
-					if (this._ContentType1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnContentTypeChanging(value);
 					this.SendPropertyChanging();
 					this._ContentType = value;
@@ -284,7 +194,7 @@ namespace Bennington.Content.Sql.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Action", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Action", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Action
 		{
 			get
@@ -324,34 +234,34 @@ namespace Bennington.Content.Sql.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ContentTypeItem_ContentActionItem", Storage="_ContentType1", ThisKey="ContentType", OtherKey="Type", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ContentTypeItem_ContentActionItem", Storage="_ContentTypeItem", ThisKey="ContentTypeId", OtherKey="ContentTypeId", IsForeignKey=true)]
 		public ContentTypeItem ContentTypeItem
 		{
 			get
 			{
-				return this._ContentType1.Entity;
+				return this._ContentTypeItem.Entity;
 			}
 			set
 			{
-				ContentTypeItem previousValue = this._ContentType1.Entity;
+				ContentTypeItem previousValue = this._ContentTypeItem.Entity;
 				if (((previousValue != value) 
-							|| (this._ContentType1.HasLoadedOrAssignedValue == false)))
+							|| (this._ContentTypeItem.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._ContentType1.Entity = null;
+						this._ContentTypeItem.Entity = null;
 						previousValue.ContentActionItems.Remove(this);
 					}
-					this._ContentType1.Entity = value;
+					this._ContentTypeItem.Entity = value;
 					if ((value != null))
 					{
 						value.ContentActionItems.Add(this);
-						this._ContentType = value.Type;
+						this._ContentTypeId = value.ContentTypeId;
 					}
 					else
 					{
-						this._ContentType = default(string);
+						this._ContentTypeId = default(int);
 					}
 					this.SendPropertyChanged("ContentTypeItem");
 				}
@@ -376,6 +286,168 @@ namespace Bennington.Content.Sql.Data
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ContentTypes")]
+	public partial class ContentTypeItem : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ContentTypeId;
+		
+		private string _Type;
+		
+		private string _ControllerName;
+		
+		private string _DisplayName;
+		
+		private EntitySet<ContentActionItem> _ContentActionItems;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnContentTypeIdChanging(int value);
+    partial void OnContentTypeIdChanged();
+    partial void OnTypeChanging(string value);
+    partial void OnTypeChanged();
+    partial void OnControllerNameChanging(string value);
+    partial void OnControllerNameChanged();
+    partial void OnDisplayNameChanging(string value);
+    partial void OnDisplayNameChanged();
+    #endregion
+		
+		public ContentTypeItem()
+		{
+			this._ContentActionItems = new EntitySet<ContentActionItem>(new Action<ContentActionItem>(this.attach_ContentActionItems), new Action<ContentActionItem>(this.detach_ContentActionItems));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContentTypeId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ContentTypeId
+		{
+			get
+			{
+				return this._ContentTypeId;
+			}
+			set
+			{
+				if ((this._ContentTypeId != value))
+				{
+					this.OnContentTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._ContentTypeId = value;
+					this.SendPropertyChanged("ContentTypeId");
+					this.OnContentTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ControllerName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ControllerName
+		{
+			get
+			{
+				return this._ControllerName;
+			}
+			set
+			{
+				if ((this._ControllerName != value))
+				{
+					this.OnControllerNameChanging(value);
+					this.SendPropertyChanging();
+					this._ControllerName = value;
+					this.SendPropertyChanged("ControllerName");
+					this.OnControllerNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisplayName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string DisplayName
+		{
+			get
+			{
+				return this._DisplayName;
+			}
+			set
+			{
+				if ((this._DisplayName != value))
+				{
+					this.OnDisplayNameChanging(value);
+					this.SendPropertyChanging();
+					this._DisplayName = value;
+					this.SendPropertyChanged("DisplayName");
+					this.OnDisplayNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ContentTypeItem_ContentActionItem", Storage="_ContentActionItems", ThisKey="ContentTypeId", OtherKey="ContentTypeId")]
+		public EntitySet<ContentActionItem> ContentActionItems
+		{
+			get
+			{
+				return this._ContentActionItems;
+			}
+			set
+			{
+				this._ContentActionItems.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ContentActionItems(ContentActionItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.ContentTypeItem = this;
+		}
+		
+		private void detach_ContentActionItems(ContentActionItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.ContentTypeItem = null;
 		}
 	}
 	

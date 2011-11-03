@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Web.Routing;
-using Bennington.Content.Routing;
+using Bennington.Content.Data;
 using Bennington.Core.Caching;
 using MongoDB.Driver;
 
@@ -36,13 +35,13 @@ namespace Bennington.Content.MongoDB
             InvalidateCache(string.Empty);
         }
 
-        public ContentRouteTree GetRouteTree(Route route, IRouteHandler routeHandler)
+        public ContentTree GetContentTree()
         {
             var database = mongoServer.GetDatabase(databaseName);
             var collection = database.GetCollection(collectionName);
-            var nodes = collection.FindAllAs<ContentRouteNode>();
+            var nodes = collection.FindAllAs<ContentNode>();
 
-            return new ContentRouteTree(nodes, route, routeHandler);
+            return ContentTree.BuildTree(nodes);
         }
 
         public void Dispose()

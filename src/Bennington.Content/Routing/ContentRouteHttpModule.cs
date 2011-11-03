@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.Routing;
+using Bennington.Content.Data;
 
 namespace Bennington.Content.Routing
 {
