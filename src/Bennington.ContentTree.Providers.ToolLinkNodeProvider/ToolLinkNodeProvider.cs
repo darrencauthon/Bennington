@@ -49,7 +49,13 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider
 			set { throw new NotImplementedException(); }
 		}
 
-		public IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems
+	    public string Controller
+	    {
+            get { return "ToolLink"; }
+	        set { }
+	    }
+
+	    public IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems
 		{
 			get { throw new NotImplementedException(); }
 			set { throw new NotImplementedException(); }
