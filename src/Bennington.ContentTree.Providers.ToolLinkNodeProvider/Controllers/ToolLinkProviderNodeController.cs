@@ -34,7 +34,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Controllers
         }
 
         [Authorize]
-		public ActionResult Create(string parentTreeNodeId)
+		public virtual ActionResult Create(string parentTreeNodeId)
 		{
 			return View("Modify", modifyViewModelBuilder.BuildViewModel(new ToolLinkInputModel()
 			                                                            	{
@@ -44,7 +44,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Controllers
 
 		[HttpPost]
         [Authorize]
-		public ActionResult Create(ToolLinkInputModel toolLinkInputModel)
+        public virtual ActionResult Create(ToolLinkInputModel toolLinkInputModel)
 		{
 			if (!ModelState.IsValid)
 				return View("Modify", modifyViewModelBuilder.BuildViewModel(toolLinkInputModel));
@@ -69,7 +69,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Controllers
 		}
 
         [Authorize]
-		public ActionResult Modify(string treeNodeId)
+        public virtual ActionResult Modify(string treeNodeId)
         {
             var toolLinkProviderDraft = toolLinkProviderDraftRepository.GetAll().Where(a => a.Id == treeNodeId).FirstOrDefault();
 
@@ -87,7 +87,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Controllers
 
 		[HttpPost]
         [Authorize]
-		public ActionResult Modify(ToolLinkInputModel toolLinkInputModel)
+        public virtual ActionResult Modify(ToolLinkInputModel toolLinkInputModel)
 		{
 			if (!ModelState.IsValid)
 				return View("Modify", modifyViewModelBuilder.BuildViewModel(toolLinkInputModel));
@@ -110,7 +110,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Controllers
             return new RedirectResult(GetRedirectUrlToModifyMethod(toolLinkProviderDraft));
 		}
 
-        public ActionResult Delete(string treeNodeId)
+        public virtual ActionResult Delete(string treeNodeId)
         {
             commandBus.Send(new DeleteTreeNodeCommand()
             {
