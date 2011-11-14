@@ -1,4 +1,5 @@
-﻿using System.Data.Linq;
+﻿using System;
+using System.Data.Linq;
 using System.Linq;
 using System.Transactions;
 using Bennington.Content.Data;
@@ -13,6 +14,24 @@ namespace Bennington.Content.Sql
         public SqlContentTypeRegistry(string connectionString)
         {
             this.connectionString = connectionString;
+        }
+
+        public ContentType[] GetContentTypes()
+        {
+            using (var dataContext = new ContentDataContext(connectionString))
+            {
+                var types = dataContext.ContentTypeItems.ToArray();
+                var actions = dataContext.ContentActionItems.ToArray();
+
+                return (from type in types
+                        select new ContentType(type.Type, type.DisplayName, type.ControllerName, actions.Where(c => c.ContentType == type.Type)
+                                                                                                        .Select(a => new ContentAction()
+                                                                                                                         {
+                                                                                                                             Action = a.Action,
+                                                                                                                             DisplayName = a.DisplayName
+                                                                                                                         }).ToArray())
+                                               ).ToArray();
+            }
         }
 
         public void Save(params ContentType[] contentTypes)

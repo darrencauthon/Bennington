@@ -1,4 +1,5 @@
-﻿using Bennington.Content.Data;
+﻿using System;
+using Bennington.Content.Data;
 using MongoDB.Driver;
 
 namespace Bennington.Content.MongoDB
@@ -24,6 +25,11 @@ namespace Bennington.Content.MongoDB
             var database = mongoServer.GetDatabase(databaseName);
             var collection = database.GetCollection(collectionName);
             collection.Drop();
+        }
+
+        public ContentType[] GetContentTypes()
+        {
+            throw new NotImplementedException();
         }
 
         public void Save(params ContentType[] contentTypes)

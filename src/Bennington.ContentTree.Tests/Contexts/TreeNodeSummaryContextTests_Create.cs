@@ -103,7 +103,13 @@ namespace Bennington.ContentTree.Tests.Contexts
 				set { throw new NotImplementedException(); }
 			}
 
-			public IRouteConstraint IgnoreConstraint
+		    public string Controller
+		    {
+		        get { throw new NotImplementedException(); }
+		        set { throw new NotImplementedException(); }
+		    }
+
+		    public IRouteConstraint IgnoreConstraint
 			{
 				get { throw new NotImplementedException(); }
 			}
