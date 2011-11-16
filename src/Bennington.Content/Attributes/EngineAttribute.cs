@@ -1,6 +1,4 @@
-﻿using Bennington.ContentTree.Providers.ContentNodeProvider;
-
-namespace Bennington.Content.Attributes
+﻿namespace Bennington.Content.Attributes
 {
     public class EngineAttribute : ContentTypeAttribute
     {

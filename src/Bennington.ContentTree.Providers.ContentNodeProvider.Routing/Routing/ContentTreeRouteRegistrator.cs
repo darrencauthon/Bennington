@@ -26,12 +26,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Routing
 			contentTreeRoute.Constraints = new RouteValueDictionary();
 			contentTreeRoute.Constraints.Add(contentTreeRouteConstraint.GetType().AssemblyQualifiedName ?? "Unkown content tree route contraint", contentTreeRouteConstraint);
 			routes.Add(contentTreeRoute);
-
-            routes.MapRoute(
-                "ContentTreeNode", // Route name
-                "ContentTreeNode/{action}", // URL with parameters
-                new { controller = "ContentTreeNode", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
         }
 
 		private static RouteValueDictionary GetDefaultRouteValues(int maxDepth)
