@@ -473,8 +473,6 @@ namespace Bennington.Content.Sql.Data
 		
 		private string _Controller;
 		
-		private string _TreeNodeId;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -489,8 +487,6 @@ namespace Bennington.Content.Sql.Data
     partial void OnActionChanged();
     partial void OnControllerChanging(string value);
     partial void OnControllerChanged();
-    partial void OnTreeNodeIdChanging(string value);
-    partial void OnTreeNodeIdChanged();
     #endregion
 		
 		public ContentTreeItem()
@@ -594,26 +590,6 @@ namespace Bennington.Content.Sql.Data
 					this._Controller = value;
 					this.SendPropertyChanged("Controller");
 					this.OnControllerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TreeNodeId", DbType="NVarChar(50)")]
-		public string TreeNodeId
-		{
-			get
-			{
-				return this._TreeNodeId;
-			}
-			set
-			{
-				if ((this._TreeNodeId != value))
-				{
-					this.OnTreeNodeIdChanging(value);
-					this.SendPropertyChanging();
-					this._TreeNodeId = value;
-					this.SendPropertyChanged("TreeNodeId");
-					this.OnTreeNodeIdChanged();
 				}
 			}
 		}

@@ -14,17 +14,17 @@
         <elementListCompartment Id="9b0371ad-9aac-4c01-888e-9b9c3dace0df" absoluteBounds="0.765, 1.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 1.78929768880208); (3.5 : 1.78929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 1.78929768880208); (3.5 : 1.78929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ContentDataContext/ContentTypeItem/ContentTypeItem_ContentActionItem" />
       <nodes>
         <classShapeMoniker Id="bff15425-179a-40b6-a64a-36af7c496861" />
         <classShapeMoniker Id="709b689c-8dd0-43a5-9cfd-c0103ad01ec9" />
       </nodes>
     </associationConnector>
-    <classShape Id="f8c9ff05-2bb2-498a-b3be-9e7722daebe4" absoluteBounds="3.875, 4.125, 2, 1.9631982421875">
+    <classShape Id="f8c9ff05-2bb2-498a-b3be-9e7722daebe4" absoluteBounds="3.875, 4.125, 2, 1.7708968098958327">
       <DataClassMoniker Name="/ContentDataContext/ContentTreeItem" />
       <nestedChildShapes>
-        <elementListCompartment Id="5038ffa3-8abf-49ca-8696-9e71fec325e0" absoluteBounds="3.8899999999999997, 4.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="5038ffa3-8abf-49ca-8696-9e71fec325e0" absoluteBounds="3.8899999999999997, 4.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -7,14 +7,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 {
 	public interface IContentNodeProviderPublishedVersionToContentTreeNodeMapper
 	{
-		IEnumerable<ContentTreeNode> CreateSet(IEnumerable<ContentNodeProviderPublishedVersion> source);
+		IEnumerable<Models.ContentTreeNode> CreateSet(IEnumerable<ContentNodeProviderPublishedVersion> source);
 	}
 
-	public class ContentNodeProviderPublishedVersionToContentTreeNodeMapper : Mapper<ContentNodeProviderPublishedVersion, ContentTreeNode>, IContentNodeProviderPublishedVersionToContentTreeNodeMapper
+	public class ContentNodeProviderPublishedVersionToContentTreeNodeMapper : Mapper<ContentNodeProviderPublishedVersion, Models.ContentTreeNode>, IContentNodeProviderPublishedVersionToContentTreeNodeMapper
 	{
         public override void DefineMap(AutoMapper.IConfiguration configuration)
         {
-            configuration.CreateMap<ContentNodeProviderPublishedVersion, ContentTreeNode>()
+            configuration.CreateMap<ContentNodeProviderPublishedVersion, Models.ContentTreeNode>()
                     .ForMember(a => a.IconUrl, b => b.Ignore())
                 ;
         }
