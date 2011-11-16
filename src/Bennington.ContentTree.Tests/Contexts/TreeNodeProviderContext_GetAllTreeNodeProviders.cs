@@ -100,6 +100,12 @@ namespace Bennington.ContentTree.Tests.Contexts
             set { throw new NotImplementedException(); }
         }
 
+        public string Controller
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
         public void RegisterRouteForTreeNodeId(string treeNodeId)
         {
             throw new NotImplementedException();

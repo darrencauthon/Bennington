@@ -68,6 +68,12 @@
     <Reference Include="Moq, Version=4.0.10827.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="MvcTurbine, Version=3.4.0.0, Culture=neutral, PublicKeyToken=0e426322531bc5b0, processorArchitecture=MSIL">
+      <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcTurbine.Web">
+      <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.Web.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleCqrs">
       <HintPath>..\packages\SimpleCqrs.1.0\lib\SimpleCqrs.dll</HintPath>
     </Reference>
@@ -100,6 +106,7 @@
     <Compile Include="Denomarlizers\ContentNodeProviderDraftDenormalizerTests_Handle.cs" />
     <Compile Include="Denomarlizers\ContentNodeProviderPublishDenormalizerTests_Handle_PageDeletedEvent.cs" />
     <Compile Include="Denomarlizers\ContentNodeProviderPublishDenormalizerTests_Handle_PagePublishedEvent.cs" />
+    <Compile Include="EngineTreeNodeExtensionProviderFactoryTests_GetTreeNodeExtensionProviders.cs" />
     <Compile Include="Mappers\ContentNodeProviderDraftToContentNodeProviderPublishedVersionMapperTests.cs" />
     <Compile Include="Mappers\ContentNodeProviderDraftToContentTreeNodeMapperTests.cs" />
     <Compile Include="Mappers\ContentNodeProviderPublishedVersionToContentTreeNodeMapperTests.cs" />
@@ -122,6 +129,10 @@
     <ProjectReference Include="..\Bennington.ContentTree\Bennington.ContentTree.csproj">
       <Project>{97981EC9-A1C5-460E-9244-9D5C9169E47F}</Project>
       <Name>Bennington.ContentTree</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bennington.Content\Bennington.Content.csproj">
+      <Project>{790E0A90-8C75-42D3-B53B-11AD9332BF30}</Project>
+      <Name>Bennington.Content</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bennington.Core\Bennington.Core.csproj">
       <Project>{3DE65C2E-791C-4B05-815F-986782A5153A}</Project>

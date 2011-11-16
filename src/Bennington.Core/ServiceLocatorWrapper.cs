@@ -1,10 +1,12 @@
-﻿using MvcTurbine.ComponentModel;
+﻿using System;
+using MvcTurbine.ComponentModel;
 
 namespace Bennington.Core
 {
 	public interface IServiceLocatorWrapper
 	{
 		System.Collections.Generic.IList<T> ResolveServices<T>() where T : class;
+        T Resolve<T>() where T : class;
 	}
 
 	public class ServiceLocatorWrapper : IServiceLocatorWrapper
@@ -20,5 +22,10 @@ namespace Bennington.Core
 		{
 			return serviceLocator.ResolveServices<T>();
 		}
+
+	    public T Resolve<T>() where T : class
+	    {
+	        return serviceLocator.Resolve<T>();
+	    }
 	}
 }

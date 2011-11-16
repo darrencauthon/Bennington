@@ -101,7 +101,13 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 				set { throw new NotImplementedException(); }
 			}
 
-			public void RegisterRouteForTreeNodeId(string treeNodeId)
+		    public string Controller
+		    {
+		        get { throw new NotImplementedException(); }
+		        set { throw new NotImplementedException(); }
+		    }
+
+		    public void RegisterRouteForTreeNodeId(string treeNodeId)
 			{
 				throw new NotImplementedException();
 			}
@@ -171,7 +177,13 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 				set { throw new NotImplementedException(); }
 			}
 
-			public void RegisterRouteForTreeNodeId(string treeNodeId)
+		    public string Controller
+		    {
+		        get { throw new NotImplementedException(); }
+		        set { throw new NotImplementedException(); }
+		    }
+
+		    public void RegisterRouteForTreeNodeId(string treeNodeId)
 			{
 				throw new NotImplementedException();
 			}

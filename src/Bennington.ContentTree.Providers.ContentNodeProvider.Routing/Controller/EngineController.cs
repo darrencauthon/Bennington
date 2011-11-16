@@ -95,7 +95,13 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Controlle
 			set { throw new NotImplementedException(); }
 		}
 
-		public virtual void RegisterRouteForTreeNodeId(string treeNodeId)
+	    public string Controller
+	    {
+            get { return "Unknown"; }
+	        set { }
+	    }
+
+	    public virtual void RegisterRouteForTreeNodeId(string treeNodeId)
 		{
 			var routeValueDictionary = new RouteValueDictionary();
 			routeValueDictionary.Add("Controller", GetControllerNameFromThisType());

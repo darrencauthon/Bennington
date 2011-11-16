@@ -161,7 +161,13 @@ namespace Bennington.ContentTree.TreeManager.Tests.Routing
 				set { throw new NotImplementedException(); }
 			}
 
-			public void RegisterRouteForTreeNodeId(string treeNodeId)
+		    public string Controller
+		    {
+		        get { throw new NotImplementedException(); }
+		        set { throw new NotImplementedException(); }
+		    }
+
+		    public void RegisterRouteForTreeNodeId(string treeNodeId)
 			{
 				throw new NotImplementedException();
 			}

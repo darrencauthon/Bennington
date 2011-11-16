@@ -26,10 +26,11 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 
 		public virtual string Name
 		{
-			get { return "Page"; }
+		    get { return "Page"; }
+		    set { throw new NotImplementedException(); }
 		}
 
-		public virtual string ControllerToUseForCreation
+	    public virtual string ControllerToUseForCreation
 		{
 			get { return ControllerToUseForModification; }
 			set { throw new NotImplementedException(); }
@@ -41,11 +42,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 			set { throw new NotImplementedException(); }
 		}
 
-        //public string Controller
-        //{
-        //    get { return "Content"; }
-        //    set { }
-        //}
+	    public virtual string Controller { get; set; }
 
 	    public virtual IRouteConstraint IgnoreConstraint
 		{
