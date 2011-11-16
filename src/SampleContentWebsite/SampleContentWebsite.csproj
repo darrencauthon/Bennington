@@ -175,6 +175,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bennington.Content.Routing\Bennington.Content.Routing.csproj">
+      <Project>{321269E8-6217-4DA6-9F4B-8C2A55B1E86A}</Project>
+      <Name>Bennington.Content.Routing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bennington.Content.Sql\Bennington.Content.Sql.csproj">
       <Project>{2932BB2B-8274-4E38-9EB0-EAB81659D0C4}</Project>
       <Name>Bennington.Content.Sql</Name>

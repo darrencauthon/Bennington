@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{790E0A90-8C75-42D3-B53B-11AD9332BF30}</ProjectGuid>
+    <ProjectGuid>{321269E8-6217-4DA6-9F4B-8C2A55B1E86A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bennington.Content</RootNamespace>
-    <AssemblyName>Bennington.Content</AssemblyName>
+    <RootNamespace>Bennington.Content.Routing</RootNamespace>
+    <AssemblyName>Bennington.Content.Routing</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,44 +31,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MvcTurbine, Version=3.4.0.0, Culture=neutral, PublicKeyToken=0e426322531bc5b0, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="MvcTurbine">
       <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcTurbine.Web">
+      <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.Web.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\EngineAttribute.cs" />
-    <Compile Include="Attributes\PageAttribute.cs" />
-    <Compile Include="Attributes\IgnoreContentActionAttribute.cs" />
-    <Compile Include="Attributes\SectionAttribute.cs" />
-    <Compile Include="Configuration\ContentConfigurer.cs" />
-    <Compile Include="Attributes\ContentActionAttribute.cs" />
-    <Compile Include="Data\ContentAction.cs" />
-    <Compile Include="ContentUtility.cs" />
-    <Compile Include="Data\ContentType.cs" />
-    <Compile Include="Attributes\ContentTypeAttribute.cs" />
-    <Compile Include="Data\IContentTypeRegistry.cs" />
-    <Compile Include="Data\IContentTreeProvider.cs" />
-    <Compile Include="Configuration\ContentConfiguration.cs" />
+    <Compile Include="ContentBlade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Data\ContentNodeData.cs" />
-    <Compile Include="ContentTree.cs" />
-    <Compile Include="ContentTreeNode.cs" />
+    <Compile Include="Routing\ContentRoute.cs" />
+    <Compile Include="Routing\ContentRouteHttpModule.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bennington.ContentTree\Bennington.ContentTree.csproj">
-      <Project>{97981EC9-A1C5-460E-9244-9D5C9169E47F}</Project>
-      <Name>Bennington.ContentTree</Name>
+    <ProjectReference Include="..\Bennington.Content\Bennington.Content.csproj">
+      <Project>{790E0A90-8C75-42D3-B53B-11AD9332BF30}</Project>
+      <Name>Bennington.Content</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bennington.Core\Bennington.Core.csproj">
-      <Project>{AAB424EE-5CFA-42BE-9F9A-2350C5C8E715}</Project>
-      <Name>Bennington.Core</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

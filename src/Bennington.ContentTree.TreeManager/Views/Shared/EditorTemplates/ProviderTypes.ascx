@@ -13,5 +13,5 @@
 	}).Union(
 			ServiceLocatorManager.Current.Resolve<ITreeNodeProviderContext>().GetAllTreeNodeProviders()
                 .OrderBy(a => a.Name)
-				.Select(a => new SelectListItem() { Text = a.Name, Value = Url.Action("Create", a.ControllerToUseForCreation, new { ProviderType = a.GetType().AssemblyQualifiedName }) })
+				.Select(a => new SelectListItem() { Text = a.Name, Value = Url.Action(a.ActionToUseForCreation, a.ControllerToUseForCreation, new { ProviderType = a.GetType().AssemblyQualifiedName, controllerName = a.Controller }) })
 	)) %>

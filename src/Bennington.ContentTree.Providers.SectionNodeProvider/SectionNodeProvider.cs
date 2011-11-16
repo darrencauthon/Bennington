@@ -64,7 +64,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider
 
 	    public string Controller
 	    {
-	        get { throw new NotImplementedException(); }
+            get { return "ContentTreeSection"; }
 	        set { throw new NotImplementedException(); }
 	    }
 

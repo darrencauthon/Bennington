@@ -143,7 +143,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 
 
 		[Authorize]
-		public virtual ActionResult Create(string parentTreeNodeId, string providerType)
+        public virtual ActionResult Create(string parentTreeNodeId, string providerType, string controllerName)
 		{
 			return View("Modify", new ModifyViewModel()
 			                      	{
