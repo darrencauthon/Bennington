@@ -27,7 +27,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 			mapper.AssertConfigurationIsValid();
 		}
 
-		[TestMethod]
+        [TestMethod]
 		public void CreateInstance_sets_Type_value_from_tree_node_type()
 		{
 			mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
@@ -48,5 +48,28 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 
 			Assert.AreEqual("testType", result.Type);
 		}
+
+        [TestMethod]
+        public void CreateInstance_sets_ControllerName_value_from_tree_node_type()
+        {
+            mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
+                .Returns(new TreeNode[]
+				         	{
+				         		new TreeNode()
+				         			{
+				         				Id = "1",
+										Type = "testType",
+                                        ControllerName = "controller"
+				         			}, 
+							}.AsQueryable());
+
+            var mapper = mocker.Resolve<ContentTreeNodeToContentTreeNodeInputModelMapper>();
+            var result = mapper.CreateInstance(new ContentTreeNode()
+            {
+                TreeNodeId = "1",
+            });
+
+            Assert.AreEqual("controller", result.ControllerName);
+        }
 	}
 }

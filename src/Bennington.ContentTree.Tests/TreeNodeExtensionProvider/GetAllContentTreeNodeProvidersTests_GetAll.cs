@@ -24,6 +24,9 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 		[TestMethod]
 		public void Returns_service_that_implements_IAmATreeNodeExtensionProvider_and_matches_specified_type()
 		{
+		    mocker.GetMock<IServiceLocatorWrapper>()
+		        .Setup(a => a.ResolveServices<IAmATreeNodeExtensionProviderFactory>())
+		        .Returns(new List<IAmATreeNodeExtensionProviderFactory>());
 			mocker.GetMock<IServiceLocatorWrapper>().Setup(a => a.ResolveServices<IAmATreeNodeExtensionProvider>())
 				.Returns(new List<IAmATreeNodeExtensionProvider>()
 				         	{

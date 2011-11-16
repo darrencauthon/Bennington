@@ -49,5 +49,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Models
 
 		[DisplayName("Remove?")]
 		public bool RemoveHeaderImage { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
+        public string ControllerName { get; set; }
 	}
 }

@@ -152,6 +152,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			                      		                        	{
 			                      		                        		ParentTreeNodeId = parentTreeNodeId,
 																		Type = providerType,
+                                                                        ControllerName = controllerName
 			                      		                        	}
 			                      	});
 		}

@@ -43,5 +43,15 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 
 			Assert.AreEqual("provider type", ((ModifyViewModel)((ViewResult)result).ViewData.Model).ContentTreeNodeInputModel.Type);
 		}
+
+        [TestMethod]
+        public void Sets_input_model_controllerName_property_to_controllerName_passed_in()
+        {
+            var contentTreeNodeController = mocker.Resolve<ContentTreeNodeController>();
+            var result = contentTreeNodeController.Create("", "provider type", "controllerName");
+
+            Assert.AreEqual("controllerName", ((ModifyViewModel)((ViewResult)result).ViewData.Model).ContentTreeNodeInputModel.ControllerName);
+        }
+
 	}
 }

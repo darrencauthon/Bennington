@@ -25,6 +25,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 			configuration.CreateMap<ContentTreeNode, ContentTreeNodeInputModel>()
 				.ForMember(dest => dest.FormAction, opt => opt.Ignore())
 				.ForMember(dest => dest.RemoveHeaderImage, opt => opt.Ignore())
+                .ForMember(a => a.ControllerName, b => b.Ignore())
 				.ForMember(dest => dest.ParentTreeNodeId, opt => opt.Ignore());
 		}
 
@@ -34,8 +35,11 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 			
 			var treeNode = treeNodeRepository.GetAll().Where(a => a.Id == source.TreeNodeId).FirstOrDefault();
 			if (treeNode != null)
-				returnInstance.Type = treeNode.Type;
-			
+			{
+                returnInstance.Type = treeNode.Type;
+			    returnInstance.ControllerName = treeNode.ControllerName;
+			}
+				
 			return returnInstance;
 		}
 	}

@@ -5,5 +5,6 @@
 		public string Id { get; set; }
 		public string ParentTreeNodeId {get; set;}
 		public string Type {get; set;}
+        public string ControllerName { get; set; }
 	}
 }
