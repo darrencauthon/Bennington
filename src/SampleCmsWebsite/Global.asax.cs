@@ -1,4 +1,5 @@
-﻿using MvcTurbine.ComponentModel;
+﻿using Bennington.Core.Configuration;
+using MvcTurbine.ComponentModel;
 using MvcTurbine.Unity;
 using MvcTurbine.Web;
 
@@ -9,6 +10,11 @@ namespace SampleCmsWebsite
         static MvcApplication()
         {
             ServiceLocatorManager.SetLocatorProvider(() => new UnityServiceLocator());
+            Configurer.Configure
+            .Content()
+                .UseSql("Bennington.ContentTree.Domain.ConnectionString")
+                .Run();
+
         }
     }
 }

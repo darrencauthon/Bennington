@@ -41,11 +41,11 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 			set { throw new NotImplementedException(); }
 		}
 
-	    public string Controller
-	    {
-	        get { return "Content"; }
-	        set { }
-	    }
+        //public string Controller
+        //{
+        //    get { return "Content"; }
+        //    set { }
+        //}
 
 	    public virtual IRouteConstraint IgnoreConstraint
 		{
