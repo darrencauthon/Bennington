@@ -80,6 +80,7 @@
     <Compile Include="Helpers\GetUrlOfFrontSideWebsite.cs" />
     <Compile Include="Helpers\TreeNodeIdToUrl.cs" />
     <Compile Include="Helpers\UrlToTreeNodeSummaryMapper.cs" />
+    <Compile Include="IAmATreeNodeExtensionProviderFactory.cs" />
     <Compile Include="Models\ContentTreeNodeContentItem.cs" />
     <Compile Include="Models\IAmATreeNodeExtension.cs" />
     <Compile Include="Models\TreeNodeSummary.cs" />

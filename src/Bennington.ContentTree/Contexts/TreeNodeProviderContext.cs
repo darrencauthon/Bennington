@@ -21,14 +21,20 @@ namespace Bennington.ContentTree.Contexts
 
 		public IEnumerable<IAmATreeNodeExtensionProvider> GetAllTreeNodeProviders()
 		{
-		    var providers = serviceLocator.ResolveServices<IAmATreeNodeExtensionProvider>();
-			return providers;
+		    var treeNodeExtensionProviders = new List<IAmATreeNodeExtensionProvider>();
+            treeNodeExtensionProviders.AddRange(serviceLocator.ResolveServices<IAmATreeNodeExtensionProvider>());
+		    foreach (var service in serviceLocator.ResolveServices<IAmATreeNodeExtensionProviderFactory>())
+		    {
+		        treeNodeExtensionProviders.AddRange(service.GetTreeNodeExtensionProviders());
+		    }
+
+			return treeNodeExtensionProviders;
 		}
 
 		public IAmATreeNodeExtensionProvider GetProviderByTypeName(string providerTypeName)
 		{
-			var services = serviceLocator.ResolveServices<IAmATreeNodeExtensionProvider>().Where(a => a.GetType().AssemblyQualifiedName == providerTypeName);
-			return services.FirstOrDefault();
+			var amATreeNodeExtensionProviders = serviceLocator.ResolveServices<IAmATreeNodeExtensionProvider>().Where(a => a.GetType().AssemblyQualifiedName == providerTypeName);
+			return amATreeNodeExtensionProviders.FirstOrDefault();
 		}
 	}
 }

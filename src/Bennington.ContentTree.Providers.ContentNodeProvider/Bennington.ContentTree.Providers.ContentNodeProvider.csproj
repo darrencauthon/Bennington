@@ -80,6 +80,7 @@
     <Compile Include="Data\DataModelDataContext.cs" />
     <Compile Include="Denormalizers\ContentNodeProviderDraftDenormalizer.cs" />
     <Compile Include="Denormalizers\ContentNodeProviderPublishDenormalizer.cs" />
+    <Compile Include="EngineTreeNodeExtensionProviderFactory.cs" />
     <Compile Include="Helpers\ContentTreeNodeFileUploadPersister.cs" />
     <Compile Include="Helpers\GetPathToContentTreeNodeProviderFileUploads.cs" />
     <Compile Include="Mappers\ContentNodeProviderDraftToContentNodeProviderPublishedVersionMapper.cs" />
@@ -98,6 +99,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Registration\EngineTreeNodeExtensionProviderFactoryRegistration.cs" />
     <Compile Include="Registration\RegisterInterfaceToSingleImplementations.cs" />
     <Compile Include="Repositories\ContentNodeProviderPublishedVersionRepository.cs" />
     <Compile Include="Repositories\ContentNodeProviderDraftRepository.cs" />
