@@ -116,7 +116,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 									Type = Type.GetType(contentTreeNodeInputModel.Type),
 									Inactive = contentTreeNodeInputModel.Inactive,
 									Hidden = contentTreeNodeInputModel.Hidden,
-                                    LastModifyBy = currentUserContext.GetCurrentPrincipal().Identity.Name
+                                    LastModifyBy = currentUserContext.GetCurrentPrincipal().Identity.Name,
+                                    ControllerName = contentTreeNodeInputModel.ControllerName
 			                	});
 
 			if (!string.IsNullOrEmpty(contentTreeNodeInputModel.FormAction))
@@ -184,7 +185,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 					ActionId = contentTreeNodeInputModel.Action,
 					Hidden = contentTreeNodeInputModel.Hidden,
 					Inactive = contentTreeNodeInputModel.Inactive,
-                    LastModifyBy = currentUserContext.GetCurrentPrincipal().Identity.Name
+                    LastModifyBy = currentUserContext.GetCurrentPrincipal().Identity.Name,
+                    ControllerName = contentTreeNodeInputModel.ControllerName
 				};
 				commandBus.Send(modifyPageComand);
 			} else {
@@ -200,7 +202,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 										Action = contentTreeNodeInputModel.Action,
 										Hidden = contentTreeNodeInputModel.Hidden,
 										Inactive = contentTreeNodeInputModel.Inactive,
-                                        LastModifyBy = currentUserContext.GetCurrentPrincipal().Identity.Name
+                                        LastModifyBy = currentUserContext.GetCurrentPrincipal().Identity.Name,
+                                        ControllerName = contentTreeNodeInputModel.ControllerName
 				                	});
 			}
 

@@ -16,7 +16,7 @@ namespace Bennington.ContentTree.Domain.Commands
 		public int? Sequence { get; set; }
 		public string Body { get; set; }
         public string LastModifyBy { get; set; }
-
+        public string ControllerName { get; set; }
 		public Guid PageId
 		{
 			get { return AggregateRootId; }

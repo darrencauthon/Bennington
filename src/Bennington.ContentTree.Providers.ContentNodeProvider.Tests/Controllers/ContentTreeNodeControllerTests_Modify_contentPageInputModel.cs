@@ -571,6 +571,32 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			mocker.GetMock<ICommandBus>().Verify(a => a.Send(It.Is<ModifyPageCommand>(b => b.TreeNodeId.ToString() == inputModel.TreeNodeId)), Times.Once());
 		}
 
+        [TestMethod]
+        public void Sends_ModifyPage_command_with_correct_ControllerName_when_ModelState_is_valid()
+        {
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
+                .Returns(new ContentTreeNode[]
+				         	{
+				         		new ContentTreeNode()
+				         			{
+				         				TreeNodeId = treeNodeId.ToString(),
+										Action = "Index",
+				         			}, 
+							});
+            var inputModel = new ContentTreeNodeInputModel()
+            {
+                PageId = Guid.NewGuid().ToString(),
+                TreeNodeId = treeNodeId.ToString(),
+                Action = "Index",
+                ControllerName = "controllername"
+            };
+
+            mocker.Resolve<ContentTreeNodeController>().Modify(inputModel);
+
+            mocker.GetMock<ICommandBus>().Verify(a => a.Send(It.Is<ModifyPageCommand>(b => b.ControllerName == inputModel.ControllerName)), Times.Once());
+        }
+
 		[TestMethod]
 		public void Only_sends_a_single_ModifyPage_command()
 		{
@@ -962,6 +988,32 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 
 			mocker.GetMock<ICommandBus>().Verify(a => a.Send(It.Is<CreatePageCommand>(b => b.Action == inputModel.Action)), Times.Once());
 		}
+
+        [TestMethod]
+        public void Sends_CreatePageCommand_with_correct_ControllerName_when_attempting_to_modify_a_page_that_does_not_exist()
+        {
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
+                .Returns(new ContentTreeNode[]
+				         	{
+				         		new ContentTreeNode()
+				         			{
+				         				TreeNodeId = treeNodeId.ToString(),
+										Action = "Index",
+				         			}, 
+							});
+            var inputModel = new ContentTreeNodeInputModel()
+            {
+                TreeNodeId = treeNodeId.ToString(),
+                Action = "Confirmation",
+                UrlSegment = "url",
+                ControllerName = "controllername"
+            };
+
+            mocker.Resolve<ContentTreeNodeController>().Modify(inputModel);
+
+            mocker.GetMock<ICommandBus>().Verify(a => a.Send(It.Is<CreatePageCommand>(b => b.ControllerName == inputModel.ControllerName)), Times.Once());
+        }
 
 		[TestMethod]
 		public void Sends_PagePublishedCommand_with_correct_PageId_set_when_input_model_FormAction_property_begins_with_Publish()
