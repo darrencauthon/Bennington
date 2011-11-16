@@ -21,6 +21,7 @@ namespace Bennington.ContentTree.Domain.CommandHandlers
 			page.SetHidden(command.Hidden);
             page.SetLastModifyBy(command.LastModifyBy);
             page.SetLastModifyDate(DateTime.Now);
+            page.SetControllerName(command.ControllerName);
 		}
 	}
 }

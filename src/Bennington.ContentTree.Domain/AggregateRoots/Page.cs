@@ -148,5 +148,13 @@ namespace Bennington.ContentTree.Domain.AggregateRoots
 	                      DateTime = now,
 	                  });
 	    }
+
+	    public void SetControllerName(string controllerName)
+	    {
+	        Apply(new PageControllerNameSetEvent()
+	                  {
+	                      ControllerName = controllerName,
+	                  });
+	    }
 	}
 }
