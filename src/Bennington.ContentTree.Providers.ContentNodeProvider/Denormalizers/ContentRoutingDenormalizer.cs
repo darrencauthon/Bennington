@@ -41,6 +41,11 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             var provider = treeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
             provider.Controller = treeNode.ControllerName;
 
+            foreach (var contentTreeNode in contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNode.Id))
+            {
+                contentTreeRepository.Delete(contentTreeNode.Id);
+            }
+
             foreach (var action in provider.ContentTreeNodeContentItems)
             {
                 var draft = contentNodeProviderDraftRepository.GetAllContentNodeProviderDrafts().Where(a => a.PageId == domainEvent.AggregateRootId.ToString() && a.Action == action.Id).FirstOrDefault();
