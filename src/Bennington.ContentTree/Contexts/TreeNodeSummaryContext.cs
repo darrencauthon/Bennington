@@ -51,7 +51,8 @@ namespace Bennington.ContentTree.Contexts
 			                		ParentId = parentNodeId,
 									Type = Type.GetType(providerTypeAssemblyQualifiedName),
 									TreeNodeId = guid,
-									AggregateRootId = guid
+									AggregateRootId = guid,
+                                    ControllerName = controllerName
 			                	});
 
 			return guid.ToString();

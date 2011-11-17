@@ -138,11 +138,12 @@ namespace Bennington.ContentTree.Tests.Contexts
 			var guid = new Guid();
 			mocker.GetMock<IGuidGetter>().Setup(a => a.GetGuid()).Returns(guid);
 
-			mocker.Resolve<TreeNodeSummaryContext>().Create("parentNodeId", typeof(FakeProvider).AssemblyQualifiedName, null);
+            mocker.Resolve<TreeNodeSummaryContext>().Create("parentNodeId", typeof(FakeProvider).AssemblyQualifiedName, "controllerName");
 
 			mocker.GetMock<ICommandBus>().Verify(a => a.Send(It.Is<CreateTreeNodeCommand>(b => b.ParentId == "parentNodeId"
 																									&& b.TreeNodeId == guid
 																									&& b.Type == typeof(FakeProvider)
+                                                                                                    && b.ControllerName == "controllerName"
 																									&& b.AggregateRootId == guid)), Times.Once());
 		}
 
