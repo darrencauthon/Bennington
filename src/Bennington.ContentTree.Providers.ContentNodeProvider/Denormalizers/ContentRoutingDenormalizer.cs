@@ -38,7 +38,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                 throw new Exception("Tree node not found: " + domainEvent.AggregateRootId);
 
             var provider = treeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
-            provider.Controller = contentNodeProviderDraftRepository.GetAllContentNodeProviderDrafts().Where(a => a.ControllerName != null && a.TreeNodeId == contentNodeProviderDraft.TreeNodeId).FirstOrDefault().ControllerName;
+            //provider.Controller = contentNodeProviderDraftRepository.GetAllContentNodeProviderDrafts().Where(a => a.ControllerName != null && a.TreeNodeId == contentNodeProviderDraft.TreeNodeId).FirstOrDefault().ControllerName;
 
             foreach (var action in provider.ContentTreeNodeContentItems)
             {

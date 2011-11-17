@@ -26,7 +26,5 @@ namespace Bennington.ContentTree.Domain.Commands
 			get { return AggregateRootId; }
 			set { AggregateRootId = value; }
 		}
-
-	    public string ControllerName { get; set; }
 	}
 }

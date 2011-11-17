@@ -622,31 +622,5 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Denomarlize
             mocker.GetMock<IContentNodeProviderDraftRepository>()
                 .Verify(a => a.Update(It.Is<ContentNodeProviderDraft>(b => b.LastModifyDate == new DateTime(2010, 1, 1) && b.PageId == pageId.ToString() && b.Body == "Body")), Times.Once());
         }
-
-        [TestMethod]
-        public void Calls_Update_method_of_IContentNodeProviderDraftRepository_with_ControllerName_and_TreeNodeId_set_for_PageLastModifyBySetEvent()
-        {
-            var pageId = Guid.NewGuid();
-            var treeNodeId = Guid.NewGuid();
-            mocker.GetMock<IContentNodeProviderDraftRepository>().Setup(a => a.GetAllContentNodeProviderDrafts())
-                .Returns(new ContentNodeProviderDraft[]
-				         	{
-				         		new ContentNodeProviderDraft()
-				         			{
-										PageId = pageId.ToString(),
-				         				Body = "Body"
-				         			}, 
-							}.AsQueryable());
-
-            mocker.Resolve<ContentNodeProviderDraftDenormalizer>().Handle(new PageControllerNameSetEvent()
-            {
-                AggregateRootId = pageId,
-                ControllerName = "controllerName"
-            });
-
-            mocker.GetMock<IContentNodeProviderDraftRepository>()
-                .Verify(a => a.Update(It.Is<ContentNodeProviderDraft>(b => b.ControllerName == "controllerName" && b.PageId == pageId.ToString() && b.Body == "Body")), Times.Once());
-        }
-
 	}
 }

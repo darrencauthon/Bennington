@@ -34,7 +34,6 @@ namespace Bennington.ContentTree.Domain.CommandHandlers
 			page.SetSequence(command.Sequence);
             page.SetLastModifyBy(command.LastModifyBy);
             page.SetLastModifyDate(DateTime.Now);
-		    page.SetControllerName(command.ControllerName);
 			domainRepository.Save(page);
 		}
 	}

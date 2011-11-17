@@ -25,8 +25,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 														IHandleDomainEvents<PageHiddenSetEvent>,
 														IHandleDomainEvents<PageInactiveSetEvent>,
                                                         IHandleDomainEvents<PageLastModifyBySetEvent>,
-                                                        IHandleDomainEvents<PageLastModifyDateSetEvent>,
-                                                        IHandleDomainEvents<PageControllerNameSetEvent>
+                                                        IHandleDomainEvents<PageLastModifyDateSetEvent>
 	{
 		private readonly IContentNodeProviderDraftRepository contentNodeProviderDraftRepository;
 		private readonly ITreeNodeProviderContext treeNodeProviderContext;
@@ -194,13 +193,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
             contentNodeProviderDraft.LastModifyDate = domainEvent.DateTime;
             contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
-	    }
-
-	    public void Handle(PageControllerNameSetEvent domainEvent)
-	    {
-            var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
-	        contentNodeProviderDraft.ControllerName = domainEvent.ControllerName;
-            contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);	        
 	    }
 	}
 }

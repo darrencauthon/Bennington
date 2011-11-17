@@ -168,23 +168,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			mocker.GetMock<ICommandBus>().Verify(a => a.Send(It.Is<CreatePageCommand>(b => b.Body == contentTreeNodeInputModel.Body)), Times.Once());
 		}
 
-        [TestMethod]
-        public void Sends_CreatePageCommand_command_with_correct_ControllerName_when_ModelState_is_valid()
-        {
-            mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.CreateTreeNodeAndReturnTreeNodeId(It.IsAny<ContentTreeNodeInputModel>())).Returns(new Guid().ToString());
-            var contentTreeNodeInputModel = new ContentTreeNodeInputModel()
-            {
-                ParentTreeNodeId = "2",
-                Body = "content",
-                Type = typeof(string).AssemblyQualifiedName,
-                ControllerName = "controllername"
-            };
-
-            mocker.Resolve<ContentTreeNodeController>().Create(contentTreeNodeInputModel);
-
-            mocker.GetMock<ICommandBus>().Verify(a => a.Send(It.Is<CreatePageCommand>(b => b.ControllerName == contentTreeNodeInputModel.ControllerName)), Times.Once());
-        }
-
 		[TestMethod]
 		public void Sends_CreatePageCommand_command_with_correct_HeaderText_when_ModelState_is_valid()
 		{

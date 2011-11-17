@@ -117,7 +117,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 									Inactive = contentTreeNodeInputModel.Inactive,
 									Hidden = contentTreeNodeInputModel.Hidden,
                                     LastModifyBy = currentUserContext.GetCurrentPrincipal().Identity.Name,
-                                    ControllerName = contentTreeNodeInputModel.ControllerName
 			                	});
 
 			if (!string.IsNullOrEmpty(contentTreeNodeInputModel.FormAction))
@@ -203,7 +202,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 										Hidden = contentTreeNodeInputModel.Hidden,
 										Inactive = contentTreeNodeInputModel.Inactive,
                                         LastModifyBy = currentUserContext.GetCurrentPrincipal().Identity.Name,
-                                        ControllerName = contentTreeNodeInputModel.ControllerName
 				                	});
 			}
 

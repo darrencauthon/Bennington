@@ -59,7 +59,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Events\Page\PageControllerNameSetEvent.cs" />
     <Compile Include="Events\Section\SectionLastModifyDateSetEvent.cs" />
     <Compile Include="Events\Section\SectionLastModifyBySetEvent.cs" />
     <Compile Include="Events\Page\PageLastModifyDateSetEvent.cs" />
