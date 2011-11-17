@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Bennington.ContentTree.Contexts;
+using Bennington.ContentTree.Data;
 using Bennington.ContentTree.Domain.Events.Page;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Data;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Repositories;
@@ -55,12 +56,23 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                                                Action = action.Id,
                                                Controller = provider.Controller,
                                                Id = Guid.NewGuid().ToString(),
-                                               ParentId = treeNode.ParentTreeNodeId,
+                                               ParentId = GetParentId(treeNode, GetActionId(draft)),
                                                Segment = draft != null ? draft.UrlSegment : action.Id,
                                                TreeNodeId = treeNode.Id,
-                                               ActionId = draft != null ? draft.PageId : null
+                                               ActionId = GetActionId(draft)
                                            });                
             }
+        }
+
+        private string GetActionId(ContentNodeProviderDraft draft)
+        {
+            return draft != null ? draft.PageId : null;
+        }
+
+        private string GetParentId(TreeNode treeNode, string actionId)
+        {
+            var contentTreeRow = contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNode.ParentTreeNodeId).FirstOrDefault();
+            return contentTreeRow != null ? contentTreeRow.Id : null;
         }
 
         public void Handle(PageDeletedEvent domainEvent)
