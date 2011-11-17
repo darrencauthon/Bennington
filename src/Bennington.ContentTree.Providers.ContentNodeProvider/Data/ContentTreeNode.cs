@@ -13,5 +13,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Data
         public string Action { get; set; }
         public string Controller { get; set; }
         public string TreeNodeId { get; set; }
+        public string ActionId { get; set; }
     }
 }
