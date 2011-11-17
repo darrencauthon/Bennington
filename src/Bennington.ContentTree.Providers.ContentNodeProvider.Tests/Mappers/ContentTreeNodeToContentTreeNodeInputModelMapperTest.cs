@@ -50,7 +50,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 		}
 
         [TestMethod]
-        public void CreateInstance_sets_ControllerName_value_from_tree_node_type()
+        public void CreateInstance_sets_ControllerName_value_from_tree_node_when_ControllerName_is_null()
         {
             mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
                 .Returns(new TreeNode[]
@@ -59,7 +59,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 				         			{
 				         				Id = "1",
 										Type = "testType",
-                                        ControllerName = "controller"
+                                       ControllerName = "controller"
 				         			}, 
 							}.AsQueryable());
 
@@ -71,5 +71,30 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 
             Assert.AreEqual("controller", result.ControllerName);
         }
+
+        [TestMethod]
+        public void CreateInstance_does_not_set_ControllerName_value_from_tree_node_when_ControllerName_is_not_null()
+        {
+            mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
+                .Returns(new TreeNode[]
+				         	{
+				         		new TreeNode()
+				         			{
+				         				Id = "1",
+										Type = "testType",
+                                       ControllerName = "controller"
+				         			}, 
+							}.AsQueryable());
+
+            var mapper = mocker.Resolve<ContentTreeNodeToContentTreeNodeInputModelMapper>();
+            var result = mapper.CreateInstance(new ContentTreeNode()
+            {
+                TreeNodeId = "1",
+                ControllerName = "test",
+            });
+
+            Assert.AreEqual("test", result.ControllerName);
+        }
+
 	}
 }

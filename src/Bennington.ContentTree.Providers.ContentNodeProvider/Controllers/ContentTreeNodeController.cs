@@ -242,7 +242,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			                		                        	{
 			                		                        		TreeNodeId = treeNodeId,
 																	Action = contentItemId,
-			                		                        	} 
+			                		                        	}
 										: contentTreeNodeToContentTreeNodeInputModelMapper.CreateInstance(contentTreeNode);
 
 			var viewModel = new ModifyViewModel()

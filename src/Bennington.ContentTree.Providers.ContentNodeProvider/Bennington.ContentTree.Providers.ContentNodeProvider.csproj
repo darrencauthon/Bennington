@@ -50,6 +50,15 @@
     <Reference Include="MvcTurbine.Web">
       <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.Web.dll</HintPath>
     </Reference>
+    <Reference Include="Simple.Data">
+      <HintPath>..\packages\Simple.Data.Core.0.9.8.2\lib\net40\Simple.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.Data.Ado">
+      <HintPath>..\packages\Simple.Data.Ado.0.9.8.2\lib\net40\Simple.Data.Ado.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.Data.SqlServer">
+      <HintPath>..\packages\Simple.Data.SqlServer.0.9.8.2\lib\net40\Simple.Data.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleCqrs">
       <HintPath>..\packages\SimpleCqrs.1.0\lib\SimpleCqrs.dll</HintPath>
     </Reference>
@@ -75,6 +84,7 @@
     <Compile Include="Blades\RegisterAssemblyWithSimpleCqrsServiceLocatorBlade.cs" />
     <Compile Include="Context\ContentTreeNodeContext.cs" />
     <Compile Include="Controllers\ContentTreeNodeController.cs" />
+    <Compile Include="Data\ContentAction.cs" />
     <Compile Include="Data\ContentNodeProviderDraft.cs" />
     <Compile Include="Data\ContentNodeProviderPublishedVersion.cs" />
     <Compile Include="Data\ContentTreeNode.cs" />
@@ -83,6 +93,7 @@
     <Compile Include="Denormalizers\ContentNodeProviderPublishDenormalizer.cs" />
     <Compile Include="Denormalizers\ContentRoutingDenormalizer.cs" />
     <Compile Include="EngineTreeNodeExtensionProviderFactory.cs" />
+    <Compile Include="EngineTreeNodeProvider.cs" />
     <Compile Include="Helpers\ContentTreeNodeFileUploadPersister.cs" />
     <Compile Include="Helpers\GetPathToContentTreeNodeProviderFileUploads.cs" />
     <Compile Include="Mappers\ContentNodeProviderDraftToContentNodeProviderPublishedVersionMapper.cs" />
@@ -108,6 +119,8 @@
     <Compile Include="Registration\TreeNodeExtensionProviderRegistration.cs" />
     <Compile Include="ContentNodeProvider.cs" />
     <Compile Include="Context\ContentTreeNodeVersionContext.cs" />
+    <Compile Include="Repositories\ContentTreeRepository.cs" />
+    <Compile Include="Data\ContentType.cs" />
     <Compile Include="Routing\ContentTreeRouteRegistrator.cs" />
     <Compile Include="Validation\ContentTreeInputModelValidator.cs" />
     <Compile Include="ViewModelBuilders\ContentTreeNodeDisplayViewModelBuilder.cs" />

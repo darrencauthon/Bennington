@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Bennington.ContentTree.Contexts;
+using Bennington.ContentTree.Domain.AggregateRoots;
 using Bennington.ContentTree.Domain.Events.Page;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Data;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Repositories;
@@ -24,7 +25,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 														IHandleDomainEvents<PageHiddenSetEvent>,
 														IHandleDomainEvents<PageInactiveSetEvent>,
                                                         IHandleDomainEvents<PageLastModifyBySetEvent>,
-                                                        IHandleDomainEvents<PageLastModifyDateSetEvent>
+                                                        IHandleDomainEvents<PageLastModifyDateSetEvent>,
+                                                        IHandleDomainEvents<PageControllerNameSetEvent>
 	{
 		private readonly IContentNodeProviderDraftRepository contentNodeProviderDraftRepository;
 		private readonly ITreeNodeProviderContext treeNodeProviderContext;
@@ -192,6 +194,13 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
             contentNodeProviderDraft.LastModifyDate = domainEvent.DateTime;
             contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
+	    }
+
+	    public void Handle(PageControllerNameSetEvent domainEvent)
+	    {
+            var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+	        contentNodeProviderDraft.ControllerName = domainEvent.ControllerName;
+            contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);	        
 	    }
 	}
 }

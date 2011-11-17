@@ -1,5 +1,6 @@
 ﻿using System;
 using Bennington.ContentTree.Contexts;
+using Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Mappers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Repositories;
 using Bennington.Core;
@@ -40,6 +41,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Blades
 			simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<ITreeNodeSummaryContext>());
 			simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<ITreeNodeProviderContext>());
 			simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<IFileSystem>());
+            simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<ContentRoutingDenormalizer>);
 		}
 	}
 }

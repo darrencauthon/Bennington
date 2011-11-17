@@ -1,7 +1,6 @@
 ﻿using System;
 using Bennington.Content.Configuration;
 using Bennington.Content.Data;
-using Bennington.Content.Sql.Denormalizers;
 using Bennington.Core.Configuration;
 
 namespace Bennington.Content.Sql.Configuration

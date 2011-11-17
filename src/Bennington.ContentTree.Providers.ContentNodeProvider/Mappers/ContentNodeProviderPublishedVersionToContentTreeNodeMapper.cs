@@ -16,6 +16,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
         {
             configuration.CreateMap<ContentNodeProviderPublishedVersion, Models.ContentTreeNode>()
                     .ForMember(a => a.IconUrl, b => b.Ignore())
+                    .ForMember(a => a.ControllerName, b => b.Ignore())
                 ;
         }
 	}

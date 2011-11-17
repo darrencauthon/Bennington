@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using Bennington.Content.Data;
 using Bennington.ContentTree.Models;
-using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
 using Bennington.Core;
-using MvcTurbine.ComponentModel;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider
 {
@@ -35,15 +33,5 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 
             return list.ToArray();
         }
-    }
-
-    public class EngineTreeNodeProvider : ContentNodeProvider
-    {
-        public EngineTreeNodeProvider(IServiceLocator serviceLocator)
-            : base(serviceLocator.Resolve<IContentTreeNodeVersionContext>())
-        {
-        }
-
-        public override string Name { get; set; }
     }
 }

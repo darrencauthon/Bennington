@@ -21,10 +21,10 @@
         <classShapeMoniker Id="709b689c-8dd0-43a5-9cfd-c0103ad01ec9" />
       </nodes>
     </associationConnector>
-    <classShape Id="f8c9ff05-2bb2-498a-b3be-9e7722daebe4" absoluteBounds="3.875, 4.125, 2, 1.7708968098958327">
+    <classShape Id="f8c9ff05-2bb2-498a-b3be-9e7722daebe4" absoluteBounds="3.875, 4.125, 2, 1.9631982421874996">
       <DataClassMoniker Name="/ContentDataContext/ContentTreeItem" />
       <nestedChildShapes>
-        <elementListCompartment Id="5038ffa3-8abf-49ca-8696-9e71fec325e0" absoluteBounds="3.8899999999999997, 4.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="5038ffa3-8abf-49ca-8696-9e71fec325e0" absoluteBounds="3.8899999999999997, 4.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

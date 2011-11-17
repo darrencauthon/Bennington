@@ -25,7 +25,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests
         {
             mocker.GetMock<IServiceLocatorWrapper>()
                 .Setup(a => a.Resolve<EngineTreeNodeProvider>())
-                .Returns(new EngineTreeNodeProvider(mocker.GetMock<MvcTurbine.ComponentModel.IServiceLocator>().Object));
+                .Returns(new EngineTreeNodeProvider(mocker.GetMock<MvcTurbine.ComponentModel.IServiceLocator>().Object, null));
             mocker.GetMock<IContentTypeRegistry>()
                 .Setup(a => a.GetContentTypes())
                 .Returns(new ContentType[]
@@ -48,7 +48,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests
         {
             mocker.GetMock<IServiceLocatorWrapper>()
                 .Setup(a => a.Resolve<EngineTreeNodeProvider>())
-                .Returns(new EngineTreeNodeProvider(mocker.GetMock<MvcTurbine.ComponentModel.IServiceLocator>().Object));
+                .Returns(new EngineTreeNodeProvider(mocker.GetMock<MvcTurbine.ComponentModel.IServiceLocator>().Object, null));
             mocker.GetMock<IContentTypeRegistry>()
                 .Setup(a => a.GetContentTypes())
                 .Returns(new ContentType[]

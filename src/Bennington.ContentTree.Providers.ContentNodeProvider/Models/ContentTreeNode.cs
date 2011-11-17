@@ -27,5 +27,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Models
 	    public string LastModifyBy { get; set; }
 
 	    public bool Hidden { get; set; }
+        public string ControllerName { get; set; }
 	}
 }
