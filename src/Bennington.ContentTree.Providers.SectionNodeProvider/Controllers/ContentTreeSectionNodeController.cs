@@ -60,7 +60,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Controllers
 											Action = "Create",
 				                      	});
 
-			var treeNodeIdString = treeNodeSummaryContext.Create(contentTreeSectionInputModel.ParentTreeNodeId, typeof(SectionNodeProvider).AssemblyQualifiedName);
+			var treeNodeIdString = treeNodeSummaryContext.Create(contentTreeSectionInputModel.ParentTreeNodeId, typeof(SectionNodeProvider).AssemblyQualifiedName, null);
 			
 			commandBus.Send(new CreateSectionCommand()
 			                	{

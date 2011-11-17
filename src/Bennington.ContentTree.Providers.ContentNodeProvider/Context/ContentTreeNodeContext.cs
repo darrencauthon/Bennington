@@ -27,7 +27,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Context
 
 		public string CreateTreeNodeAndReturnTreeNodeId(ContentTreeNodeInputModel contentTreeNodeInputModel)
 		{
-			var newTreeNodeId = treeNodeSummaryContext.Create(contentTreeNodeInputModel.ParentTreeNodeId, contentTreeNodeInputModel.Type);
+			var newTreeNodeId = treeNodeSummaryContext.Create(contentTreeNodeInputModel.ParentTreeNodeId, contentTreeNodeInputModel.Type, null);
 			contentTreeNodeInputModel.TreeNodeId = newTreeNodeId;
 			return contentTreeNodeInputModel.TreeNodeId;
 		}

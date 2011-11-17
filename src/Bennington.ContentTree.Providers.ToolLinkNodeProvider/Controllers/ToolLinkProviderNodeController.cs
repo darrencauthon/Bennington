@@ -49,7 +49,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Controllers
 			if (!ModelState.IsValid)
 				return View("Modify", modifyViewModelBuilder.BuildViewModel(toolLinkInputModel));
 
-            var newTreeNodeId = treeNodeSummaryContext.Create(toolLinkInputModel.ParentTreeNodeId, typeof(ToolLinkNodeProvider).AssemblyQualifiedName);
+            var newTreeNodeId = treeNodeSummaryContext.Create(toolLinkInputModel.ParentTreeNodeId, typeof(ToolLinkNodeProvider).AssemblyQualifiedName, null);
 		    
             var toolLinkProviderDraft = new ToolLinkProviderDraft()
 		                {

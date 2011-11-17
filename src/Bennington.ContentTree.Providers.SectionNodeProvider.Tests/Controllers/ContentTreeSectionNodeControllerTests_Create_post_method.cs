@@ -127,7 +127,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Tests.Controllers
 																				ParentTreeNodeId = parentNodeId.ToString(),
 																			});
 
-			mocker.GetMock<ITreeNodeSummaryContext>().Verify(a => a.Create(parentNodeId.ToString(), typeof(Bennington.ContentTree.Providers.SectionNodeProvider.SectionNodeProvider).AssemblyQualifiedName), Times.Once());
+			mocker.GetMock<ITreeNodeSummaryContext>().Verify(a => a.Create(parentNodeId.ToString(), typeof(Bennington.ContentTree.Providers.SectionNodeProvider.SectionNodeProvider).AssemblyQualifiedName, null), Times.Once());
 		}
 
 		[TestMethod]
@@ -135,7 +135,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Tests.Controllers
 		{
 			mocker.GetMock<IGuidGetter>().Setup(a => a.GetGuid()).Returns(Guid.NewGuid());
 			var treeNodeId = new Guid().ToString();
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.Create(It.IsAny<string>(), It.IsAny<string>()))
+			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.Create(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
 				.Returns(treeNodeId.ToString());
 			mocker.Resolve<ContentTreeSectionNodeController>().Create(new ContentTreeSectionInputModel()
 			{
@@ -165,7 +165,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Tests.Controllers
 		{
 			mocker.GetMock<IGuidGetter>().Setup(a => a.GetGuid()).Returns(Guid.NewGuid());
 			var treeNodeId = new Guid().ToString();
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.Create(It.IsAny<string>(), It.IsAny<string>()))
+			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.Create(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
 				.Returns(treeNodeId.ToString());
 			mocker.Resolve<ContentTreeSectionNodeController>().Create(new ContentTreeSectionInputModel()
 			{
@@ -182,7 +182,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Tests.Controllers
 		{
 			mocker.GetMock<IGuidGetter>().Setup(a => a.GetGuid()).Returns(Guid.NewGuid());
 			var treeNodeId = new Guid().ToString();
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.Create(It.IsAny<string>(), It.IsAny<string>()))
+			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.Create(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
 				.Returns(treeNodeId.ToString());
 			mocker.Resolve<ContentTreeSectionNodeController>().Create(new ContentTreeSectionInputModel()
 			{

@@ -26,7 +26,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Context
 		public string CreateAndReturnTreeNodeId(ContentTreeSectionInputModel contentTreeSectionInputModel)
 		{
 			throw new NotImplementedException();
-			var newTreeNodeId = treeNodeSummaryContext.Create(contentTreeSectionInputModel.ParentTreeNodeId, typeof(SectionNodeProvider).AssemblyQualifiedName);
+			var newTreeNodeId = treeNodeSummaryContext.Create(contentTreeSectionInputModel.ParentTreeNodeId, typeof(SectionNodeProvider).AssemblyQualifiedName, null);
 			contentTreeSectionInputModel.TreeNodeId = newTreeNodeId;
 			return contentTreeSectionInputModel.TreeNodeId;
 		}
