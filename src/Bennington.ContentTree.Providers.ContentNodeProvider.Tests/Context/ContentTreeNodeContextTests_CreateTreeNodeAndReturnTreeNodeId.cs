@@ -30,6 +30,19 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 			mocker.GetMock<ITreeNodeSummaryContext>().Verify(a => a.Create("parentTreeNodeId", "provider type", It.IsAny<string>()), Times.Once());
 		}
 
+        [TestMethod]
+        public void Calls_Create_method_of_ITreeNodeSummaryContext_with_controllerName_from_input_model()
+        {
+            var contentTreeNodeContext = mocker.Resolve<ContentTreeNodeContext>();
+            var result = contentTreeNodeContext.CreateTreeNodeAndReturnTreeNodeId(new ContentTreeNodeInputModel()
+            {
+                ParentTreeNodeId = "parentTreeNodeId",
+                Type = "provider type",
+                ControllerName = "controllerName"
+            });
+            mocker.GetMock<ITreeNodeSummaryContext>().Verify(a => a.Create("parentTreeNodeId", It.IsAny<string>(), "controllerName"), Times.Once());
+        }
+
 		[TestMethod]
 		public void Returns_newly_created_tree_node_id()
 		{
