@@ -60,6 +60,10 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 
         public void Handle(PageDeletedEvent domainEvent)
         {
+            foreach (var contentTreeNodeRow in contentTreeRepository.GetAll().Where(a =>a.TreeNodeId == domainEvent.TreeNodeId.ToString()))
+            {
+                contentTreeRepository.Delete(contentTreeNodeRow.Id);
+            }
         }
     }
 }
