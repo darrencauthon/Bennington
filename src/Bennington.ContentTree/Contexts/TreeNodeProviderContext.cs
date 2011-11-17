@@ -33,7 +33,8 @@ namespace Bennington.ContentTree.Contexts
 
 		public IAmATreeNodeExtensionProvider GetProviderByTypeName(string providerTypeName)
 		{
-            return GetAllTreeNodeProviders().Where(a => a.GetType().AssemblyQualifiedName.StartsWith(providerTypeName)).FirstOrDefault();
+		    var allProviders = GetAllTreeNodeProviders().Where(a => a.GetType().AssemblyQualifiedName.StartsWith(providerTypeName)).ToArray();
+            return allProviders.FirstOrDefault();
 		}
 	}
 }
