@@ -23,6 +23,19 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 
         public override string Name { get; set; }
 
+        public override IQueryable<IAmATreeNodeExtension> GetAll()
+        {
+            var treeNodeExtensions = new List<IAmATreeNodeExtension>();
+            foreach (var item in base.GetAll())
+            {
+                item.IconUrl = "Content/ContentNodeProvider/controller.gif";
+                treeNodeExtensions.Add(item);
+            }
+
+            return treeNodeExtensions.AsQueryable();
+        }
+
+
         public override string Controller { get; set; }
 
         public override IEnumerable<ContentTree.Models.ContentTreeNodeContentItem> ContentTreeNodeContentItems
