@@ -256,12 +256,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			return View("Modify", viewModel);
 		}
 
-        public ActionResult Index()
-        {
-            var routeData = RouteData;
-            return View();
-        }
-
 		[Authorize]
 		public virtual ActionResult ContentItemNavigation(string treeNodeId)
 		{
