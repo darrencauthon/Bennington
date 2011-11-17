@@ -8,6 +8,7 @@ using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Models;
 using Bennington.ContentTree.TreeManager.Routing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.TreeManager.Tests.Routing
 {
@@ -149,7 +150,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.Routing
 				get { throw new NotImplementedException(); }
 			}
 
-			public IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems
+			public IEnumerable<Action> Actions
 			{
 				get { throw new NotImplementedException(); }
 				set { throw new NotImplementedException(); }

@@ -8,6 +8,7 @@ using Bennington.ContentTree.Models;
 using Bennington.ContentTree.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Tests.Contexts
 {
@@ -709,7 +710,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 
         public string LastModifyBy { get; set; }
 
-	    public IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems
+	    public IEnumerable<Action> ContentTreeNodeContentItems
 		{
 			get { throw new NotImplementedException(); }
 			set { throw new NotImplementedException(); }

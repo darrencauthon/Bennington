@@ -11,6 +11,7 @@ using Bennington.ContentTree.Providers.ContentNodeProvider.Controllers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
 using Bennington.ContentTree.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 {
@@ -44,9 +45,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			var model = (ContentItemNavigationViewModel) ((ViewResult) result).ViewData.Model;
 
 			Assert.AreEqual(3, model.ContentTreeNodeContentItems.Count());
-			Assert.AreEqual(1, model.ContentTreeNodeContentItems.Where(a => a.Id == "id1").Count());
-			Assert.AreEqual(1, model.ContentTreeNodeContentItems.Where(a => a.Id == "id2").Count());
-			Assert.AreEqual(1, model.ContentTreeNodeContentItems.Where(a => a.Id == "id3").Count());
+			Assert.AreEqual(1, model.ContentTreeNodeContentItems.Where(a => a.ControllerAction == "id1").Count());
+			Assert.AreEqual(1, model.ContentTreeNodeContentItems.Where(a => a.ControllerAction == "id2").Count());
+			Assert.AreEqual(1, model.ContentTreeNodeContentItems.Where(a => a.ControllerAction == "id3").Count());
 		}
 
 		[TestMethod]
@@ -110,24 +111,24 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				get { throw new NotImplementedException(); }
 			}
 
-			public IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems
+			public IEnumerable<Action> Actions
 			{
-				get { return new ContentTreeNodeContentItem[]
+				get { return new Action[]
 				             	{
-				             		new ContentTreeNodeContentItem()
+				             		new Action()
 				             			{
-				             				Id = "id1",
-											Name = "id 1",
+				             				ControllerAction = "id1",
+											DisplayName = "id 1",
 				             			}, 
-									new ContentTreeNodeContentItem()
+									new Action()
 				             			{
-				             				Id = "id2",
-											Name = "id 2",
+				             				ControllerAction = "id2",
+											DisplayName = "id 2",
 				             			}, 
-									new ContentTreeNodeContentItem()
+									new Action()
 				             			{
-				             				Id = "id3",
-											Name = "id 3",
+				             				ControllerAction = "id3",
+											DisplayName = "id 3",
 				             			}, 
 				}; }
 				set { throw new NotImplementedException(); }

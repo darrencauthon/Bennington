@@ -268,7 +268,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			{
 			    var provider = treeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
 			    provider.Controller = treeNode.ControllerName;
-				viewModel.ContentTreeNodeContentItems = provider.ContentTreeNodeContentItems;
+				viewModel.ContentTreeNodeContentItems = provider.Actions;
 			}
 			if ((viewModel.ContentTreeNodeContentItems == null) || (viewModel.ContentTreeNodeContentItems.Count() == 0)) return null;
 			return View("ContentItemNavigation", viewModel);

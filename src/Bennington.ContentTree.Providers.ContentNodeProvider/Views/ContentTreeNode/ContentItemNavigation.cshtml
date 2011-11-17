@@ -5,7 +5,7 @@
 @if (Model.ContentTreeNodeContentItems.Count() > 1) { 
 	<ul>
 	@foreach (var contentItem in Model.ContentTreeNodeContentItems) { 
-		<li>@Html.ActionLink(contentItem.Name, "Modify", "ContentTreeNode", new { treeNodeId = Model.TreeNodeId, contentItemId = contentItem.Id }, null)</li>
+		<li>@Html.ActionLink(contentItem.DisplayName, "Modify", "ContentTreeNode", new { treeNodeId = Model.TreeNodeId, contentItemId = contentItem.ControllerAction }, null)</li>
 	 } 
 	</ul>
  } 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Bennington.ContentTree.Models;
 using Bennington.ContentTree.Providers.ToolLinkNodeProvider.Contexts;
+using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider
 {
@@ -55,7 +56,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider
 	        set { }
 	    }
 
-	    public IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems
+	    public IEnumerable<Action> Actions
 		{
 			get { throw new NotImplementedException(); }
 			set { throw new NotImplementedException(); }

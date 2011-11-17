@@ -5,6 +5,7 @@ using System.Web.Routing;
 using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Models;
 using Bennington.ContentTree.Providers.SectionNodeProvider.Repositories;
+using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Providers.SectionNodeProvider
 {
@@ -50,7 +51,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider
 			get { return null; }
 		}
 
-		public IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems
+		public IEnumerable<Action> Actions
 		{
 			get { throw new NotImplementedException(); }
 			set { throw new NotImplementedException(); }

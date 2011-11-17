@@ -12,7 +12,7 @@ namespace Bennington.ContentTree
 		string ActionToUseForModification { get; set; }
 		string ControllerToUseForCreation { get; set; }
 		string ActionToUseForCreation { get; set; }
-		IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems { get; set; }
+		IEnumerable<Action> Actions { get; set; }
 		bool MayHaveChildNodes { get; set; }
         string Controller { get; set; }
 	    void RegisterRouteForTreeNodeId(string treeNodeId);

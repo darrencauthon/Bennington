@@ -6,6 +6,7 @@ using Bennington.ContentTree.Models;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Repositories;
 using MvcTurbine.ComponentModel;
+using Action = Bennington.ContentTree.Models.Action;
 using ContentType = Bennington.ContentTree.Providers.ContentNodeProvider.Data.ContentType;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider
@@ -38,27 +39,27 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 
         public override string Controller { get; set; }
 
-        public override IEnumerable<ContentTree.Models.ContentTreeNodeContentItem> ContentTreeNodeContentItems
+        public override IEnumerable<ContentTree.Models.Action> Actions
         {
             get
             {
                 var allContentTypes = contentTreeRepository().GetAllContentTypes();
                 var contentType = allContentTypes.Where(a => a.ControllerName == Controller).FirstOrDefault() ?? new ContentType();
                 var contentActions = contentTreeRepository().GetAllContentActions().Where(a => a.ContentTypeId == contentType.ContentTypeId);
-                var list = new List<ContentTreeNodeContentItem>();
+                var list = new List<Action>();
                 foreach (var action in contentActions)
                 {
-                    list.Add(new ContentTreeNodeContentItem()
+                    list.Add(new Action()
                                  {
-                                     Id = action.Action,
-                                     Name = action.DisplayName
+                                     ControllerAction = action.Action,
+                                     DisplayName = action.DisplayName
                                  });
                 }
                 return list;
             }
             set
             {
-                base.ContentTreeNodeContentItems = value;
+                base.Actions = value;
             }
         }
     }

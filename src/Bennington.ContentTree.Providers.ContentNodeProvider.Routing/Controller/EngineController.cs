@@ -13,6 +13,7 @@ using Bennington.ContentTree.Repositories;
 using Bennington.Core.Helpers;
 using MvcTurbine.ComponentModel;
 using MvcTurbine.Routing;
+using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Controller
 {
@@ -67,19 +68,19 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Controlle
 			get { return null; }
 		}
 
-		public virtual IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems
+		public virtual IEnumerable<Action> Actions
 		{
 			get
 			{
-				var contentTreeNodeContentItems = new List<ContentTreeNodeContentItem>();
+				var contentTreeNodeContentItems = new List<Action>();
 				foreach (var method in this.GetType().GetMethods().Where(a => a.IsPublic && ((Type)a.ReturnParameter.ParameterType == typeof(ActionResult))))
 				{
 					if (method.DeclaringType == this.GetType())
 					{
-						contentTreeNodeContentItems.Add(new ContentTreeNodeContentItem()
+						contentTreeNodeContentItems.Add(new Action()
 						{
-							Id = method.Name,
-							Name = method.Name,
+							ControllerAction = method.Name,
+							DisplayName = method.Name,
 						});
 
 					}

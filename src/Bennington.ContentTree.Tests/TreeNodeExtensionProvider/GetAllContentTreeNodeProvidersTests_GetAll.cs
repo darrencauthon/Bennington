@@ -7,6 +7,7 @@ using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Models;
 using Bennington.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 {
@@ -92,7 +93,7 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 				get { throw new NotImplementedException(); }
 			}
 
-			public IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems
+			public IEnumerable<Action> Actions
 			{
 				get { throw new NotImplementedException(); }
 				set { throw new NotImplementedException(); }
@@ -168,7 +169,7 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 				get { throw new NotImplementedException(); }
 			}
 
-			public IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems
+			public IEnumerable<Action> Actions
 			{
 				get { throw new NotImplementedException(); }
 				set { throw new NotImplementedException(); }

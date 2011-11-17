@@ -12,6 +12,7 @@ using Bennington.Core.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SimpleCqrs.Commanding;
+using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Tests.Contexts
 {
@@ -114,7 +115,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				get { throw new NotImplementedException(); }
 			}
 
-			public IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems
+			public IEnumerable<Action> Actions
 			{
 				get { throw new NotImplementedException(); }
 				set { throw new NotImplementedException(); }
@@ -194,7 +195,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				get { throw new NotImplementedException(); }
 			}
 
-			public IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems
+			public IEnumerable<Action> Actions
 			{
 				get { throw new NotImplementedException(); }
 				set { throw new NotImplementedException(); }

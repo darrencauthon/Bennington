@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Routing;
 using Bennington.ContentTree.Models;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
+using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider
 {
@@ -47,14 +48,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 			get { return null; }
 		}
 
-		public virtual IEnumerable<ContentTreeNodeContentItem> ContentTreeNodeContentItems
+		public virtual IEnumerable<Action> Actions
 		{
-			get { return new ContentTreeNodeContentItem[]
+			get { return new Action[]
 			             	{
-			             		new ContentTreeNodeContentItem()
+			             		new Action()
 			             			{
-			             				Id = "Index",
-										Name = "Page Content",
+			             				ControllerAction = "Index",
+										DisplayName = "Page Content",
 			             			}, 
 							}; }
 			set { throw new NotImplementedException(); }
