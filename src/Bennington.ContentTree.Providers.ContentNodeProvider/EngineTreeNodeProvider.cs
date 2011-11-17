@@ -6,6 +6,7 @@ using Bennington.ContentTree.Models;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Repositories;
 using MvcTurbine.ComponentModel;
+using ContentType = Bennington.ContentTree.Providers.ContentNodeProvider.Data.ContentType;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider
 {
@@ -22,11 +23,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 
         public override string Name { get; set; }
 
+        public override string Controller { get; set; }
+
         public override IEnumerable<ContentTree.Models.ContentTreeNodeContentItem> ContentTreeNodeContentItems
         {
             get
             {
-                var contentType = contentTreeRepository().GetAllContentTypes().Where(a => a.ControllerName == Controller).FirstOrDefault();
+                var allContentTypes = contentTreeRepository().GetAllContentTypes();
+                var contentType = allContentTypes.Where(a => a.ControllerName == Controller).FirstOrDefault() ?? new ContentType();
                 var contentActions = contentTreeRepository().GetAllContentActions().Where(a => a.ContentTypeId == contentType.ContentTypeId);
                 var list = new List<ContentTreeNodeContentItem>();
                 foreach (var action in contentActions)

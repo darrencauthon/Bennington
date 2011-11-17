@@ -56,7 +56,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                                                Action = action.Id,
                                                Controller = provider.Controller,
                                                Id = Guid.NewGuid().ToString(),
-                                               ParentId = GetParentId(treeNode, GetActionId(draft)),
+                                               ParentId = GetParentId(treeNode),
                                                Segment = draft != null ? draft.UrlSegment : action.Id,
                                                TreeNodeId = treeNode.Id,
                                                ActionId = GetActionId(draft)
@@ -69,10 +69,10 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             return draft != null ? draft.PageId : null;
         }
 
-        private string GetParentId(TreeNode treeNode, string actionId)
+        private string GetParentId(TreeNode treeNode)
         {
             var contentTreeRow = contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNode.ParentTreeNodeId).FirstOrDefault();
-            return contentTreeRow != null ? contentTreeRow.Id : null;
+            return contentTreeRow != null ? contentTreeRow.Id : treeNode.ParentTreeNodeId;
         }
 
         public void Handle(PageDeletedEvent domainEvent)
