@@ -57,5 +57,13 @@ namespace Bennington.ContentTree.Domain.AggregateRoots
 						TreeNodeId = aggregateRootId,
 			      	});
 		}
+
+	    public void SetControllerName(string controllerName)
+	    {
+	        Apply(new TreeNodeControllerNameSetEvent()
+	                  {
+	                      ControllerName = controllerName,
+	                  });
+	    }
 	}
 }

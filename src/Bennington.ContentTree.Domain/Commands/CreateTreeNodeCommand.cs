@@ -7,6 +7,7 @@ namespace Bennington.ContentTree.Domain.Commands
 	{
 		public Type Type { get; set; }
 		public string ParentId { get; set; }
+        public string ControllerName { get; set; }
 
 		public Guid TreeNodeId
 		{

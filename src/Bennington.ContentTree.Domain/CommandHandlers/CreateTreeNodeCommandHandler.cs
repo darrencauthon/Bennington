@@ -20,6 +20,7 @@ namespace Bennington.ContentTree.Domain.CommandHandlers
 			var treeNode = new TreeNode(command.AggregateRootId);
 			treeNode.SetParentTreeNodeId(new Guid(command.ParentId));
 			treeNode.SetType(command.Type);
+		    treeNode.SetControllerName(command.ControllerName);
 
 			domainRepository.Save(treeNode);
 		}
