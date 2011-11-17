@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Bennington.ContentTree.Data;
 using Bennington.ContentTree.Domain.Events.TreeNode;
 using Bennington.ContentTree.Repositories;
@@ -9,6 +10,7 @@ namespace Bennington.ContentTree.Denormalizers
 	public class TreeNodeDenormalizer : IHandleDomainEvents<TreeNodeDeletedEvent>,
 										IHandleDomainEvents<TreeNodeCreatedEvent>,
 										IHandleDomainEvents<TreeNodeTypeSetEvent>,
+                                        IHandleDomainEvents<TreeNodeControllerNameSetEvent>,
 										IHandleDomainEvents<TreeNodeParentTreeNodeIdSetEvent>
 	{
 		private readonly ITreeNodeRepository treeNodeRepository;
@@ -49,5 +51,12 @@ namespace Bennington.ContentTree.Denormalizers
 			treeNode.ParentTreeNodeId = domainEvent.ParentTreeNodeId.ToString();
 			treeNodeRepository.Update(treeNode);
 		}
+
+	    public void Handle(TreeNodeControllerNameSetEvent domainEvent)
+	    {
+            var treeNode = GetTreeNodeFromDomainEvent(domainEvent);
+	        treeNode.ControllerName = domainEvent.ControllerName;
+            treeNodeRepository.Update(treeNode);	        
+	    }
 	}
 }

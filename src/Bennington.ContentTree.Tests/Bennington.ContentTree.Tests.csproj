@@ -76,6 +76,7 @@
     <Compile Include="Contexts\TreeNodeSummaryContextTests_GetChildren.cs" />
     <Compile Include="Contexts\TreeNodeSummaryContextTests_Create.cs" />
     <Compile Include="Data\DataModelDataContextTests.cs" />
+    <Compile Include="Denormalizers\TreeNodeDenormalizerTests_Handle_TreeNodeControllerNameSetEvent.cs" />
     <Compile Include="Denormalizers\TreeNodeDenormalizerTests_Handle_TreeParentNodeIdSetEvent.cs" />
     <Compile Include="Denormalizers\TreeNodeDenormalizerTests_Handle_TreeNodeCreatedEvent.cs" />
     <Compile Include="Denormalizers\TreeNodeDenormalizerTests_Handle_TreeNodeTypeSetEvent.cs" />
