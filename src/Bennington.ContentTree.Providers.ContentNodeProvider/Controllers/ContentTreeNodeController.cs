@@ -266,8 +266,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			var treeNode = treeNodeRepository.GetAll().Where(a => a.Id == treeNodeId).FirstOrDefault();
 			if (treeNode != null)
 			{
-				viewModel.ContentTreeNodeContentItems =
-					treeNodeProviderContext.GetProviderByTypeName(treeNode.Type).ContentTreeNodeContentItems;
+			    var provider = treeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
+			    provider.Controller = treeNode.ControllerName;
+				viewModel.ContentTreeNodeContentItems = provider.ContentTreeNodeContentItems;
 			}
 			if ((viewModel.ContentTreeNodeContentItems == null) || (viewModel.ContentTreeNodeContentItems.Count() == 0)) return null;
 			return View("ContentItemNavigation", viewModel);

@@ -78,7 +78,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             }
 
             var parentContentTreeRow = contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNode.Id && a.Action == "Index").FirstOrDefault();
-            return parentContentTreeRow.Id;
+            return parentContentTreeRow == null ? treeNode.ParentTreeNodeId : parentContentTreeRow.Id;
         }
 
         public void Handle(PageDeletedEvent domainEvent)

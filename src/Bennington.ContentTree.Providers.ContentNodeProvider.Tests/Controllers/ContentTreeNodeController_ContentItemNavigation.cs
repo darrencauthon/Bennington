@@ -139,11 +139,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				set { throw new NotImplementedException(); }
 			}
 
-		    public string Controller
-		    {
-                get { return "Controller"; }
-		        set { }
-		    }
+            public string Controller { get { return "Controller"; } set { if (value == "test") throw new Exception(value); } }
 
 		    public void RegisterRouteForTreeNodeId(string treeNodeId)
 			{
@@ -196,5 +192,32 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 
 			Assert.IsNull(result);
 		}
+
+        [TestMethod]
+        public void Sets_Controller_property_of_provider_to_ControllerName_of_tree_node()
+        {
+            mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll()).Returns(new TreeNode[]
+			                                                        {
+            															new TreeNode()
+            																{
+            																	Id = "1",
+																				Type = "providertype",
+                                                                                ControllerName = "test",
+            																}, 
+																	}.AsQueryable());
+            mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("providertype"))
+                .Returns(new FakeIAmATreeNodeExtensionProvider());
+
+            try
+            {
+                mocker.Resolve<ContentTreeNodeController>().ContentItemNavigation("1");
+            } catch(Exception e)
+            {
+                if (e.Message == "test") return;   
+            }
+
+            throw new Exception("controller name not set");
+        }
+
 	}
 }

@@ -10,6 +10,11 @@ namespace SampleContentWebsite.Controllers
     public class AccountController : Controller
     {
 
+        public ActionResult Index()
+        {
+            throw new NotImplementedException();
+        }
+
         //
         // GET: /Account/LogOn
 
