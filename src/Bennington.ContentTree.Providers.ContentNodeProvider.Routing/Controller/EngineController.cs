@@ -34,12 +34,12 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Controlle
 			this.rawUrlGetter = ServiceLocatorManager.Current.Resolve<IRawUrlGetter>();
 		}
 
-		public virtual IQueryable<IAmATreeNodeExtension> GetAll()
+		public virtual IQueryable<IContentTreeNode> GetAll()
 		{
 		    var query = from item in contentTreeNodeVersionContext.GetAllContentTreeNodes().Where(a => a.Action == "Index")
 		                select item;
 
-		    var treeNodeExtensions = new List<IAmATreeNodeExtension>();
+		    var treeNodeExtensions = new List<IContentTreeNode>();
             foreach (var item in query)
             {
                 item.IconUrl = "Content/ContentNodeProvider/controller.gif";

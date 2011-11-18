@@ -3,7 +3,7 @@ using Bennington.ContentTree.Models;
 
 namespace Bennington.ContentTree.Providers.SectionNodeProvider.Models
 {
-	public class ContentTreeSectionNode : IAmATreeNodeExtension
+	public class ContentTreeSectionNode : IContentTreeNode
 	{
 		public string SectionId { get; set; }
 		public string TreeNodeId { get; set; }

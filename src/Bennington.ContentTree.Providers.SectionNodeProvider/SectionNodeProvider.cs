@@ -22,7 +22,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider
 			this.contentTreeSectionNodeRepository = contentTreeSectionNodeRepository;
 		}
 
-		public IQueryable<IAmATreeNodeExtension> GetAll()
+		public IQueryable<IContentTreeNode> GetAll()
 		{
 			var query = from item in contentTreeSectionNodeRepository.GetAllContentTreeSectionNodes().Where(a => a.Inactive == false || versionContext.GetCurrentVersionId() == VersionContext.Manage)
 						select item;

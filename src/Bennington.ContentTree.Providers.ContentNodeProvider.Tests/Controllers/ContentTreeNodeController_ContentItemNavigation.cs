@@ -72,7 +72,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 
 		public class FakeIAmATreeNodeExtensionProvider : IAmATreeNodeExtensionProvider
 		{
-			public IQueryable<IAmATreeNodeExtension> GetAll()
+			public IQueryable<IContentTreeNode> GetAll()
 			{
 				throw new NotImplementedException();
 			}

@@ -43,7 +43,7 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 
 		private class IamATreeNodeExtensionProvider2 : IAmATreeNodeExtensionProvider
 		{
-			public IQueryable<IAmATreeNodeExtension> GetAll()
+			public IQueryable<IContentTreeNode> GetAll()
 			{
 				throw new NotImplementedException();
 			}
@@ -119,7 +119,7 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 
 		private class IamATreeNodeExtensionProvider1 : IAmATreeNodeExtensionProvider
 		{
-			public IQueryable<IAmATreeNodeExtension> GetAll()
+			public IQueryable<IContentTreeNode> GetAll()
 			{
 				throw new NotImplementedException();
 			}

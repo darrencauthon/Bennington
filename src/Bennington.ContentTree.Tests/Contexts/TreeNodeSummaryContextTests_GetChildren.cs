@@ -685,7 +685,7 @@ namespace Bennington.ContentTree.Tests.Contexts
         }
 	}
 
-	public class FakeTreeNode : IAmATreeNodeExtension
+	public class FakeTreeNode : IContentTreeNode
 	{
 		public string TreeNodeId { get; set; }
 		public int? Sequence { get; set; }

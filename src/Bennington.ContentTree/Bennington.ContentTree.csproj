@@ -79,7 +79,7 @@
     <Compile Include="Helpers\UrlToTreeNodeSummaryMapper.cs" />
     <Compile Include="IAmATreeNodeExtensionProviderFactory.cs" />
     <Compile Include="Models\Action.cs" />
-    <Compile Include="Models\IAmATreeNodeExtension.cs" />
+    <Compile Include="Models\IContentTreeNode.cs" />
     <Compile Include="Models\TreeNodeSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration\RegisterInterfaceToSingleImplementations.cs" />

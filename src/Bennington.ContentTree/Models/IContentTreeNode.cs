@@ -2,7 +2,7 @@
 
 namespace Bennington.ContentTree.Models
 {
-	public interface IAmATreeNodeExtension
+	public interface IContentTreeNode
 	{
 		string TreeNodeId { get; set; }
 		int? Sequence { get; set; }
