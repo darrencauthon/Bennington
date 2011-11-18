@@ -27,7 +27,7 @@
 					"ajax": {
 						"url": "@Url.Action("Branch", "TreeManager")",
 						"data": function (n) {
-							return { id: n.attr ? n.attr("id") : '@Constants.RootNodeId' };
+							return { id: n.attr ? n.attr("id") : '@ContentTree.RootNodeId' };
 						}
 					}
 				},

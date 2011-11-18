@@ -2,7 +2,6 @@
 <%@ Import Namespace="System.Web.Mvc" %>
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="Bennington.ContentTree" %>
-<%@ Import Namespace="Bennington.ContentTree.Contexts" %>
 <%@ Import Namespace="MvcTurbine.ComponentModel" %>
 <%= Html.DropDownListFor(x => x, 
 	(new SelectListItem[] {

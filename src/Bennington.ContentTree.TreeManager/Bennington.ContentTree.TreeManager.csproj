@@ -119,7 +119,9 @@
     <EmbeddedResource Include="Scripts\TreeManager\jquery.cookie.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Shared\EditorTemplates\ProviderTypes.ascx" />
+    <EmbeddedResource Include="Views\Shared\EditorTemplates\ProviderTypes.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scripts\TreeManager\jquery-1.6.4.min.js" />

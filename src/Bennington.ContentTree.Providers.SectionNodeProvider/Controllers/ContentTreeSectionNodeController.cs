@@ -20,7 +20,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Controllers
 		private readonly ICommandBus commandBus;
 		private readonly IContentTree contentTree;
 		private readonly IGuidGetter guidGetter;
-	    private ICurrentUserContext currentUserContext;
+	    private readonly ICurrentUserContext currentUserContext;
 
 	    public ContentTreeSectionNodeController(IContentTreeSectionNodeRepository contentTreeSectionNodeRepository, 
 												IContentTreeSectionNodeToContentTreeSectionInputModelMapper contentTreeSectionNodeToContentTreeSectionInputModelMapper,
