@@ -110,7 +110,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.Routing
 
 		public class FakeTreeNodeProvider : IContentTreeNodeProvider
 		{
-			public IQueryable<IContentTreeNode> GetAll()
+			public IQueryable<ContentTreeNode> GetAll()
 			{
 				throw new NotImplementedException();
 			}

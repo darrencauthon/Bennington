@@ -3,7 +3,7 @@ using Bennington.ContentTree.Models;
 
 namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Models
 {
-	public class ToolLink : IContentTreeNode
+	public class ToolLink : ContentTreeNode
 	{
 		public string Name { get; set; }
 		public string UrlSegment { get; set; }

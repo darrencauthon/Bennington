@@ -16,7 +16,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider
 			this.toolLinkContext = toolLinkContext;
 		}
 
-		public IQueryable<IContentTreeNode> GetAll()
+		public IQueryable<ContentTreeNode> GetAll()
 		{
 			return toolLinkContext.GetAllToolLinks().AsQueryable();
 		}

@@ -71,7 +71,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 
 		public class FakeIamATreeNodeProvider : IContentTreeNodeProvider
 		{
-			public IQueryable<IContentTreeNode> GetAll()
+			public IQueryable<ContentTreeNode> GetAll()
 			{
 				throw new NotImplementedException();
 			}

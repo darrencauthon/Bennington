@@ -6,15 +6,15 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 {
 	public interface IContentTreeNodeInputModelToContentTreeNodeMapper
 	{
-		ContentTreeNode CreateInstance(ContentTreeNodeInputModel source);
-		void LoadIntoInstance(ContentTreeNodeInputModel source, ContentTreeNode destination);
+		Contenttreenode CreateInstance(ContentTreeNodeInputModel source);
+		void LoadIntoInstance(ContentTreeNodeInputModel source, Contenttreenode destination);
 	}
 
-	public class ContentTreeNodeInputModelToContentTreeNodeMapper : Mapper<ContentTreeNodeInputModel, ContentTreeNode>, IContentTreeNodeInputModelToContentTreeNodeMapper
+	public class ContentTreeNodeInputModelToContentTreeNodeMapper : Mapper<ContentTreeNodeInputModel, Contenttreenode>, IContentTreeNodeInputModelToContentTreeNodeMapper
 	{
 		public override void DefineMap(IConfiguration configuration)
 		{
-			configuration.CreateMap<ContentTreeNodeInputModel, ContentTreeNode>()
+			configuration.CreateMap<ContentTreeNodeInputModel, Contenttreenode>()
                     .ForMember(a => a.IconUrl, b=>b.Ignore())
                     .ForMember(a => a.LastModifyBy, b => b.Ignore())
                     .ForMember(a => a.LastModifyDate, b => b.Ignore())

@@ -27,18 +27,18 @@ namespace Bennington.ContentTree.Tests.Contexts
 		{
 			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
-				.Returns(new FakeTreeNode[]
+				.Returns(new ContentTreeNode[]
 				         	{
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "1",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "2",
 										Name = "fake tree node name",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "3",
 									}, 
@@ -78,18 +78,18 @@ namespace Bennington.ContentTree.Tests.Contexts
 		{
 			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
-				.Returns(new FakeTreeNode[]
+				.Returns(new ContentTreeNode[]
 				         	{
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "1",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "2",
 										Name = "fake tree node name",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "3",
 									}, 
@@ -129,18 +129,18 @@ namespace Bennington.ContentTree.Tests.Contexts
 		{
 			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
-				.Returns(new FakeTreeNode[]
+				.Returns(new ContentTreeNode[]
 				         	{
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "1",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "2",
 										Name = "fake tree node name",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "3",
 									}, 
@@ -180,18 +180,18 @@ namespace Bennington.ContentTree.Tests.Contexts
 		{
 			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
-				.Returns(new FakeTreeNode[]
+				.Returns(new ContentTreeNode[]
 				         	{
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "1",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "2",
 										Name = "fake tree node name",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "3",
 									}, 
@@ -231,18 +231,18 @@ namespace Bennington.ContentTree.Tests.Contexts
 		{
 			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
-				.Returns(new FakeTreeNode[]
+				.Returns(new []
 				         	{
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "1",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "2",
 										Name = "fake tree node name",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "3",
 									}, 
@@ -281,18 +281,18 @@ namespace Bennington.ContentTree.Tests.Contexts
 		{
 			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
-				.Returns(new FakeTreeNode[]
+				.Returns(new ContentTreeNode[]
 				         	{
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "1",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "2",
 										Name = "fake tree node name",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "3",
 									}, 
@@ -331,19 +331,19 @@ namespace Bennington.ContentTree.Tests.Contexts
 		{
 			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
-				.Returns(new FakeTreeNode[]
+				.Returns(new ContentTreeNode[]
 				         	{
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "1",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "2",
 										Name = "fake tree node name",
 										Hidden = true
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "3",
 									}, 
@@ -382,18 +382,18 @@ namespace Bennington.ContentTree.Tests.Contexts
 		{
 			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
-				.Returns(new FakeTreeNode[]
+				.Returns(new []
 				         	{
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "1",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "2",
 										Name = "fake tree node name",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "3",
 									}, 
@@ -432,18 +432,18 @@ namespace Bennington.ContentTree.Tests.Contexts
 		{
 			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
-				.Returns(new FakeTreeNode[]
+				.Returns(new []
 				         	{
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "1",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "2",
 										Name = "fake tree node name",
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "3",
 									}, 
@@ -492,9 +492,9 @@ namespace Bennington.ContentTree.Tests.Contexts
 		{
 			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
-				.Returns(new FakeTreeNode[]
+				.Returns(new []
 				         	{
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "1",
 									}, 
@@ -529,20 +529,20 @@ namespace Bennington.ContentTree.Tests.Contexts
         {
             var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
             fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
-                .Returns(new FakeTreeNode[]
+                .Returns(new ContentTreeNode[]
 				         	{
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "1",
                                         LastModifyBy = "test"
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "2",
 										Name = "fake tree node name",
                                         LastModifyBy = "test"
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "3",
                                         LastModifyBy = "test"
@@ -582,20 +582,20 @@ namespace Bennington.ContentTree.Tests.Contexts
         {
             var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
             fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
-                .Returns(new FakeTreeNode[]
+                .Returns(new []
 				         	{
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "1",
                                         LastModifyDate = new DateTime(2010, 1, 1)
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "2",
 										Name = "fake tree node name",
                                         LastModifyDate = new DateTime(2010, 1, 1)
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "3",
                                         LastModifyDate = new DateTime(2010, 1, 1)
@@ -635,20 +635,20 @@ namespace Bennington.ContentTree.Tests.Contexts
         {
             var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
             fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
-                .Returns(new FakeTreeNode[]
+                .Returns(new []
 				         	{
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "1",
                                         Inactive = false
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "2",
 										Name = "fake tree node name",
                                         Inactive = false
 									}, 
-								new FakeTreeNode()
+								new ContentTreeNode()
 									{
 										Id = "3",
                                         Inactive = false
@@ -682,37 +682,5 @@ namespace Bennington.ContentTree.Tests.Contexts
             
             Assert.IsFalse(result.First().Inactive);
         }
-	}
-
-	public class FakeTreeNode : IContentTreeNode
-	{
-		public string Id { get; set; }
-		public int? Sequence { get; set; }
-		public string UrlSegment { get; set; }
-		public string Name { get; set; }
-
-		public bool Hidden
-		{
-			get;
-			set;
-		}
-
-        public bool Inactive { get; set; }
-
-	    public string IconUrl
-	    {
-	        get { return string.Empty; }
-	        set { throw new NotImplementedException(); }
-	    }
-
-        public DateTime LastModifyDate { get; set; }
-
-        public string LastModifyBy { get; set; }
-
-	    public IEnumerable<Action> ContentTreeNodeContentItems
-		{
-			get { throw new NotImplementedException(); }
-			set { throw new NotImplementedException(); }
-		}
 	}
 }

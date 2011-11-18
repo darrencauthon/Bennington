@@ -24,9 +24,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 
         public override string Name { get; set; }
 
-        public override IQueryable<IContentTreeNode> GetAll()
+        public override IQueryable<ContentTreeNode> GetAll()
         {
-            var treeNodeExtensions = new List<IContentTreeNode>();
+            var treeNodeExtensions = new List<ContentTreeNode>();
             foreach (var item in base.GetAll())
             {
                 item.IconUrl = "Content/ContentNodeProvider/controller.gif";

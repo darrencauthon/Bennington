@@ -8,10 +8,10 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 {
 	public interface IContentTreeNodeToContentTreeNodeInputModelMapper
 	{
-		ContentTreeNodeInputModel CreateInstance(ContentTreeNode source);
+		ContentTreeNodeInputModel CreateInstance(Contenttreenode source);
 	}
 
-	public class ContentTreeNodeToContentTreeNodeInputModelMapper : Mapper<ContentTreeNode, ContentTreeNodeInputModel>, IContentTreeNodeToContentTreeNodeInputModelMapper
+	public class ContentTreeNodeToContentTreeNodeInputModelMapper : Mapper<Contenttreenode, ContentTreeNodeInputModel>, IContentTreeNodeToContentTreeNodeInputModelMapper
 	{
 		private readonly ITreeNodeRepository treeNodeRepository;
 
@@ -22,14 +22,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 
 		public override void DefineMap(IConfiguration configuration)
 		{
-			configuration.CreateMap<ContentTreeNode, ContentTreeNodeInputModel>()
+			configuration.CreateMap<Contenttreenode, ContentTreeNodeInputModel>()
 				.ForMember(dest => dest.FormAction, opt => opt.Ignore())
 				.ForMember(dest => dest.RemoveHeaderImage, opt => opt.Ignore())
                 .ForMember(a => a.TreeNodeId, b=> b.MapFrom(c => c.Id))
 				.ForMember(dest => dest.ParentTreeNodeId, opt => opt.Ignore());
 		}
 
-		public override ContentTreeNodeInputModel CreateInstance(ContentTreeNode source)
+		public override ContentTreeNodeInputModel CreateInstance(Contenttreenode source)
 		{
 			var returnInstance = base.CreateInstance(source);
 			

@@ -28,9 +28,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 		{
 			mocker.GetMock<IVersionContext>().Setup(a => a.GetCurrentVersionId()).Returns(VersionContext.Draft);
 			mocker.GetMock<IContentNodeProviderDraftToContentTreeNodeMapper>().Setup(a => a.CreateSet(It.IsAny<IEnumerable<ContentNodeProviderDraft>>()))
-                .Returns(new Models.ContentTreeNode[]
+                .Returns(new Models.Contenttreenode[]
 				         	{
-				         		new Models.ContentTreeNode()
+				         		new Models.Contenttreenode()
 				         			{
 				         				Action = "Action",
 				         			}, 
@@ -86,9 +86,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 			mocker.GetMock<IVersionContext>().Setup(a => a.GetCurrentVersionId()).Returns(VersionContext.Publish);
 			mocker.GetMock<IContentNodeProviderPublishedVersionToContentTreeNodeMapper>()
 				.Setup(a => a.CreateSet(It.IsAny<IEnumerable<ContentNodeProviderPublishedVersion>>()))
-				.Returns(new Models.ContentTreeNode[]
+				.Returns(new Models.Contenttreenode[]
 			                {
-			                    new Models.ContentTreeNode()
+			                    new Models.Contenttreenode()
 			                        {
 			                            Action = "Action",
 			                        }, 
@@ -171,9 +171,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 		{
 			mocker.GetMock<IVersionContext>().Setup(a => a.GetCurrentVersionId()).Returns(VersionContext.Manage);
 			mocker.GetMock<IContentNodeProviderDraftToContentTreeNodeMapper>().Setup(a => a.CreateSet(It.IsAny<IEnumerable<ContentNodeProviderDraft>>()))
-                .Returns(new Models.ContentTreeNode[]
+                .Returns(new Models.Contenttreenode[]
 				         	{
-				         		new Models.ContentTreeNode()
+				         		new Models.Contenttreenode()
 				         			{
 				         				Action = "Action",
 				         			}, 

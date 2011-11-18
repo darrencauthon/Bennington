@@ -53,7 +53,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 												FormAction = "Save and Exit"
 											};
 			mocker.GetMock<IContentTreeNodeInputModelToContentTreeNodeMapper>()
-				.Setup(a => a.CreateInstance(contentTreeNodeInputModel)).Returns(new ContentTreeNode()
+				.Setup(a => a.CreateInstance(contentTreeNodeInputModel)).Returns(new Contenttreenode()
 																					{
 																						Name = "name",
 																					});
@@ -74,7 +74,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 															Name = "name",
 														};
 			mocker.GetMock<IContentTreeNodeInputModelToContentTreeNodeMapper>()
-				.Setup(a => a.CreateInstance(contentTreeNodeInputModel)).Returns(new ContentTreeNode()
+				.Setup(a => a.CreateInstance(contentTreeNodeInputModel)).Returns(new Contenttreenode()
 																					{
 																						Name = "name",
 																					});
@@ -90,9 +90,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -105,7 +105,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 														Action = "Index",
 													};
 			mocker.GetMock<IContentTreeNodeInputModelToContentTreeNodeMapper>()
-				.Setup(a => a.CreateInstance(contentTreeNodeInputModel)).Returns(new ContentTreeNode()
+				.Setup(a => a.CreateInstance(contentTreeNodeInputModel)).Returns(new Contenttreenode()
 																					{
 																						Name = "name",
 																					});
@@ -123,9 +123,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -149,9 +149,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -177,9 +177,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -205,9 +205,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -233,9 +233,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -262,9 +262,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -289,9 +289,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -316,9 +316,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -343,9 +343,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -369,9 +369,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -395,9 +395,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -421,9 +421,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -447,9 +447,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -473,9 +473,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
         {
             var treeNodeId = Guid.NewGuid();
             mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-                .Returns(new ContentTreeNode[]
+                .Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -500,9 +500,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -525,9 +525,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -551,9 +551,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -576,9 +576,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
         {
             var treeNodeId = Guid.NewGuid();
             mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-                .Returns(new ContentTreeNode[]
+                .Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -602,9 +602,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -644,9 +644,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -668,9 +668,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -694,9 +694,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			mocker.GetMock<IGuidGetter>().Setup(a => a.GetGuid()).Returns(pageId);
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -718,9 +718,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -742,9 +742,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -767,9 +767,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -792,9 +792,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -817,9 +817,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -842,9 +842,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -867,9 +867,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
         {
             var treeNodeId = Guid.NewGuid();
             mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-                .Returns(new ContentTreeNode[]
+                .Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -892,9 +892,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -917,9 +917,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -943,9 +943,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -969,9 +969,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var treeNodeId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -995,9 +995,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			var treeNodeId = Guid.NewGuid();
 			var pageId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
@@ -1022,9 +1022,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			var treeNodeId = Guid.NewGuid();
 			var pageId = Guid.NewGuid();
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Contenttreenode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Contenttreenode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",

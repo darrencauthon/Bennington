@@ -21,7 +21,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider
 			this.contentTreeSectionNodeRepository = contentTreeSectionNodeRepository;
 		}
 
-		public IQueryable<IContentTreeNode> GetAll()
+		public IQueryable<ContentTreeNode> GetAll()
 		{
 			var query = from item in contentTreeSectionNodeRepository.GetAllContentTreeSectionNodes().Where(a => a.Inactive == false || versionContext.GetCurrentVersionId() == VersionContext.Manage)
 						select item;

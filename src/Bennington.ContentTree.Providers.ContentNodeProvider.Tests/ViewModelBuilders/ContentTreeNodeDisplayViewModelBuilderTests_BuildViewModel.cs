@@ -36,9 +36,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new Models.ContentTreeNode[]
+				.Returns(new Models.Contenttreenode[]
 				         	{
-				         		new Models.ContentTreeNode()
+				         		new Models.Contenttreenode()
 				         			{
 				         				Action = "Index",
 										Body = "page content1",
@@ -67,9 +67,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new Models.ContentTreeNode[]
+				.Returns(new Models.Contenttreenode[]
 				         	{
-				         		new Models.ContentTreeNode()
+				         		new Models.Contenttreenode()
 				         			{
 				         				Action = "Index",
 										Body = "page content1",
@@ -99,9 +99,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new Models.ContentTreeNode[]
+				.Returns(new Models.Contenttreenode[]
 				         	{
-				         		new Models.ContentTreeNode()
+				         		new Models.Contenttreenode()
 				         			{
 				         				Action = "Index",
 										Body = "page content",
@@ -118,9 +118,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("2"))
-				.Returns(new Models.ContentTreeNode[]
+				.Returns(new Models.Contenttreenode[]
 				         	{
-				         		new Models.ContentTreeNode()
+				         		new Models.Contenttreenode()
 				         			{
 				         				Action = "Index",
 										Body = "page1 content",
@@ -148,9 +148,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new Models.ContentTreeNode[]
+				.Returns(new Models.Contenttreenode[]
 				         	{
-				         		new Models.ContentTreeNode()
+				         		new Models.Contenttreenode()
 				         			{
 				         				Action = "Index",
 										Body = "page content",
@@ -178,9 +178,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new Models.ContentTreeNode[]
+				.Returns(new Models.Contenttreenode[]
 				         	{
-				         		new Models.ContentTreeNode()
+				         		new Models.Contenttreenode()
 				         			{
 				         				Action = "Index",
 										Body = "page content",
@@ -208,9 +208,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new Models.ContentTreeNode[]
+				.Returns(new Models.Contenttreenode[]
 				         	{
-				         		new Models.ContentTreeNode()
+				         		new Models.Contenttreenode()
 				         			{
 				         				Action = "Index",
 										Body = "page content",
@@ -240,19 +240,19 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 				.Setup(a => a.GetRouteValues(It.IsAny<RouteData>()))
 				.Returns((RouteData q) => q);
 		    mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-		        .Returns(new Models.ContentTreeNode[]
+		        .Returns(new Models.Contenttreenode[]
 		                    {
-		                        new Models.ContentTreeNode()
+		                        new Models.Contenttreenode()
 		                            {
 		                                Action = "Index",
 		                                Body = "page content",
 		                            }, 
-		                        new Models.ContentTreeNode()
+		                        new Models.Contenttreenode()
 		                            {
 		                                Action = "Index2",
 		                                Body = "page content2",
 		                            },
-		                        new Models.ContentTreeNode()
+		                        new Models.Contenttreenode()
 		                            {
 		                                Action = "Index3",
 		                                Body = "page content3",

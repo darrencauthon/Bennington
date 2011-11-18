@@ -17,7 +17,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 			this.contentTreeNodeVersionContext = contentTreeNodeVersionContext;
 		}
 
-		public virtual IQueryable<IContentTreeNode> GetAll()
+		public virtual IQueryable<ContentTreeNode> GetAll()
 		{
 			var query = from item in contentTreeNodeVersionContext.GetAllContentTreeNodes().Where(a => a.Action == "Index")
 						select item;

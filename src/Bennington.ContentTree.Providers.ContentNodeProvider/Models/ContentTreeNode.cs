@@ -3,7 +3,7 @@ using Bennington.ContentTree.Models;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Models
 {
-	public class ContentTreeNode : IContentTreeNode
+	public class Contenttreenode : ContentTreeNode
 	{
 	    private string pathToIcon = "Content/ContentNodeProvider/page.gif";
 		public string Id { get; set; }

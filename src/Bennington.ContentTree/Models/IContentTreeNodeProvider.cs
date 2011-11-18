@@ -6,7 +6,7 @@ namespace Bennington.ContentTree
 {
 	public interface IContentTreeNodeProvider
 	{
-		IQueryable<IContentTreeNode> GetAll();
+		IQueryable<ContentTreeNode> GetAll();
 		string Name { get; }
 		string ControllerToUseForModification { get; set; }
 		string ActionToUseForModification { get; set; }

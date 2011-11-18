@@ -5,14 +5,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 {
 	public interface IContentNodeProviderDraftToContentTreeNodeMapper
 	{
-		IEnumerable<Models.ContentTreeNode> CreateSet(IEnumerable<Data.ContentNodeProviderDraft> source);
+		IEnumerable<Models.Contenttreenode> CreateSet(IEnumerable<Data.ContentNodeProviderDraft> source);
 	}
 
-	public class ContentNodeProviderDraftToContentTreeNodeMapper : Mapper<Data.ContentNodeProviderDraft, Models.ContentTreeNode>, IContentNodeProviderDraftToContentTreeNodeMapper
+	public class ContentNodeProviderDraftToContentTreeNodeMapper : Mapper<Data.ContentNodeProviderDraft, Models.Contenttreenode>, IContentNodeProviderDraftToContentTreeNodeMapper
 	{
 		public override void DefineMap(AutoMapper.IConfiguration configuration)
 		{
-			configuration.CreateMap<Data.ContentNodeProviderDraft, Models.ContentTreeNode>()
+			configuration.CreateMap<Data.ContentNodeProviderDraft, Models.Contenttreenode>()
 					.ForMember(a => a.Body, opt => opt.MapFrom(c => c.Body))
                     .ForMember(a => a.Id, b => b.MapFrom(c => c.TreeNodeId))
                     .ForMember(a => a.IconUrl, b => b.Ignore())

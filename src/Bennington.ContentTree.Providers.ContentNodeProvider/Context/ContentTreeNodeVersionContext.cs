@@ -8,7 +8,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Context
 {
 	public interface IContentTreeNodeVersionContext
 	{
-		IQueryable<ContentTreeNode> GetAllContentTreeNodes();
+		IQueryable<Contenttreenode> GetAllContentTreeNodes();
 	}
 
 	public class ContentTreeNodeVersionContext : IContentTreeNodeVersionContext
@@ -32,7 +32,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Context
 			this.contentNodeProviderDraftRepository = contentNodeProviderDraftRepository;
 		}
 
-		public IQueryable<ContentTreeNode> GetAllContentTreeNodes()
+		public IQueryable<Contenttreenode> GetAllContentTreeNodes()
 		{
 			if (versionContext.GetCurrentVersionId() == VersionContext.Publish)
 			{
