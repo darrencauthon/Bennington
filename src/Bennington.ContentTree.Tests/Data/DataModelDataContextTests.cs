@@ -26,7 +26,7 @@ namespace Bennington.ContentTree.Tests.Data
 				         	{
 				         		new TreeNode()
 				         			{
-				         				Id = "1",
+				         				TreeNodeId = "1",
 				         			},
 							});
 
@@ -37,7 +37,7 @@ namespace Bennington.ContentTree.Tests.Data
 		{
 			var treeNodes = mocker.Resolve<DataModelDataContext>().TreeNodes;
 
-			Assert.AreEqual("1", treeNodes.First().Id);
+			Assert.AreEqual("1", treeNodes.First().TreeNodeId);
 		}
 
 		[TestMethod]
@@ -45,12 +45,12 @@ namespace Bennington.ContentTree.Tests.Data
 		{
 			mocker.Resolve<DataModelDataContext>().Create(new TreeNode()
 			                                                    {
-			                                                        Id = "2",
+			                                                        TreeNodeId = "2",
 			                                                    });
 
 			mocker.GetMock<IXmlFileSerializationHelper>()
-				.Verify(a => a.SerializeListToPath(It.Is<List<TreeNode>>(b => b.Where(c => c.Id == "1").Count() == 1 
-																					&& b.Where(c => c.Id == "2").Count() == 1
+				.Verify(a => a.SerializeListToPath(It.Is<List<TreeNode>>(b => b.Where(c => c.TreeNodeId == "1").Count() == 1 
+																					&& b.Where(c => c.TreeNodeId == "2").Count() == 1
 																					&& b.Count == 2), It.IsAny<string>()), Times.Once());
 		}
 
@@ -59,12 +59,12 @@ namespace Bennington.ContentTree.Tests.Data
 		{
 			mocker.Resolve<DataModelDataContext>().Update(new TreeNode()
 			                                              	{
-			                                              		Id = "1",
+			                                              		TreeNodeId = "1",
 																Type = "test"
 			                                              	});
 
 			mocker.GetMock<IXmlFileSerializationHelper>()
-				.Verify(a => a.SerializeListToPath(It.Is<List<TreeNode>>(b => b.Where(c => c.Id == "1" && c.Type == "test").Count() == 1
+				.Verify(a => a.SerializeListToPath(It.Is<List<TreeNode>>(b => b.Where(c => c.TreeNodeId == "1" && c.Type == "test").Count() == 1
 																					&& b.Count == 1), It.IsAny<string>()), Times.Once());
 		}
 

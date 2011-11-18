@@ -55,7 +55,7 @@ namespace Bennington.ContentTree.Data
 			lock (_lockObject)
 			{
 				var list = xmlFileSerializationHelper.DeserializeListFromPath<TreeNode>(GetXmlFilePath());
-				list.Remove(list.Where(a => a.Id == id).FirstOrDefault());
+				list.Remove(list.Where(a => a.TreeNodeId == id).FirstOrDefault());
 				xmlFileSerializationHelper.SerializeListToPath(list, GetXmlFilePath());
 			}
 		}
@@ -65,7 +65,7 @@ namespace Bennington.ContentTree.Data
 			lock(_lockObject)
 			{
 				var list = xmlFileSerializationHelper.DeserializeListFromPath<TreeNode>(GetXmlFilePath());
-				list.Remove(list.Where(a => a.Id == treeNode.Id).FirstOrDefault());
+				list.Remove(list.Where(a => a.TreeNodeId == treeNode.TreeNodeId).FirstOrDefault());
 				list.Add(treeNode);
 				xmlFileSerializationHelper.SerializeListToPath(list, GetXmlFilePath());
 			}

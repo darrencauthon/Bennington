@@ -30,7 +30,7 @@ namespace Bennington.ContentTree.Tests.Denormalizers
 				         	{
 				         		new TreeNode()
 				         			{
-				         				Id = guid.ToString(),
+				         				TreeNodeId = guid.ToString(),
 										ParentTreeNodeId = "test",
 				         			}, 
 							}.AsQueryable());
@@ -41,7 +41,7 @@ namespace Bennington.ContentTree.Tests.Denormalizers
 																ControllerName = "controllerName"
 			                                              	});
 
-			mocker.GetMock<ITreeNodeRepository>().Verify(a => a.Update(It.Is<TreeNode>(b => b.ParentTreeNodeId == "test" && b.ControllerName == "controllerName" && b.Id == guid.ToString())), Times.Once());
+			mocker.GetMock<ITreeNodeRepository>().Verify(a => a.Update(It.Is<TreeNode>(b => b.ParentTreeNodeId == "test" && b.ControllerName == "controllerName" && b.TreeNodeId == guid.ToString())), Times.Once());
 		}
 	}
 }

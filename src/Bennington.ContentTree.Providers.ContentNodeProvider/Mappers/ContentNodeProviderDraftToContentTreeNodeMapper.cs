@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using AutoMapperAssist;
+using Bennington.ContentTree.Providers.ContentNodeProvider.Data;
+using Bennington.ContentTree.Repositories;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 {
@@ -10,7 +14,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 
 	public class ContentNodeProviderDraftToContentTreeNodeMapper : Mapper<Data.ContentNodeProviderDraft, Models.ContentTreePageNode>, IContentNodeProviderDraftToContentTreeNodeMapper
 	{
-		public override void DefineMap(AutoMapper.IConfiguration configuration)
+	    private ITreeNodeRepository treeNodeRepository;
+
+	    public ContentNodeProviderDraftToContentTreeNodeMapper(ITreeNodeRepository treeNodeRepository)
+	    {
+	        this.treeNodeRepository = treeNodeRepository;
+	    }
+
+	    public override void DefineMap(AutoMapper.IConfiguration configuration)
 		{
 			configuration.CreateMap<Data.ContentNodeProviderDraft, Models.ContentTreePageNode>()
 					.ForMember(a => a.Body, opt => opt.MapFrom(c => c.Body))
@@ -27,7 +38,16 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
                     .ForMember(e => e.ControllerToUseForModification, b => b.Ignore())
                     .ForMember(a => a.MayHaveChildNodes, b => b.Ignore())
                     .ForMember(a => a.HasChildren, b => b.Ignore())
+                    .ForMember(a => a.ControllerName, b => b.MapFrom(c => GetControllerName(c)))
                     ;
 		}
+
+	    private string GetControllerName(ContentNodeProviderDraft contentNodeProviderDraft)
+	    {
+            var treeNode = treeNodeRepository.GetAll().Where(a => a.TreeNodeId == contentNodeProviderDraft.TreeNodeId).FirstOrDefault();
+            if (treeNode == null) return null;
+
+	        return treeNode.ControllerName;
+	    }
 	}
 }

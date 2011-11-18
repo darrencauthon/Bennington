@@ -34,14 +34,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             if (contentNodeProviderDraft == null)
                 throw new Exception("Draft version not found: " + domainEvent.AggregateRootId);
 
-            var treeNode = treeNodeRepository.GetAll().Where(a => a.Id == contentNodeProviderDraft.TreeNodeId).FirstOrDefault();
+            var treeNode = treeNodeRepository.GetAll().Where(a => a.TreeNodeId == contentNodeProviderDraft.TreeNodeId).FirstOrDefault();
             if (treeNode == null)
                 throw new Exception("Tree node not found: " + domainEvent.AggregateRootId);
 
             var provider = contentTreeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
             provider.Controller = treeNode.ControllerName;
 
-            foreach (var contentTreeNode in contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNode.Id))
+            foreach (var contentTreeNode in contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNode.TreeNodeId))
             {
                 contentTreeRepository.Delete(contentTreeNode.Id);
             }
@@ -57,7 +57,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                                                Id = Guid.NewGuid().ToString(),
                                                ParentId = GetParentId(treeNode, action.ControllerAction),
                                                Segment = draft != null ? draft.UrlSegment : action.ControllerAction,
-                                               TreeNodeId = treeNode.Id,
+                                               TreeNodeId = treeNode.TreeNodeId,
                                                ActionId = GetActionId(draft)
                                            });                
             }
@@ -76,7 +76,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                 return contentTreeRow != null ? contentTreeRow.Id : treeNode.ParentTreeNodeId;                
             }
 
-            var parentContentTreeRow = contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNode.Id && a.Action == "Index").FirstOrDefault();
+            var parentContentTreeRow = contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNode.TreeNodeId && a.Action == "Index").FirstOrDefault();
             return parentContentTreeRow == null ? treeNode.ParentTreeNodeId : parentContentTreeRow.Id;
         }
 

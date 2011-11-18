@@ -263,7 +263,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			                	{
 			                		TreeNodeId = treeNodeId
 			                	};
-			var treeNode = treeNodeRepository.GetAll().Where(a => a.Id == treeNodeId).FirstOrDefault();
+			var treeNode = treeNodeRepository.GetAll().Where(a => a.TreeNodeId == treeNodeId).FirstOrDefault();
 			if (treeNode != null)
 			{
 			    var provider = contentTreeNodeProviderContext.GetProviderByTypeName(treeNode.Type);

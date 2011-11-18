@@ -1,6 +1,10 @@
-﻿using AutoMapperAssist;
+﻿using System.Linq;
+using AutoMapperAssist;
 using AutoMoq;
+using Bennington.ContentTree.Data;
+using Bennington.ContentTree.Providers.ContentNodeProvider.Data;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Mappers;
+using Bennington.ContentTree.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
@@ -22,5 +26,27 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 			var mapper = mocker.Resolve<ContentNodeProviderDraftToContentTreeNodeMapper>();
 			mapper.AssertConfigurationIsValid();
 		}
+
+        [TestMethod]
+        public void Sets_Controller_property_using_ITreeNodeRepository()
+        {
+            mocker.GetMock<ITreeNodeRepository>()
+                .Setup(a => a.GetAll())
+                .Returns(new TreeNode[]
+                             {
+                                 new TreeNode()
+                                     {
+                                         TreeNodeId = "1",
+                                         ControllerName = "controller",
+                                     }, 
+                             }.AsQueryable());
+
+            var result = mocker.Resolve<ContentNodeProviderDraftToContentTreeNodeMapper>().CreateInstance(new ContentNodeProviderDraft()
+                                                                                                              {
+                                                                                                                  TreeNodeId = "1",
+                                                                                                              });
+            
+            Assert.AreEqual("controller", result.ControllerName);
+        }
 	}
 }

@@ -33,7 +33,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 		{
 			var returnInstance = base.CreateInstance(source);
 			
-			var treeNode = treeNodeRepository.GetAll().Where(a => a.Id == source.Id).FirstOrDefault();
+			var treeNode = treeNodeRepository.GetAll().Where(a => a.TreeNodeId == source.Id).FirstOrDefault();
 			if (treeNode != null)
 			{
                 returnInstance.Type = treeNode.Type;

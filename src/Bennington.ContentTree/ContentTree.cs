@@ -76,9 +76,9 @@ namespace Bennington.ContentTree
 
 		public ContentTreeNode GetById(string nodeId)
 		{
-			var treeNode = treeNodeRepository.GetAll().Where(a => a.Id == nodeId).FirstOrDefault();
+			var treeNode = treeNodeRepository.GetAll().Where(a => a.TreeNodeId == nodeId).FirstOrDefault();
 			if (treeNode == null) return null;
-			if (treeNode.Id == RootNodeId) return null;
+			if (treeNode.TreeNodeId == RootNodeId) return null;
 			
 			return GetTreeNodeSummaryForTreeNode(treeNode);
 		}
@@ -88,30 +88,31 @@ namespace Bennington.ContentTree
 			var provider = contentTreeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
 			if (provider == null) throw new Exception(string.Format("Content tree node provider for type: {0} not found.", treeNode.Type));
 
-			var treeNodeExtension = provider.GetAll().Where(a => a.Id == treeNode.Id).FirstOrDefault();
-			if (treeNodeExtension == null) return null;
+			var contentTreeNode = provider.GetAll().Where(a => a.Id == treeNode.TreeNodeId).FirstOrDefault();
+			if (contentTreeNode == null) return null;
 
 			var treeNodeSummary = new ContentTreeNode()
 			       	{
-						Name = treeNodeExtension.Name,
-						Id = treeNode.Id,
-						UrlSegment = treeNodeExtension.UrlSegment,
-						HasChildren = treeNodeRepository.GetAll().Where(a => a.ParentTreeNodeId == treeNode.Id).Any(),
+						Name = contentTreeNode.Name,
+						Id = treeNode.TreeNodeId,
+						UrlSegment = contentTreeNode.UrlSegment,
+						HasChildren = treeNodeRepository.GetAll().Where(a => a.ParentTreeNodeId == treeNode.TreeNodeId).Any(),
 						ControllerToUseForModification = provider.ControllerToUseForModification,
 						ActionToUseForModification = provider.ActionToUseForModification,
 						ControllerToUseForCreation = provider.ControllerToUseForCreation,
 						ActionToUseForCreation = provider.ActionToUseForCreation,
-						RouteValuesForModification = new { TreeNodeId = treeNode.Id },
-						RouteValuesForCreation = new { ParentTreeNodeId = treeNode.Id },
+						RouteValuesForModification = new { TreeNodeId = treeNode.TreeNodeId },
+						RouteValuesForCreation = new { ParentTreeNodeId = treeNode.TreeNodeId },
 						ParentTreeNodeId = treeNode.ParentTreeNodeId,
-						Sequence = treeNodeExtension.Sequence,
+						Sequence = contentTreeNode.Sequence,
 						Type = treeNode.Type,
 						MayHaveChildNodes = provider.MayHaveChildNodes,
-						Hidden = treeNodeExtension.Hidden,
-                        IconUrl = treeNodeExtension.IconUrl,
-                        LastModifyBy = treeNodeExtension.LastModifyBy,
-                        LastModifyDate = treeNodeExtension.LastModifyDate,
-                        Inactive = treeNodeExtension.Inactive
+						Hidden = contentTreeNode.Hidden,
+                        IconUrl = contentTreeNode.IconUrl,
+                        LastModifyBy = contentTreeNode.LastModifyBy,
+                        LastModifyDate = contentTreeNode.LastModifyDate,
+                        Inactive = contentTreeNode.Inactive,
+                        ControllerName = provider.Controller
 			       	};
 			return treeNodeSummary;
 		}

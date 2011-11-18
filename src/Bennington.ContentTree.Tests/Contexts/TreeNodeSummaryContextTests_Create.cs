@@ -34,7 +34,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 			mocker.GetMock<ITreeNodeRepository>().Setup(a => a.Create(It.IsAny<TreeNode>()))
 				.Returns(new TreeNode()
 				         	{
-				         		Id = "id",
+				         		TreeNodeId = "id",
 				         	});
 
 			var treeNodeSummaryContext = mocker.Resolve<ContentTree>();

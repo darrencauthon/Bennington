@@ -22,7 +22,7 @@ namespace Bennington.ContentTree.Denormalizers
 
 		private TreeNode GetTreeNodeFromDomainEvent(DomainEvent domainEvent)
 		{
-			return treeNodeRepository.GetAll().Where(a => a.Id == domainEvent.AggregateRootId.ToString()).FirstOrDefault();
+			return treeNodeRepository.GetAll().Where(a => a.TreeNodeId == domainEvent.AggregateRootId.ToString()).FirstOrDefault();
 		}
 
 		public void Handle(TreeNodeDeletedEvent treeNodeDeletedEvent)
@@ -34,7 +34,7 @@ namespace Bennington.ContentTree.Denormalizers
 		{
 			treeNodeRepository.Create(new TreeNode()
 										{
-											Id = domainEvent.AggregateRootId.ToString(),
+											TreeNodeId = domainEvent.AggregateRootId.ToString(),
 										});
 		}
 

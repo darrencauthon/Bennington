@@ -51,17 +51,17 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 				         		new TreeNode()
 				         			{
-										Id = "1",
+										TreeNodeId = "1",
 				         			}, 
 				         		new TreeNode()
 				         			{
 				         				ParentTreeNodeId = "1",
-										Id = "2",
+										TreeNodeId = "2",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			}, 
 				         		new TreeNode()
 				         			{
-										Id = "3",
+										TreeNodeId = "3",
 				         				ParentTreeNodeId = "2",
 				         			}, 
 							}.AsQueryable());
@@ -102,17 +102,17 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 				         		new TreeNode()
 				         			{
-										Id = "1",
+										TreeNodeId = "1",
 				         			},
 				         		new TreeNode()
 				         			{
 				         				ParentTreeNodeId = "1",
-										Id = "2",
+										TreeNodeId = "2",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			},
 				         		new TreeNode()
 				         			{
-										Id = "3",
+										TreeNodeId = "3",
 				         				ParentTreeNodeId = "2",
 				         			},
 							}.AsQueryable());
@@ -153,17 +153,17 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 				         		new TreeNode()
 				         			{
-										Id = "1",
+										TreeNodeId = "1",
 				         			},
 				         		new TreeNode()
 				         			{
 				         				ParentTreeNodeId = "1",
-										Id = "2",
+										TreeNodeId = "2",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			},
 				         		new TreeNode()
 				         			{
-										Id = "3",
+										TreeNodeId = "3",
 				         				ParentTreeNodeId = "2",
 				         			},
 							}.AsQueryable());
@@ -204,17 +204,17 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 				         		new TreeNode()
 				         			{
-										Id = "1",
+										TreeNodeId = "1",
 				         			}, 
 				         		new TreeNode()
 				         			{
 				         				ParentTreeNodeId = "1",
-										Id = "2",
+										TreeNodeId = "2",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			}, 
 				         		new TreeNode()
 				         			{
-										Id = "3",
+										TreeNodeId = "3",
 				         				ParentTreeNodeId = "2",
 				         			}, 
 							}.AsQueryable());
@@ -254,17 +254,17 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 				         		new TreeNode()
 				         			{
-										Id = "1",
+										TreeNodeId = "1",
 				         			}, 
 				         		new TreeNode()
 				         			{
 				         				ParentTreeNodeId = "1",
-										Id = "2",
+										TreeNodeId = "2",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			}, 
 				         		new TreeNode()
 				         			{
-										Id = "3",
+										TreeNodeId = "3",
 				         				ParentTreeNodeId = "2",
 				         			}, 
 							}.AsQueryable());
@@ -304,17 +304,17 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 				         		new TreeNode()
 				         			{
-										Id = "1",
+										TreeNodeId = "1",
 				         			}, 
 				         		new TreeNode()
 				         			{
 				         				ParentTreeNodeId = "1",
-										Id = "2",
+										TreeNodeId = "2",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			}, 
 				         		new TreeNode()
 				         			{
-										Id = "3",
+										TreeNodeId = "3",
 				         				ParentTreeNodeId = "2",
 				         			}, 
 							}.AsQueryable());
@@ -355,17 +355,17 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 				         		new TreeNode()
 				         			{
-										Id = "1",
+										TreeNodeId = "1",
 				         			}, 
 				         		new TreeNode()
 				         			{
 				         				ParentTreeNodeId = "1",
-										Id = "2",
+										TreeNodeId = "2",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			}, 
 				         		new TreeNode()
 				         			{
-										Id = "3",
+										TreeNodeId = "3",
 				         				ParentTreeNodeId = "2",
 				         			}, 
 							}.AsQueryable());
@@ -405,17 +405,17 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 				         		new TreeNode()
 				         			{
-										Id = "1",
+										TreeNodeId = "1",
 				         			}, 
 				         		new TreeNode()
 				         			{
 				         				ParentTreeNodeId = "1",
-										Id = "2",
+										TreeNodeId = "2",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			}, 
 				         		new TreeNode()
 				         			{
-										Id = "3",
+										TreeNodeId = "3",
 				         				ParentTreeNodeId = "2",
 				         			}, 
 							}.AsQueryable());
@@ -455,18 +455,18 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 				         		new TreeNode()
 				         			{
-										Id = "1",
+										TreeNodeId = "1",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			}, 
 				         		new TreeNode()
 				         			{
-										Id = "2",
+										TreeNodeId = "2",
 										ParentTreeNodeId = "1",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			}, 
 				         		new TreeNode()
 				         			{
-										Id = "3",
+										TreeNodeId = "3",
 				         				ParentTreeNodeId = "1",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			}, 
@@ -506,13 +506,13 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 				         		new TreeNode()
 				         			{
-										Id = "1",
+										TreeNodeId = "1",
 										ParentTreeNodeId = "1",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			}, 
 				         		new TreeNode()
 				         			{
-										Id = "2",
+										TreeNodeId = "2",
 										ParentTreeNodeId = "1",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			}, 
@@ -556,17 +556,17 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 				         		new TreeNode()
 				         			{
-										Id = "1",
+										TreeNodeId = "1",
 				         			},
 				         		new TreeNode()
 				         			{
 				         				ParentTreeNodeId = "1",
-										Id = "2",
+										TreeNodeId = "2",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			},
 				         		new TreeNode()
 				         			{
-										Id = "3",
+										TreeNodeId = "3",
 				         				ParentTreeNodeId = "2",
 				         			},
 							}.AsQueryable());
@@ -609,17 +609,17 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 				         		new TreeNode()
 				         			{
-										Id = "1",
+										TreeNodeId = "1",
 				         			},
 				         		new TreeNode()
 				         			{
 				         				ParentTreeNodeId = "1",
-										Id = "2",
+										TreeNodeId = "2",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			},
 				         		new TreeNode()
 				         			{
-										Id = "3",
+										TreeNodeId = "3",
 				         				ParentTreeNodeId = "2",
 				         			},
 							}.AsQueryable());
@@ -662,17 +662,17 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 				         		new TreeNode()
 				         			{
-										Id = "1",
+										TreeNodeId = "1",
 				         			},
 				         		new TreeNode()
 				         			{
 				         				ParentTreeNodeId = "1",
-										Id = "2",
+										TreeNodeId = "2",
 										Type = "FakeTreeNodeExtensionProvider",
 				         			},
 				         		new TreeNode()
 				         			{
-										Id = "3",
+										TreeNodeId = "3",
 				         				ParentTreeNodeId = "2",
 				         			},
 							}.AsQueryable());
@@ -681,6 +681,60 @@ namespace Bennington.ContentTree.Tests.Contexts
             var result = treeNodeSummarContext.GetChildren("1");
             
             Assert.IsFalse(result.First().Inactive);
+        }
+
+        [TestMethod]
+        public void Returns_1_result_with_ControllerName_property_set_from_provider()
+        {
+            var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
+            fakeTreeNodeExtensionProvider.Setup(a => a.Controller).Returns("controller");
+            fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
+                .Returns(new[]
+				         	{
+								new ContentTreeNode()
+									{
+										Id = "1",
+                                        Inactive = false
+									}, 
+								new ContentTreeNode()
+									{
+										Id = "2",
+										Name = "fake tree node name",
+                                        Inactive = false,
+									}, 
+								new ContentTreeNode()
+									{
+										Id = "3",
+                                        Inactive = false
+									}, 
+				         	}.AsQueryable());
+            fakeTreeNodeExtensionProvider.SetupProperty(a => a.ActionToUseForModification, "FakeTreeNodeExtensionProviderAction");
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("FakeTreeNodeExtensionProvider"))
+                .Returns(fakeTreeNodeExtensionProvider.Object);
+            mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
+                .Returns(new TreeNode[]
+				         	{
+				         		new TreeNode()
+				         			{
+										TreeNodeId = "1",
+				         			},
+				         		new TreeNode()
+				         			{
+				         				ParentTreeNodeId = "1",
+										TreeNodeId = "2",
+										Type = "FakeTreeNodeExtensionProvider",
+				         			},
+				         		new TreeNode()
+				         			{
+										TreeNodeId = "3",
+				         				ParentTreeNodeId = "2",
+				         			},
+							}.AsQueryable());
+
+            var treeNodeSummarContext = mocker.Resolve<ContentTree>();
+            var result = treeNodeSummarContext.GetChildren("1");
+
+            Assert.AreEqual("controller", result.First().ControllerName);
         }
 	}
 }

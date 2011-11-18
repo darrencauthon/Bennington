@@ -30,7 +30,7 @@ namespace Bennington.ContentTree.Tests.Denormalizers
 			                                              		AggregateRootId = guid,
 			                                              	});
 
-			mocker.GetMock<ITreeNodeRepository>().Verify(a => a.Create(It.Is<TreeNode>(b => b.Id == guid.ToString())), Times.Once());
+			mocker.GetMock<ITreeNodeRepository>().Verify(a => a.Create(It.Is<TreeNode>(b => b.TreeNodeId == guid.ToString())), Times.Once());
 		}
 	}
 }

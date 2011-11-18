@@ -33,7 +33,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			                                                        {
             															new TreeNode()
             																{
-            																	Id = "1",
+            																	TreeNodeId = "1",
 																				Type = "providertype",
             																}, 
 																	}.AsQueryable());
@@ -56,7 +56,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			                                                        {
             															new TreeNode()
             																{
-            																	Id = "1",
+            																	TreeNodeId = "1",
 																				Type = "providertype",
             																}, 
 																	}.AsQueryable());
@@ -154,7 +154,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			                                                        {
             															new TreeNode()
             																{
-            																	Id = "1",
+            																	TreeNodeId = "1",
 																				Type = "providertype",
             																}, 
 																	}.AsQueryable());
@@ -173,7 +173,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			                                                        {
             															new TreeNode()
             																{
-            																	Id = "1",
+            																	TreeNodeId = "1",
 																				Type = "providertype",
             																}, 
 																	}.AsQueryable());
@@ -200,7 +200,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			                                                        {
             															new TreeNode()
             																{
-            																	Id = "1",
+            																	TreeNodeId = "1",
 																				Type = "providertype",
                                                                                 ControllerName = "test",
             																}, 

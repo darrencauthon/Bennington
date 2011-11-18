@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using AutoMapperAssist;
 using Bennington.ContentTree.Providers.SectionNodeProvider.Data;
 using Bennington.ContentTree.Providers.SectionNodeProvider.Models;
+using Bennington.ContentTree.Repositories;
 
 namespace Bennington.ContentTree.Providers.SectionNodeProvider.Mappers
 {
@@ -12,7 +15,14 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Mappers
 
 	public class SectionNodeProviderDraftToContentTreeSectionNodeMapper : Mapper<SectionNodeProviderDraft, ContentTreeSectionNode>, ISectionNodeProviderDraftToContentTreeSectionNodeMapper
 	{
-        public override void DefineMap(AutoMapper.IConfiguration configuration)
+	    private ITreeNodeRepository treeNodeRepository;
+
+	    public SectionNodeProviderDraftToContentTreeSectionNodeMapper(ITreeNodeRepository treeNodeRepository)
+	    {
+	        this.treeNodeRepository = treeNodeRepository;
+	    }
+
+	    public override void DefineMap(AutoMapper.IConfiguration configuration)
         {
             configuration.CreateMap<SectionNodeProviderDraft, ContentTreeSectionNode>()
                 .ForMember(a => a.Id, b => b.MapFrom(c => c.TreeNodeId))
@@ -26,7 +36,16 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Mappers
                 .ForMember(e => e.ControllerToUseForModification, b => b.Ignore())
                 .ForMember(a => a.MayHaveChildNodes,b => b.Ignore())
                 .ForMember(a => a.HasChildren, b => b.Ignore())
+                .ForMember(a => a.ControllerName, b => b.MapFrom(c => GetControllerName(c)))
                 ;
         }
+
+	    private string GetControllerName(SectionNodeProviderDraft sectionNodeProviderDraft)
+	    {
+	        var treeNode = treeNodeRepository.GetAll().Where(a => a.TreeNodeId == sectionNodeProviderDraft.TreeNodeId).FirstOrDefault();
+            if (treeNode == null) return null;
+
+	        return treeNode.ControllerName;
+	    }
 	}
 }

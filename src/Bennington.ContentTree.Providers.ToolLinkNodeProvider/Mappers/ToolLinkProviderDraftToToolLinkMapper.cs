@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using AutoMapperAssist;
 using Bennington.ContentTree.Providers.ToolLinkNodeProvider.Data;
 using Bennington.ContentTree.Providers.ToolLinkNodeProvider.Models;
+using Bennington.ContentTree.Repositories;
 
 namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Mappers
 {
@@ -12,7 +15,14 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Mappers
 
 	public class ToolLinkProviderDraftToToolLinkMapper : Mapper<ToolLinkProviderDraft, ContentTreeToolLinkNode>, IToolLinkProviderDraftToToolLinkMapper
 	{
-        public override void DefineMap(AutoMapper.IConfiguration configuration)
+	    private ITreeNodeRepository treeNodeRepository;
+
+	    public ToolLinkProviderDraftToToolLinkMapper(ITreeNodeRepository treeNodeRepository)
+	    {
+	        this.treeNodeRepository = treeNodeRepository;
+	    }
+
+	    public override void DefineMap(AutoMapper.IConfiguration configuration)
         {
             configuration.CreateMap<ToolLinkProviderDraft, ContentTreeToolLinkNode>()
                     .ForMember(a => a.IconUrl, b => b.UseValue("Content/ToolLinkProviderNode/ToolLinkProviderNode.gif"))
@@ -26,7 +36,16 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Mappers
                     .ForMember(e => e.ControllerToUseForModification, b => b.Ignore())
                     .ForMember(a => a.MayHaveChildNodes, b => b.Ignore())
                     .ForMember(a => a.HasChildren, b => b.Ignore())
+                    .ForMember(a => a.ControllerName, b => b.MapFrom(c => GetControllerName(c)))
                     ;
         }
+
+	    private string GetControllerName(ToolLinkProviderDraft toolLinkProviderDraft)
+	    {
+	        var treeNode = treeNodeRepository.GetAll().Where(a => a.TreeNodeId == toolLinkProviderDraft.Id).FirstOrDefault();
+            if (treeNode == null) return null;
+
+	        return treeNode.ControllerName;
+	    }
 	}
 }

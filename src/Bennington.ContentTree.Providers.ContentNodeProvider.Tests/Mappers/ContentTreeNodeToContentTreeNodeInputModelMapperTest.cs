@@ -35,7 +35,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 				         	{
 				         		new TreeNode()
 				         			{
-				         				Id = "1",
+				         				TreeNodeId = "1",
 										Type = "testType"
 				         			}, 
 							}.AsQueryable());
@@ -57,7 +57,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 				         	{
 				         		new TreeNode()
 				         			{
-				         				Id = "1",
+				         				TreeNodeId = "1",
 										Type = "testType",
                                        ControllerName = "controller"
 				         			}, 
@@ -80,7 +80,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 				         	{
 				         		new TreeNode()
 				         			{
-				         				Id = "1",
+				         				TreeNodeId = "1",
 										Type = "testType",
                                        ControllerName = "controller"
 				         			}, 

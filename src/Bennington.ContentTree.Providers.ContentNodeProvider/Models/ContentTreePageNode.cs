@@ -11,7 +11,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Models
 		public string Action { get; set; }
 		public string HeaderText { get; set; }
 		public string HeaderImage { get; set; }
-        public string ControllerName { get; set; }
         public override string IconUrl 
         {
             get { return iconUrl; }
