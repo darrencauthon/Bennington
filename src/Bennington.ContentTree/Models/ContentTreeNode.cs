@@ -2,7 +2,7 @@
 
 namespace Bennington.ContentTree.Models
 {
-	public class TreeNodeSummary
+	public class ContentTreeNode
 	{
 		public string ParentTreeNodeId { get; set; }
 		public string Name { get; set; }

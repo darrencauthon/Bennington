@@ -29,7 +29,7 @@ namespace Bennington.ContentTree.TreeManager.ViewModelBuilders
 					treeNodeSummary.Name = "Unknown";
 				listToReturn.Add(new TreeBranchItemViewModel()
 				                     {
-                                         TreeNodeSummary = treeNodeSummary,
+                                         ContentTreeNode = treeNodeSummary,
 				                     });
 			}
 			return new TreeBranchViewModel()

@@ -6,7 +6,7 @@ namespace Bennington.ContentTree.Helpers
 {
 	public interface IUrlToTreeNodeSummaryMapper
 	{
-		TreeNodeSummary CreateInstance(string rawUrl);
+		ContentTreeNode CreateInstance(string rawUrl);
 	}
 
 	public class UrlToTreeNodeSummaryMapper : IUrlToTreeNodeSummaryMapper
@@ -18,22 +18,22 @@ namespace Bennington.ContentTree.Helpers
 			this.contentTree = contentTree;
 		}
 
-		public TreeNodeSummary CreateInstance(string rawUrl)
+		public ContentTreeNode CreateInstance(string rawUrl)
 		{
 			var nodeSegments = ScrubUrlAndReturnEnumerableOfNodeSegments(rawUrl);
 
-			TreeNodeSummary treeNodeSummary = null;
+			ContentTreeNode contentTreeNode = null;
 
 			var workingTreeNodeId = ContentTree.RootNodeId;
 			foreach(var nodeSegment in nodeSegments)
 			{
-				treeNodeSummary = contentTree.GetChildren(workingTreeNodeId).Where(a => string.Equals(a.UrlSegment, nodeSegment, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-				if (treeNodeSummary == null) return null;
-				if (treeNodeSummary.MayHaveChildNodes == false) return treeNodeSummary;
-				workingTreeNodeId = treeNodeSummary.Id;
+				contentTreeNode = contentTree.GetChildren(workingTreeNodeId).Where(a => string.Equals(a.UrlSegment, nodeSegment, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+				if (contentTreeNode == null) return null;
+				if (contentTreeNode.MayHaveChildNodes == false) return contentTreeNode;
+				workingTreeNodeId = contentTreeNode.Id;
 			}
 
-			return treeNodeSummary;
+			return contentTreeNode;
 		}
 
 		private static string[] ScrubUrlAndReturnEnumerableOfNodeSegments(string rawUrl)

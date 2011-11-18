@@ -11,6 +11,6 @@ namespace Bennington.ContentTree.TreeManager.Models
 
     public class TreeBranchItemViewModel
     {
-        public TreeNodeSummary TreeNodeSummary { get; set; }
+        public ContentTreeNode ContentTreeNode { get; set; }
     }
 }

@@ -18,23 +18,23 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Routing
             mocker = new AutoMoqer();
 
             mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTree.RootNodeId))
-				.Returns(new TreeNodeSummary[]
+				.Returns(new ContentTreeNode[]
 				         	{
-				         		new TreeNodeSummary()
+				         		new ContentTreeNode()
 				         			{
 										Id = "1",
 				         				UrlSegment = "rootsegment1",
 										Type = typeof(ContentNodeProvider).AssemblyQualifiedName,
 										MayHaveChildNodes = true,
 				         			},
- 								new TreeNodeSummary()
+ 								new ContentTreeNode()
 				         			{
 										Id = "2",
 				         				UrlSegment = "rootsegment2",
 										Type = typeof(ContentNodeProvider).AssemblyQualifiedName,
 										MayHaveChildNodes = true,
 				         			},
-								new TreeNodeSummary()
+								new ContentTreeNode()
 				         			{
 										Id = "6",
 				         				UrlSegment = "rootsegment3",
@@ -45,9 +45,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Routing
 
 
 			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("2"))
-					.Returns(new TreeNodeSummary[]
+					.Returns(new ContentTreeNode[]
 				         	{
-								new TreeNodeSummary()
+								new ContentTreeNode()
 				         		{
 									Id = "3",
 				         			UrlSegment = "nestLevel1Segment1",
@@ -55,7 +55,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Routing
 									Type = typeof(ContentNodeProvider).AssemblyQualifiedName,
 									MayHaveChildNodes = true,
 				         		},
-								new TreeNodeSummary()
+								new ContentTreeNode()
 				         		{
 									Id = "4",
 				         			UrlSegment = "nestLevel1Segment2",
@@ -63,7 +63,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Routing
 									Type = typeof(ContentNodeProvider).AssemblyQualifiedName,
 									MayHaveChildNodes = true,
 				         		},
-								new TreeNodeSummary()
+								new ContentTreeNode()
 				         		{
 									Id = "5",
 				         			UrlSegment = "nestLevel1Segment3",
@@ -74,9 +74,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Routing
 							});
 
 			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("4"))
-					.Returns(new TreeNodeSummary[]
+					.Returns(new ContentTreeNode[]
 				         	{
-								new TreeNodeSummary()
+								new ContentTreeNode()
 				         		{
 									Id = "7",
 				         			UrlSegment = "nestLevel2Segment1",
@@ -84,7 +84,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Routing
 									Type = typeof(ContentNodeProvider).AssemblyQualifiedName,
 									MayHaveChildNodes = true,
 				         		},
-								new TreeNodeSummary()
+								new ContentTreeNode()
 				         		{
 									Id = "8",
 				         			UrlSegment = "nestLevel2Segment2",
@@ -161,9 +161,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Routing
 			var url = "/rootsegment1";
 
             mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTree.RootNodeId))
-				.Returns(new TreeNodeSummary[]
+				.Returns(new ContentTreeNode[]
 				         				{
-				         					new TreeNodeSummary()
+				         					new ContentTreeNode()
 				         						{
 													Id = "1",
 				         							UrlSegment = "rootsegment1",

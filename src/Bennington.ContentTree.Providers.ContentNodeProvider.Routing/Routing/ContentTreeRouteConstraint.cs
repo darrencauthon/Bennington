@@ -25,7 +25,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Routing
 
             if (urlSegments.Count() == 0) return false;
 
-			var treeNodeSummary = new TreeNodeSummary()
+			var treeNodeSummary = new ContentTreeNode()
 			                                  	{
                                                     Id = ContentTree.RootNodeId,
 			                                  	};
@@ -38,7 +38,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Routing
             return true;
         }
 
-		private TreeNodeSummary FindByUrlSegment(string urlSegment, string parentTreeNodeId)
+		private ContentTreeNode FindByUrlSegment(string urlSegment, string parentTreeNodeId)
 		{
 			var children = contentTree.GetChildren(parentTreeNodeId).Where(a => a.MayHaveChildNodes).ToArray(); //.Where(a => a.Type == typeof(ContentNodeProvider).AssemblyQualifiedName);)
             return children.Where(a => string.Equals(a.UrlSegment, urlSegment, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();

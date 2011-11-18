@@ -25,14 +25,14 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
         {
             mocker.GetMock<IContentTree>()
                 .Setup(a => a.GetChildren(ContentTree.RootNodeId))
-                .Returns(new TreeNodeSummary[]
+                .Returns(new ContentTreeNode[]
                              {
-                                 new TreeNodeSummary()
+                                 new ContentTreeNode()
                                      {
                                          Id = "root",
                                          ParentTreeNodeId = ContentTree.RootNodeId,
                                      }, 
-                                 new TreeNodeSummary()
+                                 new ContentTreeNode()
                                      {
                                          ParentTreeNodeId = "root",
 

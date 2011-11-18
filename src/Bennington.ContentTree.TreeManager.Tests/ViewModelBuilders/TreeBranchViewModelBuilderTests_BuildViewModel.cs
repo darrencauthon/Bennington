@@ -21,9 +21,9 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
 		public void Sets_child_tree_node_name_to_UNKNOWN_when_the_name_is_null_or_blank()
 		{
 			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("1"))
-				.Returns(new TreeNodeSummary[]
+				.Returns(new ContentTreeNode[]
 				         	{
-				         		new TreeNodeSummary()
+				         		new ContentTreeNode()
 				         			{
 				         				
 				         			}, 
@@ -32,16 +32,16 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
 			var treeBranchViewModelBuilder = mocker.Resolve<TreeBranchViewModelBuilder>();
 			var result = treeBranchViewModelBuilder.BuildViewModel("1");
 
-			Assert.AreEqual("Unknown", result.TreeNodeSummaries.First().TreeNodeSummary.Name);
+			Assert.AreEqual("Unknown", result.TreeNodeSummaries.First().ContentTreeNode.Name);
 		}
 
 		[TestMethod]
 		public void Returns_child_tree_node_summaries_of_specified_parent_node()
 		{
 			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("1"))
-				.Returns(new TreeNodeSummary[]
+				.Returns(new ContentTreeNode[]
 				         	{
-				         		new TreeNodeSummary()
+				         		new ContentTreeNode()
 				         			{
 				         				
 				         			}, 
@@ -66,9 +66,9 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
         public void Sets_IsActive_property_to_true_when_item_is_active()
         {
             mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("1"))
-                .Returns(new TreeNodeSummary[]
+                .Returns(new ContentTreeNode[]
 				         	{
-				         		new TreeNodeSummary()
+				         		new ContentTreeNode()
 				         			{
 				         				Active = true,
 				         			}, 
@@ -77,16 +77,16 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
             var treeBranchViewModelBuilder = mocker.Resolve<TreeBranchViewModelBuilder>();
             var result = treeBranchViewModelBuilder.BuildViewModel("1");
 
-            Assert.IsTrue(result.TreeNodeSummaries.First().TreeNodeSummary.Active);
+            Assert.IsTrue(result.TreeNodeSummaries.First().ContentTreeNode.Active);
         }
 
         [TestMethod]
         public void Sets_IsActive_property_to_false_when_item_is_not_active()
         {
             mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("1"))
-                .Returns(new TreeNodeSummary[]
+                .Returns(new ContentTreeNode[]
 				         	{
-				         		new TreeNodeSummary()
+				         		new ContentTreeNode()
 				         			{
 				         				Active = false,
 				         			}, 
@@ -95,7 +95,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
             var treeBranchViewModelBuilder = mocker.Resolve<TreeBranchViewModelBuilder>();
             var result = treeBranchViewModelBuilder.BuildViewModel("1");
 
-            Assert.IsFalse(result.TreeNodeSummaries.First().TreeNodeSummary.Active);
+            Assert.IsFalse(result.TreeNodeSummaries.First().ContentTreeNode.Active);
         }
 	}
 }

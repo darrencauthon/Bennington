@@ -7,6 +7,7 @@ using Bennington.ContentTree.Providers.ContentNodeProvider.ViewModelBuilders;
 using Bennington.Core.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using ContentTreeNode = Bennington.ContentTree.Models.ContentTreeNode;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBuilders
 {
@@ -25,9 +26,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		public void Returns_correct_Header_for_tree_node_url_when_url_contains_querystring_data()
 		{
 			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-				.Returns(new TreeNodeSummary[]
+				.Returns(new ContentTreeNode[]
 				         	{
-				         		new TreeNodeSummary()
+				         		new ContentTreeNode()
 				         			{
 				         				Id = "1",
 										UrlSegment = "test",
@@ -35,9 +36,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Models.ContentTreeNode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Models.ContentTreeNode()
 				         			{
 				         				Action = "Index",
 										Body = "page content1",
@@ -56,9 +57,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		public void Returns_correct_HeaderImage_for_tree_node_url()
 		{
 			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-				.Returns(new TreeNodeSummary[]
+				.Returns(new ContentTreeNode[]
 				         	{
-				         		new TreeNodeSummary()
+				         		new ContentTreeNode()
 				         			{
 				         				Id = "1",
 										UrlSegment = "test",
@@ -66,9 +67,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Models.ContentTreeNode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Models.ContentTreeNode()
 				         			{
 				         				Action = "Index",
 										Body = "page content1",
@@ -88,9 +89,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		public void Returns_correct_Header_value_for_second_level_tree_node_url_when_url_case_does_not_match()
 		{
 			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-				.Returns(new TreeNodeSummary[]
+				.Returns(new ContentTreeNode[]
 				         	{
-				         		new TreeNodeSummary()
+				         		new ContentTreeNode()
 				         			{
 				         				Id = "1",
 										UrlSegment = "Section1",
@@ -98,9 +99,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Models.ContentTreeNode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Models.ContentTreeNode()
 				         			{
 				         				Action = "Index",
 										Body = "page content",
@@ -108,18 +109,18 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 				         			}, 
 							});
 			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("1"))
-				.Returns(new TreeNodeSummary[]
+				.Returns(new ContentTreeNode[]
 				         	{
-				         		new TreeNodeSummary()
+				         		new ContentTreeNode()
 				         			{
 				         				Id = "2",
 										UrlSegment = "test"
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("2"))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Models.ContentTreeNode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Models.ContentTreeNode()
 				         			{
 				         				Action = "Index",
 										Body = "page1 content",
@@ -138,18 +139,18 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		public void Returns_correct_Header_value_for_first_level_tree_node_url_when_url_case_does_not_match()
 		{
 			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-				.Returns(new TreeNodeSummary[]
+				.Returns(new ContentTreeNode[]
 				         	{
-				         		new TreeNodeSummary()
+				         		new ContentTreeNode()
 				         			{
 				         				Id = "1",
 										UrlSegment = "Section1"
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Models.ContentTreeNode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Models.ContentTreeNode()
 				         			{
 				         				Action = "Index",
 										Body = "page content",
@@ -168,18 +169,18 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		public void Returns_correct_Header_value_for_first_level_tree_node_url()
 		{
 			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-				.Returns(new TreeNodeSummary[]
+				.Returns(new ContentTreeNode[]
 				         	{
-				         		new TreeNodeSummary()
+				         		new ContentTreeNode()
 				         			{
 				         				Id = "1",
 										UrlSegment = "Section1"
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Models.ContentTreeNode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Models.ContentTreeNode()
 				         			{
 				         				Action = "Index",
 										Body = "page content",
@@ -198,18 +199,18 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		public void Returns_correct_Body_value_for_first_level_tree_node_url()
 		{
 			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-				.Returns(new TreeNodeSummary[]
+				.Returns(new ContentTreeNode[]
 				         	{
-				         		new TreeNodeSummary()
+				         		new ContentTreeNode()
 				         			{
 				         				Id = "1",
 										UrlSegment = "Section1"
 				         			}, 
 							});
 			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new ContentTreeNode[]
+				.Returns(new Models.ContentTreeNode[]
 				         	{
-				         		new ContentTreeNode()
+				         		new Models.ContentTreeNode()
 				         			{
 				         				Action = "Index",
 										Body = "page content",
@@ -227,9 +228,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		public void Returns_correct_Body_value_for_first_level_tree_node_url_when_there_are_multiple_ContentTreeNodes_for_the_current_url_and_the_action_is_Index2()
 		{
 		    mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-		        .Returns(new TreeNodeSummary[]
+		        .Returns(new ContentTreeNode[]
 		                    {
-		                        new TreeNodeSummary()
+		                        new ContentTreeNode()
 		                            {
 		                                Id = "1",
 		                                UrlSegment = "Section1"
@@ -239,19 +240,19 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 				.Setup(a => a.GetRouteValues(It.IsAny<RouteData>()))
 				.Returns((RouteData q) => q);
 		    mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-		        .Returns(new ContentTreeNode[]
+		        .Returns(new Models.ContentTreeNode[]
 		                    {
-		                        new ContentTreeNode()
+		                        new Models.ContentTreeNode()
 		                            {
 		                                Action = "Index",
 		                                Body = "page content",
 		                            }, 
-		                        new ContentTreeNode()
+		                        new Models.ContentTreeNode()
 		                            {
 		                                Action = "Index2",
 		                                Body = "page content2",
 		                            },
-		                        new ContentTreeNode()
+		                        new Models.ContentTreeNode()
 		                            {
 		                                Action = "Index3",
 		                                Body = "page content3",

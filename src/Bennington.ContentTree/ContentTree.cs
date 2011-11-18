@@ -12,9 +12,9 @@ namespace Bennington.ContentTree
 {
 	public interface IContentTree
 	{
-		TreeNodeSummary GetTreeNodeSummaryByTreeNodeId(string nodeId);
-		IEnumerable<TreeNodeSummary> GetChildren(string parentNodeId);
-	    IEnumerable<TreeNodeSummary> GetRootNodes();
+		ContentTreeNode GetTreeNodeSummaryByTreeNodeId(string nodeId);
+		IEnumerable<ContentTreeNode> GetChildren(string parentNodeId);
+	    IEnumerable<ContentTreeNode> GetRootNodes();
 		string Create(string parentNodeId, string providerTypeAssemblyQualifiedName, string controllerName);
 	}
 
@@ -37,7 +37,7 @@ namespace Bennington.ContentTree
 			this.treeNodeRepository = treeNodeRepository;
 		}
 
-	    public IEnumerable<TreeNodeSummary> GetRootNodes()
+	    public IEnumerable<ContentTreeNode> GetRootNodes()
 	    {
 	        return GetChildren(RootNodeId);
 	    }
@@ -65,7 +65,7 @@ namespace Bennington.ContentTree
 				throw new Exception(string.Format("Provider type must implement {0}", typeof(IContentTreeNodeProvider).FullName));
 		}
 
-		public IEnumerable<TreeNodeSummary> GetChildren(string parentNodeId)
+		public IEnumerable<ContentTreeNode> GetChildren(string parentNodeId)
 		{
 			var allNodes = treeNodeRepository.GetAll();
 			var childNodes = from node in allNodes
@@ -74,7 +74,7 @@ namespace Bennington.ContentTree
 			return childNodes.Where(a => a != null);
 		}
 
-		public TreeNodeSummary GetTreeNodeSummaryByTreeNodeId(string nodeId)
+		public ContentTreeNode GetTreeNodeSummaryByTreeNodeId(string nodeId)
 		{
 			var treeNode = treeNodeRepository.GetAll().Where(a => a.Id == nodeId).FirstOrDefault();
 			if (treeNode == null) return null;
@@ -83,7 +83,7 @@ namespace Bennington.ContentTree
 			return GetTreeNodeSummaryForTreeNode(treeNode);
 		}
 
-		private TreeNodeSummary GetTreeNodeSummaryForTreeNode(TreeNode treeNode)
+		private ContentTreeNode GetTreeNodeSummaryForTreeNode(TreeNode treeNode)
 		{
 			var provider = contentTreeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
 			if (provider == null) throw new Exception(string.Format("Content tree node provider for type: {0} not found.", treeNode.Type));
@@ -91,7 +91,7 @@ namespace Bennington.ContentTree
 			var treeNodeExtension = provider.GetAll().Where(a => a.TreeNodeId == treeNode.Id).FirstOrDefault();
 			if (treeNodeExtension == null) return null;
 
-			var treeNodeSummary = new TreeNodeSummary()
+			var treeNodeSummary = new ContentTreeNode()
 			       	{
 						Name = treeNodeExtension.Name,
 						Id = treeNode.Id,
