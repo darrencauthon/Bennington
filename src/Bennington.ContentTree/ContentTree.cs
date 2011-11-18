@@ -111,7 +111,7 @@ namespace Bennington.ContentTree
                         IconUrl = treeNodeExtension.IconUrl,
                         LastModifyBy = treeNodeExtension.LastModifyBy,
                         LastModifyDate = treeNodeExtension.LastModifyDate,
-                        Active = treeNodeExtension.Inactive
+                        Inactive = treeNodeExtension.Inactive
 			       	};
 			return treeNodeSummary;
 		}

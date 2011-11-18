@@ -70,14 +70,14 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				Active = true,
+				         				Inactive = true,
 				         			}, 
 							});
 
             var treeBranchViewModelBuilder = mocker.Resolve<TreeBranchViewModelBuilder>();
             var result = treeBranchViewModelBuilder.BuildViewModel("1");
 
-            Assert.IsTrue(result.TreeNodeSummaries.First().ContentTreeNode.Active);
+            Assert.IsTrue(result.TreeNodeSummaries.First().ContentTreeNode.Inactive);
         }
 
         [TestMethod]
@@ -88,14 +88,14 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				Active = false,
+				         				Inactive = false,
 				         			}, 
 							});
 
             var treeBranchViewModelBuilder = mocker.Resolve<TreeBranchViewModelBuilder>();
             var result = treeBranchViewModelBuilder.BuildViewModel("1");
 
-            Assert.IsFalse(result.TreeNodeSummaries.First().ContentTreeNode.Active);
+            Assert.IsFalse(result.TreeNodeSummaries.First().ContentTreeNode.Inactive);
         }
 	}
 }
