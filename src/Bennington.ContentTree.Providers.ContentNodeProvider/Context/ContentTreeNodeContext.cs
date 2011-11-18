@@ -13,7 +13,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Context
 
 	public class ContentTreeNodeContext : IContentTreeNodeContext
 	{
-		public const string RootNodeId = Constants.RootNodeId;
+        public const string RootNodeId = ContentTree.RootNodeId;
 		
 		private readonly IContentTreeNodeVersionContext contentTreeNodeVersionContext;
 		private readonly IContentTree contentTree;

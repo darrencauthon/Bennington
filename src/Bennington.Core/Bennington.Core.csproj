@@ -58,6 +58,7 @@
     <Compile Include="Caching\InvalidateCacheEndpoint.cs" />
     <Compile Include="Caching\InvalidateCacheService.cs" />
     <Compile Include="Configuration\Configurer.cs" />
+    <Compile Include="CurrentUserContext.cs" />
     <Compile Include="EntityFramework\EntityConnectionInformation.cs" />
     <Compile Include="Extensions\MetadataExtensions.cs" />
     <Compile Include="Extensions\ValueProviderExtensions.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Registration\RegisterInterfaceToSingleImplementations.cs" />
     <Compile Include="Routing\AssemblyControllerRouteConstraint.cs" />
     <Compile Include="ServiceLocatorWrapper.cs" />
+    <Compile Include="VersionContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

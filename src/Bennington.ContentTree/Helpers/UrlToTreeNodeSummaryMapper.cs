@@ -25,7 +25,7 @@ namespace Bennington.ContentTree.Helpers
 
 			TreeNodeSummary treeNodeSummary = null;
 
-			var workingTreeNodeId = Constants.RootNodeId;
+			var workingTreeNodeId = ContentTree.RootNodeId;
 			foreach(var nodeSegment in nodeSegments)
 			{
 				treeNodeSummary = contentTree.GetChildren(workingTreeNodeId).Where(a => string.Equals(a.UrlSegment, nodeSegment, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();

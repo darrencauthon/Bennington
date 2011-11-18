@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Web;
 
-namespace Bennington.ContentTree.Contexts
+namespace Bennington.Core
 {
-	public interface IVersionContext
-	{
-		string GetCurrentVersionId();
-	}
+    public interface IVersionContext
+    {
+        string GetCurrentVersionId();
+    }
 
-	public class VersionContext : IVersionContext
-	{
-		public const string Draft = "Draft";
-		public const string Publish =  "Publish";
-		public const string Manage = "Manage";
+    public class VersionContext : IVersionContext
+    {
+        public const string Draft = "Draft";
+        public const string Publish =  "Publish";
+        public const string Manage = "Manage";
 
-		public string GetCurrentVersionId()
-		{
+        public string GetCurrentVersionId()
+        {
             if (HttpContext.Current == null) return Publish;
             if (HttpContext.Current.Request == null) return Publish;
             if (HttpContext.Current.Request.RawUrl == null) return Publish;
@@ -26,7 +26,7 @@ namespace Bennington.ContentTree.Contexts
 
             if (HttpContext.Current.Request.QueryString["Version"] == Draft) return Draft;
 
-			return Publish;
-		}
-	}
+            return Publish;
+        }
+    }
 }

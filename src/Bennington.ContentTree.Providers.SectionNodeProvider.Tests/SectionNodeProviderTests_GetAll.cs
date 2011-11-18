@@ -6,6 +6,7 @@ using AutoMoq;
 using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Providers.SectionNodeProvider.Models;
 using Bennington.ContentTree.Providers.SectionNodeProvider.Repositories;
+using Bennington.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bennington.ContentTree.Providers.SectionNodeProvider.Tests

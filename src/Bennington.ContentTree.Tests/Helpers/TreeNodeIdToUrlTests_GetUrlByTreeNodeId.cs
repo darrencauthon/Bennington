@@ -25,7 +25,7 @@ namespace Bennington.ContentTree.Tests.Helpers
 				{
 					Id = "1",
 					UrlSegment = "segment1",
-					ParentTreeNodeId = Constants.RootNodeId
+                    ParentTreeNodeId = ContentTree.RootNodeId
 				});
 
 			var url = mocker.Resolve<TreeNodeIdToUrl>().GetUrlByTreeNodeId("2");
@@ -41,7 +41,7 @@ namespace Bennington.ContentTree.Tests.Helpers
 				{
 					Id = "1",
 					UrlSegment = "segment1",
-					ParentTreeNodeId = Constants.RootNodeId
+					ParentTreeNodeId = ContentTree.RootNodeId
 				});
 
 			var url = mocker.Resolve<TreeNodeIdToUrl>().GetUrlByTreeNodeId("1");
@@ -57,7 +57,7 @@ namespace Bennington.ContentTree.Tests.Helpers
 				         			{
 				         				Id = "1",
 										UrlSegment = "segment1",
-										ParentTreeNodeId = Constants.RootNodeId
+										ParentTreeNodeId = ContentTree.RootNodeId
 				         			});
 			mocker.GetMock<IContentTree>().Setup(a => a.GetTreeNodeSummaryByTreeNodeId("2"))
 				.Returns(new TreeNodeSummary()

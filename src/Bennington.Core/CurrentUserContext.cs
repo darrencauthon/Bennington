@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Web;
 
-namespace Bennington.ContentTree.Contexts
+namespace Bennington.Core
 {
     public interface ICurrentUserContext
     {

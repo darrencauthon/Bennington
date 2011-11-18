@@ -5,6 +5,7 @@ using AutoMoq;
 using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Domain.Commands;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Controllers;
+using Bennington.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SimpleCqrs.Commanding;

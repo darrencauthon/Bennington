@@ -68,9 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Blades\RegisterAssemblyWithSimpleCqrsServiceLocatorBlade.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="Contexts\CurrentUserContext.cs" />
-    <Compile Include="Contexts\VersionContext.cs" />
     <Compile Include="Data\DataModelDataContext.cs" />
     <Compile Include="Data\TreeNode.cs" />
     <Compile Include="Denormalizers\TreeNodeDenormalizer.cs" />
@@ -88,7 +85,7 @@
     <Compile Include="Registration\RegisterInterfaceToSingleImplementations.cs" />
     <Compile Include="ContentTree.cs" />
     <Compile Include="Repositories\TreeNodeRepository.cs" />
-    <Compile Include="Contexts\TreeNodeProviderContext.cs" />
+    <Compile Include="TreeNodeProviderContext.cs" />
     <Compile Include="IAmATreeNodeExtensionProvider.cs" />
   </ItemGroup>
   <ItemGroup>

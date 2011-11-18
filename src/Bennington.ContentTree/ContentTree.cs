@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Data;
 using Bennington.ContentTree.Domain.Commands;
 using Bennington.ContentTree.Models;
@@ -8,7 +9,7 @@ using Bennington.ContentTree.Repositories;
 using Bennington.Core.Helpers;
 using SimpleCqrs.Commanding;
 
-namespace Bennington.ContentTree.Contexts
+namespace Bennington.ContentTree
 {
 	public interface IContentTree
 	{
@@ -20,6 +21,7 @@ namespace Bennington.ContentTree.Contexts
 
 	public class ContentTree : IContentTree
 	{
+        public const string RootNodeId = "00000000-0000-0000-0000-000000000000";
 		private readonly ITreeNodeRepository treeNodeRepository;
 		private readonly ITreeNodeProviderContext treeNodeProviderContext;
 		private readonly ICommandBus commandBus;
@@ -38,7 +40,7 @@ namespace Bennington.ContentTree.Contexts
 
 	    public IEnumerable<TreeNodeSummary> GetRootNodes()
 	    {
-	        return GetChildren(Constants.RootNodeId);
+	        return GetChildren(RootNodeId);
 	    }
 
         public string Create(string parentNodeId, string providerTypeAssemblyQualifiedName, string controllerName)
@@ -77,7 +79,7 @@ namespace Bennington.ContentTree.Contexts
 		{
 			var treeNode = treeNodeRepository.GetAll().Where(a => a.Id == nodeId).FirstOrDefault();
 			if (treeNode == null) return null;
-			if (treeNode.Id == Constants.RootNodeId) return null;
+			if (treeNode.Id == RootNodeId) return null;
 			
 			return GetTreeNodeSummaryForTreeNode(treeNode);
 		}

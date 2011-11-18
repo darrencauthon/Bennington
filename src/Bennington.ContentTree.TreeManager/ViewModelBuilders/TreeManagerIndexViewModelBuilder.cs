@@ -22,10 +22,10 @@ namespace Bennington.ContentTree.TreeManager.ViewModelBuilders
         {
             return new TreeManagerIndexViewModel()
                        {
-                           ContentTreeHasNodes = contentTree.GetChildren(Constants.RootNodeId).Any(),
+                           ContentTreeHasNodes = contentTree.GetChildren(ContentTree.RootNodeId).Any(),
                            TreeNodeCreationInputModel = new TreeNodeCreationInputModel()
                                                             {
-                                                                ParentTreeNodeId = Constants.RootNodeId
+                                                                ParentTreeNodeId = ContentTree.RootNodeId
                                                             }
                        };
         }

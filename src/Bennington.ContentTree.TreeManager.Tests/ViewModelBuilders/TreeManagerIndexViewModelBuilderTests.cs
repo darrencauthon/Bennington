@@ -25,13 +25,13 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
         public void Sets_ContentTreeHasNodes_to_true_when_the_root_node_has_children()
         {
             mocker.GetMock<IContentTree>()
-                .Setup(a => a.GetChildren(Constants.RootNodeId))
+                .Setup(a => a.GetChildren(ContentTree.RootNodeId))
                 .Returns(new TreeNodeSummary[]
                              {
                                  new TreeNodeSummary()
                                      {
                                          Id = "root",
-                                         ParentTreeNodeId = Constants.RootNodeId,
+                                         ParentTreeNodeId = ContentTree.RootNodeId,
                                      }, 
                                  new TreeNodeSummary()
                                      {
@@ -50,7 +50,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
         {
             var result = mocker.Resolve<TreeManagerIndexViewModelBuilder>().BuildViewModel();
 
-            Assert.AreEqual(Constants.RootNodeId, result.TreeNodeCreationInputModel.ParentTreeNodeId);
+            Assert.AreEqual(ContentTree.RootNodeId, result.TreeNodeCreationInputModel.ParentTreeNodeId);
         }
     }
 }

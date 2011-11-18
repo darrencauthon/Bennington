@@ -30,18 +30,18 @@ namespace Bennington.ContentTree.Tests.Helpers
 		public void Returns_null_for_404()
 		{
 			var pageId = Guid.NewGuid();
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
+            mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTree.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
 				         			{
-										ParentTreeNodeId = Constants.RootNodeId,
+										ParentTreeNodeId = ContentTree.RootNodeId,
 				         				Id = pageId.ToString(),
 										UrlSegment = "testpage",
 				         			},
 								new TreeNodeSummary()
 				         			{
-										ParentTreeNodeId = Constants.RootNodeId,
+										ParentTreeNodeId = ContentTree.RootNodeId,
 				         				Id = pageId.ToString(),
 										UrlSegment = "testpage2",
 				         			}
@@ -56,18 +56,18 @@ namespace Bennington.ContentTree.Tests.Helpers
 		public void Returns_correct_tree_node_summary_when_passed_a_url_1_deep()
 		{
 			var pageId = Guid.NewGuid();
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTree.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
 				         			{
-										ParentTreeNodeId = Constants.RootNodeId,
+										ParentTreeNodeId = ContentTree.RootNodeId,
 				         				Id = pageId.ToString(),
 										UrlSegment = "testpage",
 				         			},
 								new TreeNodeSummary()
 				         			{
-										ParentTreeNodeId = Constants.RootNodeId,
+										ParentTreeNodeId = ContentTree.RootNodeId,
 				         				Id = pageId.ToString(),
 										UrlSegment = "testpage2",
 				         			}
@@ -82,18 +82,18 @@ namespace Bennington.ContentTree.Tests.Helpers
         public void Returns_correct_tree_node_summary_when_passed_a_url_1_deep_with_non_matching_case()
         {
             var pageId = Guid.NewGuid();
-            mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
+            mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTree.RootNodeId))
                 .Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
 				         			{
-										ParentTreeNodeId = Constants.RootNodeId,
+										ParentTreeNodeId = ContentTree.RootNodeId,
 				         				Id = pageId.ToString(),
 										UrlSegment = "testpage",
 				         			},
 								new TreeNodeSummary()
 				         			{
-										ParentTreeNodeId = Constants.RootNodeId,
+										ParentTreeNodeId = ContentTree.RootNodeId,
 				         				Id = pageId.ToString(),
 										UrlSegment = "testpage2",
 				         			}
@@ -109,19 +109,19 @@ namespace Bennington.ContentTree.Tests.Helpers
 		{
 			var page1Id = "page1Id";
 			var page2Id = "page2Id";
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTree.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
 				         			{
-										ParentTreeNodeId = Constants.RootNodeId,
+										ParentTreeNodeId = ContentTree.RootNodeId,
 				         				Id = page1Id,
 										UrlSegment = "testpage",
 										MayHaveChildNodes = true
 				         			},
 								new TreeNodeSummary()
 				         			{
-										ParentTreeNodeId = Constants.RootNodeId,
+										ParentTreeNodeId = ContentTree.RootNodeId,
 				         				Id = Guid.NewGuid().ToString(),
 										UrlSegment = "testSubPage",
 										MayHaveChildNodes = true
@@ -155,19 +155,19 @@ namespace Bennington.ContentTree.Tests.Helpers
 		{
 			var page1Id = "page1Id";
 			var page2Id = "page2Id";
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTree.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
 				         			{
-										ParentTreeNodeId = Constants.RootNodeId,
+										ParentTreeNodeId = ContentTree.RootNodeId,
 				         				Id = page1Id,
 										UrlSegment = "testpage",
 										MayHaveChildNodes = true
 				         			},
 								new TreeNodeSummary()
 				         			{
-										ParentTreeNodeId = Constants.RootNodeId,
+										ParentTreeNodeId = ContentTree.RootNodeId,
 				         				Id = Guid.NewGuid().ToString(),
 										UrlSegment = "testSubPage",
 										MayHaveChildNodes = true
@@ -201,19 +201,19 @@ namespace Bennington.ContentTree.Tests.Helpers
 		{
 			var page1Id = "page1Id";
 			var page2Id = "page2Id";
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTree.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
 				         			{
-										ParentTreeNodeId = Constants.RootNodeId,
+										ParentTreeNodeId = ContentTree.RootNodeId,
 				         				Id = page1Id,
 										UrlSegment = "testpage",
 										MayHaveChildNodes = true
 				         			},
 								new TreeNodeSummary()
 				         			{
-										ParentTreeNodeId = Constants.RootNodeId,
+										ParentTreeNodeId = ContentTree.RootNodeId,
 				         				Id = Guid.NewGuid().ToString(),
 										UrlSegment = "testSubPage",
 										MayHaveChildNodes = false

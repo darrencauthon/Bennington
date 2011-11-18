@@ -39,7 +39,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 
         public override string Controller { get; set; }
 
-        public override IEnumerable<ContentTree.Models.Action> Actions
+        public override IEnumerable<Action> Actions
         {
             get
             {

@@ -18,7 +18,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Routing
         {
             mocker = new AutoMoqer();
 
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
+            mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTree.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -161,7 +161,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Routing
 		{
 			var url = "/rootsegment1";
 
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
+            mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTree.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         				{
 				         					new TreeNodeSummary()

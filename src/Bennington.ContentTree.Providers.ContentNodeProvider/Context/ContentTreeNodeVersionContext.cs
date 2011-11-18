@@ -3,6 +3,7 @@ using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Mappers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Repositories;
+using Bennington.Core;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Context
 {

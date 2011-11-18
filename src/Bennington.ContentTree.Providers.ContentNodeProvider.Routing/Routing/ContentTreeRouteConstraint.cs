@@ -28,7 +28,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Routing
 
 			var treeNodeSummary = new TreeNodeSummary()
 			                                  	{
-			                                  		Id = Constants.RootNodeId,
+                                                    Id = ContentTree.RootNodeId,
 			                                  	};
 			foreach (var urlSegment in urlSegments)
 			{
