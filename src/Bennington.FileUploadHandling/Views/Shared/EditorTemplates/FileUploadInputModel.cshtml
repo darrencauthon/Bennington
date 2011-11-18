@@ -1,0 +1,34 @@
+﻿@using System.Web.Mvc.Html
+@using Bennington.FileUploadHandling.Context
+@using Bennington.FileUploadHandling.Models
+@using MvcTurbine.ComponentModel
+@using System.Configuration;
+@model FileUploadInputModel
+
+@Html.HiddenFor(a => a.Id)
+@Html.HiddenFor(a => a.Filename)
+@Html.HiddenFor(a => a.ContainerName)
+
+@{
+    var fileUploadContext = ServiceLocatorManager.Current.Resolve<IFileUploadContext>();
+    var urlRelativeToFileUploadRoot = Model == null ? null : fileUploadContext.GetUrlRelativeToUploadRoot(ViewContext.ViewData.ModelMetadata.ContainerType.FullName, ViewContext.ViewData.ModelMetadata.PropertyName, Model.Id);
+    var fileInfo = Model == null ? null : fileUploadContext.GetFileFromId(ViewContext.ViewData.ModelMetadata.ContainerType.FullName, ViewContext.ViewData.ModelMetadata.PropertyName, Model.Id);
+    var resourceUrl = fileUploadContext.GetUrlForFileUploadFolder();
+}
+
+@if (fileInfo != null)
+{
+    if (string.IsNullOrEmpty(resourceUrl))
+    {
+        <div class="FileUploadInformation">File: @fileInfo.Name</div>
+    }
+    else
+    {
+        <div class="FileUploadInformation">Current file: <a href="@Html.Raw(string.Format("{0}{1}/{2}/{3}/{4}", resourceUrl, ViewData.ModelMetadata.ContainerType.Name, Model.Id, ViewData.ModelMetadata.PropertyName, fileInfo.Name))" target="_blank">@fileInfo.Name</a></div>
+    }
+}
+
+<label>@ViewContext.ViewData.ModelMetadata.DisplayName</label>
+
+<input type="file" name="@(ViewData.ModelMetadata.PropertyName + ".FileUpload")" id="@(ViewData.ModelMetadata.PropertyName + "_FileUpload")" />
+<input type="hidden" name="@(ViewData.ModelMetadata.PropertyName + ".UrlRelativeToFileUploadRoot")" id="@(ViewData.ModelMetadata.PropertyName + "UrlRelativeToFileUploadRoot")" value="@urlRelativeToFileUploadRoot" />
