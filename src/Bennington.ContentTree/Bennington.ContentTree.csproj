@@ -77,7 +77,7 @@
     <Compile Include="Helpers\GetUrlOfFrontSideWebsite.cs" />
     <Compile Include="Helpers\TreeNodeIdToUrl.cs" />
     <Compile Include="Helpers\UrlToTreeNodeSummaryMapper.cs" />
-    <Compile Include="IContentTreeNodeProviderFactory.cs" />
+    <Compile Include="Models\IContentTreeNodeProviderFactory.cs" />
     <Compile Include="Models\Action.cs" />
     <Compile Include="Models\IContentTreeNode.cs" />
     <Compile Include="Models\ContentTreeNode.cs" />
@@ -86,7 +86,7 @@
     <Compile Include="ContentTree.cs" />
     <Compile Include="Repositories\TreeNodeRepository.cs" />
     <Compile Include="ContentTreeNodeProviderContext.cs" />
-    <Compile Include="IContentTreeNodeProvider.cs" />
+    <Compile Include="Models\IContentTreeNodeProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
