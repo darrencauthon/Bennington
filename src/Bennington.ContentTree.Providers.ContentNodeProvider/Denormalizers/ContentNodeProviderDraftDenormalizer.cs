@@ -90,7 +90,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(PageUrlSegmentSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
-			var treeNodeSummary = contentTree.GetTreeNodeSummaryByTreeNodeId(contentNodeProviderDraft.TreeNodeId);
+			var treeNodeSummary = contentTree.GetById(contentNodeProviderDraft.TreeNodeId);
 			
 			contentNodeProviderDraft.UrlSegment = domainEvent.UrlSegment;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);

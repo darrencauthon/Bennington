@@ -93,7 +93,7 @@
     <Compile Include="Denormalizers\ContentNodeProviderDraftDenormalizer.cs" />
     <Compile Include="Denormalizers\ContentNodeProviderPublishDenormalizer.cs" />
     <Compile Include="Denormalizers\ContentRoutingDenormalizer.cs" />
-    <Compile Include="EngineTreeNodeExtensionProviderFactory.cs" />
+    <Compile Include="EngineTreeNodeProviderFactory.cs" />
     <Compile Include="EngineTreeNodeProvider.cs" />
     <Compile Include="Helpers\ContentTreeNodeFileUploadPersister.cs" />
     <Compile Include="Helpers\GetPathToContentTreeNodeProviderFileUploads.cs" />

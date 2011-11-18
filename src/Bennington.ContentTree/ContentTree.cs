@@ -12,7 +12,7 @@ namespace Bennington.ContentTree
 {
 	public interface IContentTree
 	{
-		ContentTreeNode GetTreeNodeSummaryByTreeNodeId(string nodeId);
+		ContentTreeNode GetById(string nodeId);
 		IEnumerable<ContentTreeNode> GetChildren(string parentNodeId);
 	    IEnumerable<ContentTreeNode> GetRootNodes();
 		string Create(string parentNodeId, string providerTypeAssemblyQualifiedName, string controllerName);
@@ -44,7 +44,7 @@ namespace Bennington.ContentTree
 
         public string Create(string parentNodeId, string providerTypeAssemblyQualifiedName, string controllerName)
 		{
-			ThrowExceptionIfTheProviderTypeDoesNotImplementIAmATreeNodeExtensionProvider(Type.GetType(providerTypeAssemblyQualifiedName));
+			ThrowExceptionIfTheProviderTypeDoesNotImplementIContentTreeNodeProvider(Type.GetType(providerTypeAssemblyQualifiedName));
 
 			var guid = guidGetter.GetGuid();
 			commandBus.Send(new CreateTreeNodeCommand()
@@ -59,7 +59,7 @@ namespace Bennington.ContentTree
 			return guid.ToString();
 		}
 
-		private static void ThrowExceptionIfTheProviderTypeDoesNotImplementIAmATreeNodeExtensionProvider(Type providerType)
+		private static void ThrowExceptionIfTheProviderTypeDoesNotImplementIContentTreeNodeProvider(Type providerType)
 		{
 			if (!typeof(IContentTreeNodeProvider).IsAssignableFrom(providerType))
 				throw new Exception(string.Format("Provider type must implement {0}", typeof(IContentTreeNodeProvider).FullName));
@@ -74,7 +74,7 @@ namespace Bennington.ContentTree
 			return childNodes.Where(a => a != null);
 		}
 
-		public ContentTreeNode GetTreeNodeSummaryByTreeNodeId(string nodeId)
+		public ContentTreeNode GetById(string nodeId)
 		{
 			var treeNode = treeNodeRepository.GetAll().Where(a => a.Id == nodeId).FirstOrDefault();
 			if (treeNode == null) return null;

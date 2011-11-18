@@ -8,12 +8,12 @@ using Bennington.Core;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider
 {
-    public class EngineTreeNodeExtensionProviderFactory : IContentTreeNodeProviderFactory
+    public class EngineTreeNodeProviderFactory : IContentTreeNodeProviderFactory
     {
         private readonly IContentTypeRegistry contentTypeRegistry;
         private readonly IServiceLocatorWrapper serviceLocator;
 
-        public EngineTreeNodeExtensionProviderFactory(IContentTypeRegistry contentTypeRegistry,
+        public EngineTreeNodeProviderFactory(IContentTypeRegistry contentTypeRegistry,
                                                       IServiceLocatorWrapper serviceLocator)
         {
             this.serviceLocator = serviceLocator;

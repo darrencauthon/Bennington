@@ -10,7 +10,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Registration
     {
         public void Register(IServiceLocator locator)
         {
-            locator.Register<IContentTreeNodeProviderFactory, EngineTreeNodeExtensionProviderFactory>(Guid.NewGuid().ToString());
+            locator.Register<IContentTreeNodeProviderFactory, EngineTreeNodeProviderFactory>(Guid.NewGuid().ToString());
         }
     }
 }

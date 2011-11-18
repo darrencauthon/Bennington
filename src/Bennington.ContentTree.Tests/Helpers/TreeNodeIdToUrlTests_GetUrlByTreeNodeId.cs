@@ -19,7 +19,7 @@ namespace Bennington.ContentTree.Tests.Helpers
 		[TestMethod]
 		public void Returns_null_when_id_is_not_found()
 		{
-			mocker.GetMock<IContentTree>().Setup(a => a.GetTreeNodeSummaryByTreeNodeId("1"))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetById("1"))
 				.Returns(new ContentTreeNode()
 				{
 					Id = "1",
@@ -35,7 +35,7 @@ namespace Bennington.ContentTree.Tests.Helpers
 		[TestMethod]
 		public void Returns_correct_url_for_first_level_node()
 		{
-			mocker.GetMock<IContentTree>().Setup(a => a.GetTreeNodeSummaryByTreeNodeId("1"))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetById("1"))
 				.Returns(new ContentTreeNode()
 				{
 					Id = "1",
@@ -51,14 +51,14 @@ namespace Bennington.ContentTree.Tests.Helpers
 		[TestMethod]
 		public void Returns_correct_url_for_second_level_node()
 		{
-			mocker.GetMock<IContentTree>().Setup(a => a.GetTreeNodeSummaryByTreeNodeId("1"))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetById("1"))
 				.Returns(new ContentTreeNode()
 				         			{
 				         				Id = "1",
 										UrlSegment = "segment1",
 										ParentTreeNodeId = ContentTree.RootNodeId
 				         			});
-			mocker.GetMock<IContentTree>().Setup(a => a.GetTreeNodeSummaryByTreeNodeId("2"))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetById("2"))
 				.Returns(new ContentTreeNode()
 				         			{
 				         				Id = "2",

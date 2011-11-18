@@ -35,7 +35,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.HttpModules
 							.Where(a => a.Id == treeNodeSummary.Id).FirstOrDefault();
 				if (section == null) return;
 
-				var childPage = serviceLocator.Resolve<IContentTree>().GetTreeNodeSummaryByTreeNodeId(section.DefaultTreeNodeId);
+				var childPage = serviceLocator.Resolve<IContentTree>().GetById(section.DefaultTreeNodeId);
 				
 				if (childPage != null)
 					httpApplication.Response.Redirect(serviceLocator.Resolve<ITreeNodeIdToUrl>().GetUrlByTreeNodeId(childPage.Id));

@@ -37,7 +37,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests
                                                                                   }),     
                             });
 
-            var result = mocker.Resolve<EngineTreeNodeExtensionProviderFactory>().GetTreeNodeExtensionProviders();
+            var result = mocker.Resolve<EngineTreeNodeProviderFactory>().GetTreeNodeExtensionProviders();
 
             Assert.AreEqual(1, result.Count());
             Assert.AreEqual("Home", result.First().Controller);
@@ -60,7 +60,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests
                                                                                   }),     
                             });
 
-            var result = mocker.Resolve<EngineTreeNodeExtensionProviderFactory>().GetTreeNodeExtensionProviders();
+            var result = mocker.Resolve<EngineTreeNodeProviderFactory>().GetTreeNodeExtensionProviders();
 
             Assert.AreEqual(1, result.Count());
             Assert.AreEqual("Homepage", result.First().Name);
