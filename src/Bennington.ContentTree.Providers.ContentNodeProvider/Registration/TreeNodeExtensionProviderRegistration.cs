@@ -7,7 +7,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Registration
 		public void Register(IServiceLocator locator)
 		{
 			var typeName = typeof(ContentNodeProvider).Name;
-			locator.Register<IAmATreeNodeExtensionProvider, ContentNodeProvider>(typeName);
+			locator.Register<IContentTreeNodeProvider, ContentNodeProvider>(typeName);
 		}
 	}
 }

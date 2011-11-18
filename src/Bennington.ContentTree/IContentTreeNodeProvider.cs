@@ -4,7 +4,7 @@ using Bennington.ContentTree.Models;
 
 namespace Bennington.ContentTree
 {
-	public interface IAmATreeNodeExtensionProvider
+	public interface IContentTreeNodeProvider
 	{
 		IQueryable<IContentTreeNode> GetAll();
 		string Name { get; }

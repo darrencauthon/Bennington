@@ -26,8 +26,8 @@ namespace Bennington.ContentTree.Tests.Contexts
         public void Returns_tree_node_extension_providers_from_factory()
         {
             mocker.GetMock<IServiceLocatorWrapper>()
-                .Setup(a => a.ResolveServices<IAmATreeNodeExtensionProvider>())
-                .Returns(new List<IAmATreeNodeExtensionProvider>());
+                .Setup(a => a.ResolveServices<IContentTreeNodeProvider>())
+                .Returns(new List<IContentTreeNodeProvider>());
             mocker.GetMock<IServiceLocatorWrapper>()
                 .Setup(a => a.ResolveServices<IAmATreeNodeExtensionProviderFactory>())
                 .Returns(new List<IAmATreeNodeExtensionProviderFactory>()
@@ -43,9 +43,9 @@ namespace Bennington.ContentTree.Tests.Contexts
 
         public class FakeTreeNodeExtensionProviderFactory : IAmATreeNodeExtensionProviderFactory
         {
-            public IAmATreeNodeExtensionProvider[] GetTreeNodeExtensionProviders()
+            public IContentTreeNodeProvider[] GetTreeNodeExtensionProviders()
             {
-                return new IAmATreeNodeExtensionProvider[]
+                return new IContentTreeNodeProvider[]
                            {
                                 new FakeNodeProvider()  
                             };
@@ -53,7 +53,7 @@ namespace Bennington.ContentTree.Tests.Contexts
         }
     }
 
-    public class FakeNodeProvider : IAmATreeNodeExtensionProvider
+    public class FakeNodeProvider : IContentTreeNodeProvider
     {
         public IQueryable<IContentTreeNode> GetAll()
         {

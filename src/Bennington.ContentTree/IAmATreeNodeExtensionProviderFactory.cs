@@ -7,6 +7,6 @@ namespace Bennington.ContentTree
 {
     public interface IAmATreeNodeExtensionProviderFactory
     {
-        IAmATreeNodeExtensionProvider[] GetTreeNodeExtensionProviders();
+        IContentTreeNodeProvider[] GetTreeNodeExtensionProviders();
     }
 }

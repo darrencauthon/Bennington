@@ -27,9 +27,9 @@ namespace Bennington.ContentTree.TreeManager.Tests.Routing
 		public void Registers_a_route_to_the_providers_ControllerToUseForCreate_with_correct_url()
 		{
 			mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetAllTreeNodeProviders())
-				.Returns(new IAmATreeNodeExtensionProvider[]
+				.Returns(new IContentTreeNodeProvider[]
 				         	{
-				         		new FakeTreeNodeExtensionProvider()
+				         		new FakeTreeNodeProvider()
 							});
 			var routes = new RouteCollection();
 			var httpContext = new Moq.Mock<HttpContextBase>();
@@ -48,9 +48,9 @@ namespace Bennington.ContentTree.TreeManager.Tests.Routing
 		public void Registers_a_route_to_the_providers_ControllerToUseForModification_with_correct_url()
 		{
 			mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetAllTreeNodeProviders())
-				.Returns(new IAmATreeNodeExtensionProvider[]
+				.Returns(new IContentTreeNodeProvider[]
 				         	{
-				         		new FakeTreeNodeExtensionProvider()
+				         		new FakeTreeNodeProvider()
 							});
 			var routes = new RouteCollection();
 			var httpContext = new Moq.Mock<HttpContextBase>();
@@ -69,9 +69,9 @@ namespace Bennington.ContentTree.TreeManager.Tests.Routing
 		public void Registers_a_route_to_the_providers_ControllerToUseForModification_with_correct_default_values()
 		{
 			mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetAllTreeNodeProviders())
-				.Returns(new IAmATreeNodeExtensionProvider[]
+				.Returns(new IContentTreeNodeProvider[]
 				         	{
-				         		new FakeTreeNodeExtensionProvider()
+				         		new FakeTreeNodeProvider()
 							});
 			var routes = new RouteCollection();
 			var httpContext = new Moq.Mock<HttpContextBase>();
@@ -91,9 +91,9 @@ namespace Bennington.ContentTree.TreeManager.Tests.Routing
 		public void Registers_a_route_to_the_providers_ControllerToUseForCreation_with_correct_default_values()
 		{
 			mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetAllTreeNodeProviders())
-				.Returns(new IAmATreeNodeExtensionProvider[]
+				.Returns(new IContentTreeNodeProvider[]
 				         	{
-				         		new FakeTreeNodeExtensionProvider()
+				         		new FakeTreeNodeProvider()
 							});
 			var routes = new RouteCollection();
 			var httpContext = new Moq.Mock<HttpContextBase>();
@@ -109,7 +109,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.Routing
 			Assert.AreEqual(1, query.Count());
 		}
 
-		public class FakeTreeNodeExtensionProvider : IAmATreeNodeExtensionProvider
+		public class FakeTreeNodeProvider : IContentTreeNodeProvider
 		{
 			public IQueryable<IContentTreeNode> GetAll()
 			{

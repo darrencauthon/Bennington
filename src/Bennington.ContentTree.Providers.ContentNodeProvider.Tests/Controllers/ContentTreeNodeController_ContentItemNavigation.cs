@@ -39,7 +39,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
             																}, 
 																	}.AsQueryable());
 			mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("providertype"))
-				.Returns(new FakeIAmATreeNodeExtensionProvider());
+				.Returns(new FakeIamATreeNodeProvider());
 
 			var result = mocker.Resolve<ContentTreeNodeController>().ContentItemNavigation("1");
 			var model = (ContentItemNavigationViewModel) ((ViewResult) result).ViewData.Model;
@@ -62,7 +62,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
             																}, 
 																	}.AsQueryable());
 			mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("providertype"))
-				.Returns(new FakeIAmATreeNodeExtensionProvider());
+				.Returns(new FakeIamATreeNodeProvider());
 
 			var result = mocker.Resolve<ContentTreeNodeController>().ContentItemNavigation("1");
 			var model = (ContentItemNavigationViewModel)((ViewResult)result).ViewData.Model;
@@ -70,7 +70,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			Assert.AreEqual("1", model.TreeNodeId);
 		}
 
-		public class FakeIAmATreeNodeExtensionProvider : IAmATreeNodeExtensionProvider
+		public class FakeIamATreeNodeProvider : IContentTreeNodeProvider
 		{
 			public IQueryable<IContentTreeNode> GetAll()
 			{
@@ -160,7 +160,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
             																}, 
 																	}.AsQueryable());
 			mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("providertype"))
-				.Returns(new FakeIAmATreeNodeExtensionProvider());
+				.Returns(new FakeIamATreeNodeProvider());
 
 			var result = mocker.Resolve<ContentTreeNodeController>().ContentItemNavigation("1");
 
@@ -179,7 +179,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
             																}, 
 																	}.AsQueryable());
 			mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("providertype"))
-				.Returns(new FakeIAmATreeNodeExtensionProvider());
+				.Returns(new FakeIamATreeNodeProvider());
 	
 			var result = mocker.Resolve<ContentTreeNodeController>().ContentItemNavigation("1");
 
@@ -207,7 +207,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
             																}, 
 																	}.AsQueryable());
             mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("providertype"))
-                .Returns(new FakeIAmATreeNodeExtensionProvider());
+                .Returns(new FakeIamATreeNodeProvider());
 
             try
             {

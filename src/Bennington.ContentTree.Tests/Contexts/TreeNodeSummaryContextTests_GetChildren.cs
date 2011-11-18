@@ -26,7 +26,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 		[TestMethod]
 		public void Returns_1_result_with_ControllerToUseForCreation_property_set_from_provider()
 		{
-			var fakeTreeNodeExtensionProvider = new Mock<IAmATreeNodeExtensionProvider>();
+			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
 				.Returns(new FakeTreeNode[]
 				         	{
@@ -77,7 +77,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 		[TestMethod]
 		public void Returns_1_result_with_ActionToUseForCreation_property_set_from_provider()
 		{
-			var fakeTreeNodeExtensionProvider = new Mock<IAmATreeNodeExtensionProvider>();
+			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
 				.Returns(new FakeTreeNode[]
 				         	{
@@ -128,7 +128,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 		[TestMethod]
 		public void Returns_1_result_with_ActionToUseForModification_property_set_from_provider()
 		{
-			var fakeTreeNodeExtensionProvider = new Mock<IAmATreeNodeExtensionProvider>();
+			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
 				.Returns(new FakeTreeNode[]
 				         	{
@@ -179,7 +179,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 		[TestMethod]
 		public void Returns_1_result_with_ControllerToUseForModification_property_set_from_provider()
 		{
-			var fakeTreeNodeExtensionProvider = new Mock<IAmATreeNodeExtensionProvider>();
+			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
 				.Returns(new FakeTreeNode[]
 				         	{
@@ -230,7 +230,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 		[TestMethod]
 		public void Returns_1_result_with_HasChildren_property_set_to_true_when_the_node_has_children()
 		{
-			var fakeTreeNodeExtensionProvider = new Mock<IAmATreeNodeExtensionProvider>();
+			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
 				.Returns(new FakeTreeNode[]
 				         	{
@@ -280,7 +280,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 		[TestMethod]
 		public void Returns_1_result_with_correct_id_set_from_node_found_by_provider()
 		{
-			var fakeTreeNodeExtensionProvider = new Mock<IAmATreeNodeExtensionProvider>();
+			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
 				.Returns(new FakeTreeNode[]
 				         	{
@@ -330,7 +330,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 		[TestMethod]
 		public void Returns_1_result_with_correct_Hidden_set_from_node_found_by_provider()
 		{
-			var fakeTreeNodeExtensionProvider = new Mock<IAmATreeNodeExtensionProvider>();
+			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
 				.Returns(new FakeTreeNode[]
 				         	{
@@ -381,7 +381,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 		[TestMethod]
 		public void Returns_1_result_with_correct_name_set_from_node_found_by_provider()
 		{
-			var fakeTreeNodeExtensionProvider = new Mock<IAmATreeNodeExtensionProvider>();
+			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
 				.Returns(new FakeTreeNode[]
 				         	{
@@ -431,7 +431,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 		[TestMethod]
 		public void Returns_2_results_when_the_specified_parent_node_has_2_child_nodes()
 		{
-			var fakeTreeNodeExtensionProvider = new Mock<IAmATreeNodeExtensionProvider>();
+			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
 				.Returns(new FakeTreeNode[]
 				         	{
@@ -491,7 +491,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 		[TestMethod]
 		public void Returns_1_result_when_the_specified_parent_node_has_2_child_nodes_but_only_1_is_found_by_provider()
 		{
-			var fakeTreeNodeExtensionProvider = new Mock<IAmATreeNodeExtensionProvider>();
+			var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
 			fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
 				.Returns(new FakeTreeNode[]
 				         	{
@@ -528,7 +528,7 @@ namespace Bennington.ContentTree.Tests.Contexts
         [TestMethod]
         public void Returns_1_result_with_LastModifyBy_property_set_from_provider()
         {
-            var fakeTreeNodeExtensionProvider = new Mock<IAmATreeNodeExtensionProvider>();
+            var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
             fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
                 .Returns(new FakeTreeNode[]
 				         	{
@@ -581,7 +581,7 @@ namespace Bennington.ContentTree.Tests.Contexts
         [TestMethod]
         public void Returns_1_result_with_LastModifyDate_property_set_from_provider()
         {
-            var fakeTreeNodeExtensionProvider = new Mock<IAmATreeNodeExtensionProvider>();
+            var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
             fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
                 .Returns(new FakeTreeNode[]
 				         	{
@@ -634,7 +634,7 @@ namespace Bennington.ContentTree.Tests.Contexts
         [TestMethod]
         public void Returns_1_result_with_Active_property_set_from_provider()
         {
-            var fakeTreeNodeExtensionProvider = new Mock<IAmATreeNodeExtensionProvider>();
+            var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
             fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
                 .Returns(new FakeTreeNode[]
 				         	{

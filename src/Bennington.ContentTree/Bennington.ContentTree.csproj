@@ -86,7 +86,7 @@
     <Compile Include="ContentTree.cs" />
     <Compile Include="Repositories\TreeNodeRepository.cs" />
     <Compile Include="TreeNodeProviderContext.cs" />
-    <Compile Include="IAmATreeNodeExtensionProvider.cs" />
+    <Compile Include="IContentTreeNodeProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

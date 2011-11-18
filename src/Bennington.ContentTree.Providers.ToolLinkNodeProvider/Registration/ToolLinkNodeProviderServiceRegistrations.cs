@@ -6,7 +6,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Registration
 	{
 		public void Register(IServiceLocator locator)
 		{
-			locator.Register<IAmATreeNodeExtensionProvider, ToolLinkNodeProvider>(typeof(ToolLinkNodeProvider).AssemblyQualifiedName);
+			locator.Register<IContentTreeNodeProvider, ToolLinkNodeProvider>(typeof(ToolLinkNodeProvider).AssemblyQualifiedName);
 		}
 	}
 }

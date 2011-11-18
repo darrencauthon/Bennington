@@ -39,7 +39,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	});
 
 			var treeNodeSummaryContext = mocker.Resolve<ContentTree>();
-			var result = treeNodeSummaryContext.Create("parentNodeId", typeof(FakeTreeNodeExtensionProvider).AssemblyQualifiedName, null);
+			var result = treeNodeSummaryContext.Create("parentNodeId", typeof(FakeTreeNodeProvider).AssemblyQualifiedName, null);
 
 			Assert.AreEqual(guid.ToString(), result);
 		}
@@ -48,7 +48,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 		public void Does_not_throw_exception_when_passing_type_that_does_implements_IAmATreeNodeExtensionProvider()
 		{
 			var treeNodeSummaryContext = mocker.Resolve<ContentTree>();
-			treeNodeSummaryContext.Create(null, typeof(FakeTreeNodeExtensionProvider).AssemblyQualifiedName, null);
+			treeNodeSummaryContext.Create(null, typeof(FakeTreeNodeProvider).AssemblyQualifiedName, null);
 		}
 
 		[TestMethod]
@@ -68,7 +68,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 			throw new Exception("Should throw excpetion above");
 		}
 
-		public class FakeProvider : IAmATreeNodeExtensionProvider
+		public class FakeProvider : IContentTreeNodeProvider
 		{
 			public IQueryable<IContentTreeNode> GetAll()
 			{
@@ -148,7 +148,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 																									&& b.AggregateRootId == guid)), Times.Once());
 		}
 
-		private class FakeTreeNodeExtensionProvider : IAmATreeNodeExtensionProvider
+		private class FakeTreeNodeProvider : IContentTreeNodeProvider
 		{
 			public IQueryable<IContentTreeNode> GetAll()
 			{

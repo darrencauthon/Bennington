@@ -7,7 +7,7 @@ using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider
 {
-	public class ToolLinkNodeProvider : IAmATreeNodeExtensionProvider
+	public class ToolLinkNodeProvider : IContentTreeNodeProvider
 	{
 		private readonly IToolLinkContext toolLinkContext;
 

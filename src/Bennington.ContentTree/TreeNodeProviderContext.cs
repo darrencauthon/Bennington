@@ -6,8 +6,8 @@ namespace Bennington.ContentTree.Contexts
 {
 	public interface ITreeNodeProviderContext
 	{
-		IAmATreeNodeExtensionProvider GetProviderByTypeName(string providerTypeName);
-		IEnumerable<IAmATreeNodeExtensionProvider> GetAllTreeNodeProviders();
+		IContentTreeNodeProvider GetProviderByTypeName(string providerTypeName);
+		IEnumerable<IContentTreeNodeProvider> GetAllTreeNodeProviders();
 	}
 
 	public class TreeNodeProviderContext : ITreeNodeProviderContext
@@ -19,10 +19,10 @@ namespace Bennington.ContentTree.Contexts
 			this.serviceLocator = serviceLocator;
 		}
 
-		public IEnumerable<IAmATreeNodeExtensionProvider> GetAllTreeNodeProviders()
+		public IEnumerable<IContentTreeNodeProvider> GetAllTreeNodeProviders()
 		{
-		    var treeNodeExtensionProviders = new List<IAmATreeNodeExtensionProvider>();
-            treeNodeExtensionProviders.AddRange(serviceLocator.ResolveServices<IAmATreeNodeExtensionProvider>());
+		    var treeNodeExtensionProviders = new List<IContentTreeNodeProvider>();
+            treeNodeExtensionProviders.AddRange(serviceLocator.ResolveServices<IContentTreeNodeProvider>());
 		    foreach (var service in serviceLocator.ResolveServices<IAmATreeNodeExtensionProviderFactory>())
 		    {
 		        treeNodeExtensionProviders.AddRange(service.GetTreeNodeExtensionProviders());
@@ -31,7 +31,7 @@ namespace Bennington.ContentTree.Contexts
 			return treeNodeExtensionProviders;
 		}
 
-		public IAmATreeNodeExtensionProvider GetProviderByTypeName(string providerTypeName)
+		public IContentTreeNodeProvider GetProviderByTypeName(string providerTypeName)
 		{
 		    var allProviders = GetAllTreeNodeProviders().Where(a => a.GetType().AssemblyQualifiedName.StartsWith(providerTypeName)).ToArray();
             return allProviders.FirstOrDefault();

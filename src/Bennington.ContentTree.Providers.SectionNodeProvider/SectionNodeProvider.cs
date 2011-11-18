@@ -10,7 +10,7 @@ using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Providers.SectionNodeProvider
 {
-	public class SectionNodeProvider : IAmATreeNodeExtensionProvider
+	public class SectionNodeProvider : IContentTreeNodeProvider
 	{
 		private readonly IContentTreeSectionNodeRepository contentTreeSectionNodeRepository;
 		private readonly IVersionContext versionContext;

@@ -8,7 +8,7 @@ using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider
 {
-	public class ContentNodeProvider : IAmATreeNodeExtensionProvider
+	public class ContentNodeProvider : IContentTreeNodeProvider
 	{
 		private readonly IContentTreeNodeVersionContext contentTreeNodeVersionContext;
 

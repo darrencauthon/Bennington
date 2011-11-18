@@ -17,7 +17,7 @@ using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Controller
 {
-	public abstract class EngineController : System.Web.Mvc.Controller, IAmATreeNodeExtensionProvider, IRouteRegistrator, IRouteConstraint
+	public abstract class EngineController : System.Web.Mvc.Controller, IContentTreeNodeProvider, IRouteRegistrator, IRouteConstraint
     {
 		private readonly IContentTreeNodeVersionContext contentTreeNodeVersionContext;
 		private readonly ITreeNodeRepository treeNodeRepository;

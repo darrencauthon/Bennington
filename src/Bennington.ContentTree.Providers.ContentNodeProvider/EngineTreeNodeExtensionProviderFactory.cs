@@ -20,9 +20,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
             this.contentTypeRegistry = contentTypeRegistry;
         }
 
-        public IAmATreeNodeExtensionProvider[] GetTreeNodeExtensionProviders()
+        public IContentTreeNodeProvider[] GetTreeNodeExtensionProviders()
         {
-            var list = new List<IAmATreeNodeExtensionProvider>();
+            var list = new List<IContentTreeNodeProvider>();
             foreach (var item in contentTypeRegistry.GetContentTypes())
             {
                 var engineTreeNodeProvider = serviceLocator.Resolve<EngineTreeNodeProvider>();

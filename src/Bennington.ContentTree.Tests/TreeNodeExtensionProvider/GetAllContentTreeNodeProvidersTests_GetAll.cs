@@ -28,20 +28,20 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 		    mocker.GetMock<IServiceLocatorWrapper>()
 		        .Setup(a => a.ResolveServices<IAmATreeNodeExtensionProviderFactory>())
 		        .Returns(new List<IAmATreeNodeExtensionProviderFactory>());
-			mocker.GetMock<IServiceLocatorWrapper>().Setup(a => a.ResolveServices<IAmATreeNodeExtensionProvider>())
-				.Returns(new List<IAmATreeNodeExtensionProvider>()
+			mocker.GetMock<IServiceLocatorWrapper>().Setup(a => a.ResolveServices<IContentTreeNodeProvider>())
+				.Returns(new List<IContentTreeNodeProvider>()
 				         	{
-								new IamATreeNodeExtensionProvider1(),
-								new IamATreeNodeExtensionProvider2(),
+								new IamATreeNodeProvider1(),
+								new IamATreeNodeProvider2(),
 				         	});
 
 			var getAllContentTreeNodeProviders = mocker.Resolve<TreeNodeProviderContext>();
-			var result = getAllContentTreeNodeProviders.GetProviderByTypeName(typeof (IamATreeNodeExtensionProvider2).AssemblyQualifiedName);
+			var result = getAllContentTreeNodeProviders.GetProviderByTypeName(typeof (IamATreeNodeProvider2).AssemblyQualifiedName);
 
-			Assert.AreEqual("IamATreeNodeExtensionProvider2", result.Name);
+			Assert.AreEqual("IamATreeNodeProvider2", result.Name);
 		}
 
-		private class IamATreeNodeExtensionProvider2 : IAmATreeNodeExtensionProvider
+		private class IamATreeNodeProvider2 : IContentTreeNodeProvider
 		{
 			public IQueryable<IContentTreeNode> GetAll()
 			{
@@ -50,7 +50,7 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 
 			public string Name
 			{
-				get { return "IamATreeNodeExtensionProvider2"; }
+				get { return "IamATreeNodeProvider2"; }
 			}
 
 			public string ControllerToUseForProcessing
@@ -117,7 +117,7 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 			}
 		}
 
-		private class IamATreeNodeExtensionProvider1 : IAmATreeNodeExtensionProvider
+		private class IamATreeNodeProvider1 : IContentTreeNodeProvider
 		{
 			public IQueryable<IContentTreeNode> GetAll()
 			{
@@ -126,7 +126,7 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 
 			public string Name
 			{
-				get { return "IamATreeNodeExtensionProvider1"; }
+				get { return "IamATreeNodeProvider1"; }
 			}
 
 			public string ControllerToUseForProcessing

@@ -62,8 +62,8 @@ namespace Bennington.ContentTree
 
 		private static void ThrowExceptionIfTheProviderTypeDoesNotImplementIAmATreeNodeExtensionProvider(Type providerType)
 		{
-			if (!typeof(IAmATreeNodeExtensionProvider).IsAssignableFrom(providerType))
-				throw new Exception(string.Format("Provider type must implement {0}", typeof(IAmATreeNodeExtensionProvider).FullName));
+			if (!typeof(IContentTreeNodeProvider).IsAssignableFrom(providerType))
+				throw new Exception(string.Format("Provider type must implement {0}", typeof(IContentTreeNodeProvider).FullName));
 		}
 
 		public IEnumerable<TreeNodeSummary> GetChildren(string parentNodeId)

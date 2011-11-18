@@ -6,7 +6,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Registration
 	{
 		public void Register(IServiceLocator locator)
 		{
-			locator.Register<IAmATreeNodeExtensionProvider, SectionNodeProvider>(typeof(SectionNodeProvider).Name);
+			locator.Register<IContentTreeNodeProvider, SectionNodeProvider>(typeof(SectionNodeProvider).Name);
 		}
 	}
 }
