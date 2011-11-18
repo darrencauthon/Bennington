@@ -19,9 +19,10 @@ namespace Bennington.ContentTree.TreeManager.ViewModelBuilders
 
         public TreeManagerIndexViewModel BuildViewModel()
         {
+            var rootChildren = contentTree.GetChildren(ContentTree.RootNodeId);
             return new TreeManagerIndexViewModel()
                        {
-                           ContentTreeHasNodes = contentTree.GetChildren(ContentTree.RootNodeId).Any(),
+                           ContentTreeHasNodes = rootChildren.Any(),
                            TreeNodeCreationInputModel = new TreeNodeCreationInputModel()
                                                             {
                                                                 ParentTreeNodeId = ContentTree.RootNodeId

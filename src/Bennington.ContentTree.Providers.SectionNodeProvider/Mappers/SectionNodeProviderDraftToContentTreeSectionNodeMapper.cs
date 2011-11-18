@@ -14,10 +14,19 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Mappers
 	{
         public override void DefineMap(AutoMapper.IConfiguration configuration)
         {
-
             configuration.CreateMap<SectionNodeProviderDraft, ContentTreeSectionNode>()
                 .ForMember(a => a.Id, b => b.MapFrom(c => c.TreeNodeId))
-                .ForMember(a => a.IconUrl, b => b.Ignore());
+                .ForMember(a => a.IconUrl, b => b.Ignore())
+                .ForMember(a => a .ActionToUseForCreation,b => b.Ignore())
+                .ForMember(a => a.ActionToUseForModification, b => b.Ignore())
+                .ForMember(a=> a.RouteValuesForCreation, b => b.Ignore())
+                .ForMember(a => a.RouteValuesForModification, b => b.Ignore())
+                .ForMember(a => a.ParentTreeNodeId, b => b.Ignore())
+                .ForMember(a => a.ControllerToUseForCreation, b => b.Ignore())
+                .ForMember(e => e.ControllerToUseForModification, b => b.Ignore())
+                .ForMember(a => a.MayHaveChildNodes,b => b.Ignore())
+                .ForMember(a => a.HasChildren, b => b.Ignore())
+                ;
         }
 	}
 }

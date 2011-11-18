@@ -103,7 +103,7 @@
     <Compile Include="Mappers\ContentTreeNodeInputModelToContentTreeNodeMapper.cs" />
     <Compile Include="Mappers\ContentTreeNodeToContentTreeNodeInputModelMapper.cs" />
     <Compile Include="Models\ContentItemNavigationViewModel.cs" />
-    <Compile Include="Models\ContentTreeNode.cs" />
+    <Compile Include="Models\ContentTreePageNode.cs" />
     <Compile Include="Models\ContentTreeNodeDisplayViewModel.cs" />
     <Compile Include="Models\ContentTreeNodeInputModel.cs" />
     <Compile Include="Models\ModifyViewModel.cs" />

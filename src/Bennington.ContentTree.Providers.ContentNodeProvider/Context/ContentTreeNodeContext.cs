@@ -7,7 +7,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Context
 	public interface IContentTreeNodeContext
 	{
 		string CreateTreeNodeAndReturnTreeNodeId(ContentTreeNodeInputModel contentTreeNodeInputModel);
-		IEnumerable<Contenttreenode> GetContentTreeNodesByTreeId(string nodeId);
+		IEnumerable<ContentTreePageNode> GetContentTreeNodesByTreeId(string nodeId);
 	}
 
 	public class ContentTreeNodeContext : IContentTreeNodeContext
@@ -31,7 +31,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Context
 			return contentTreeNodeInputModel.TreeNodeId;
 		}
 
-		public IEnumerable<Contenttreenode> GetContentTreeNodesByTreeId(string treeNodeId)
+		public IEnumerable<ContentTreePageNode> GetContentTreeNodesByTreeId(string treeNodeId)
 		{
 			var contentTreeNodes = contentTreeNodeVersionContext.GetAllContentTreeNodes().Where(a => a.Id == treeNodeId);
 			return contentTreeNodes.ToArray();

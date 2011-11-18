@@ -89,7 +89,7 @@
     </Compile>
     <Compile Include="Mappers\ToolLinkProviderDraftToToolLinkMapper.cs" />
     <Compile Include="Models\ModifyViewModel.cs" />
-    <Compile Include="Models\ToolLink.cs" />
+    <Compile Include="Models\ContentTreeToolLinkNode.cs" />
     <Compile Include="Models\ToolLinkInputModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration\RegisterInterfaceToSingleImplementations.cs" />

@@ -17,7 +17,7 @@ namespace Bennington.ContentTree.Models
 		public object RouteValuesForCreation { get; set; }
 		public int? Sequence { get; set; }
 		public string Type { get; set; }
-        public string IconUrl { get; set; }
+        public virtual string IconUrl { get; set; }
 		public bool MayHaveChildNodes { get; set; }
 		public bool Hidden { get; set; }
         public DateTime LastModifyDate { get; set; }

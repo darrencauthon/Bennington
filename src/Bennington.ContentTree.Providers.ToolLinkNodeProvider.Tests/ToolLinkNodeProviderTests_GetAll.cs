@@ -21,15 +21,15 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Tests
 		public void Returns_tool_links_from_IToolLinkContext()
 		{
 			mocker.GetMock<IToolLinkContext>().Setup(a => a.GetAllToolLinks())
-				.Returns(new ToolLink[]
+				.Returns(new ContentTreeToolLinkNode[]
 				         	{
-				         		new ToolLink()
+				         		new ContentTreeToolLinkNode()
 				         			{
 				         				Name = "test"
 				         			}, 
 							});
 
-			var results = mocker.Resolve<Bennington.ContentTree.Providers.ToolLinkNodeProvider.ToolLinkNodeProvider>().GetAll();
+			var results = mocker.Resolve<ToolLinkNodeProvider>().GetAll();
 
 			Assert.AreEqual(1, results.Count());
 			Assert.AreEqual("test", results.First().Name);

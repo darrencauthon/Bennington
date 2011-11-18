@@ -26,9 +26,9 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Tests.Contexts
 		public void Returns_tool_links_from_ToolLinkProviderDraftToToolLinkMapper()
 		{
 			mocker.GetMock<IToolLinkProviderDraftToToolLinkMapper>().Setup(a => a.CreateSet(It.IsAny<IEnumerable<ToolLinkProviderDraft>>()))
-				.Returns(new ToolLink[]
+				.Returns(new ContentTreeToolLinkNode[]
 				         	{
-				         		new ToolLink()
+				         		new ContentTreeToolLinkNode()
 				         			{
 				         				Name = "test"
 				         			}, 

@@ -21,9 +21,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 		public void Returns_ContentTreeNode_from_IContentTreeNodeRepository()
 		{
 			mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes()).Returns(
-				new Contenttreenode[]
+				new ContentTreePageNode[]
 					{
-						new Contenttreenode()
+						new ContentTreePageNode()
 							{
 								Body = "content",
 								Id = "id",

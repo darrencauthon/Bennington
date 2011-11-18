@@ -7,7 +7,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Contexts
 {
 	public interface IToolLinkContext
 	{
-		IEnumerable<ToolLink> GetAllToolLinks();
+		IEnumerable<ContentTreeToolLinkNode> GetAllToolLinks();
 	}
 
 	public class ToolLinkContext : IToolLinkContext
@@ -22,7 +22,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Contexts
 			this.toolLinkProviderDraftToToolLinkMapper = toolLinkProviderDraftToToolLinkMapper;
 		}
 
-		public IEnumerable<ToolLink> GetAllToolLinks()
+		public IEnumerable<ContentTreeToolLinkNode> GetAllToolLinks()
 		{
 			return toolLinkProviderDraftToToolLinkMapper.CreateSet(toolLinkProviderDraftRepository.GetAll());
 		}

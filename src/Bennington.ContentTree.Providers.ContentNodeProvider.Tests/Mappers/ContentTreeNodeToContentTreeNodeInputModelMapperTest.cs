@@ -41,7 +41,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 							}.AsQueryable());
 
 			var mapper = mocker.Resolve<ContentTreeNodeToContentTreeNodeInputModelMapper>();
-			var result = mapper.CreateInstance(new Contenttreenode()
+			var result = mapper.CreateInstance(new ContentTreePageNode()
 			                      	{
 										Id = "1",
 			                      	});
@@ -64,7 +64,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 							}.AsQueryable());
 
             var mapper = mocker.Resolve<ContentTreeNodeToContentTreeNodeInputModelMapper>();
-            var result = mapper.CreateInstance(new Contenttreenode()
+            var result = mapper.CreateInstance(new ContentTreePageNode()
             {
                 Id = "1",
             });
@@ -87,7 +87,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 							}.AsQueryable());
 
             var mapper = mocker.Resolve<ContentTreeNodeToContentTreeNodeInputModelMapper>();
-            var result = mapper.CreateInstance(new Contenttreenode()
+            var result = mapper.CreateInstance(new ContentTreePageNode()
             {
                 Id = "1",
                 ControllerName = "test",
