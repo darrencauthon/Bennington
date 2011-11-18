@@ -69,10 +69,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 
         public virtual string Controller { get { return "Content"; } set { } }
 
-	    public void RegisterRouteForTreeNodeId(string treeNodeId)
-		{
-		}
-
 		public virtual string ControllerToUseForModification
 		{
 			get { return "ContentTreeNode"; }

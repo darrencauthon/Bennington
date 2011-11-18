@@ -102,23 +102,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Controlle
 	        set { }
 	    }
 
-	    public virtual void RegisterRouteForTreeNodeId(string treeNodeId)
-		{
-			var routeValueDictionary = new RouteValueDictionary();
-			routeValueDictionary.Add("Controller", GetControllerNameFromThisType());
-			routeValueDictionary.Add("Action", "Index");
-			var url = treeNodeIdToUrl.GetUrlByTreeNodeId(treeNodeId);
-			var contentTreeRoute = new Route
-						(
-							url.Substring(1, url.Length - 1) + "/{action}",
-							routeValueDictionary,
-							new MvcRouteHandler()
-						);
-			contentTreeRoute.Constraints = new RouteValueDictionary();
-			contentTreeRoute.Constraints.Add(GetType().AssemblyQualifiedName ?? "Unkown content tree route contraint", this);
-			RouteTable.Routes.Add(contentTreeRoute);
-		}
-
 		public virtual string ControllerToUseForModification
 		{
 			get { return "ContentTreeNode"; }

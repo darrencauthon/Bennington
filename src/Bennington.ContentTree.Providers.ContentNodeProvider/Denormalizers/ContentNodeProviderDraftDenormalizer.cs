@@ -95,15 +95,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 			
 			contentNodeProviderDraft.UrlSegment = domainEvent.UrlSegment;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
-
-			if (treeNodeSummary != null)
-			{
-				if (treeNodeSummary.UrlSegment != domainEvent.UrlSegment)
-				{
-					var provider = treeNodeProviderContext.GetProviderByTypeName(treeNodeSummary.Type);
-					provider.RegisterRouteForTreeNodeId(treeNodeSummary.Id);
-				}
-			}
 		}
 
 		public void Handle(HeaderTextSetEvent domainEvent)

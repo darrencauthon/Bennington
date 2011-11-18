@@ -70,10 +70,6 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider
 	        set { throw new NotImplementedException(); }
 	    }
 
-	    public void RegisterRouteForTreeNodeId(string treeNodeId)
-		{
-		}
-
 		public string ControllerToUseForModification
 		{
 			get { return "ContentTreeSectionNode"; }

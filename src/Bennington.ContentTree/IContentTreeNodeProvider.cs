@@ -15,6 +15,5 @@ namespace Bennington.ContentTree
 		IEnumerable<Action> Actions { get; set; }
 		bool MayHaveChildNodes { get; set; }
         string Controller { get; set; }
-	    void RegisterRouteForTreeNodeId(string treeNodeId);
 	}
 }
