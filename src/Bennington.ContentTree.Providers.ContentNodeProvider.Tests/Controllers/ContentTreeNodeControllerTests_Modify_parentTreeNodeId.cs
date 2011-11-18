@@ -38,7 +38,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			{
 				Name = "some name",
 			};
-			mocker.GetMock<IContentTreeNodeToContentTreeNodeInputModelMapper>().Setup(a => a.CreateInstance(It.Is<ContentTreeNode>(b => b.TreeNodeId == "1" && b.Action == "Index")))
+			mocker.GetMock<IContentTreeNodeToContentTreeNodeInputModelMapper>().Setup(a => a.CreateInstance(It.Is<ContentTreeNode>(b => b.Id == "1" && b.Action == "Index")))
 				.Returns(expectedInputModel);
 
 			var landingPageController = mocker.Resolve<ContentTreeNodeController>();
@@ -75,13 +75,13 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = "1",
+				         				Id = "1",
 										Name = "zzz",
 										Action = "Index",
 				         			}, 
 							}.AsQueryable());
 
-			mocker.GetMock<IContentTreeNodeToContentTreeNodeInputModelMapper>().Setup(a => a.CreateInstance(It.Is<ContentTreeNode>(b => b.TreeNodeId == "1" && b.Action == "Index")))
+			mocker.GetMock<IContentTreeNodeToContentTreeNodeInputModelMapper>().Setup(a => a.CreateInstance(It.Is<ContentTreeNode>(b => b.Id == "1" && b.Action == "Index")))
 				.Returns(expectedInputModel);
 
 			var contentTreeNodeController = mocker.Resolve<ContentTreeNodeController>();
@@ -102,18 +102,18 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = "1",
+				         				Id = "1",
 										Name = "zzz",
 										Action = "zzz",
 				         			}, 
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = "1",
+				         				Id = "1",
 										Name = "some name",
 										Action = "Index",
 				         			}, 
 							}.AsQueryable());
-			mocker.GetMock<IContentTreeNodeToContentTreeNodeInputModelMapper>().Setup(a => a.CreateInstance(It.Is<ContentTreeNode>(b => b.TreeNodeId == "1" && b.Action == "Index")))
+			mocker.GetMock<IContentTreeNodeToContentTreeNodeInputModelMapper>().Setup(a => a.CreateInstance(It.Is<ContentTreeNode>(b => b.Id == "1" && b.Action == "Index")))
 				.Returns(expectedInputModel);
 
 			var landingPageController = mocker.Resolve<ContentTreeNodeController>();

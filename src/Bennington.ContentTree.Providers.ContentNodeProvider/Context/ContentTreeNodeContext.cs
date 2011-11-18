@@ -33,7 +33,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Context
 
 		public IEnumerable<ContentTreeNode> GetContentTreeNodesByTreeId(string treeNodeId)
 		{
-			var contentTreeNodes = contentTreeNodeVersionContext.GetAllContentTreeNodes().Where(a => a.TreeNodeId == treeNodeId);
+			var contentTreeNodes = contentTreeNodeVersionContext.GetAllContentTreeNodes().Where(a => a.Id == treeNodeId);
 			return contentTreeNodes.ToArray();
 		}
 	}

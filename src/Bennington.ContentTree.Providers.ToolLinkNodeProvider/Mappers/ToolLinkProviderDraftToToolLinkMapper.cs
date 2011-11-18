@@ -16,7 +16,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Mappers
         {
             configuration.CreateMap<ToolLinkProviderDraft, ToolLink>()
                     .ForMember(a => a.IconUrl, b => b.UseValue("Content/ToolLinkProviderNode/ToolLinkProviderNode.gif"))
-                    .ForMember(a => a.TreeNodeId, b => b.MapFrom(c => c.Id))
+                    .ForMember(a => a.Id, b => b.MapFrom(c => c.Id))
                 ;
         }
 	}

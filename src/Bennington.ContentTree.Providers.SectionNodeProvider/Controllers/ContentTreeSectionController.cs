@@ -24,7 +24,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Controllers
 		public ActionResult Index()
 		{
 			var treeNodeSummary = urlToTreeNodeSummaryMapper.CreateInstance(System.Web.HttpContext.Current.Request.RawUrl);
-			var sectionNode = contentTreeSectionNodeRepository.GetAllContentTreeSectionNodes().Where(a => a.TreeNodeId == treeNodeSummary.Id).FirstOrDefault();
+			var sectionNode = contentTreeSectionNodeRepository.GetAllContentTreeSectionNodes().Where(a => a.Id == treeNodeSummary.Id).FirstOrDefault();
 			if (sectionNode == null) return null;
 			
 			var url = treeNodeIdToUrl.GetUrlByTreeNodeId(sectionNode.DefaultTreeNodeId);

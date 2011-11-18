@@ -16,6 +16,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Mappers
         {
 
             configuration.CreateMap<SectionNodeProviderDraft, ContentTreeSectionNode>()
+                .ForMember(a => a.Id, b => b.MapFrom(c => c.TreeNodeId))
                 .ForMember(a => a.IconUrl, b => b.Ignore());
         }
 	}

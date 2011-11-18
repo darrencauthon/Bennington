@@ -143,7 +143,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Controllers
 		[Authorize]
         public virtual ActionResult Modify(string treeNodeId)
 		{
-			var contentTreeSection = contentTreeSectionNodeRepository.GetAllContentTreeSectionNodes().Where(a => a.TreeNodeId == treeNodeId).FirstOrDefault();
+			var contentTreeSection = contentTreeSectionNodeRepository.GetAllContentTreeSectionNodes().Where(a => a.Id == treeNodeId).FirstOrDefault();
 			var contentTreeSectionInputModel = contentTreeSection == null ? new ContentTreeSectionInputModel()
 			                		                        	{
 			                		                        		TreeNodeId = treeNodeId,

@@ -94,7 +94,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -127,7 +127,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -153,7 +153,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -181,7 +181,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -209,7 +209,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 										HeaderImage = "headerImage.jpg"
 				         			}, 
@@ -237,7 +237,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 										HeaderImage = "headerImage.jpg"
 				         			}, 
@@ -266,7 +266,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -293,7 +293,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -320,7 +320,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -347,7 +347,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -373,7 +373,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -399,7 +399,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -425,7 +425,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -451,7 +451,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -477,7 +477,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -504,7 +504,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -529,7 +529,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -555,7 +555,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -580,7 +580,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -606,7 +606,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -648,7 +648,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -672,7 +672,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -698,7 +698,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -722,7 +722,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -746,7 +746,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -771,7 +771,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -796,7 +796,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -821,7 +821,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -846,7 +846,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -871,7 +871,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -896,7 +896,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -921,7 +921,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -947,7 +947,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -973,7 +973,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -999,7 +999,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});
@@ -1026,7 +1026,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         	{
 				         		new ContentTreeNode()
 				         			{
-				         				TreeNodeId = treeNodeId.ToString(),
+				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
 							});

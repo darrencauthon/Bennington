@@ -18,6 +18,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
                     .ForMember(a => a.IconUrl, b=>b.Ignore())
                     .ForMember(a => a.LastModifyBy, b => b.Ignore())
                     .ForMember(a => a.LastModifyDate, b => b.Ignore())
+                    .ForMember(a => a.Id, b => b.MapFrom(c => c.TreeNodeId))
                 ;
 		}
 	}

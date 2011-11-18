@@ -32,7 +32,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.HttpModules
 				if (treeNodeSummary == null) return;
 				
 				var section = serviceLocator.Resolve<IContentTreeSectionNodeRepository>().GetAllContentTreeSectionNodes()
-							.Where(a => a.TreeNodeId == treeNodeSummary.Id).FirstOrDefault();
+							.Where(a => a.Id == treeNodeSummary.Id).FirstOrDefault();
 				if (section == null) return;
 
 				var childPage = serviceLocator.Resolve<IContentTree>().GetTreeNodeSummaryByTreeNodeId(section.DefaultTreeNodeId);

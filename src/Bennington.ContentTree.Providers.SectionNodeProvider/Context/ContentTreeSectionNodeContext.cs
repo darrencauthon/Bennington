@@ -32,7 +32,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Context
 
 		public void Delete(string id)
 		{
-			var node = contentTreeSectionNodeRepository.GetAllContentTreeSectionNodes().Where(a => a.TreeNodeId == id).FirstOrDefault();
+			var node = contentTreeSectionNodeRepository.GetAllContentTreeSectionNodes().Where(a => a.Id == id).FirstOrDefault();
 			if (node != null)
 				contentTreeSectionNodeRepository.Delete(node);
 		}

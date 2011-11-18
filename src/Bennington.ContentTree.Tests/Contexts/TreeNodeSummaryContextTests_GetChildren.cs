@@ -31,16 +31,16 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 								new FakeTreeNode()
 									{
-										TreeNodeId = "1",
+										Id = "1",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "2",
+										Id = "2",
 										Name = "fake tree node name",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "3",
+										Id = "3",
 									}, 
 				         	}.AsQueryable());
 			fakeTreeNodeExtensionProvider.SetupProperty(a => a.ControllerToUseForCreation, "FakeTreeNodeExtensionProviderController");
@@ -82,16 +82,16 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 								new FakeTreeNode()
 									{
-										TreeNodeId = "1",
+										Id = "1",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "2",
+										Id = "2",
 										Name = "fake tree node name",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "3",
+										Id = "3",
 									}, 
 				         	}.AsQueryable());
 			fakeTreeNodeExtensionProvider.SetupProperty(a => a.ActionToUseForCreation, "FakeTreeNodeExtensionProviderAction");
@@ -133,16 +133,16 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 								new FakeTreeNode()
 									{
-										TreeNodeId = "1",
+										Id = "1",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "2",
+										Id = "2",
 										Name = "fake tree node name",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "3",
+										Id = "3",
 									}, 
 				         	}.AsQueryable());
 			fakeTreeNodeExtensionProvider.SetupProperty(a => a.ActionToUseForModification, "FakeTreeNodeExtensionProviderAction");
@@ -184,16 +184,16 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 								new FakeTreeNode()
 									{
-										TreeNodeId = "1",
+										Id = "1",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "2",
+										Id = "2",
 										Name = "fake tree node name",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "3",
+										Id = "3",
 									}, 
 				         	}.AsQueryable());
 			fakeTreeNodeExtensionProvider.SetupProperty(a => a.ControllerToUseForModification, "FakeTreeNodeExtensionProviderController");
@@ -235,16 +235,16 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 								new FakeTreeNode()
 									{
-										TreeNodeId = "1",
+										Id = "1",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "2",
+										Id = "2",
 										Name = "fake tree node name",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "3",
+										Id = "3",
 									}, 
 				         	}.AsQueryable());
 			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("FakeTreeNodeExtensionProvider"))
@@ -285,16 +285,16 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 								new FakeTreeNode()
 									{
-										TreeNodeId = "1",
+										Id = "1",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "2",
+										Id = "2",
 										Name = "fake tree node name",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "3",
+										Id = "3",
 									}, 
 				         	}.AsQueryable());
 			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("FakeTreeNodeExtensionProvider"))
@@ -335,17 +335,17 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 								new FakeTreeNode()
 									{
-										TreeNodeId = "1",
+										Id = "1",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "2",
+										Id = "2",
 										Name = "fake tree node name",
 										Hidden = true
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "3",
+										Id = "3",
 									}, 
 				         	}.AsQueryable());
 			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("FakeTreeNodeExtensionProvider"))
@@ -386,16 +386,16 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 								new FakeTreeNode()
 									{
-										TreeNodeId = "1",
+										Id = "1",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "2",
+										Id = "2",
 										Name = "fake tree node name",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "3",
+										Id = "3",
 									}, 
 				         	}.AsQueryable());
 			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("FakeTreeNodeExtensionProvider"))
@@ -436,16 +436,16 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 								new FakeTreeNode()
 									{
-										TreeNodeId = "1",
+										Id = "1",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "2",
+										Id = "2",
 										Name = "fake tree node name",
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "3",
+										Id = "3",
 									}, 
 				         	}.AsQueryable());
 			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("FakeTreeNodeExtensionProvider"))
@@ -496,7 +496,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 								new FakeTreeNode()
 									{
-										TreeNodeId = "1",
+										Id = "1",
 									}, 
 				         	}.AsQueryable());
 			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("FakeTreeNodeExtensionProvider"))
@@ -533,18 +533,18 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 								new FakeTreeNode()
 									{
-										TreeNodeId = "1",
+										Id = "1",
                                         LastModifyBy = "test"
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "2",
+										Id = "2",
 										Name = "fake tree node name",
                                         LastModifyBy = "test"
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "3",
+										Id = "3",
                                         LastModifyBy = "test"
 									}, 
 				         	}.AsQueryable());
@@ -586,18 +586,18 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 								new FakeTreeNode()
 									{
-										TreeNodeId = "1",
+										Id = "1",
                                         LastModifyDate = new DateTime(2010, 1, 1)
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "2",
+										Id = "2",
 										Name = "fake tree node name",
                                         LastModifyDate = new DateTime(2010, 1, 1)
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "3",
+										Id = "3",
                                         LastModifyDate = new DateTime(2010, 1, 1)
 									}, 
 				         	}.AsQueryable());
@@ -639,18 +639,18 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         	{
 								new FakeTreeNode()
 									{
-										TreeNodeId = "1",
+										Id = "1",
                                         Inactive = false
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "2",
+										Id = "2",
 										Name = "fake tree node name",
                                         Inactive = false
 									}, 
 								new FakeTreeNode()
 									{
-										TreeNodeId = "3",
+										Id = "3",
                                         Inactive = false
 									}, 
 				         	}.AsQueryable());
@@ -686,7 +686,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 
 	public class FakeTreeNode : IContentTreeNode
 	{
-		public string TreeNodeId { get; set; }
+		public string Id { get; set; }
 		public int? Sequence { get; set; }
 		public string UrlSegment { get; set; }
 		public string Name { get; set; }

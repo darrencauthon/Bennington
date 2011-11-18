@@ -4,7 +4,7 @@ namespace Bennington.ContentTree.Models
 {
 	public interface IContentTreeNode
 	{
-		string TreeNodeId { get; set; }
+		string Id { get; set; }
 		int? Sequence { get; set; }
 		string UrlSegment { get; set; }
 		string Name { get; set; }

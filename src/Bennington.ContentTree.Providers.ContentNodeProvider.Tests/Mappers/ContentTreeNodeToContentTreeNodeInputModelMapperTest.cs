@@ -43,7 +43,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 			var mapper = mocker.Resolve<ContentTreeNodeToContentTreeNodeInputModelMapper>();
 			var result = mapper.CreateInstance(new ContentTreeNode()
 			                      	{
-										TreeNodeId = "1",
+										Id = "1",
 			                      	});
 
 			Assert.AreEqual("testType", result.Type);
@@ -66,7 +66,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
             var mapper = mocker.Resolve<ContentTreeNodeToContentTreeNodeInputModelMapper>();
             var result = mapper.CreateInstance(new ContentTreeNode()
             {
-                TreeNodeId = "1",
+                Id = "1",
             });
 
             Assert.AreEqual("controller", result.ControllerName);
@@ -89,7 +89,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
             var mapper = mocker.Resolve<ContentTreeNodeToContentTreeNodeInputModelMapper>();
             var result = mapper.CreateInstance(new ContentTreeNode()
             {
-                TreeNodeId = "1",
+                Id = "1",
                 ControllerName = "test",
             });
 

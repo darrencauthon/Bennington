@@ -26,7 +26,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 						new ContentTreeNode()
 							{
 								Body = "content",
-								TreeNodeId = "id",
+								Id = "id",
 							}, 
 					}.AsQueryable());
 

@@ -34,7 +34,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Repositories
 		public void Delete(ContentTreeSectionNode instance)
 		{
 			// dataModelDataContext.Delete(instance);
-			treeNodeRepository.Delete(instance.TreeNodeId);
+			treeNodeRepository.Delete(instance.Id);
 		}
 	}
 }

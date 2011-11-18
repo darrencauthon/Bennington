@@ -235,7 +235,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 		{
 			if (string.IsNullOrEmpty(contentItemId)) contentItemId = "Index";		    
 
-			var contentTreeNode = contentTreeNodeVersionContext.GetAllContentTreeNodes().Where(a => a.TreeNodeId == treeNodeId && a.Action == contentItemId).FirstOrDefault();
+			var contentTreeNode = contentTreeNodeVersionContext.GetAllContentTreeNodes().Where(a => a.Id == treeNodeId && a.Action == contentItemId).FirstOrDefault();
 			var contentTreeNodeInputModel = contentTreeNode == null ? new ContentTreeNodeInputModel()
 			                		                        	{
 			                		                        		TreeNodeId = treeNodeId,
