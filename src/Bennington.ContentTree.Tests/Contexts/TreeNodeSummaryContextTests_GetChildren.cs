@@ -680,7 +680,7 @@ namespace Bennington.ContentTree.Tests.Contexts
             var treeNodeSummarContext = mocker.Resolve<ContentTree>();
             var result = treeNodeSummarContext.GetChildren("1");
             
-            Assert.IsTrue(result.First().Active);
+            Assert.IsFalse(result.First().Active);
         }
 	}
 
