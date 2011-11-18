@@ -3,7 +3,6 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMoq;
-using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Models;
 using Bennington.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -29,19 +28,19 @@ namespace Bennington.ContentTree.Tests.Contexts
                 .Setup(a => a.ResolveServices<IContentTreeNodeProvider>())
                 .Returns(new List<IContentTreeNodeProvider>());
             mocker.GetMock<IServiceLocatorWrapper>()
-                .Setup(a => a.ResolveServices<IAmATreeNodeExtensionProviderFactory>())
-                .Returns(new List<IAmATreeNodeExtensionProviderFactory>()
+                .Setup(a => a.ResolveServices<IContentTreeNodeProviderFactory>())
+                .Returns(new List<IContentTreeNodeProviderFactory>()
                              {
                                  new FakeTreeNodeExtensionProviderFactory()
                              });
 
-            var result = mocker.Resolve<TreeNodeProviderContext>().GetAllTreeNodeProviders();
+            var result = mocker.Resolve<ContentTreeNodeProviderContext>().GetAllTreeNodeProviders();
 
             Assert.AreEqual(1, result.Count());
             Assert.AreEqual(typeof(FakeNodeProvider), result.First().GetType());
         }
 
-        public class FakeTreeNodeExtensionProviderFactory : IAmATreeNodeExtensionProviderFactory
+        public class FakeTreeNodeExtensionProviderFactory : IContentTreeNodeProviderFactory
         {
             public IContentTreeNodeProvider[] GetTreeNodeExtensionProviders()
             {

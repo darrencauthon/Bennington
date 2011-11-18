@@ -3,7 +3,6 @@ using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Security;
 using AutoMoq;
-using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Domain.Commands;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Controllers;

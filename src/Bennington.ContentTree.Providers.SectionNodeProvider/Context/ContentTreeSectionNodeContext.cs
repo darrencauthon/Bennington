@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Providers.SectionNodeProvider.Models;
 using Bennington.ContentTree.Providers.SectionNodeProvider.Repositories;
 

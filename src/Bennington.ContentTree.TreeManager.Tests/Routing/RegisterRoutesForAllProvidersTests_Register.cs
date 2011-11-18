@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Routing;
 using AutoMoq;
-using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Models;
 using Bennington.ContentTree.TreeManager.Routing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -26,7 +25,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.Routing
 		[TestMethod]
 		public void Registers_a_route_to_the_providers_ControllerToUseForCreate_with_correct_url()
 		{
-			mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetAllTreeNodeProviders())
+			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetAllTreeNodeProviders())
 				.Returns(new IContentTreeNodeProvider[]
 				         	{
 				         		new FakeTreeNodeProvider()
@@ -47,7 +46,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.Routing
 		[TestMethod]
 		public void Registers_a_route_to_the_providers_ControllerToUseForModification_with_correct_url()
 		{
-			mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetAllTreeNodeProviders())
+			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetAllTreeNodeProviders())
 				.Returns(new IContentTreeNodeProvider[]
 				         	{
 				         		new FakeTreeNodeProvider()
@@ -68,7 +67,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.Routing
 		[TestMethod]
 		public void Registers_a_route_to_the_providers_ControllerToUseForModification_with_correct_default_values()
 		{
-			mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetAllTreeNodeProviders())
+			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetAllTreeNodeProviders())
 				.Returns(new IContentTreeNodeProvider[]
 				         	{
 				         		new FakeTreeNodeProvider()
@@ -90,7 +89,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.Routing
 		[TestMethod]
 		public void Registers_a_route_to_the_providers_ControllerToUseForCreation_with_correct_default_values()
 		{
-			mocker.GetMock<ITreeNodeProviderContext>().Setup(a => a.GetAllTreeNodeProviders())
+			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetAllTreeNodeProviders())
 				.Returns(new IContentTreeNodeProvider[]
 				         	{
 				         		new FakeTreeNodeProvider()

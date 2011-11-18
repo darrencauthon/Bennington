@@ -3,7 +3,6 @@ using System.Linq;
 using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Domain.Commands;
 using Bennington.ContentTree.Helpers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
@@ -25,7 +24,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 		private readonly IContentTreeNodeToContentTreeNodeInputModelMapper contentTreeNodeToContentTreeNodeInputModelMapper;
 		private readonly IContentTreeNodeContext contentTreeNodeContext;
 		private readonly ITreeNodeRepository treeNodeRepository;
-		private readonly ITreeNodeProviderContext treeNodeProviderContext;
+		private readonly IContentTreeNodeProviderContext contentTreeNodeProviderContext;
 		private readonly IContentTreeNodeDisplayViewModelBuilder contentTreeNodeDisplayViewModelBuilder;
 		private readonly IRawUrlGetter rawUrlGetter;
 		private readonly ICommandBus commandBus;
@@ -39,7 +38,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 											IContentTreeNodeToContentTreeNodeInputModelMapper contentTreeNodeToContentTreeNodeInputModelMapper, 
 											IContentTreeNodeContext contentTreeNodeContext, 
 											ITreeNodeRepository treeNodeRepository, 
-											ITreeNodeProviderContext treeNodeProviderContext,  
+											IContentTreeNodeProviderContext contentTreeNodeProviderContext,  
 											IContentTreeNodeDisplayViewModelBuilder contentTreeNodeDisplayViewModelBuilder, 
 											IRawUrlGetter rawUrlGetter,
 											ICommandBus commandBus,
@@ -57,7 +56,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			this.commandBus = commandBus;
 			this.rawUrlGetter = rawUrlGetter;
 			this.contentTreeNodeDisplayViewModelBuilder = contentTreeNodeDisplayViewModelBuilder;
-			this.treeNodeProviderContext = treeNodeProviderContext;
+			this.contentTreeNodeProviderContext = contentTreeNodeProviderContext;
 			this.treeNodeRepository = treeNodeRepository;
 			this.contentTreeNodeContext = contentTreeNodeContext;
 			this.contentTreeNodeToContentTreeNodeInputModelMapper = contentTreeNodeToContentTreeNodeInputModelMapper;
@@ -267,7 +266,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			var treeNode = treeNodeRepository.GetAll().Where(a => a.Id == treeNodeId).FirstOrDefault();
 			if (treeNode != null)
 			{
-			    var provider = treeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
+			    var provider = contentTreeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
 			    provider.Controller = treeNode.ControllerName;
 				viewModel.ContentTreeNodeContentItems = provider.Actions;
 			}

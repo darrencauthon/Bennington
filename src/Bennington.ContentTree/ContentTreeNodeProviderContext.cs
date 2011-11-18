@@ -2,19 +2,19 @@
 using System.Linq;
 using Bennington.Core;
 
-namespace Bennington.ContentTree.Contexts
+namespace Bennington.ContentTree
 {
-	public interface ITreeNodeProviderContext
+	public interface IContentTreeNodeProviderContext
 	{
 		IContentTreeNodeProvider GetProviderByTypeName(string providerTypeName);
 		IEnumerable<IContentTreeNodeProvider> GetAllTreeNodeProviders();
 	}
 
-	public class TreeNodeProviderContext : ITreeNodeProviderContext
+	public class ContentTreeNodeProviderContext : IContentTreeNodeProviderContext
 	{
 		private readonly IServiceLocatorWrapper serviceLocator;
 
-		public TreeNodeProviderContext(IServiceLocatorWrapper serviceLocator)
+		public ContentTreeNodeProviderContext(IServiceLocatorWrapper serviceLocator)
 		{
 			this.serviceLocator = serviceLocator;
 		}
@@ -23,7 +23,7 @@ namespace Bennington.ContentTree.Contexts
 		{
 		    var treeNodeExtensionProviders = new List<IContentTreeNodeProvider>();
             treeNodeExtensionProviders.AddRange(serviceLocator.ResolveServices<IContentTreeNodeProvider>());
-		    foreach (var service in serviceLocator.ResolveServices<IAmATreeNodeExtensionProviderFactory>())
+		    foreach (var service in serviceLocator.ResolveServices<IContentTreeNodeProviderFactory>())
 		    {
 		        treeNodeExtensionProviders.AddRange(service.GetTreeNodeExtensionProviders());
 		    }

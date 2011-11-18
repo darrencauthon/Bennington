@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Domain.AggregateRoots;
 using Bennington.ContentTree.Domain.Events.Page;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Data;
@@ -28,13 +27,13 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                                                         IHandleDomainEvents<PageLastModifyDateSetEvent>
 	{
 		private readonly IContentNodeProviderDraftRepository contentNodeProviderDraftRepository;
-		private readonly ITreeNodeProviderContext treeNodeProviderContext;
+		private readonly IContentTreeNodeProviderContext contentTreeNodeProviderContext;
 		private readonly IContentTree contentTree;
 		private readonly IApplicationSettingsValueGetter applicationSettingsValueGetter;
 		private readonly IFileSystem fileSystem;
 
 		public ContentNodeProviderDraftDenormalizer(IContentNodeProviderDraftRepository contentNodeProviderDraftRepository,
-													ITreeNodeProviderContext treeNodeProviderContext,
+													IContentTreeNodeProviderContext contentTreeNodeProviderContext,
 													IContentTree contentTree,
 													IApplicationSettingsValueGetter applicationSettingsValueGetter,
 													IFileSystem fileSystem)
@@ -42,7 +41,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 			this.fileSystem = fileSystem;
 			this.applicationSettingsValueGetter = applicationSettingsValueGetter;
 			this.contentTree = contentTree;
-			this.treeNodeProviderContext = treeNodeProviderContext;
+			this.contentTreeNodeProviderContext = contentTreeNodeProviderContext;
 			this.contentNodeProviderDraftRepository = contentNodeProviderDraftRepository;
 		}
 

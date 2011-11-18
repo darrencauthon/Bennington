@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Bennington.ContentTree
 {
-    public interface IAmATreeNodeExtensionProviderFactory
+    public interface IContentTreeNodeProviderFactory
     {
         IContentTreeNodeProvider[] GetTreeNodeExtensionProviders();
     }

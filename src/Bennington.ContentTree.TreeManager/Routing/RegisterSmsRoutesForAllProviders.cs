@@ -1,22 +1,21 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
-using Bennington.ContentTree.Contexts;
 using MvcTurbine.Routing;
 
 namespace Bennington.ContentTree.TreeManager.Routing
 {
 	public class RegisterSmsRoutesForAllProviders : IRouteRegistrator
 	{
-		private readonly ITreeNodeProviderContext treeNodeProviderContext;
+		private readonly IContentTreeNodeProviderContext contentTreeNodeProviderContext;
 
-		public RegisterSmsRoutesForAllProviders(ITreeNodeProviderContext treeNodeProviderContext)
+		public RegisterSmsRoutesForAllProviders(IContentTreeNodeProviderContext contentTreeNodeProviderContext)
 		{
-			this.treeNodeProviderContext = treeNodeProviderContext;
+			this.contentTreeNodeProviderContext = contentTreeNodeProviderContext;
 		}
 
 		public void Register(RouteCollection routes)
 		{
-			foreach (var provider in treeNodeProviderContext.GetAllTreeNodeProviders())
+			foreach (var provider in contentTreeNodeProviderContext.GetAllTreeNodeProviders())
 			{
 				routes.MapRoute(
 							null,

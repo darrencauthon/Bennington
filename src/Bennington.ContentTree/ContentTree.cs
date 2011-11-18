@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Data;
 using Bennington.ContentTree.Domain.Commands;
 using Bennington.ContentTree.Models;
@@ -23,18 +22,18 @@ namespace Bennington.ContentTree
 	{
         public const string RootNodeId = "00000000-0000-0000-0000-000000000000";
 		private readonly ITreeNodeRepository treeNodeRepository;
-		private readonly ITreeNodeProviderContext treeNodeProviderContext;
+		private readonly IContentTreeNodeProviderContext contentTreeNodeProviderContext;
 		private readonly ICommandBus commandBus;
 		private readonly IGuidGetter guidGetter;
 
 		public ContentTree(ITreeNodeRepository treeNodeRepository, 
-										ITreeNodeProviderContext treeNodeProviderContext,
+										IContentTreeNodeProviderContext contentTreeNodeProviderContext,
 										ICommandBus commandBus,
 										IGuidGetter guidGetter)
 		{
 			this.guidGetter = guidGetter;
 			this.commandBus = commandBus;
-			this.treeNodeProviderContext = treeNodeProviderContext;
+			this.contentTreeNodeProviderContext = contentTreeNodeProviderContext;
 			this.treeNodeRepository = treeNodeRepository;
 		}
 
@@ -86,7 +85,7 @@ namespace Bennington.ContentTree
 
 		private TreeNodeSummary GetTreeNodeSummaryForTreeNode(TreeNode treeNode)
 		{
-			var provider = treeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
+			var provider = contentTreeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
 			if (provider == null) throw new Exception(string.Format("Content tree node provider for type: {0} not found.", treeNode.Type));
 
 			var treeNodeExtension = provider.GetAll().Where(a => a.TreeNodeId == treeNode.Id).FirstOrDefault();

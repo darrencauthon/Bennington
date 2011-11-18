@@ -1,5 +1,4 @@
 using System.Linq;
-using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.TreeManager.Models;
 
 namespace Bennington.ContentTree.TreeManager.ViewModelBuilders

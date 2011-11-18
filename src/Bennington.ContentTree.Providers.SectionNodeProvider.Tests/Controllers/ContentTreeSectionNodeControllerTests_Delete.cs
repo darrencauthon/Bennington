@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Security.Principal;
 using AutoMoq;
-using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Domain.Commands;
 using Bennington.ContentTree.Providers.SectionNodeProvider.Controllers;
 using Bennington.Core;

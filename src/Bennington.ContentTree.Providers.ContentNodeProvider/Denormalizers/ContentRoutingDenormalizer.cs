@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Data;
 using Bennington.ContentTree.Domain.Events.Page;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Data;
@@ -13,12 +12,12 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
     public class ContentRoutingDenormalizer : IHandleDomainEvents<PagePublishedEvent>,
                                               IHandleDomainEvents<PageDeletedEvent>
     {
-        private readonly ITreeNodeProviderContext treeNodeProviderContext;
+        private readonly IContentTreeNodeProviderContext contentTreeNodeProviderContext;
         private readonly IContentTreeRepository contentTreeRepository;
         private readonly IContentNodeProviderDraftRepository contentNodeProviderDraftRepository;
         private readonly ITreeNodeRepository treeNodeRepository;
 
-        public ContentRoutingDenormalizer(ITreeNodeProviderContext treeNodeProviderContext,
+        public ContentRoutingDenormalizer(IContentTreeNodeProviderContext contentTreeNodeProviderContext,
                                           IContentTreeRepository contentTreeRepository,
                                           IContentNodeProviderDraftRepository contentNodeProviderDraftRepository,
                                           ITreeNodeRepository treeNodeRepository)
@@ -26,7 +25,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             this.treeNodeRepository = treeNodeRepository;
             this.contentNodeProviderDraftRepository = contentNodeProviderDraftRepository;
             this.contentTreeRepository = contentTreeRepository;
-            this.treeNodeProviderContext = treeNodeProviderContext;
+            this.contentTreeNodeProviderContext = contentTreeNodeProviderContext;
         }
 
         public void Handle(PagePublishedEvent domainEvent)
@@ -39,7 +38,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             if (treeNode == null)
                 throw new Exception("Tree node not found: " + domainEvent.AggregateRootId);
 
-            var provider = treeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
+            var provider = contentTreeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
             provider.Controller = treeNode.ControllerName;
 
             foreach (var contentTreeNode in contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNode.Id))

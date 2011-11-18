@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Routing;
 using AutoMoq;
-using Bennington.ContentTree.Contexts;
 using Bennington.ContentTree.Models;
 using Bennington.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -26,8 +25,8 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 		public void Returns_service_that_implements_IAmATreeNodeExtensionProvider_and_matches_specified_type()
 		{
 		    mocker.GetMock<IServiceLocatorWrapper>()
-		        .Setup(a => a.ResolveServices<IAmATreeNodeExtensionProviderFactory>())
-		        .Returns(new List<IAmATreeNodeExtensionProviderFactory>());
+		        .Setup(a => a.ResolveServices<IContentTreeNodeProviderFactory>())
+		        .Returns(new List<IContentTreeNodeProviderFactory>());
 			mocker.GetMock<IServiceLocatorWrapper>().Setup(a => a.ResolveServices<IContentTreeNodeProvider>())
 				.Returns(new List<IContentTreeNodeProvider>()
 				         	{
@@ -35,7 +34,7 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 								new IamATreeNodeProvider2(),
 				         	});
 
-			var getAllContentTreeNodeProviders = mocker.Resolve<TreeNodeProviderContext>();
+			var getAllContentTreeNodeProviders = mocker.Resolve<ContentTreeNodeProviderContext>();
 			var result = getAllContentTreeNodeProviders.GetProviderByTypeName(typeof (IamATreeNodeProvider2).AssemblyQualifiedName);
 
 			Assert.AreEqual("IamATreeNodeProvider2", result.Name);

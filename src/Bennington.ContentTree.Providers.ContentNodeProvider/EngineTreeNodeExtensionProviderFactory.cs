@@ -8,7 +8,7 @@ using Bennington.Core;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider
 {
-    public class EngineTreeNodeExtensionProviderFactory : IAmATreeNodeExtensionProviderFactory
+    public class EngineTreeNodeExtensionProviderFactory : IContentTreeNodeProviderFactory
     {
         private readonly IContentTypeRegistry contentTypeRegistry;
         private readonly IServiceLocatorWrapper serviceLocator;
