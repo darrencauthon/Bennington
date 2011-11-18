@@ -67,7 +67,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         			}, 
 							}.AsQueryable());
 
-			var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 			var result = treeNodeSummarContext.GetChildren("1");
 
 			Assert.AreEqual(1, result.Count());
@@ -118,7 +118,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         			},
 							}.AsQueryable());
 
-			var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 			var result = treeNodeSummarContext.GetChildren("1");
 
 			Assert.AreEqual(1, result.Count());
@@ -169,7 +169,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         			},
 							}.AsQueryable());
 
-			var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 			var result = treeNodeSummarContext.GetChildren("1");
 
 			Assert.AreEqual(1, result.Count());
@@ -220,7 +220,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         			}, 
 							}.AsQueryable());
 
-			var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 			var result = treeNodeSummarContext.GetChildren("1");
 
 			Assert.AreEqual(1, result.Count());
@@ -270,7 +270,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         			}, 
 							}.AsQueryable());
 
-			var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 			var result = treeNodeSummarContext.GetChildren("1");
 
 			Assert.AreEqual(1, result.Count());
@@ -320,7 +320,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         			}, 
 							}.AsQueryable());
 
-			var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 			var result = treeNodeSummarContext.GetChildren("1");
 
 			Assert.AreEqual(1, result.Count());
@@ -371,7 +371,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         			}, 
 							}.AsQueryable());
 
-			var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 			var result = treeNodeSummarContext.GetChildren("1");
 
 			Assert.AreEqual(1, result.Count());
@@ -421,7 +421,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         			}, 
 							}.AsQueryable());
 
-			var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 			var result = treeNodeSummarContext.GetChildren("1");
 
 			Assert.AreEqual(1, result.Count());
@@ -473,7 +473,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         			}, 
 							}.AsQueryable());
 
-			var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 			var result = treeNodeSummarContext.GetChildren("1");
 
 			Assert.AreEqual(2, result.Count());
@@ -482,7 +482,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 		[TestMethod]
 		public void Returns_empty_set_when_passed_null()
 		{
-			var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 			var result = treeNodeSummarContext.GetChildren(null);
 
 			Assert.AreEqual(0, result.Count());
@@ -519,7 +519,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         			}, 
 							}.AsQueryable());
 
-			var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 			var result = treeNodeSummarContext.GetChildren("1");
 
 			Assert.AreEqual(1, result.Count());
@@ -572,7 +572,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         			},
 							}.AsQueryable());
 
-            var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+            var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
             var result = treeNodeSummarContext.GetChildren("1");
 
             Assert.AreEqual("test", result.First().LastModifyBy);
@@ -625,7 +625,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         			},
 							}.AsQueryable());
 
-            var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+            var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
             var result = treeNodeSummarContext.GetChildren("1");
 
             Assert.AreEqual(new DateTime(2010, 1, 1), result.First().LastModifyDate);
@@ -678,7 +678,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         			},
 							}.AsQueryable());
 
-            var treeNodeSummarContext = mocker.Resolve<TreeNodeSummaryContext>();
+            var treeNodeSummarContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
             var result = treeNodeSummarContext.GetChildren("1");
             
             Assert.IsTrue(result.First().Active);

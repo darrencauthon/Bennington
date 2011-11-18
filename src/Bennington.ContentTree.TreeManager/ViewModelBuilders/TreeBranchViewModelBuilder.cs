@@ -13,17 +13,17 @@ namespace Bennington.ContentTree.TreeManager.ViewModelBuilders
 
 	public class TreeBranchViewModelBuilder : ITreeBranchViewModelBuilder
 	{
-		private readonly ITreeNodeSummaryContext treeNodeSummaryContext;
+		private readonly IContentTree contentTree;
 
-		public TreeBranchViewModelBuilder(ITreeNodeSummaryContext treeNodeSummaryContext)
+		public TreeBranchViewModelBuilder(IContentTree contentTree)
 		{
-			this.treeNodeSummaryContext = treeNodeSummaryContext;
+			this.contentTree = contentTree;
 		}
 
 		public TreeBranchViewModel BuildViewModel(string parentNodeId)
 		{
             var listToReturn = new List<TreeBranchItemViewModel>();
-			var treeNodeSummaries = treeNodeSummaryContext.GetChildren(parentNodeId).OrderBy(a => a.Sequence ?? 999999);
+			var treeNodeSummaries = contentTree.GetChildren(parentNodeId).OrderBy(a => a.Sequence ?? 999999);
 			foreach (var treeNodeSummary in treeNodeSummaries)
 			{
 				if (string.IsNullOrEmpty(treeNodeSummary.Name))

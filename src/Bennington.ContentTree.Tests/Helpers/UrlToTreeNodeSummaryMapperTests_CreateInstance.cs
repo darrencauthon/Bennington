@@ -30,7 +30,7 @@ namespace Bennington.ContentTree.Tests.Helpers
 		public void Returns_null_for_404()
 		{
 			var pageId = Guid.NewGuid();
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(Constants.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -56,7 +56,7 @@ namespace Bennington.ContentTree.Tests.Helpers
 		public void Returns_correct_tree_node_summary_when_passed_a_url_1_deep()
 		{
 			var pageId = Guid.NewGuid();
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(Constants.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -82,7 +82,7 @@ namespace Bennington.ContentTree.Tests.Helpers
         public void Returns_correct_tree_node_summary_when_passed_a_url_1_deep_with_non_matching_case()
         {
             var pageId = Guid.NewGuid();
-            mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(Constants.RootNodeId))
+            mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
                 .Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -109,7 +109,7 @@ namespace Bennington.ContentTree.Tests.Helpers
 		{
 			var page1Id = "page1Id";
 			var page2Id = "page2Id";
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(Constants.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -127,7 +127,7 @@ namespace Bennington.ContentTree.Tests.Helpers
 										MayHaveChildNodes = true
 				         			},
 							});
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(page1Id))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(page1Id))
 				.Returns(new TreeNodeSummary[]
 				         	{
 								new TreeNodeSummary()
@@ -155,7 +155,7 @@ namespace Bennington.ContentTree.Tests.Helpers
 		{
 			var page1Id = "page1Id";
 			var page2Id = "page2Id";
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(Constants.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -173,7 +173,7 @@ namespace Bennington.ContentTree.Tests.Helpers
 										MayHaveChildNodes = true
 				         			},
 							});
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(page1Id))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(page1Id))
 				.Returns(new TreeNodeSummary[]
 				         	{
 								new TreeNodeSummary()
@@ -201,7 +201,7 @@ namespace Bennington.ContentTree.Tests.Helpers
 		{
 			var page1Id = "page1Id";
 			var page2Id = "page2Id";
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(Constants.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -219,7 +219,7 @@ namespace Bennington.ContentTree.Tests.Helpers
 										MayHaveChildNodes = false
 				         			},
 							});
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(page1Id))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(page1Id))
 				.Returns(new TreeNodeSummary[]
 				         	{
 								new TreeNodeSummary()

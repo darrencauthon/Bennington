@@ -10,7 +10,7 @@ using SimpleCqrs.Commanding;
 
 namespace Bennington.ContentTree.Contexts
 {
-	public interface ITreeNodeSummaryContext
+	public interface IContentTree
 	{
 		TreeNodeSummary GetTreeNodeSummaryByTreeNodeId(string nodeId);
 		IEnumerable<TreeNodeSummary> GetChildren(string parentNodeId);
@@ -18,14 +18,14 @@ namespace Bennington.ContentTree.Contexts
 		string Create(string parentNodeId, string providerTypeAssemblyQualifiedName, string controllerName);
 	}
 
-	public class TreeNodeSummaryContext : ITreeNodeSummaryContext
+	public class ContentTree : IContentTree
 	{
 		private readonly ITreeNodeRepository treeNodeRepository;
 		private readonly ITreeNodeProviderContext treeNodeProviderContext;
 		private readonly ICommandBus commandBus;
 		private readonly IGuidGetter guidGetter;
 
-		public TreeNodeSummaryContext(ITreeNodeRepository treeNodeRepository, 
+		public ContentTree(ITreeNodeRepository treeNodeRepository, 
 										ITreeNodeProviderContext treeNodeProviderContext,
 										ICommandBus commandBus,
 										IGuidGetter guidGetter)

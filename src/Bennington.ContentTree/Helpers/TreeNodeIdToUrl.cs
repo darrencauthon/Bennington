@@ -11,23 +11,23 @@ namespace Bennington.ContentTree.Helpers
 
 	public class TreeNodeIdToUrl : ITreeNodeIdToUrl
 	{
-		private readonly ITreeNodeSummaryContext treeNodeSummaryContext;
+		private readonly IContentTree contentTree;
 
-		public TreeNodeIdToUrl(ITreeNodeSummaryContext treeNodeSummaryContext)
+		public TreeNodeIdToUrl(IContentTree contentTree)
 		{
-			this.treeNodeSummaryContext = treeNodeSummaryContext;
+			this.contentTree = contentTree;
 		}
 
 		public string GetUrlByTreeNodeId(string treeNodeId)
 		{
-			var treeNodeSummary = treeNodeSummaryContext.GetTreeNodeSummaryByTreeNodeId(treeNodeId);
+			var treeNodeSummary = contentTree.GetTreeNodeSummaryByTreeNodeId(treeNodeId);
 			if (treeNodeSummary == null) return null;
 
 			var segments = new List<string>();
 			do
 			{
 				segments.Add(treeNodeSummary.UrlSegment);
-				treeNodeSummary = treeNodeSummaryContext.GetTreeNodeSummaryByTreeNodeId(treeNodeSummary.ParentTreeNodeId);
+				treeNodeSummary = contentTree.GetTreeNodeSummaryByTreeNodeId(treeNodeSummary.ParentTreeNodeId);
 			} while (treeNodeSummary != null);
 
 

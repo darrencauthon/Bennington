@@ -38,7 +38,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Blades
 			SimpleCqrs.ServiceLocator.Current.Register<IContentNodeProviderDraftToContentNodeProviderPublishedVersionMapper, ContentNodeProviderDraftToContentNodeProviderPublishedVersionMapper>();
 			SimpleCqrs.ServiceLocator.Current.Register<ITreeNodeProviderContext, TreeNodeProviderContext>();
 			SimpleCqrs.ServiceLocator.Current.Register<IServiceLocatorWrapper, ServiceLocatorWrapper>();
-			simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<ITreeNodeSummaryContext>());
+			simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<IContentTree>());
 			simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<ITreeNodeProviderContext>());
 			simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<IFileSystem>());
             simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<ContentRoutingDenormalizer>);

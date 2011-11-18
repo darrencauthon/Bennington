@@ -27,7 +27,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 			                                                                      		ParentTreeNodeId = "parentTreeNodeId",
 																						Type = "provider type",
 			                                                                      	});
-			mocker.GetMock<ITreeNodeSummaryContext>().Verify(a => a.Create("parentTreeNodeId", "provider type", It.IsAny<string>()), Times.Once());
+			mocker.GetMock<IContentTree>().Verify(a => a.Create("parentTreeNodeId", "provider type", It.IsAny<string>()), Times.Once());
 		}
 
         [TestMethod]
@@ -40,13 +40,13 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
                 Type = "provider type",
                 ControllerName = "controllerName"
             });
-            mocker.GetMock<ITreeNodeSummaryContext>().Verify(a => a.Create("parentTreeNodeId", It.IsAny<string>(), "controllerName"), Times.Once());
+            mocker.GetMock<IContentTree>().Verify(a => a.Create("parentTreeNodeId", It.IsAny<string>(), "controllerName"), Times.Once());
         }
 
 		[TestMethod]
 		public void Returns_newly_created_tree_node_id()
 		{
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.Create(It.Is<string>(b => b == "parentTreeNodeId"), It.IsAny<string>(), It.IsAny<string>())).Returns("newTreeNodeId");
+			mocker.GetMock<IContentTree>().Setup(a => a.Create(It.Is<string>(b => b == "parentTreeNodeId"), It.IsAny<string>(), It.IsAny<string>())).Returns("newTreeNodeId");
 
 			var ContentTreeNodeContext = mocker.Resolve<ContentTreeNodeContext>();
 			var result = ContentTreeNodeContext.CreateTreeNodeAndReturnTreeNodeId(new ContentTreeNodeInputModel()

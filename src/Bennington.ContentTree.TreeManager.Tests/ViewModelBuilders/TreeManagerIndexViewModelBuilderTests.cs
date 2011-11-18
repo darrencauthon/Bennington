@@ -24,7 +24,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
         [TestMethod]
         public void Sets_ContentTreeHasNodes_to_true_when_the_root_node_has_children()
         {
-            mocker.GetMock<ITreeNodeSummaryContext>()
+            mocker.GetMock<IContentTree>()
                 .Setup(a => a.GetChildren(Constants.RootNodeId))
                 .Returns(new TreeNodeSummary[]
                              {

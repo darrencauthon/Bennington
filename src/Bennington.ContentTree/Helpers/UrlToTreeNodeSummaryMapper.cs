@@ -12,11 +12,11 @@ namespace Bennington.ContentTree.Helpers
 
 	public class UrlToTreeNodeSummaryMapper : IUrlToTreeNodeSummaryMapper
 	{
-		private readonly ITreeNodeSummaryContext treeNodeSummaryContext;
+		private readonly IContentTree contentTree;
 
-		public UrlToTreeNodeSummaryMapper(ITreeNodeSummaryContext treeNodeSummaryContext)
+		public UrlToTreeNodeSummaryMapper(IContentTree contentTree)
 		{
-			this.treeNodeSummaryContext = treeNodeSummaryContext;
+			this.contentTree = contentTree;
 		}
 
 		public TreeNodeSummary CreateInstance(string rawUrl)
@@ -28,7 +28,7 @@ namespace Bennington.ContentTree.Helpers
 			var workingTreeNodeId = Constants.RootNodeId;
 			foreach(var nodeSegment in nodeSegments)
 			{
-				treeNodeSummary = treeNodeSummaryContext.GetChildren(workingTreeNodeId).Where(a => string.Equals(a.UrlSegment, nodeSegment, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+				treeNodeSummary = contentTree.GetChildren(workingTreeNodeId).Where(a => string.Equals(a.UrlSegment, nodeSegment, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
 				if (treeNodeSummary == null) return null;
 				if (treeNodeSummary.MayHaveChildNodes == false) return treeNodeSummary;
 				workingTreeNodeId = treeNodeSummary.Id;

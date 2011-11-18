@@ -29,19 +29,19 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 	{
 		private readonly IContentNodeProviderDraftRepository contentNodeProviderDraftRepository;
 		private readonly ITreeNodeProviderContext treeNodeProviderContext;
-		private readonly ITreeNodeSummaryContext treeNodeSummaryContext;
+		private readonly IContentTree contentTree;
 		private readonly IApplicationSettingsValueGetter applicationSettingsValueGetter;
 		private readonly IFileSystem fileSystem;
 
 		public ContentNodeProviderDraftDenormalizer(IContentNodeProviderDraftRepository contentNodeProviderDraftRepository,
 													ITreeNodeProviderContext treeNodeProviderContext,
-													ITreeNodeSummaryContext treeNodeSummaryContext,
+													IContentTree contentTree,
 													IApplicationSettingsValueGetter applicationSettingsValueGetter,
 													IFileSystem fileSystem)
 		{
 			this.fileSystem = fileSystem;
 			this.applicationSettingsValueGetter = applicationSettingsValueGetter;
-			this.treeNodeSummaryContext = treeNodeSummaryContext;
+			this.contentTree = contentTree;
 			this.treeNodeProviderContext = treeNodeProviderContext;
 			this.contentNodeProviderDraftRepository = contentNodeProviderDraftRepository;
 		}
@@ -91,7 +91,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(PageUrlSegmentSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
-			var treeNodeSummary = treeNodeSummaryContext.GetTreeNodeSummaryByTreeNodeId(contentNodeProviderDraft.TreeNodeId);
+			var treeNodeSummary = contentTree.GetTreeNodeSummaryByTreeNodeId(contentNodeProviderDraft.TreeNodeId);
 			
 			contentNodeProviderDraft.UrlSegment = domainEvent.UrlSegment;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);

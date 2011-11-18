@@ -16,19 +16,19 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Controllers
     {
     	private readonly IModifyViewModelBuilder modifyViewModelBuilder;
         private readonly IToolLinkProviderDraftRepository toolLinkProviderDraftRepository;
-        private readonly ITreeNodeSummaryContext treeNodeSummaryContext;
+        private readonly IContentTree contentTree;
         private readonly ICommandBus commandBus;
         private readonly ICurrentUserContext currentUserContext;
 
         public ToolLinkProviderNodeController(IModifyViewModelBuilder modifyViewModelBuilder,
                                                 IToolLinkProviderDraftRepository toolLinkProviderDraftRepository,
-                                                ITreeNodeSummaryContext treeNodeSummaryContext,
+                                                IContentTree contentTree,
                                                 ICommandBus commandBus,
                                                 ICurrentUserContext currentUserContext)
         {
             this.currentUserContext = currentUserContext;
             this.commandBus = commandBus;
-            this.treeNodeSummaryContext = treeNodeSummaryContext;
+            this.contentTree = contentTree;
             this.toolLinkProviderDraftRepository = toolLinkProviderDraftRepository;
             this.modifyViewModelBuilder = modifyViewModelBuilder;
         }
@@ -49,7 +49,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Controllers
 			if (!ModelState.IsValid)
 				return View("Modify", modifyViewModelBuilder.BuildViewModel(toolLinkInputModel));
 
-            var newTreeNodeId = treeNodeSummaryContext.Create(toolLinkInputModel.ParentTreeNodeId, typeof(ToolLinkNodeProvider).AssemblyQualifiedName, null);
+            var newTreeNodeId = contentTree.Create(toolLinkInputModel.ParentTreeNodeId, typeof(ToolLinkNodeProvider).AssemblyQualifiedName, null);
 		    
             var toolLinkProviderDraft = new ToolLinkProviderDraft()
 		                {

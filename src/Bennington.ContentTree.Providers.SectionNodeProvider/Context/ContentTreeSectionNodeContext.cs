@@ -15,18 +15,18 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Context
 	public class ContentTreeSectionNodeContext : IContentTreeSectionNodeContext
 	{
 		private readonly IContentTreeSectionNodeRepository contentTreeSectionNodeRepository;
-		private readonly ITreeNodeSummaryContext treeNodeSummaryContext;
+		private readonly IContentTree contentTree;
 
-		public ContentTreeSectionNodeContext(IContentTreeSectionNodeRepository contentTreeSectionNodeRepository, ITreeNodeSummaryContext treeNodeSummaryContext)
+		public ContentTreeSectionNodeContext(IContentTreeSectionNodeRepository contentTreeSectionNodeRepository, IContentTree contentTree)
 		{
-			this.treeNodeSummaryContext = treeNodeSummaryContext;
+			this.contentTree = contentTree;
 			this.contentTreeSectionNodeRepository = contentTreeSectionNodeRepository;
 		}
 
 		public string CreateAndReturnTreeNodeId(ContentTreeSectionInputModel contentTreeSectionInputModel)
 		{
 			throw new NotImplementedException();
-			var newTreeNodeId = treeNodeSummaryContext.Create(contentTreeSectionInputModel.ParentTreeNodeId, typeof(SectionNodeProvider).AssemblyQualifiedName, null);
+			var newTreeNodeId = contentTree.Create(contentTreeSectionInputModel.ParentTreeNodeId, typeof(SectionNodeProvider).AssemblyQualifiedName, null);
 			contentTreeSectionInputModel.TreeNodeId = newTreeNodeId;
 			return contentTreeSectionInputModel.TreeNodeId;
 		}

@@ -19,7 +19,7 @@ namespace Bennington.Content
 
         public static ContentTree BuildTree(IEnumerable<ContentNode> nodes)
         {
-            var treeNodes = nodes.Select(node => new ContentTreeNode(node.Segment, node.Action, node.Controller, node.Id, node.ParentId)).ToList();
+            var treeNodes = nodes.Select(node => new ContentTreeNode(node.Segment, node.Action, node.Controller, node.Id, node.ParentId, node.TreeNodeId, node.ActionId)).ToList();
             treeNodes.ForEach(treeNode => SetTreeNodeParent(treeNode, treeNodes));
             return new ContentTree(treeNodes);
         }

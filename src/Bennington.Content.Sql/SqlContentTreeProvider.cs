@@ -43,6 +43,8 @@ namespace Bennington.Content.Sql
                                             Id = contentTreeItem.Id,
                                             ParentId = contentTreeItem.ParentId,
                                             Segment = contentTreeItem.Segment,
+                                            ActionId = contentTreeItem.ActionId,
+                                            TreeNodeId = contentTreeItem.TreeNodeId,
                                         });
 
                 return ContentTree.BuildTree(nodes);

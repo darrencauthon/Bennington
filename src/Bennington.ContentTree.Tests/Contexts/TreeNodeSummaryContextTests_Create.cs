@@ -38,7 +38,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 				         		Id = "id",
 				         	});
 
-			var treeNodeSummaryContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummaryContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 			var result = treeNodeSummaryContext.Create("parentNodeId", typeof(FakeTreeNodeExtensionProvider).AssemblyQualifiedName, null);
 
 			Assert.AreEqual(guid.ToString(), result);
@@ -47,14 +47,14 @@ namespace Bennington.ContentTree.Tests.Contexts
 		[TestMethod]
 		public void Does_not_throw_exception_when_passing_type_that_does_implements_IAmATreeNodeExtensionProvider()
 		{
-			var treeNodeSummaryContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummaryContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 			treeNodeSummaryContext.Create(null, typeof(FakeTreeNodeExtensionProvider).AssemblyQualifiedName, null);
 		}
 
 		[TestMethod]
 		public void Throws_exception_when_passing_type_that_does_not_implement_IAmATreeNodeExtensionProvider()
 		{
-			var treeNodeSummaryContext = mocker.Resolve<TreeNodeSummaryContext>();
+			var treeNodeSummaryContext = mocker.Resolve<ContentTree.Contexts.ContentTree>();
 
 			try
 			{
@@ -139,7 +139,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 			var guid = new Guid();
 			mocker.GetMock<IGuidGetter>().Setup(a => a.GetGuid()).Returns(guid);
 
-            mocker.Resolve<TreeNodeSummaryContext>().Create("parentNodeId", typeof(FakeProvider).AssemblyQualifiedName, "controllerName");
+            mocker.Resolve<ContentTree.Contexts.ContentTree>().Create("parentNodeId", typeof(FakeProvider).AssemblyQualifiedName, "controllerName");
 
 			mocker.GetMock<ICommandBus>().Verify(a => a.Send(It.Is<CreateTreeNodeCommand>(b => b.ParentId == "parentNodeId"
 																									&& b.TreeNodeId == guid

@@ -18,7 +18,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Routing
         {
             mocker = new AutoMoqer();
 
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(Constants.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -45,7 +45,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Routing
 							});
 
 
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren("2"))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("2"))
 					.Returns(new TreeNodeSummary[]
 				         	{
 								new TreeNodeSummary()
@@ -74,7 +74,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Routing
 				         		},
 							});
 
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren("4"))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("4"))
 					.Returns(new TreeNodeSummary[]
 				         	{
 								new TreeNodeSummary()
@@ -161,7 +161,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Routing
 		{
 			var url = "/rootsegment1";
 
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(Constants.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(Constants.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         				{
 				         					new TreeNodeSummary()

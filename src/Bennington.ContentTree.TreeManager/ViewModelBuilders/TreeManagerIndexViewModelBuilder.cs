@@ -11,18 +11,18 @@ namespace Bennington.ContentTree.TreeManager.ViewModelBuilders
 
     public class TreeManagerIndexViewModelBuilder : ITreeManagerIndexViewModelBuilder
     {
-        private readonly ITreeNodeSummaryContext treeNodeSummaryContext;
+        private readonly IContentTree contentTree;
 
-        public TreeManagerIndexViewModelBuilder(ITreeNodeSummaryContext treeNodeSummaryContext)
+        public TreeManagerIndexViewModelBuilder(IContentTree contentTree)
         {
-            this.treeNodeSummaryContext = treeNodeSummaryContext;
+            this.contentTree = contentTree;
         }
 
         public TreeManagerIndexViewModel BuildViewModel()
         {
             return new TreeManagerIndexViewModel()
                        {
-                           ContentTreeHasNodes = treeNodeSummaryContext.GetChildren(Constants.RootNodeId).Any(),
+                           ContentTreeHasNodes = contentTree.GetChildren(Constants.RootNodeId).Any(),
                            TreeNodeCreationInputModel = new TreeNodeCreationInputModel()
                                                             {
                                                                 ParentTreeNodeId = Constants.RootNodeId

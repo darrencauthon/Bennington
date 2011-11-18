@@ -14,14 +14,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.ViewModelBuilders
 
 	public class ContentTreeNodeDisplayViewModelBuilder : IContentTreeNodeDisplayViewModelBuilder
 	{
-		private readonly ITreeNodeSummaryContext treeNodeSummaryContext;
+		private readonly IContentTree contentTree;
 		private readonly IContentTreeNodeContext contentTreeNodeContext;
 
-	    public ContentTreeNodeDisplayViewModelBuilder(ITreeNodeSummaryContext treeNodeSummaryContext, 
+	    public ContentTreeNodeDisplayViewModelBuilder(IContentTree contentTree, 
                                                         IContentTreeNodeContext contentTreeNodeContext)
 		{
 	        this.contentTreeNodeContext = contentTreeNodeContext;
-			this.treeNodeSummaryContext = treeNodeSummaryContext;
+			this.contentTree = contentTree;
 		}
 
 		public ContentTreeNodeDisplayViewModel BuildViewModel(string rawUrl, RouteData routeData, string currentAction)
@@ -57,7 +57,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.ViewModelBuilders
 			var workingTreeNodeId = ContentTreeNodeContext.RootNodeId;
 			foreach (var nodeSegment in nodeSegments)
 			{
-				var childNodes = treeNodeSummaryContext.GetChildren(workingTreeNodeId);
+				var childNodes = contentTree.GetChildren(workingTreeNodeId);
 				var treeNodeSummary = childNodes.Where(a => a.UrlSegment.ToUpper() == nodeSegment.ToUpper()).FirstOrDefault();
 				if (treeNodeSummary == null) break;
 				workingTreeNodeId = treeNodeSummary.Id;

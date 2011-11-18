@@ -21,7 +21,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
 		[TestMethod]
 		public void Sets_child_tree_node_name_to_UNKNOWN_when_the_name_is_null_or_blank()
 		{
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren("1"))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("1"))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -39,7 +39,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
 		[TestMethod]
 		public void Returns_child_tree_node_summaries_of_specified_parent_node()
 		{
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren("1"))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("1"))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -66,7 +66,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
         [TestMethod]
         public void Sets_IsActive_property_to_true_when_item_is_active()
         {
-            mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren("1"))
+            mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("1"))
                 .Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -84,7 +84,7 @@ namespace Bennington.ContentTree.TreeManager.Tests.ViewModelBuilders
         [TestMethod]
         public void Sets_IsActive_property_to_false_when_item_is_not_active()
         {
-            mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren("1"))
+            mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("1"))
                 .Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()

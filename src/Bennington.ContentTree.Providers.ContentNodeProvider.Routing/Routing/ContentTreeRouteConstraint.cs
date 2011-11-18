@@ -9,11 +9,11 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Routing
 {
     public class ContentTreeRouteConstraint : IRouteConstraint
     {
-    	private readonly ITreeNodeSummaryContext treeNodeSummaryContext;
+    	private readonly IContentTree contentTree;
 
-    	public ContentTreeRouteConstraint(ITreeNodeSummaryContext treeNodeSummaryContext)
+    	public ContentTreeRouteConstraint(IContentTree contentTree)
     	{
-    		this.treeNodeSummaryContext = treeNodeSummaryContext;
+    		this.contentTree = contentTree;
     	}
 
     	public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
@@ -41,7 +41,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing.Routing
 
 		private TreeNodeSummary FindByUrlSegment(string urlSegment, string parentTreeNodeId)
 		{
-			var children = treeNodeSummaryContext.GetChildren(parentTreeNodeId).Where(a => a.MayHaveChildNodes).ToArray(); //.Where(a => a.Type == typeof(ContentNodeProvider).AssemblyQualifiedName);)
+			var children = contentTree.GetChildren(parentTreeNodeId).Where(a => a.MayHaveChildNodes).ToArray(); //.Where(a => a.Type == typeof(ContentNodeProvider).AssemblyQualifiedName);)
             return children.Where(a => string.Equals(a.UrlSegment, urlSegment, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
 		}
     }

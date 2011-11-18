@@ -25,7 +25,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		[TestMethod]
 		public void Returns_correct_Header_for_tree_node_url_when_url_contains_querystring_data()
 		{
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -56,7 +56,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		[TestMethod]
 		public void Returns_correct_HeaderImage_for_tree_node_url()
 		{
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -88,7 +88,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		[TestMethod]
 		public void Returns_correct_Header_value_for_second_level_tree_node_url_when_url_case_does_not_match()
 		{
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -108,7 +108,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 										HeaderText = "section1"
 				         			}, 
 							});
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren("1"))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("1"))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -138,7 +138,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		[TestMethod]
 		public void Returns_correct_Header_value_for_first_level_tree_node_url_when_url_case_does_not_match()
 		{
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -168,7 +168,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		[TestMethod]
 		public void Returns_correct_Header_value_for_first_level_tree_node_url()
 		{
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -198,7 +198,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		[TestMethod]
 		public void Returns_correct_Body_value_for_first_level_tree_node_url()
 		{
-			mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
+			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
 				.Returns(new TreeNodeSummary[]
 				         	{
 				         		new TreeNodeSummary()
@@ -227,7 +227,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		[TestMethod]
 		public void Returns_correct_Body_value_for_first_level_tree_node_url_when_there_are_multiple_ContentTreeNodes_for_the_current_url_and_the_action_is_Index2()
 		{
-		    mocker.GetMock<ITreeNodeSummaryContext>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
+		    mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
 		        .Returns(new TreeNodeSummary[]
 		                    {
 		                        new TreeNodeSummary()

@@ -16,18 +16,18 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Context
 		public const string RootNodeId = Constants.RootNodeId;
 		
 		private readonly IContentTreeNodeVersionContext contentTreeNodeVersionContext;
-		private readonly ITreeNodeSummaryContext treeNodeSummaryContext;
+		private readonly IContentTree contentTree;
 
 		public ContentTreeNodeContext(IContentTreeNodeVersionContext contentTreeNodeVersionContext, 
-										ITreeNodeSummaryContext treeNodeSummaryContext)
+										IContentTree contentTree)
 		{
-			this.treeNodeSummaryContext = treeNodeSummaryContext;
+			this.contentTree = contentTree;
 			this.contentTreeNodeVersionContext = contentTreeNodeVersionContext;
 		}
 
 		public string CreateTreeNodeAndReturnTreeNodeId(ContentTreeNodeInputModel contentTreeNodeInputModel)
 		{
-			var newTreeNodeId = treeNodeSummaryContext.Create(contentTreeNodeInputModel.ParentTreeNodeId, contentTreeNodeInputModel.Type, contentTreeNodeInputModel.ControllerName);
+			var newTreeNodeId = contentTree.Create(contentTreeNodeInputModel.ParentTreeNodeId, contentTreeNodeInputModel.Type, contentTreeNodeInputModel.ControllerName);
 			contentTreeNodeInputModel.TreeNodeId = newTreeNodeId;
 			return contentTreeNodeInputModel.TreeNodeId;
 		}

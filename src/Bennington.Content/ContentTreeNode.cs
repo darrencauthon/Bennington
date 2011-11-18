@@ -4,7 +4,7 @@ namespace Bennington.Content
 {
     public class ContentTreeNode
     {
-        public ContentTreeNode(string segment, string action, string controller, object id, object parentId)
+        public ContentTreeNode(string segment, string action, string controller, object id, object parentId, string treeNodeId, string actionId)
         {
             Segment = segment;
             Action = action;
@@ -34,5 +34,7 @@ namespace Bennington.Content
         public string Action { get; private set; }
         public string Controller { get; private set; }
         public string Segment { get; private set; }
+        public string TreeNodeId { get; set; }
+        public string ActionId { get; set; }
     }
 }

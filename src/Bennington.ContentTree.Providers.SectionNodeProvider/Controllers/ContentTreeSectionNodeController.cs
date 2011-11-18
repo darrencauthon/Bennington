@@ -18,20 +18,20 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Controllers
 		private readonly IContentTreeSectionNodeRepository contentTreeSectionNodeRepository;
 		private readonly IContentTreeSectionNodeToContentTreeSectionInputModelMapper contentTreeSectionNodeToContentTreeSectionInputModelMapper;
 		private readonly ICommandBus commandBus;
-		private readonly ITreeNodeSummaryContext treeNodeSummaryContext;
+		private readonly IContentTree contentTree;
 		private readonly IGuidGetter guidGetter;
 	    private ICurrentUserContext currentUserContext;
 
 	    public ContentTreeSectionNodeController(IContentTreeSectionNodeRepository contentTreeSectionNodeRepository, 
 												IContentTreeSectionNodeToContentTreeSectionInputModelMapper contentTreeSectionNodeToContentTreeSectionInputModelMapper,
 												ICommandBus commandBus,
-												ITreeNodeSummaryContext treeNodeSummaryContext,
+												IContentTree contentTree,
 												IGuidGetter guidGetter,
                                                 ICurrentUserContext currentUserContext)
 		{
 	        this.currentUserContext = currentUserContext;
 	        this.guidGetter = guidGetter;
-			this.treeNodeSummaryContext = treeNodeSummaryContext;
+			this.contentTree = contentTree;
 			this.commandBus = commandBus;
 			this.contentTreeSectionNodeToContentTreeSectionInputModelMapper = contentTreeSectionNodeToContentTreeSectionInputModelMapper;
 			this.contentTreeSectionNodeRepository = contentTreeSectionNodeRepository;
@@ -60,7 +60,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Controllers
 											Action = "Create",
 				                      	});
 
-			var treeNodeIdString = treeNodeSummaryContext.Create(contentTreeSectionInputModel.ParentTreeNodeId, typeof(SectionNodeProvider).AssemblyQualifiedName, null);
+			var treeNodeIdString = contentTree.Create(contentTreeSectionInputModel.ParentTreeNodeId, typeof(SectionNodeProvider).AssemblyQualifiedName, null);
 			
 			commandBus.Send(new CreateSectionCommand()
 			                	{

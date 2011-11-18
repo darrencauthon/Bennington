@@ -86,7 +86,7 @@
     <Compile Include="Models\TreeNodeSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration\RegisterInterfaceToSingleImplementations.cs" />
-    <Compile Include="Contexts\TreeNodeSummaryContext.cs" />
+    <Compile Include="ContentTree.cs" />
     <Compile Include="Repositories\TreeNodeRepository.cs" />
     <Compile Include="Contexts\TreeNodeProviderContext.cs" />
     <Compile Include="IAmATreeNodeExtensionProvider.cs" />

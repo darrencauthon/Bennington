@@ -69,7 +69,8 @@ namespace Bennington.Content.Routing
             for (var i = 0; i < segments.Length; i++)
                 routeData.Values.Add(i.ToString(), segments[i]);
 
-            routeData.DataTokens.Add("ContentId", treeNode.Id);
+            routeData.Values.Add("TreeNodeId", treeNode.TreeNodeId);
+            routeData.Values.Add("ActionId", treeNode.ActionId);
             routeData.Values.Add("action", treeNode.Action);
             routeData.Values.Add("controller", treeNode.Controller);
 
