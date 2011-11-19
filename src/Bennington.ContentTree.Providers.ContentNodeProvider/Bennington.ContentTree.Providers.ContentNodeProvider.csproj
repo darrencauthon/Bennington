@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="Blades\RegisterAssemblyWithSimpleCqrsServiceLocatorBlade.cs" />
     <Compile Include="Context\ContentTreeNodeContext.cs" />
+    <Compile Include="Controllers\ContentTreeController.cs" />
     <Compile Include="Controllers\ContentTreeNodeController.cs" />
     <Compile Include="Data\ContentAction.cs" />
     <Compile Include="Data\ContentNodeProviderDraft.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Context\ContentTreeNodeVersionContext.cs" />
     <Compile Include="Repositories\ContentTreeRepository.cs" />
     <Compile Include="Data\ContentType.cs" />
+    <Compile Include="Routing\ContentControllerDisplayRouteRegistrator.cs" />
     <Compile Include="Routing\ContentTreeRouteRegistrator.cs" />
     <Compile Include="Validation\ContentTreeInputModelValidator.cs" />
     <Compile Include="ViewModelBuilders\ContentTreeNodeDisplayViewModelBuilder.cs" />
@@ -133,9 +135,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <EmbeddedResource Include="Views\ContentTreeNode\ContentItemNavigation.cshtml" />
-    <EmbeddedResource Include="Views\ContentTreeNode\Display.cshtml" />
+    <EmbeddedResource Include="Views\ContentTree\Display.cshtml" />
     <EmbeddedResource Include="Views\ContentTreeNode\Modify.cshtml" />
     <EmbeddedResource Include="Views\Shared\EditorTemplates\ContentTreeNodeInputModel.cshtml" />
+    <EmbeddedResource Include="Views\ContentTree\Index.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -157,11 +160,6 @@
       <Project>{3DE65C2E-791C-4B05-815F-986782A5153A}</Project>
       <Name>Bennington.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\Content\Index.aspx">
-      <SubType>ASPXCodeBehind</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Content\ContentNodeProvider\controller.gif" />

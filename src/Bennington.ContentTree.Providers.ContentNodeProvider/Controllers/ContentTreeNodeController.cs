@@ -25,8 +25,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 		private readonly IContentTreeNodeContext contentTreeNodeContext;
 		private readonly ITreeNodeRepository treeNodeRepository;
 		private readonly IContentTreeNodeProviderContext contentTreeNodeProviderContext;
-		private readonly IContentTreeNodeDisplayViewModelBuilder contentTreeNodeDisplayViewModelBuilder;
-		private readonly IRawUrlGetter rawUrlGetter;
 		private readonly ICommandBus commandBus;
 		private readonly IGuidGetter guidGetter;
 		private readonly IContentTreeNodeFileUploadPersister contentTreeNodeFileUploadPersister;
@@ -54,18 +52,11 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 	        this.contentTreeNodeFileUploadPersister = contentTreeNodeFileUploadPersister;
 			this.guidGetter = guidGetter;
 			this.commandBus = commandBus;
-			this.rawUrlGetter = rawUrlGetter;
-			this.contentTreeNodeDisplayViewModelBuilder = contentTreeNodeDisplayViewModelBuilder;
 			this.contentTreeNodeProviderContext = contentTreeNodeProviderContext;
 			this.treeNodeRepository = treeNodeRepository;
 			this.contentTreeNodeContext = contentTreeNodeContext;
 			this.contentTreeNodeToContentTreeNodeInputModelMapper = contentTreeNodeToContentTreeNodeInputModelMapper;
 			this.contentTreeNodeVersionContext = contentTreeNodeVersionContext;
-		}
-
-        public virtual ActionResult Display(string currentController, string currentAction)
-		{
-            return View("Display", contentTreeNodeDisplayViewModelBuilder.BuildViewModel(rawUrlGetter.GetRawUrl(), (ControllerContext ?? new ControllerContext()).RouteData, currentAction));
 		}
 
 		[Authorize]

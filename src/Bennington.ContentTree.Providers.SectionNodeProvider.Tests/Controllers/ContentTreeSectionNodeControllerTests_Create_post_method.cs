@@ -127,7 +127,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Tests.Controllers
 																				ParentTreeNodeId = parentNodeId.ToString(),
 																			});
 
-			mocker.GetMock<IContentTree>().Verify(a => a.Create(parentNodeId.ToString(), typeof(Bennington.ContentTree.Providers.SectionNodeProvider.SectionNodeProvider).AssemblyQualifiedName, null), Times.Once());
+			mocker.GetMock<IContentTree>().Verify(a => a.Create(parentNodeId.ToString(), typeof(Bennington.ContentTree.Providers.SectionNodeProvider.SectionNodeProvider).AssemblyQualifiedName, typeof(ContentTreeSectionController).Name.Replace("Controller", string.Empty)), Times.Once());
 		}
 
 		[TestMethod]
@@ -136,7 +136,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Tests.Controllers
 			mocker.GetMock<IGuidGetter>().Setup(a => a.GetGuid()).Returns(Guid.NewGuid());
 			var treeNodeId = new Guid().ToString();
 			mocker.GetMock<IContentTree>().Setup(a => a.Create(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-				.Returns(treeNodeId.ToString());
+				.Returns(treeNodeId);
 			mocker.Resolve<ContentTreeSectionNodeController>().Create(new ContentTreeSectionInputModel()
 			{
 				Action = "action",

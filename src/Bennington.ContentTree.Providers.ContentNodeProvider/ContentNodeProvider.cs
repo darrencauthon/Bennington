@@ -67,7 +67,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 			set { throw new NotImplementedException(); }
 		}
 
-        public virtual string Controller { get { return "Content"; } set { } }
+        public virtual string Controller { get { return "ContentTree"; } set { } }
 
 		public virtual string ControllerToUseForModification
 		{
