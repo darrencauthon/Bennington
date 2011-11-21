@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Bennington.ContentTree.Providers.ContentNodeProvider.Data
+﻿namespace Bennington.ContentTree.Data
 {
     public class ContentTreeNode
     {

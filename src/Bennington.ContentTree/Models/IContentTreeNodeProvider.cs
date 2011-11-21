@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Bennington.ContentTree.Models;
 
-namespace Bennington.ContentTree
+namespace Bennington.ContentTree.Models
 {
 	public interface IContentTreeNodeProvider
 	{

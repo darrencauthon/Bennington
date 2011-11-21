@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Bennington.ContentTree.Models;
 using MvcTurbine.ComponentModel;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Registration

@@ -85,10 +85,8 @@
     <Compile Include="Context\ContentTreeNodeContext.cs" />
     <Compile Include="Controllers\ContentTreeController.cs" />
     <Compile Include="Controllers\ContentTreeNodeController.cs" />
-    <Compile Include="Data\ContentAction.cs" />
     <Compile Include="Data\ContentNodeProviderDraft.cs" />
     <Compile Include="Data\ContentNodeProviderPublishedVersion.cs" />
-    <Compile Include="Data\ContentTreeNode.cs" />
     <Compile Include="Data\DataModelDataContext.cs" />
     <Compile Include="Denormalizers\ContentNodeProviderDraftDenormalizer.cs" />
     <Compile Include="Denormalizers\ContentNodeProviderPublishDenormalizer.cs" />
@@ -120,8 +118,6 @@
     <Compile Include="Registration\TreeNodeExtensionProviderRegistration.cs" />
     <Compile Include="ContentNodeProvider.cs" />
     <Compile Include="Context\ContentTreeNodeVersionContext.cs" />
-    <Compile Include="Repositories\ContentTreeRepository.cs" />
-    <Compile Include="Data\ContentType.cs" />
     <Compile Include="Routing\ContentControllerDisplayRouteRegistrator.cs" />
     <Compile Include="Routing\ContentTreeRouteRegistrator.cs" />
     <Compile Include="Validation\ContentTreeInputModelValidator.cs" />

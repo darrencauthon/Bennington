@@ -77,6 +77,7 @@
     <Compile Include="Controllers\ContentTreeSectionController.cs" />
     <Compile Include="Data\DataModelDataContext.cs" />
     <Compile Include="Data\SectionNodeProviderDraft.cs" />
+    <Compile Include="Denormalizers\SectionRoutingDenormalizer.cs" />
     <Compile Include="Denormalizers\SectionNodeProviderDraftDenormalizer.cs" />
     <Compile Include="HttpModules\ContentTreeSectionHttpModule.cs" />
     <Compile Include="Mappers\ContentTreeSectionNodeInputModelToContentTreeSectionNodeMapper.cs" />

@@ -1,4 +1,4 @@
-﻿namespace Bennington.ContentTree.Providers.ContentNodeProvider.Data
+﻿namespace Bennington.ContentTree.Data
 {
     public class ContentType
     {

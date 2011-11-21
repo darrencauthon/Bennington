@@ -69,7 +69,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 
 		public class FakeProvider : IContentTreeNodeProvider
 		{
-			public IQueryable<ContentTreeNode> GetAll()
+			public IQueryable<Models.ContentTreeNode> GetAll()
 			{
 				throw new NotImplementedException();
 			}
@@ -149,7 +149,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 
 		private class FakeTreeNodeProvider : IContentTreeNodeProvider
 		{
-			public IQueryable<ContentTreeNode> GetAll()
+			public IQueryable<Models.ContentTreeNode> GetAll()
 			{
 				throw new NotImplementedException();
 			}

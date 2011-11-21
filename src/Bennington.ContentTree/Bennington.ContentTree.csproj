@@ -39,6 +39,15 @@
     <Reference Include="MvcTurbine">
       <HintPath>..\..\lib\Turbine\MvcTurbine.dll</HintPath>
     </Reference>
+    <Reference Include="Simple.Data">
+      <HintPath>..\packages\Simple.Data.Core.0.10.1.1\lib\net40\Simple.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.Data.Ado">
+      <HintPath>..\packages\Simple.Data.Ado.0.10.1.1\lib\net40\Simple.Data.Ado.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.Data.SqlServer">
+      <HintPath>..\packages\Simple.Data.SqlServer.0.10.1.1\lib\net40\Simple.Data.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleCqrs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleCqrs.1.0\lib\SimpleCqrs.dll</HintPath>
     </Reference>
@@ -68,6 +77,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Blades\RegisterAssemblyWithSimpleCqrsServiceLocatorBlade.cs" />
+    <Compile Include="Data\ContentAction.cs" />
+    <Compile Include="Data\ContentTreeNode.cs" />
+    <Compile Include="Data\ContentType.cs" />
     <Compile Include="Data\DataModelDataContext.cs" />
     <Compile Include="Data\TreeNode.cs" />
     <Compile Include="Denormalizers\TreeNodeDenormalizer.cs" />
@@ -83,6 +95,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration\RegisterInterfaceToSingleImplementations.cs" />
     <Compile Include="ContentTree.cs" />
+    <Compile Include="Repositories\ContentTreeRepository.cs" />
     <Compile Include="Repositories\TreeNodeRepository.cs" />
     <Compile Include="ContentTreeNodeProviderContext.cs" />
     <Compile Include="Models\IContentTreeNodeProvider.cs" />

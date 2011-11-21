@@ -1,4 +1,5 @@
-﻿using MvcTurbine.ComponentModel;
+﻿using Bennington.ContentTree.Models;
+using MvcTurbine.ComponentModel;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Registration
 {

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Bennington.ContentTree.Models;
 using Bennington.Core;
 
 namespace Bennington.ContentTree

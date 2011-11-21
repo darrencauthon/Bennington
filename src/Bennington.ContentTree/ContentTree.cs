@@ -7,12 +7,13 @@ using Bennington.ContentTree.Models;
 using Bennington.ContentTree.Repositories;
 using Bennington.Core.Helpers;
 using SimpleCqrs.Commanding;
+using ContentTreeNode = Bennington.ContentTree.Models.ContentTreeNode;
 
 namespace Bennington.ContentTree
 {
 	public interface IContentTree
 	{
-		ContentTreeNode GetById(string nodeId);
+		Models.ContentTreeNode GetById(string nodeId);
 		IEnumerable<ContentTreeNode> GetChildren(string parentNodeId);
 	    IEnumerable<ContentTreeNode> GetRootNodes();
 		string Create(string parentNodeId, string providerTypeAssemblyQualifiedName, string controllerName);

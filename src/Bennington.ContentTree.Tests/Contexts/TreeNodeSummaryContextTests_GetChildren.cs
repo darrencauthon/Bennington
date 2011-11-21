@@ -8,6 +8,7 @@ using Bennington.ContentTree.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Action = Bennington.ContentTree.Models.Action;
+using ContentTreeNode = Bennington.ContentTree.Models.ContentTreeNode;
 
 namespace Bennington.ContentTree.Tests.Contexts
 {

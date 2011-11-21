@@ -5,9 +5,10 @@ using Bennington.Content.Data;
 using Bennington.ContentTree.Models;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Repositories;
+using Bennington.ContentTree.Repositories;
 using MvcTurbine.ComponentModel;
 using Action = Bennington.ContentTree.Models.Action;
-using ContentType = Bennington.ContentTree.Providers.ContentNodeProvider.Data.ContentType;
+using ContentType = Bennington.ContentTree.Data.ContentType;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider
 {
