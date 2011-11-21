@@ -46,6 +46,10 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                 contentTreeRepository.Delete(contentTreeNode.Id);
             }
 
+            var indexDraft = contentNodeProviderDraftRepository.GetAllContentNodeProviderDrafts().Where(a => a.TreeNodeId == treeNode.TreeNodeId && a.Action == "Index").FirstOrDefault();
+            if (indexDraft == null) return;
+            if (indexDraft.Inactive) return;
+
             foreach (var action in provider.Actions.OrderBy(a => a.ControllerAction == "Index" ? 10 : 20))
             {
                 var draft = contentNodeProviderDraftRepository.GetAllContentNodeProviderDrafts().Where(a => a.TreeNodeId == treeNode.TreeNodeId && a.Action == action.ControllerAction).FirstOrDefault();
