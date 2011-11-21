@@ -48,7 +48,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 
             foreach (var action in provider.Actions.OrderBy(a => a.ControllerAction == "Index" ? 10 : 20))
             {
-                var draft = contentNodeProviderDraftRepository.GetAllContentNodeProviderDrafts().Where(a => a.PageId == domainEvent.AggregateRootId.ToString() && a.Action == action.ControllerAction).FirstOrDefault();
+                var draft = contentNodeProviderDraftRepository.GetAllContentNodeProviderDrafts().Where(a => a.TreeNodeId == treeNode.TreeNodeId && a.Action == action.ControllerAction).FirstOrDefault();
 
                 contentTreeRepository.Save(new ContentTreeNode()
                                            {
@@ -56,7 +56,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                                                Controller = provider.Controller,
                                                Id = Guid.NewGuid().ToString(),
                                                ParentId = GetParentId(treeNode, action.ControllerAction),
-                                               Segment = draft != null ? draft.UrlSegment : action.ControllerAction,
+                                               Segment = draft != null ? draft.UrlSegment ?? action.ControllerAction : action.ControllerAction,
                                                TreeNodeId = treeNode.TreeNodeId,
                                                ActionId = GetActionId(draft)
                                            });                
