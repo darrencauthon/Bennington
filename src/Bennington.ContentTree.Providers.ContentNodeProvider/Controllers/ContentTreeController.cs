@@ -11,12 +11,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
     public class ContentTreeController : Controller
     {
         private readonly Func<IContentTreeNodeDisplayViewModelBuilder> contentTreeNodeDisplayViewModelBuilder;
-        private readonly Func<IRawUrlGetter> rawUrlGetter;
 
-        public ContentTreeController(Func<IContentTreeNodeDisplayViewModelBuilder> contentTreeNodeDisplayViewModelBuilder,
-                                 Func<IRawUrlGetter> rawUrlGetter)
+        public ContentTreeController(Func<IContentTreeNodeDisplayViewModelBuilder> contentTreeNodeDisplayViewModelBuilder)
         {
-            this.rawUrlGetter = rawUrlGetter;
             this.contentTreeNodeDisplayViewModelBuilder = contentTreeNodeDisplayViewModelBuilder;
         }
 
@@ -25,9 +22,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
             return View();
         }
 
-        public virtual ActionResult Display(string currentController, string currentAction)
+        public virtual ActionResult Display(string treeNodeId, string actionId)
         {
-            return View("Display", contentTreeNodeDisplayViewModelBuilder().BuildViewModel(rawUrlGetter().GetRawUrl(), (ControllerContext ?? new ControllerContext()).RouteData, currentAction));
+            return View("Display", contentTreeNodeDisplayViewModelBuilder().BuildViewModel(treeNodeId, actionId));
         }
     }
 }

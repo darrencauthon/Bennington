@@ -30,6 +30,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
                 .ForMember(a => a.FileUpload, b => b.Ignore())
                 .ForMember(a => a.Id, b => b.MapFrom(c => c))
                 .ForMember(a => a.UrlRelativeToFileUploadRoot, b => b.Ignore())
+                .ForMember(a => a.Remove, b => b.Ignore())
                 ;
 			configuration.CreateMap<ContentTreePageNode, ContentTreeNodeInputModel>()
 				.ForMember(dest => dest.FormAction, opt => opt.Ignore())

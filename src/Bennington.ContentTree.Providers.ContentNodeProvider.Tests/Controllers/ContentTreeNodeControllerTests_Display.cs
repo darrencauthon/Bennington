@@ -24,15 +24,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Returns_view_model_from_viewModelBuilder()
 		{
-			mocker.GetMock<IRawUrlGetter>().Setup(a => a.GetRawUrl()).Returns("url");
 			var expectedViewModel = new ContentTreeNodeDisplayViewModel()
 			                        	{
 			                        		Header = "Header",
 			                        	};
-			mocker.GetMock<IContentTreeNodeDisplayViewModelBuilder>().Setup(a => a.BuildViewModel("url", It.IsAny<RouteData>(), It.IsAny<string>()))
+			mocker.GetMock<IContentTreeNodeDisplayViewModelBuilder>().Setup(a => a.BuildViewModel("treeNodeId", "actionId"))
 				.Returns(expectedViewModel);
 
-			var result = (ContentTreeNodeDisplayViewModel) ((ViewResult) mocker.Resolve<ContentTreeController>().Display("controller", "action")).ViewData.Model;
+			var result = (ContentTreeNodeDisplayViewModel) ((ViewResult) mocker.Resolve<ContentTreeController>().Display("treeNodeId", "actionId")).ViewData.Model;
 
 			Assert.AreEqual(expectedViewModel, result);
 		}

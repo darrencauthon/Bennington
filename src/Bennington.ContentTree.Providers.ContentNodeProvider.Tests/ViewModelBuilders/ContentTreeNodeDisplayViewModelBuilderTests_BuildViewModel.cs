@@ -1,10 +1,13 @@
-﻿using System.Web.Routing;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Routing;
 using AutoMoq;
 using Bennington.ContentTree.Models;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
 using Bennington.ContentTree.Providers.ContentNodeProvider.ViewModelBuilders;
 using Bennington.Core.Helpers;
+using Bennington.FileUploadHandling.Context;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ContentTreeNode = Bennington.ContentTree.Models.ContentTreeNode;
@@ -20,259 +23,86 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		public void Init()
 		{
 			mocker = new AutoMoqer();
+
+            mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("treeId"))
+                        .Returns(new ContentTreePageNode[]
+                             {
+                                 new ContentTreePageNode()
+                                     {
+                                         PageId = "actionId1"
+                                     }, 
+                                 new ContentTreePageNode()
+                                     {
+                                         PageId = "actionId",
+                                         HeaderText = "header",
+                                         HeaderImage = "headerImageId",
+                                         Body = "body",
+                                     }, 
+                                new ContentTreePageNode()
+                                     {
+                                         PageId = "actionId2"
+                                     }, 
+                             });
 		}
 
-		[TestMethod]
-		public void Returns_correct_Header_for_tree_node_url_when_url_contains_querystring_data()
-		{
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-				.Returns(new ContentTreeNode[]
-				         	{
-				         		new ContentTreeNode()
-				         			{
-				         				Id = "1",
-										UrlSegment = "test",
-										ParentTreeNodeId = ContentTreeNodeContext.RootNodeId,
-				         			}, 
-							});
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new Models.ContentTreePageNode[]
-				         	{
-				         		new Models.ContentTreePageNode()
-				         			{
-				         				Action = "Index",
-										Body = "page content1",
-										HeaderText = "test1"
-				         			}, 
-							});
-			var routeData = new RouteData();
-			routeData.Values.Add("Action", "Index");
+        [TestMethod]
+        public void Returns_empty_view_model_when_a_matching_page_is_not_found()
+        {
+            var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel(null, null);
 
-			var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel("test?a=1", routeData, "Index");
+            Assert.AreEqual(null, result.Body);
+            Assert.AreEqual(null, result.Header);
+            Assert.AreEqual(null, result.HeaderImage);
+        }
 
-			Assert.AreEqual("test1", result.Header);
-		}
+        [TestMethod]
+        public void Returns_correct_body_text_when_a_matching_page_is_found()
+        {
+            var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel("treeId", "actionId");
 
-		[TestMethod]
-		public void Returns_correct_HeaderImage_for_tree_node_url()
-		{
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-				.Returns(new ContentTreeNode[]
-				         	{
-				         		new ContentTreeNode()
-				         			{
-				         				Id = "1",
-										UrlSegment = "test",
-										ParentTreeNodeId = ContentTreeNodeContext.RootNodeId,
-				         			}, 
-							});
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new Models.ContentTreePageNode[]
-				         	{
-				         		new Models.ContentTreePageNode()
-				         			{
-				         				Action = "Index",
-										Body = "page content1",
-										HeaderText = "test1",
-										HeaderImage = "test.jpg"
-				         			}, 
-							});
-			var routeData = new RouteData();
-			routeData.Values.Add("Action", "Index");
+            Assert.AreEqual("body", result.Body);
+        }
 
-			var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel("test", routeData, "Index");
+        [TestMethod]
+        public void Returns_correct_header_text_when_a_matching_page_is_found()
+        {
+            var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel("treeId", "actionId");
 
-			Assert.AreEqual("test.jpg", result.HeaderImage);
-		}
+            Assert.AreEqual("header", result.Header);
+        }
 
-		[TestMethod]
-		public void Returns_correct_Header_value_for_second_level_tree_node_url_when_url_case_does_not_match()
-		{
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-				.Returns(new ContentTreeNode[]
-				         	{
-				         		new ContentTreeNode()
-				         			{
-				         				Id = "1",
-										UrlSegment = "Section1",
-										ParentTreeNodeId = ContentTreeNodeContext.RootNodeId,
-				         			}, 
-							});
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new Models.ContentTreePageNode[]
-				         	{
-				         		new Models.ContentTreePageNode()
-				         			{
-				         				Action = "Index",
-										Body = "page content",
-										HeaderText = "section1"
-				         			}, 
-							});
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren("1"))
-				.Returns(new ContentTreeNode[]
-				         	{
-				         		new ContentTreeNode()
-				         			{
-				         				Id = "2",
-										UrlSegment = "test"
-				         			}, 
-							});
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("2"))
-				.Returns(new Models.ContentTreePageNode[]
-				         	{
-				         		new Models.ContentTreePageNode()
-				         			{
-				         				Action = "Index",
-										Body = "page1 content",
-										HeaderText = "page1"
-				         			}, 
-							});
-			var routeData = new RouteData();
-			routeData.Values.Add("Action", "Index");
+        [TestMethod]
+        public void Returns_url_to_header_image_when_a_matching_page_is_found_and_it_has_a_header_image_id_set()
+        {
+            mocker.GetMock<IFileUploadContext>()
+                .Setup(a => a.GetUrlForFileUploadFolder())
+                .Returns("/Resource_/");
+            mocker.GetMock<IFileUploadContext>()
+                .Setup(a => a.GetUrlRelativeToUploadRoot("ContentTreeNodeInputModel", "HeaderImage", "headerImageId"))
+                .Returns("ContentTreeNodeInputModel/guid/HeaderImage/test.jpg");
 
-			var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel("SECTION1/TEST", routeData, "Index");
+            var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel("treeId", "actionId");
 
-			Assert.AreEqual("page1", result.Header);
-		}
+            Assert.AreEqual("/Resource_/ContentTreeNodeInputModel/guid/HeaderImage/test.jpg", result.HeaderImage);
+        }
 
-		[TestMethod]
-		public void Returns_correct_Header_value_for_first_level_tree_node_url_when_url_case_does_not_match()
-		{
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-				.Returns(new ContentTreeNode[]
-				         	{
-				         		new ContentTreeNode()
-				         			{
-				         				Id = "1",
-										UrlSegment = "Section1"
-				         			}, 
-							});
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new Models.ContentTreePageNode[]
-				         	{
-				         		new Models.ContentTreePageNode()
-				         			{
-				         				Action = "Index",
-										Body = "page content",
-										HeaderText = "section1"
-				         			}, 
-							});
-			var routeData = new RouteData();
-			routeData.Values.Add("Action", "Index");
+        [TestMethod]
+        public void Sets_url_to_header_image_to_null_when_a_matching_page_is_found_but_it_has_no_header_image_id_set()
+        {
+            mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("treeId"))
+            .Returns(new ContentTreePageNode[]
+                             {
+                                 new ContentTreePageNode()
+                                     {
+                                         PageId = "actionId",
+                                         HeaderText = "header",
+                                         Body = "body",
+                                     }, 
+                             });
 
-			var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel("SECTION1", routeData, "Index");
+            var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel("treeId", "actionId");
 
-			Assert.AreEqual("section1", result.Header);
-		}
-
-		[TestMethod]
-		public void Returns_correct_Header_value_for_first_level_tree_node_url()
-		{
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-				.Returns(new ContentTreeNode[]
-				         	{
-				         		new ContentTreeNode()
-				         			{
-				         				Id = "1",
-										UrlSegment = "Section1"
-				         			}, 
-							});
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new Models.ContentTreePageNode[]
-				         	{
-				         		new Models.ContentTreePageNode()
-				         			{
-				         				Action = "Index",
-										Body = "page content",
-										HeaderText = "section1"
-				         			}, 
-							});
-			var routeData = new RouteData();
-			routeData.Values.Add("Action", "Index");
-
-			var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel("Section1/", routeData, "Index");
-
-			Assert.AreEqual("section1", result.Header);
-		}
-
-		[TestMethod]
-		public void Returns_correct_Body_value_for_first_level_tree_node_url()
-		{
-			mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-				.Returns(new ContentTreeNode[]
-				         	{
-				         		new ContentTreeNode()
-				         			{
-				         				Id = "1",
-										UrlSegment = "Section1"
-				         			}, 
-							});
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-				.Returns(new Models.ContentTreePageNode[]
-				         	{
-				         		new Models.ContentTreePageNode()
-				         			{
-				         				Action = "Index",
-										Body = "page content",
-				         			}, 
-							});
-			var routeData = new RouteData();
-			routeData.Values.Add("Action", "Index");
-
-			var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel("Section1/", routeData, "Index");
-
-			Assert.AreEqual("page content", result.Body);
-		}
-
-		[TestMethod]
-		public void Returns_correct_Body_value_for_first_level_tree_node_url_when_there_are_multiple_ContentTreeNodes_for_the_current_url_and_the_action_is_Index2()
-		{
-		    mocker.GetMock<IContentTree>().Setup(a => a.GetChildren(ContentTreeNodeContext.RootNodeId))
-		        .Returns(new ContentTreeNode[]
-		                    {
-		                        new ContentTreeNode()
-		                            {
-		                                Id = "1",
-		                                UrlSegment = "Section1"
-		                            }, 
-		                    });
-			mocker.GetMock<IGetParentRouteDataDictionaryFromChildActionRouteData>()
-				.Setup(a => a.GetRouteValues(It.IsAny<RouteData>()))
-				.Returns((RouteData q) => q);
-		    mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("1"))
-		        .Returns(new Models.ContentTreePageNode[]
-		                    {
-		                        new Models.ContentTreePageNode()
-		                            {
-		                                Action = "Index",
-		                                Body = "page content",
-		                            }, 
-		                        new Models.ContentTreePageNode()
-		                            {
-		                                Action = "Index2",
-		                                Body = "page content2",
-		                            },
-		                        new Models.ContentTreePageNode()
-		                            {
-		                                Action = "Index3",
-		                                Body = "page content3",
-		                            },
-		                    });
-			var routeData = new RouteData();
-			routeData.Values.Add("Action", "Index2");
-
-		    var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel("Section1/", routeData, "Index2");
-
-		    Assert.AreEqual("page content2", result.Body);
-		}
-
-		[TestMethod]
-		public void Returns_emtpy_view_model_when_url_doesnt_match_a_tree_node_url()
-		{
-			var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel(null, null, "Index");
-
-			Assert.AreEqual(string.Empty, result.Header);
-			Assert.AreEqual(string.Empty, result.Body);
-		}
+            Assert.AreEqual(null, result.HeaderImage);
+        }
 	}
 }
