@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using Bennington.ContentTree.Data;
 using Bennington.ContentTree.Domain.Events.Section;
 using Bennington.ContentTree.Providers.SectionNodeProvider.Data;
 using Bennington.ContentTree.Repositories;
+using Bennington.Core.Caching;
 using SimpleCqrs.Eventing;
 using IDataModelDataContext = Bennington.ContentTree.Providers.SectionNodeProvider.Data.IDataModelDataContext;
 
@@ -11,7 +13,6 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Denormalizers
 {
 	public class SectionRoutingDenormalizer : IHandleDomainEvents<SectionDeletedEvent>,
 														IHandleDomainEvents<SectionUrlSegmentSetEvent>,
-														//IHandleDomainEvents<SectionDefaultTreeNodeIdSetEvent>,
 														IHandleDomainEvents<SectionInactiveSetEvent>
 	{
 		private readonly IDataModelDataContext dataModelDataContext;
@@ -39,10 +40,10 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Denormalizers
 		{
 			var sectionNodeProviderDraft = GetSectionNodeProviderDraftFromDomainEvent(domainEvent);
 
-		    RecreateRoutesForDefaultPageOfSection(sectionNodeProviderDraft);
+		    CreateRouteForSection(sectionNodeProviderDraft);
 		}
 
-	    private void RecreateRoutesForDefaultPageOfSection(SectionNodeProviderDraft sectionNodeProviderDraft)
+	    private void CreateRouteForSection(SectionNodeProviderDraft sectionNodeProviderDraft)
 	    {
 	        foreach (var contentTreeRoute in contentTreeRepository.GetAll().Where(a => a.TreeNodeId == sectionNodeProviderDraft.TreeNodeId))
 	        {
@@ -57,27 +58,25 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Denormalizers
                 throw new Exception("Tree node not found: " + sectionNodeProviderDraft.TreeNodeId);
 
             contentTreeRepository.Save(new ContentTreeNode()
-            {
-                Action = "Index",
-                Controller = "ContentTreeSection",
-                Id = Guid.NewGuid().ToString(),
-                ParentId = GetParentId(treeNode),
-                Segment = sectionNodeProviderDraft.UrlSegment,
-                TreeNodeId = treeNode.TreeNodeId,
-                ActionId = null
-            });
-	    }
+                                            {
+                                                Action = "Index",
+                                                Controller = "ContentTreeSection",
+                                                Id = Guid.NewGuid().ToString(),
+                                                ParentId = GetParentId(treeNode),
+                                                Segment = sectionNodeProviderDraft.UrlSegment,
+                                                TreeNodeId = treeNode.TreeNodeId,
+                                                ActionId = null
+                                            });
 
-        //public void Handle(SectionDefaultTreeNodeIdSetEvent domainEvent)
-        //{
-        //    var sectionNodeProviderDraft = GetSectionNodeProviderDraftFromDomainEvent(domainEvent);
-        //    RecreateRoutesForDefaultPageOfSection(sectionNodeProviderDraft);
-        //}
+            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["Bennington.Content.RoutingCacheKey"]))
+                return;
+            InvalidateCacheClient.Invalidate(new Uri(string.Format("net.pipe://localhost/caching/{0}/content_tree", ConfigurationManager.AppSettings["Bennington.Content.RoutingCacheKey"])));
+	    }
 
 		public void Handle(SectionInactiveSetEvent domainEvent)
 		{
 			var sectionNodeProviderDraft = GetSectionNodeProviderDraftFromDomainEvent(domainEvent);
-		    RecreateRoutesForDefaultPageOfSection(sectionNodeProviderDraft);
+		    CreateRouteForSection(sectionNodeProviderDraft);
 		}
 
         private SectionNodeProviderDraft GetSectionNodeProviderDraftFromDomainEvent(DomainEvent domainEvent)

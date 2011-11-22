@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using Bennington.ContentTree.Data;
 using Bennington.ContentTree.Domain.Events.Page;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Data;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Repositories;
 using Bennington.ContentTree.Repositories;
+using Bennington.Core.Caching;
 using SimpleCqrs.Eventing;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
@@ -65,6 +67,10 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                                                ActionId = GetActionId(draft)
                                            });                
             }
+
+            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["Bennington.Content.RoutingCacheKey"]))
+                return;
+            InvalidateCacheClient.Invalidate(new Uri(string.Format("net.pipe://localhost/caching/{0}/content_tree", ConfigurationManager.AppSettings["Bennington.Content.RoutingCacheKey"])));
         }
 
         private string GetActionId(ContentNodeProviderDraft draft)

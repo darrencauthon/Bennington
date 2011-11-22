@@ -203,8 +203,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 					PageId = new Guid(contentTreeNodeInputModel.PageId)
 				});
 
-            //InvalidateCacheClient.Invalidate(new Uri("net.pipe://localhost/caching/samplecmswebsite/content_tree"));
-
 			if (!string.IsNullOrEmpty(contentTreeNodeInputModel.FormAction))
 			{
 				if (contentTreeNodeInputModel.FormAction.ToLower() == "save and exit")

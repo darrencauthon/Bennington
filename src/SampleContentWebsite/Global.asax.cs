@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using Bennington.Core.Caching;
 using Bennington.Core.Configuration;
 using MvcTurbine.ComponentModel;
 using MvcTurbine.Unity;
@@ -19,8 +21,7 @@ namespace SampleContentWebsite
                         .Content()
                             .UseSql("Bennington.ContentTree.Domain.ConnectionString")
                             .Run();
-
-
+            
             base.Startup();
         }
     }
