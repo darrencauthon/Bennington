@@ -17,11 +17,32 @@ namespace Bennington.Core.Caching
 
         public void Open()
         {
-            cacheServiceHost = new ServiceHost(new InvalidateCacheService(invalidateCache), invalidateCacheUri);
-            cacheServiceHost.AddServiceEndpoint(typeof(IInvalidateCacheService), new NetNamedPipeBinding(), invalidateCacheUri);
-            cacheServiceHost.Open();
-        }
+            try
+            {
+                OpenServiceHost();
+            }
+            catch(InvalidOperationException)
+            {
+                var client = new ChannelFactory<IInvalidateCacheService>(new NetNamedPipeBinding(), new EndpointAddress(invalidateCacheUri)).CreateChannel();
+                client.Stop();
 
+                var expirationTime = DateTime.Now.AddSeconds(5);
+                var connected = false;
+
+                while(DateTime.Now < expirationTime && connected == false)
+                {
+                    try
+                    {
+                        OpenServiceHost();
+                        connected = true;
+                    }
+                    catch
+                    {
+                        connected = false;
+                    }
+                }
+            }
+        }
 
         public void Dispose()
         {
@@ -29,6 +50,13 @@ namespace Bennington.Core.Caching
 
             if(cacheServiceHost.State == CommunicationState.Opened || cacheServiceHost.State == CommunicationState.Opening)
                 cacheServiceHost.Close();
+        }
+
+        private void OpenServiceHost()
+        {
+            cacheServiceHost = new ServiceHost(new InvalidateCacheService(invalidateCache, () => cacheServiceHost.Close()), invalidateCacheUri);
+            cacheServiceHost.AddServiceEndpoint(typeof(IInvalidateCacheService), new NetNamedPipeBinding(), invalidateCacheUri);
+            cacheServiceHost.Open();
         }
     }
 }

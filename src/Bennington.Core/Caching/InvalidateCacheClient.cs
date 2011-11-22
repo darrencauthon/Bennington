@@ -1,19 +1,22 @@
 ﻿using System;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 
 namespace Bennington.Core.Caching
 {
-    public class InvalidateCacheClient
+    public static class InvalidateCacheClient
     {
-        public void Invalidate(Uri invalidateCacheUri)
+        public static void Invalidate(Uri invalidateCacheUri)
         {
             Invalidate(invalidateCacheUri, string.Empty);
         }
 
-        public void Invalidate(Uri invalidateCacheUri, string cacheKey)
+        public static void Invalidate(Uri invalidateCacheUri, string cacheKey)
         {
             var client = new ChannelFactory<IInvalidateCacheService>(new NetNamedPipeBinding(), new EndpointAddress(invalidateCacheUri)).CreateChannel();
             client.Invalidate(cacheKey);
+
+            ((IChannel)client).Close();
         }
     }
 }
