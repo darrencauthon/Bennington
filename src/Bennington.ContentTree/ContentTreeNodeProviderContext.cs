@@ -34,7 +34,7 @@ namespace Bennington.ContentTree
 
 		public IContentTreeNodeProvider GetProviderByTypeName(string providerTypeName)
 		{
-		    var allProviders = GetAllTreeNodeProviders().Where(a => a.GetType().AssemblyQualifiedName.StartsWith(providerTypeName)).ToArray();
+            var allProviders = GetAllTreeNodeProviders().Where(a => a.GetType().AssemblyQualifiedName.StartsWith(providerTypeName.Split(',')[0])).ToArray();
             return allProviders.FirstOrDefault();
 		}
 	}
