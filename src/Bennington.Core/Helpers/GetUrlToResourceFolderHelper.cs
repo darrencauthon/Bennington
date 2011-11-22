@@ -15,7 +15,7 @@ namespace Bennington.Core.Helpers
     {
         public string GetUrlToResourceFolder()
         {
-            return ConfigurationManager.AppSettings["ResourceFolderUrl"];
+            return ConfigurationManager.AppSettings["Bennington.ResourceFolderUrl"];
         }
     }
 }
