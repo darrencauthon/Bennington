@@ -83,9 +83,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             return draft != null ? draft.PageId : null;
         }
 
-        private string GetParentId(TreeNode treeNode, string actionId)
+        private string GetParentId(TreeNode treeNode, string action)
         {
-            if (actionId == "Index")
+            if (action == "Index")
             {
                 var contentTreeRow = contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNode.ParentTreeNodeId).FirstOrDefault();   
                 return contentTreeRow != null ? contentTreeRow.Id : treeNode.ParentTreeNodeId;                
