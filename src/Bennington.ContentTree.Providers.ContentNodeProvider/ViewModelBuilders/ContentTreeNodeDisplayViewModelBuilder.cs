@@ -16,7 +16,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.ViewModelBuilders
 	public class ContentTreeNodeDisplayViewModelBuilder : IContentTreeNodeDisplayViewModelBuilder
 	{
 	    private readonly IContentTreeNodeContext contentTreeNodeContext;
-	    private Func<IFileUploadContext> fileUploadContext;
+	    private readonly Func<IFileUploadContext> fileUploadContext;
 
 	    public ContentTreeNodeDisplayViewModelBuilder(IContentTreeNodeContext contentTreeNodeContext,
                                                       Func<IFileUploadContext> fileUploadContext)
