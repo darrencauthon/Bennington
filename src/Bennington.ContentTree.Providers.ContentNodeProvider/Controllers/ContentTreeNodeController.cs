@@ -12,6 +12,7 @@ using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
 using Bennington.ContentTree.Providers.ContentNodeProvider.ViewModelBuilders;
 using Bennington.ContentTree.Repositories;
 using Bennington.Core;
+using Bennington.Core.Caching;
 using Bennington.Core.Helpers;
 using MvcTurbine.ComponentModel;
 using SimpleCqrs.Commanding;
@@ -201,6 +202,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 				{
 					PageId = new Guid(contentTreeNodeInputModel.PageId)
 				});
+
+            InvalidateCacheClient.Invalidate(new Uri("net.pipe://localhost/caching/samplecmswebsite/content_tree"));
 
 			if (!string.IsNullOrEmpty(contentTreeNodeInputModel.FormAction))
 			{
