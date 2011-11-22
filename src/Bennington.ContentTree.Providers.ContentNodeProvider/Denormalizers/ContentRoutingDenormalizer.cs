@@ -68,6 +68,11 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                                            });                
             }
 
+            InvalidateRoutingCache();
+        }
+
+        private void InvalidateRoutingCache()
+        {
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["Bennington.Content.RoutingCacheKey"]))
                 return;
             InvalidateCacheClient.Invalidate(new Uri(string.Format("net.pipe://localhost/caching/{0}/content_tree", ConfigurationManager.AppSettings["Bennington.Content.RoutingCacheKey"])));
@@ -96,6 +101,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             {
                 contentTreeRepository.Delete(contentTreeNodeRow.Id);
             }
+
+            InvalidateRoutingCache();
         }
     }
 }
