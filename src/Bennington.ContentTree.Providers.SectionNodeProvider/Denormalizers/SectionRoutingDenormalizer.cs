@@ -51,7 +51,6 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Denormalizers
 	        }
 
             if (sectionNodeProviderDraft.Inactive) return;
-            if (string.IsNullOrEmpty(sectionNodeProviderDraft.DefaultTreeNodeId)) return;
 
             var treeNode = treeNodeRepository.GetAll().Where(a => a.TreeNodeId == sectionNodeProviderDraft.TreeNodeId).FirstOrDefault();
             if (treeNode == null)
