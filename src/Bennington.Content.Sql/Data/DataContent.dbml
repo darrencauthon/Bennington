@@ -26,8 +26,8 @@
       <Column Name="Segment" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="Action" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="Controller" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="TreeNodeId" Type="System.String" DbType="nvarchar(50)" CanBeNull="true" />
-      <Column Name="ActionId" Type="System.String" DbType="nvarchar(50)" CanBeNull="true" />
+      <Column Name="TreeNodeId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ActionId" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

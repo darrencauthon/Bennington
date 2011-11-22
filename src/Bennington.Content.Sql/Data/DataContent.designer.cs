@@ -602,7 +602,7 @@ namespace Bennington.Content.Sql.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TreeNodeId", DbType="nvarchar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TreeNodeId", DbType="NVarChar(50)")]
 		public string TreeNodeId
 		{
 			get
@@ -622,7 +622,7 @@ namespace Bennington.Content.Sql.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActionId", DbType="nvarchar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActionId", DbType="NVarChar(500)")]
 		public string ActionId
 		{
 			get

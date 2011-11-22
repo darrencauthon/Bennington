@@ -11,6 +11,8 @@ namespace Bennington.Content
             Controller = controller;
             Id = id;
             ParentId = parentId;
+            ActionId = actionId;
+            TreeNodeId = treeNodeId;
         }
 
         public string[] GetPath()
