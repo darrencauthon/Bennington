@@ -14,5 +14,6 @@ namespace Bennington.FileUploadHandling.Models
         public string ContainerName { get; set; }
         public string UrlRelativeToFileUploadRoot { get; set; }
         public string DirectoryName { get; set; }
+        public bool Remove { get; set; }
     }
 }

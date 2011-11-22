@@ -26,6 +26,10 @@
     {
         <div class="FileUploadInformation">Current file: <a href="@Html.Raw(string.Format("{0}{1}/{2}/{3}/{4}", resourceUrl, ViewData.ModelMetadata.ContainerType.Name, Model.Id, ViewData.ModelMetadata.PropertyName, fileInfo.Name))" target="_blank">@fileInfo.Name</a></div>
     }
+    <div>
+        Remove?
+        <input type="checkbox" name="@(ViewData.ModelMetadata.PropertyName + ".Remove")" id="@(ViewData.ModelMetadata.PropertyName + "Remove")" value="remove" />
+    </div>
 }
 
 <label>@ViewContext.ViewData.ModelMetadata.DisplayName</label>

@@ -34,7 +34,7 @@ namespace Bennington.FileUploadHandling
                 return base.BindModel(controllerContext, bindingContext);
 
             var file = controllerContext.RequestContext.HttpContext.Request.Files[filesCollectionKey];
-            if ((file == null) || (string.IsNullOrEmpty(file.FileName))) return base.BindModel(controllerContext, bindingContext);
+            if ((file == null) || (string.IsNullOrEmpty(file.FileName))) return GetBoundModelWhenThereAreNoFilesBeingUploaded(bindingContext, controllerContext, propertyName);
 
             var guid = Guid.NewGuid();
 
@@ -65,6 +65,16 @@ namespace Bennington.FileUploadHandling
                            DirectoryName = GetDirectoryName(propertyName, guid, containerName),
                            UrlRelativeToFileUploadRoot = fileUploadContext.GetUrlRelativeToUploadRoot(containerName, propertyName, guid.ToString())
                        };
+        }
+
+        private object GetBoundModelWhenThereAreNoFilesBeingUploaded(ModelBindingContext bindingContext, ControllerContext controllerContext, string propertyName)
+        {
+            var model = base.BindModel(controllerContext, bindingContext);
+            if (controllerContext.HttpContext.Request.Form[string.Format("{0}.Remove", propertyName)] == "remove")
+            {
+                ((FileUploadInputModel) model).Id = null;
+            }
+            return model;
         }
 
         private string GetDirectoryName(string propertyName, Guid guid, string containerName)
