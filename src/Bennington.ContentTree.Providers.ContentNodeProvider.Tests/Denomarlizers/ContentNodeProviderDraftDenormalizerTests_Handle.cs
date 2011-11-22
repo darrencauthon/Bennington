@@ -302,42 +302,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Denomarlize
 		}
 
 		[TestMethod]
-		public void Copies_header_image_file_from_provider_upload_folder_to_draft_mode_upload_folder_location()
-		{
-			var providerFileUploadPath = @"c:\providerUpload\";
-			var draftFileUploadPath = @"c:\draftUpload\";
-			mocker.GetMock<IApplicationSettingsValueGetter>()
-				.Setup(a => a.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.FileUploadPath"))
-				.Returns(providerFileUploadPath);
-			mocker.GetMock<IApplicationSettingsValueGetter>()
-				.Setup(a => a.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.DraftFileUploadPath"))
-				.Returns(draftFileUploadPath);
-			var pageId = Guid.NewGuid();
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentNodeProviderDraftRepository>().Setup(a => a.GetAllContentNodeProviderDrafts())
-				.Returns(new ContentNodeProviderDraft[]
-				         	{
-				         		new ContentNodeProviderDraft()
-				         			{
-										TreeNodeId = treeNodeId.ToString(),
-										PageId = pageId.ToString(),
-				         				Body = "Body",
-										Action = "Test"
-				         			}, 
-							}.AsQueryable());
-
-			mocker.Resolve<ContentNodeProviderDraftDenormalizer>().Handle(new PageHeaderImageSetEvent()
-																				{
-																					AggregateRootId = pageId,
-																					HeaderImage = "test.jpg"
-																				});
-			
-			mocker.GetMock<IFileSystem>()
-				.Verify(a => a.Copy(providerFileUploadPath + treeNodeId.ToString() + @"\Test\HeaderImage\test.jpg", 
-									draftFileUploadPath + pageId + @"\HeaderImage\test.jpg"), Times.Once());
-		}
-
-		[TestMethod]
 		public void Does_not_copy_header_image_file_from_provider_upload_folder_to_draft_mode_upload_folder_location_when_the_HeaderImage_property_is_null()
 		{
 			var providerFileUploadPath = @"c:\providerUpload\";

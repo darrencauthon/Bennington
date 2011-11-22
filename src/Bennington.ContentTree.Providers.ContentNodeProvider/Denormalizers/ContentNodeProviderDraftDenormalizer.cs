@@ -165,10 +165,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 			catch (Exception) { }
 			contentNodeProviderDraft.HeaderImage = domainEvent.HeaderImage;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
-
-			if (string.IsNullOrEmpty(domainEvent.HeaderImage)) return;
-			fileSystem.Copy(string.Format(@"{0}{1}\{3}\HeaderImage\{2}", providerUploadPath, contentNodeProviderDraft.TreeNodeId, domainEvent.HeaderImage, contentNodeProviderDraft.Action), 
-							string.Format(@"{0}{1}\HeaderImage\{2}", draftFileUploadPath, domainEvent.AggregateRootId, domainEvent.HeaderImage));
 		}
 
 	    public void Handle(PageLastModifyBySetEvent domainEvent)

@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using Bennington.FileUploadHandling.Models;
+
 //using Bennington.Cms.Metadata;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Models
@@ -45,10 +47,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Models
 		public bool Inactive { get; set; }
 
 		[DisplayName("Header Image")]
-		public string HeaderImage { get; set; }
-
-		[DisplayName("Remove?")]
-		public bool RemoveHeaderImage { get; set; }
+		public FileUploadInputModel HeaderImage { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public string ControllerName { get; set; }

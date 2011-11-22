@@ -137,6 +137,10 @@
       <Project>{BA1AC304-5E93-4EE3-ACE1-E1E2DEC5C93D}</Project>
       <Name>Bennington.ContentTree.Providers.ContentNodeProvider</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bennington.FileUploadHandling\Bennington.FileUploadHandling.csproj">
+      <Project>{8884EEF3-2BF6-4F75-B6ED-0EFC6C7D15AA}</Project>
+      <Name>Bennington.FileUploadHandling</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

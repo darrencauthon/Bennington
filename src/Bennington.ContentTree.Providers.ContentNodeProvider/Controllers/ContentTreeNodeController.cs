@@ -93,15 +93,13 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			var treeNodeId = contentTreeNodeContext.CreateTreeNodeAndReturnTreeNodeId(contentTreeNodeInputModel);
 			contentTreeNodeFileUploadPersister.SaveFilesByTreeNodeIdAndAction(treeNodeId, contentTreeNodeInputModel.Action);
 			
-			SetAppropriateInputModelPropertiesFromFilesCollection(contentTreeNodeInputModel);
-
 			commandBus.Send(new CreatePageCommand()
 			                	{
 									PageId = guidGetter.GetGuid(),
 									TreeNodeId = new Guid(treeNodeId),
 			                		Body = contentTreeNodeInputModel.Body,
 									HeaderText = contentTreeNodeInputModel.HeaderText,
-									HeaderImage = contentTreeNodeInputModel.HeaderImage,
+                                    HeaderImage = contentTreeNodeInputModel.HeaderImage == null ? null : contentTreeNodeInputModel.HeaderImage.Id,
 									Name = contentTreeNodeInputModel.Name,
 									Sequence = contentTreeNodeInputModel.Sequence,
 									UrlSegment = contentTreeNodeInputModel.UrlSegment,
@@ -123,17 +121,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			return new RedirectResult(GetRedirectUrlToModifyMethod(contentTreeNodeInputModel));
 		}
 
-		private void SetAppropriateInputModelPropertiesFromFilesCollection(ContentTreeNodeInputModel contentTreeNodeInputModel)
-		{
-			if (HttpContext == null) return;
-
-			if (HttpContext.Request.Files.AllKeys.Where(a => a == "ContentTreeNodeInputModel_HeaderImage").Any())
-			{
-				contentTreeNodeInputModel.HeaderImage = HttpContext.Request.Files["ContentTreeNodeInputModel_HeaderImage"].FileName;
-			}
-		}
-
-
 		[Authorize]
         public virtual ActionResult Create(string parentTreeNodeId, string providerType, string controllerName)
 		{
@@ -154,7 +141,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 		[ValidateInput(false)]
 		public virtual ActionResult Modify(ContentTreeNodeInputModel contentTreeNodeInputModel)
 		{
-			SetAppropriateInputModelPropertiesFromFilesCollection(contentTreeNodeInputModel);
 			contentTreeNodeFileUploadPersister.SaveFilesByTreeNodeIdAndAction(contentTreeNodeInputModel.TreeNodeId, contentTreeNodeInputModel.Action);
 			if (ModelState.IsValid == false)
 				return View("Modify", new ModifyViewModel() { Action = "Modify", ContentTreeNodeInputModel = contentTreeNodeInputModel });
@@ -167,7 +153,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 					AggregateRootId = new Guid(contentTreeNodeInputModel.PageId),
 					TreeNodeId = new Guid(contentTreeNodeInputModel.TreeNodeId),
 					HeaderText = contentTreeNodeInputModel.HeaderText,
-					HeaderImage = contentTreeNodeInputModel.RemoveHeaderImage ? null : (string.IsNullOrEmpty(contentTreeNodeInputModel.HeaderImage) ? contentTreeNode.HeaderImage : contentTreeNodeInputModel.HeaderImage),
+					HeaderImage = contentTreeNodeInputModel.HeaderImage == null ? null : contentTreeNodeInputModel.HeaderImage.Id,
 					Name = contentTreeNodeInputModel.Name,
 					Body = contentTreeNodeInputModel.Body,
 					ParentId = contentTreeNodeInputModel.ParentTreeNodeId,
@@ -187,7 +173,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 										PageId = guidGetter.GetGuid(),
 										Body = contentTreeNodeInputModel.Body,
 										HeaderText = contentTreeNodeInputModel.HeaderText,
-										HeaderImage = contentTreeNodeInputModel.HeaderImage,
+										HeaderImage = contentTreeNodeInputModel.HeaderImage == null ? null : contentTreeNodeInputModel.HeaderImage.Id,
 										Name = contentTreeNodeInputModel.Name,
 										UrlSegment = contentTreeNodeInputModel.UrlSegment,
 										Action = contentTreeNodeInputModel.Action,

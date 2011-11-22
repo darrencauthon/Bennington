@@ -28,6 +28,18 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Mappers
 		}
 
         [TestMethod]
+        public void Sets_HeaderImage_value()
+        {
+            var mapper = mocker.Resolve<ContentTreeNodeToContentTreeNodeInputModelMapper>();
+            var result = mapper.CreateInstance(new ContentTreePageNode()
+                                                    {
+                                                        HeaderImage = "test",
+                                                    });
+
+            Assert.AreEqual("test", result.HeaderImage.Id);
+        }
+
+        [TestMethod]
 		public void CreateInstance_sets_Type_value_from_tree_node_type()
 		{
 			mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())

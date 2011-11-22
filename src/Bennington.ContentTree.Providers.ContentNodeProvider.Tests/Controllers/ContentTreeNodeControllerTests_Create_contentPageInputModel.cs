@@ -10,6 +10,7 @@ using Bennington.ContentTree.Providers.ContentNodeProvider.Helpers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
 using Bennington.Core;
 using Bennington.Core.Helpers;
+using Bennington.FileUploadHandling.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SimpleCqrs.Commanding;
@@ -324,12 +325,15 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			{
 				ParentTreeNodeId = "2",
 				Type = typeof(string).AssemblyQualifiedName,
-				HeaderImage = "test"
+				HeaderImage = new FileUploadInputModel()
+				                  {
+				                      Id = "test"
+				                  }
 			};
 
 			mocker.Resolve<ContentTreeNodeController>().Create(contentTreeNodeInputModel);
 
-			mocker.GetMock<ICommandBus>().Verify(a => a.Send(It.Is<CreatePageCommand>(b => b.HeaderImage == contentTreeNodeInputModel.HeaderImage)), Times.Once());
+			mocker.GetMock<ICommandBus>().Verify(a => a.Send(It.Is<CreatePageCommand>(b => b.HeaderImage == contentTreeNodeInputModel.HeaderImage.Id)), Times.Once());
 		}
 
         [TestMethod]
@@ -340,7 +344,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
                                                 {
                                                     ParentTreeNodeId = "2",
                                                     Type = typeof(string).AssemblyQualifiedName,
-                                                    HeaderImage = "test"
                                                 };
 
             mocker.Resolve<ContentTreeNodeController>().Create(contentTreeNodeInputModel);
@@ -362,26 +365,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			contentTreeNodeController.Create(contentTreeNodeInputModel);
 
 			mocker.GetMock<ICommandBus>().Verify(a => a.Send(It.IsAny<CreatePageCommand>()), Times.Never());
-		}
-
-		[TestMethod]
-		public void Calls_SafeFileByTreeNodeIdAndAction_method_of_IContentTreeNodeFileUploadPersister()
-		{
-			var guid = new Guid().ToString();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.CreateTreeNodeAndReturnTreeNodeId(It.IsAny<ContentTreeNodeInputModel>())).Returns(guid);
-			var contentTreeNodeInputModel = new ContentTreeNodeInputModel()
-			{
-				ParentTreeNodeId = "2",
-				Type = typeof(string).AssemblyQualifiedName,
-				HeaderImage = "test",
-				Action = "Index",
-				
-			};
-
-			mocker.Resolve<ContentTreeNodeController>().Create(contentTreeNodeInputModel);
-
-			mocker.GetMock<IContentTreeNodeFileUploadPersister>()
-				.Verify(a => a.SaveFilesByTreeNodeIdAndAction(guid, contentTreeNodeInputModel.Action), Times.Once());
 		}
 	}
 }

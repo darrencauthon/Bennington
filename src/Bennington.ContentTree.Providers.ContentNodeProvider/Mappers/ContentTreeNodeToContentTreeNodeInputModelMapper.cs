@@ -3,6 +3,7 @@ using AutoMapper;
 using AutoMapperAssist;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
 using Bennington.ContentTree.Repositories;
+using Bennington.FileUploadHandling.Models;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 {
@@ -22,11 +23,19 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 
 		public override void DefineMap(IConfiguration configuration)
 		{
+		    configuration.CreateMap<string, FileUploadInputModel>()
+                .ForMember(a => a.ContainerName, b => b.Ignore())
+                .ForMember(a => a.DirectoryName, b=> b.Ignore())
+                .ForMember(a => a.Filename, b => b.Ignore())
+                .ForMember(a => a.FileUpload, b => b.Ignore())
+                .ForMember(a => a.Id, b => b.MapFrom(c => c))
+                .ForMember(a => a.UrlRelativeToFileUploadRoot, b => b.Ignore())
+                ;
 			configuration.CreateMap<ContentTreePageNode, ContentTreeNodeInputModel>()
 				.ForMember(dest => dest.FormAction, opt => opt.Ignore())
-				.ForMember(dest => dest.RemoveHeaderImage, opt => opt.Ignore())
                 .ForMember(a => a.TreeNodeId, b=> b.MapFrom(c => c.Id))
-				.ForMember(dest => dest.ParentTreeNodeId, opt => opt.Ignore());
+				.ForMember(dest => dest.ParentTreeNodeId, opt => opt.Ignore())
+                .ForMember(a => a.HeaderImage, b => b.Ignore());
 		}
 
 		public override ContentTreeNodeInputModel CreateInstance(ContentTreePageNode source)
@@ -40,6 +49,11 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 			    returnInstance.ControllerName = returnInstance.ControllerName ?? treeNode.ControllerName;
 			}
 				
+            returnInstance.HeaderImage = new FileUploadInputModel()
+                                             {
+                                                 Id = source.HeaderImage
+                                             };
+
 			return returnInstance;
 		}
 	}
