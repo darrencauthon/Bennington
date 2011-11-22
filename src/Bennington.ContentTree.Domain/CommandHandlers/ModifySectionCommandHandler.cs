@@ -16,9 +16,9 @@ namespace Bennington.ContentTree.Domain.CommandHandlers
 			section.SetName(command.Name);
 			if (!string.IsNullOrEmpty(command.DefaultTreeNodeId))
 				section.SetDefaultTreeNodeId(new Guid(command.DefaultTreeNodeId));
-			section.SetSequence(command.Sequence);
+            section.SetInactive(command.Inactive);
+            section.SetSequence(command.Sequence);
 			section.SetUrlSegment(command.UrlSegment);
-			section.SetInactive(command.Inactive);
 			section.SetHidden(command.Hidden);
             section.SetLastModifyBy(command.LastModifyBy);
             section.SetLastModifyDate(DateTime.Now);

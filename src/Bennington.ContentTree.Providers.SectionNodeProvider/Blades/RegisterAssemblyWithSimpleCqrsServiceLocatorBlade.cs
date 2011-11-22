@@ -1,4 +1,5 @@
-﻿using MvcTurbine;
+﻿using Bennington.ContentTree.Repositories;
+using MvcTurbine;
 using MvcTurbine.Blades;
 using SimpleCqrs;
 
@@ -24,6 +25,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Blades
 		public void Spin(IRotorContext context)
 		{
 			simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<Data.IDataModelDataContext>());
+            simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<IContentTreeRepository>());
 		}
 	}
 }
