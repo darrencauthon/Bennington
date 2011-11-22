@@ -13,10 +13,15 @@ namespace Bennington.Core.Caching
 
         public static void Invalidate(Uri invalidateCacheUri, string cacheKey)
         {
-            var client = new ChannelFactory<IInvalidateCacheService>(new NetNamedPipeBinding(), new EndpointAddress(invalidateCacheUri)).CreateChannel();
-            client.Invalidate(cacheKey);
+            try
+            {
+                var client = new ChannelFactory<IInvalidateCacheService>(new NetNamedPipeBinding(), new EndpointAddress(invalidateCacheUri)).CreateChannel();
 
-            ((IChannel)client).Close();
+                client.Invalidate(cacheKey);
+
+                ((IChannel)client).Close();
+
+            }catch(Exception){}
         }
     }
 }
