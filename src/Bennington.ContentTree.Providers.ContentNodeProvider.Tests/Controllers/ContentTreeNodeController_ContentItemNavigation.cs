@@ -10,6 +10,7 @@ using Bennington.ContentTree.Providers.ContentNodeProvider.Controllers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
 using Bennington.ContentTree.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
@@ -37,7 +38,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 																				Type = "providertype",
             																}, 
 																	}.AsQueryable());
-			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("providertype"))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "providertype")))
 				.Returns(new FakeIamATreeNodeProvider());
 
 			var result = mocker.Resolve<ContentTreeNodeController>().ContentItemNavigation("1");
@@ -60,7 +61,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 																				Type = "providertype",
             																}, 
 																	}.AsQueryable());
-			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("providertype"))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "providertype")))
 				.Returns(new FakeIamATreeNodeProvider());
 
 			var result = mocker.Resolve<ContentTreeNodeController>().ContentItemNavigation("1");
@@ -158,7 +159,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 																				Type = "providertype",
             																}, 
 																	}.AsQueryable());
-			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("providertype"))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "providertype")))
 				.Returns(new FakeIamATreeNodeProvider());
 
 			var result = mocker.Resolve<ContentTreeNodeController>().ContentItemNavigation("1");
@@ -177,7 +178,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 																				Type = "providertype",
             																}, 
 																	}.AsQueryable());
-			mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("providertype"))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "providertype")))
 				.Returns(new FakeIamATreeNodeProvider());
 	
 			var result = mocker.Resolve<ContentTreeNodeController>().ContentItemNavigation("1");
@@ -205,7 +206,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
                                                                                 ControllerName = "test",
             																}, 
 																	}.AsQueryable());
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName("providertype"))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "providertype")))
                 .Returns(new FakeIamATreeNodeProvider());
 
             try

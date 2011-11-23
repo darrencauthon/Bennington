@@ -244,7 +244,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			var treeNode = treeNodeRepository.GetAll().Where(a => a.TreeNodeId == treeNodeId).FirstOrDefault();
 			if (treeNode != null)
 			{
-			    var provider = contentTreeNodeProviderContext.GetProviderByTypeName(treeNode.Type);
+			    var provider = contentTreeNodeProviderContext.GetProviderByTypeName(treeNode);
 			    provider.Controller = treeNode.ControllerName;
 				viewModel.ContentTreeNodeContentItems = provider.Actions;
 			}

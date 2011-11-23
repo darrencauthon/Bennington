@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Routing;
 using AutoMoq;
+using Bennington.ContentTree.Data;
 using Bennington.ContentTree.Models;
 using Bennington.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Action = Bennington.ContentTree.Models.Action;
+using ContentTreeNode = Bennington.ContentTree.Models.ContentTreeNode;
 
 namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 {
@@ -35,7 +37,10 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 				         	});
 
 			var getAllContentTreeNodeProviders = mocker.Resolve<ContentTreeNodeProviderContext>();
-			var result = getAllContentTreeNodeProviders.GetProviderByTypeName(typeof (IamATreeNodeProvider2).AssemblyQualifiedName);
+			var result = getAllContentTreeNodeProviders.GetProviderByTypeName(new TreeNode()
+			                                                                      {
+                                                                                      Type = typeof(IamATreeNodeProvider2).AssemblyQualifiedName
+			                                                                      });
 
 			Assert.AreEqual("IamATreeNodeProvider2", result.Name);
 		}

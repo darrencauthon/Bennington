@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Bennington.ContentTree.Data;
 using Bennington.ContentTree.Models;
 using Bennington.Core;
 
@@ -7,7 +8,7 @@ namespace Bennington.ContentTree
 {
 	public interface IContentTreeNodeProviderContext
 	{
-		IContentTreeNodeProvider GetProviderByTypeName(string providerTypeName);
+        IContentTreeNodeProvider GetProviderByTypeName(TreeNode treeNode);
 		IEnumerable<IContentTreeNodeProvider> GetAllTreeNodeProviders();
 	}
 
@@ -32,9 +33,9 @@ namespace Bennington.ContentTree
 			return treeNodeExtensionProviders;
 		}
 
-		public IContentTreeNodeProvider GetProviderByTypeName(string providerTypeName)
+		public IContentTreeNodeProvider GetProviderByTypeName(TreeNode treeNode)
 		{
-            var allProviders = GetAllTreeNodeProviders().Where(a => a.GetType().AssemblyQualifiedName.StartsWith(providerTypeName.Split(',')[0])).ToArray();
+            var allProviders = GetAllTreeNodeProviders().Where(a => a.GetType().AssemblyQualifiedName.StartsWith(treeNode.Type.Split(',')[0])).ToArray();
             return allProviders.FirstOrDefault();
 		}
 	}
