@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Mappers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Repositories;
@@ -13,17 +14,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Context
 
 	public class ContentTreeNodeVersionContext : IContentTreeNodeVersionContext
 	{
-		private readonly IContentNodeProviderDraftRepository contentNodeProviderDraftRepository;
-		private readonly IContentNodeProviderDraftToContentTreeNodeMapper contentNodeProviderDraftToContentTreeNodeMapper;
-		private readonly IVersionContext versionContext;
-		private readonly IContentNodeProviderPublishedVersionToContentTreeNodeMapper contentNodeProviderPublishedVersionToContentTreeNodeMapper;
-		private readonly IContentNodeProviderPublishedVersionRepository contentNodeProviderPublishedVersionRepository;
+		private readonly Func<IContentNodeProviderDraftRepository> contentNodeProviderDraftRepository;
+		private readonly Func<IContentNodeProviderDraftToContentTreeNodeMapper> contentNodeProviderDraftToContentTreeNodeMapper;
+		private readonly Func<IVersionContext> versionContext;
+		private readonly Func<IContentNodeProviderPublishedVersionToContentTreeNodeMapper> contentNodeProviderPublishedVersionToContentTreeNodeMapper;
+		private readonly Func<IContentNodeProviderPublishedVersionRepository> contentNodeProviderPublishedVersionRepository;
 
-		public ContentTreeNodeVersionContext(IContentNodeProviderDraftRepository contentNodeProviderDraftRepository,
-										IContentNodeProviderDraftToContentTreeNodeMapper contentNodeProviderDraftToContentTreeNodeMapper,
-										IVersionContext versionContext,
-										IContentNodeProviderPublishedVersionToContentTreeNodeMapper contentNodeProviderPublishedVersionToContentTreeNodeMapper,
-										IContentNodeProviderPublishedVersionRepository contentNodeProviderPublishedVersionRepository)
+		public ContentTreeNodeVersionContext(Func<IContentNodeProviderDraftRepository> contentNodeProviderDraftRepository,
+										Func<IContentNodeProviderDraftToContentTreeNodeMapper> contentNodeProviderDraftToContentTreeNodeMapper,
+										Func<IVersionContext> versionContext,
+										Func<IContentNodeProviderPublishedVersionToContentTreeNodeMapper> contentNodeProviderPublishedVersionToContentTreeNodeMapper,
+										Func<IContentNodeProviderPublishedVersionRepository> contentNodeProviderPublishedVersionRepository)
 		{
 			this.contentNodeProviderPublishedVersionRepository = contentNodeProviderPublishedVersionRepository;
 			this.contentNodeProviderPublishedVersionToContentTreeNodeMapper = contentNodeProviderPublishedVersionToContentTreeNodeMapper;
@@ -34,20 +35,21 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Context
 
 		public IQueryable<ContentTreePageNode> GetAllContentTreeNodes()
 		{
-			if (versionContext.GetCurrentVersionId() == VersionContext.Publish)
+		    var versionContextImpl = versionContext();
+            if (versionContextImpl.GetCurrentVersionId() == VersionContext.Publish)
 			{
-			    var contentNodeProviderPublishedVersions = contentNodeProviderPublishedVersionRepository.GetAllContentNodeProviderPublishedVersions().Where(a => a.Inactive == false);
-				return contentNodeProviderPublishedVersionToContentTreeNodeMapper.CreateSet(contentNodeProviderPublishedVersions).AsQueryable();
-			}
-				
-			if (versionContext.GetCurrentVersionId() == VersionContext.Manage)
-			{
-				return contentNodeProviderDraftToContentTreeNodeMapper
-						.CreateSet(contentNodeProviderDraftRepository.GetAllContentNodeProviderDrafts()).AsQueryable();
+			    var contentNodeProviderPublishedVersions = contentNodeProviderPublishedVersionRepository().GetAllContentNodeProviderPublishedVersions().Where(a => a.Inactive == false);
+				return contentNodeProviderPublishedVersionToContentTreeNodeMapper().CreateSet(contentNodeProviderPublishedVersions).AsQueryable();
 			}
 
-			return contentNodeProviderDraftToContentTreeNodeMapper
-					.CreateSet(contentNodeProviderDraftRepository.GetAllContentNodeProviderDrafts().Where(a => a.Inactive == false)).AsQueryable();
+            if (versionContextImpl.GetCurrentVersionId() == VersionContext.Manage)
+			{
+				return contentNodeProviderDraftToContentTreeNodeMapper()
+						.CreateSet(contentNodeProviderDraftRepository().GetAllContentNodeProviderDrafts()).AsQueryable();
+			}
+
+			return contentNodeProviderDraftToContentTreeNodeMapper()
+					.CreateSet(contentNodeProviderDraftRepository().GetAllContentNodeProviderDrafts().Where(a => a.Inactive == false)).AsQueryable();
 		}
 	}
 }
