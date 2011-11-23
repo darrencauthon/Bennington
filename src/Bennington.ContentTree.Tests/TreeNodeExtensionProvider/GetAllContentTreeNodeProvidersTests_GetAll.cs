@@ -45,6 +45,30 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 			Assert.AreEqual("IamATreeNodeProvider2", result.Name);
 		}
 
+        [TestMethod]
+        public void Returns_service_with_Controller_property_set_from_TreeNode_and_matches_specified_type()
+        {
+            mocker.GetMock<IServiceLocatorWrapper>()
+                .Setup(a => a.ResolveServices<IContentTreeNodeProviderFactory>())
+                .Returns(new List<IContentTreeNodeProviderFactory>());
+            mocker.GetMock<IServiceLocatorWrapper>().Setup(a => a.ResolveServices<IContentTreeNodeProvider>())
+                .Returns(new List<IContentTreeNodeProvider>()
+				         	{
+								new IamATreeNodeProvider1(),
+								new IamATreeNodeProvider2(),
+				         	});
+
+            var getAllContentTreeNodeProviders = mocker.Resolve<ContentTreeNodeProviderContext>();
+            var result = getAllContentTreeNodeProviders.GetProviderForTreeNode(new TreeNode()
+                                                                                {
+                                                                                    Type = typeof(IamATreeNodeProvider2).AssemblyQualifiedName,
+                                                                                    ControllerName = "controller"
+                                                                                });
+
+            Assert.AreEqual("controller", result.Controller);
+        }
+
+
 		private class IamATreeNodeProvider2 : IContentTreeNodeProvider
 		{
 			public IQueryable<ContentTreeNode> GetAll()
@@ -109,11 +133,7 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 				set { throw new NotImplementedException(); }
 			}
 
-		    public string Controller
-		    {
-		        get { throw new NotImplementedException(); }
-		        set { throw new NotImplementedException(); }
-		    }
+            public string Controller { get; set; }
 
 		    public void RegisterRouteForTreeNodeId(string treeNodeId)
 			{
