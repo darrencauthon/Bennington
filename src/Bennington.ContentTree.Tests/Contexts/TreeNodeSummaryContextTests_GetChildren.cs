@@ -45,7 +45,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 									}, 
 				         	}.AsQueryable());
 			fakeTreeNodeExtensionProvider.SetupProperty(a => a.ControllerToUseForCreation, "FakeTreeNodeExtensionProviderController");
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
 				.Returns(fakeTreeNodeExtensionProvider.Object);
 			mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
 				.Returns(new TreeNode[]
@@ -96,7 +96,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 									}, 
 				         	}.AsQueryable());
 			fakeTreeNodeExtensionProvider.SetupProperty(a => a.ActionToUseForCreation, "FakeTreeNodeExtensionProviderAction");
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
 				.Returns(fakeTreeNodeExtensionProvider.Object);
 			mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
 				.Returns(new TreeNode[]
@@ -147,7 +147,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 									}, 
 				         	}.AsQueryable());
 			fakeTreeNodeExtensionProvider.SetupProperty(a => a.ActionToUseForModification, "FakeTreeNodeExtensionProviderAction");
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
 				.Returns(fakeTreeNodeExtensionProvider.Object);
 			mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
 				.Returns(new TreeNode[]
@@ -198,7 +198,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 									}, 
 				         	}.AsQueryable());
 			fakeTreeNodeExtensionProvider.SetupProperty(a => a.ControllerToUseForModification, "FakeTreeNodeExtensionProviderController");
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
 				                                            .Returns(fakeTreeNodeExtensionProvider.Object);
 			mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
 				.Returns(new TreeNode[]
@@ -248,7 +248,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 										Id = "3",
 									}, 
 				         	}.AsQueryable());
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
 				                                             .Returns(fakeTreeNodeExtensionProvider.Object);
 			mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
 				.Returns(new TreeNode[]
@@ -298,7 +298,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 										Id = "3",
 									}, 
 				         	}.AsQueryable());
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
 				                                             .Returns(fakeTreeNodeExtensionProvider.Object);
 			mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
 				.Returns(new TreeNode[]
@@ -349,7 +349,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 										Id = "3",
 									}, 
 				         	}.AsQueryable());
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
 				                                             .Returns(fakeTreeNodeExtensionProvider.Object);
 			mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
 				.Returns(new TreeNode[]
@@ -399,7 +399,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 										Id = "3",
 									}, 
 				         	}.AsQueryable());
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
 				                                             .Returns(fakeTreeNodeExtensionProvider.Object);
 			mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
 				.Returns(new TreeNode[]
@@ -449,7 +449,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 										Id = "3",
 									}, 
 				         	}.AsQueryable());
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
 				                                             .Returns(fakeTreeNodeExtensionProvider.Object);
 			mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
 				.Returns(new TreeNode[]
@@ -500,7 +500,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 										Id = "1",
 									}, 
 				         	}.AsQueryable());
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
 				                                             .Returns(fakeTreeNodeExtensionProvider.Object);
 			mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
 				.Returns(new TreeNode[]
@@ -550,7 +550,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 									}, 
 				         	}.AsQueryable());
             fakeTreeNodeExtensionProvider.SetupProperty(a => a.ActionToUseForModification, "FakeTreeNodeExtensionProviderAction");
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
                                                              .Returns(fakeTreeNodeExtensionProvider.Object);
             mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
                 .Returns(new TreeNode[]
@@ -603,7 +603,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 									}, 
 				         	}.AsQueryable());
             fakeTreeNodeExtensionProvider.SetupProperty(a => a.ActionToUseForModification, "FakeTreeNodeExtensionProviderAction");
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
                                                              .Returns(fakeTreeNodeExtensionProvider.Object);
             mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
                 .Returns(new TreeNode[]
@@ -656,7 +656,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 									}, 
 				         	}.AsQueryable());
             fakeTreeNodeExtensionProvider.SetupProperty(a => a.ActionToUseForModification, "FakeTreeNodeExtensionProviderAction");
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
                                                              .Returns(fakeTreeNodeExtensionProvider.Object);
             mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
                 .Returns(new TreeNode[]
@@ -710,7 +710,7 @@ namespace Bennington.ContentTree.Tests.Contexts
 									}, 
 				         	}.AsQueryable());
             fakeTreeNodeExtensionProvider.SetupProperty(a => a.ActionToUseForModification, "FakeTreeNodeExtensionProviderAction");
-            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderByTypeName(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
                                                              .Returns(fakeTreeNodeExtensionProvider.Object);
             mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
                 .Returns(new TreeNode[]

@@ -8,7 +8,7 @@ namespace Bennington.ContentTree
 {
 	public interface IContentTreeNodeProviderContext
 	{
-        IContentTreeNodeProvider GetProviderByTypeName(TreeNode treeNode);
+        IContentTreeNodeProvider GetProviderForTreeNode(TreeNode treeNode);
 		IEnumerable<IContentTreeNodeProvider> GetAllTreeNodeProviders();
 	}
 
@@ -33,7 +33,7 @@ namespace Bennington.ContentTree
 			return treeNodeExtensionProviders;
 		}
 
-		public IContentTreeNodeProvider GetProviderByTypeName(TreeNode treeNode)
+		public IContentTreeNodeProvider GetProviderForTreeNode(TreeNode treeNode)
 		{
             var allProviders = GetAllTreeNodeProviders().Where(a => a.GetType().AssemblyQualifiedName.StartsWith(treeNode.Type.Split(',')[0])).ToArray();
             return allProviders.FirstOrDefault();

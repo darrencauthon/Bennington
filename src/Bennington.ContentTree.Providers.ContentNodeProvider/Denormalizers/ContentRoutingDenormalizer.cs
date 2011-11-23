@@ -40,7 +40,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             if (treeNode == null)
                 throw new Exception("Tree node not found: " + domainEvent.AggregateRootId);
 
-            var provider = contentTreeNodeProviderContext.GetProviderByTypeName(treeNode);
+            var provider = contentTreeNodeProviderContext.GetProviderForTreeNode(treeNode);
             provider.Controller = treeNode.ControllerName;
 
             foreach (var contentTreeNode in contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNode.TreeNodeId))

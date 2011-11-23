@@ -37,7 +37,7 @@ namespace Bennington.ContentTree.Tests.TreeNodeExtensionProvider
 				         	});
 
 			var getAllContentTreeNodeProviders = mocker.Resolve<ContentTreeNodeProviderContext>();
-			var result = getAllContentTreeNodeProviders.GetProviderByTypeName(new TreeNode()
+			var result = getAllContentTreeNodeProviders.GetProviderForTreeNode(new TreeNode()
 			                                                                      {
                                                                                       Type = typeof(IamATreeNodeProvider2).AssemblyQualifiedName
 			                                                                      });

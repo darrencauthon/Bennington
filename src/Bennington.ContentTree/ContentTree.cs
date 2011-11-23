@@ -86,7 +86,7 @@ namespace Bennington.ContentTree
 
 		private ContentTreeNode GetTreeNodeSummaryForTreeNode(TreeNode treeNode)
 		{
-			var provider = contentTreeNodeProviderContext.GetProviderByTypeName(treeNode);
+			var provider = contentTreeNodeProviderContext.GetProviderForTreeNode(treeNode);
 			if (provider == null) throw new Exception(string.Format("Content tree node provider for type: {0} not found.", treeNode.Type));
 
 			var contentTreeNode = provider.GetAll().Where(a => a.Id == treeNode.TreeNodeId).FirstOrDefault();
