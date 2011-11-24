@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Security.Principal;
 using System.Web.Mvc;
 using AutoMoq;
@@ -90,7 +91,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		public void Returns_view_model_with_input_model_set_to_the_same_as_was_passed_in_when_ModelState_is_invalid()
 		{
 			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
+			mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
 				.Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
@@ -98,7 +99,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
+							}.AsQueryable());
 			var contentTreeNodeInputModel = new ContentTreeNodeInputModel()
 													{
 														TreeNodeId = treeNodeId.ToString(),
@@ -122,17 +123,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_ModifyPage_command_when_ModelState_is_valid()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 										{
 											Name = "name",
 											PageId = Guid.NewGuid().ToString(),
@@ -148,17 +149,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_ModifyPage_command_with_HeaderImage_property_set_from_input_model_when_RemoveHeaderImage_is_false_and_ModelState_is_valid()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				Name = "name",
 				PageId = Guid.NewGuid().ToString(),
@@ -179,17 +180,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_ModifyPage_command_with_correct_HeaderText_when_ModelState_is_valid()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 									{
 										PageId = Guid.NewGuid().ToString(),
 										TreeNodeId = treeNodeId.ToString(),
@@ -206,17 +207,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_ModifyPage_command_with_correct_Hidden_property_value_when_ModelState_is_valid()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				PageId = Guid.NewGuid().ToString(),
 				TreeNodeId = treeNodeId.ToString(),
@@ -233,17 +234,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_ModifyPage_command_with_correct_Active_property_value_when_ModelState_is_valid()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				PageId = Guid.NewGuid().ToString(),
 				TreeNodeId = treeNodeId.ToString(),
@@ -260,17 +261,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_ModifyPage_command_with_correct_Body_when_ModelState_is_valid()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 										{
 											PageId = Guid.NewGuid().ToString(),
 											TreeNodeId = treeNodeId.ToString(),
@@ -286,17 +287,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_ModifyPage_command_with_correct_AggregateRootId_when_ModelState_is_valid()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 									{
 										Body = "content",
 										PageId = Guid.NewGuid().ToString(),
@@ -312,17 +313,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_ModifyPage_command_with_correct_ParentId_when_ModelState_is_valid()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 									{
 										PageId = Guid.NewGuid().ToString(),
 										TreeNodeId = treeNodeId.ToString(),
@@ -338,17 +339,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_ModifyPage_command_with_correct_Sequence_when_ModelState_is_valid()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 									{
 										PageId = Guid.NewGuid().ToString(),
 										TreeNodeId = treeNodeId.ToString(),
@@ -364,17 +365,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_ModifyPage_command_with_correct_UrlSegment_when_ModelState_is_valid()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 									{
 										PageId = Guid.NewGuid().ToString(),
 										TreeNodeId = treeNodeId.ToString(),
@@ -391,7 +392,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
         public void Sends_ModifyPage_command_with_LastModifyBy_set_when_ModelState_is_valid()
         {
             var treeNodeId = Guid.NewGuid();
-            mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
                 .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
@@ -399,7 +400,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
+							}.AsQueryable());
             var inputModel = new ContentTreeNodeInputModel()
             {
                 PageId = Guid.NewGuid().ToString(),
@@ -417,17 +418,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_ModifyPage_command_with_correct_ActionId_when_ModelState_is_valid()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 										{
 											PageId = Guid.NewGuid().ToString(),
 											TreeNodeId = treeNodeId.ToString(),
@@ -442,17 +443,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_ModifyPage_command_with_correct_HeaderImage_when_ModelState_is_valid()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				PageId = Guid.NewGuid().ToString(),
 				TreeNodeId = treeNodeId.ToString(),
@@ -471,17 +472,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_ModifyPage_command_with_correct_TreeNodeId_when_ModelState_is_valid()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 									{
 										PageId = Guid.NewGuid().ToString(),
 										TreeNodeId = treeNodeId.ToString(),
@@ -497,7 +498,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
         public void Sends_ModifyPage_command_with_correct_ControllerName_when_ModelState_is_valid()
         {
             var treeNodeId = Guid.NewGuid();
-            mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
                 .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
@@ -505,7 +506,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
+							}.AsQueryable());
             var inputModel = new ContentTreeNodeInputModel()
             {
                 PageId = Guid.NewGuid().ToString(),
@@ -522,17 +523,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Only_sends_a_single_ModifyPage_command()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 									{
 										PageId = Guid.NewGuid().ToString(),
 										TreeNodeId = treeNodeId.ToString(),
@@ -564,17 +565,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Does_not_send_ModifyPage_command_when_attempting_to_modify_a_page_that_does_not_exist()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 									{
 										TreeNodeId = treeNodeId.ToString(),
 										Action = "Confirmation"
@@ -588,17 +589,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_CreatePageCommand_when_attempting_to_modify_a_page_that_does_not_exist()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 									{
 										TreeNodeId = treeNodeId.ToString(),
 										Action = "Confirmation"
@@ -614,17 +615,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		{
 			var pageId = Guid.NewGuid();
 			mocker.GetMock<IGuidGetter>().Setup(a => a.GetGuid()).Returns(pageId);
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				TreeNodeId = treeNodeId.ToString(),
 				Action = "Confirmation"
@@ -638,17 +639,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_CreatePageCommand_with_correct_TreeNodeId_when_attempting_to_modify_a_page_that_does_not_exist()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				TreeNodeId = treeNodeId.ToString(),
 				Action = "Confirmation"
@@ -662,17 +663,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_CreatePageCommand_with_correct_Body_when_attempting_to_modify_a_page_that_does_not_exist()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				TreeNodeId = treeNodeId.ToString(),
 				Action = "Confirmation",
@@ -687,17 +688,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_CreatePageCommand_with_correct_Hidden_property_value_when_attempting_to_modify_a_page_that_does_not_exist()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				TreeNodeId = treeNodeId.ToString(),
 				Action = "Confirmation",
@@ -712,17 +713,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_CreatePageCommand_with_correct_Active_property_value_when_attempting_to_modify_a_page_that_does_not_exist()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				TreeNodeId = treeNodeId.ToString(),
 				Action = "Confirmation",
@@ -737,17 +738,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_CreatePageCommand_with_correct_HeaderText_when_attempting_to_modify_a_page_that_does_not_exist()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				TreeNodeId = treeNodeId.ToString(),
 				Action = "Confirmation",
@@ -762,17 +763,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_CreatePageCommand_with_correct_Name_when_attempting_to_modify_a_page_that_does_not_exist()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				TreeNodeId = treeNodeId.ToString(),
 				Action = "Confirmation",
@@ -788,7 +789,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
         public void Sends_CreatePageCommand_with_LastModifyBy_set_when_attempting_to_modify_a_page_that_does_not_exist()
         {
             var treeNodeId = Guid.NewGuid();
-            mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
                 .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
@@ -796,7 +797,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
+							}.AsQueryable());
             var inputModel = new ContentTreeNodeInputModel()
             {
                 TreeNodeId = treeNodeId.ToString(),
@@ -812,17 +813,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_CreatePageCommand_with_correct_UrlSegment_when_attempting_to_modify_a_page_that_does_not_exist()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				TreeNodeId = treeNodeId.ToString(),
 				Action = "Confirmation",
@@ -837,17 +838,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_CreatePageCommand_with_correct_HeaderImage_when_attempting_to_modify_a_page_that_does_not_exist()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				TreeNodeId = treeNodeId.ToString(),
 				Action = "Confirmation",
@@ -865,17 +866,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_CreatePageCommand_with_correct_Action_when_attempting_to_modify_a_page_that_does_not_exist()
 		{
-			var treeNodeId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				TreeNodeId = treeNodeId.ToString(),
 				Action = "Confirmation",
@@ -890,18 +891,18 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Sends_PagePublishedCommand_with_correct_PageId_set_when_input_model_FormAction_property_begins_with_Publish()
 		{
-			var treeNodeId = Guid.NewGuid();
 			var pageId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				PageId = pageId.ToString(),
 				TreeNodeId = treeNodeId.ToString(),
@@ -917,18 +918,18 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 		[TestMethod]
 		public void Does_not_send_PagePublishedCommand_with_correct_PageId_set_when_input_model_FormAction_property_does_not_begin_with_Publish()
 		{
-			var treeNodeId = Guid.NewGuid();
 			var pageId = Guid.NewGuid();
-			mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId(treeNodeId.ToString()))
-				.Returns(new ContentTreePageNode[]
+            var treeNodeId = Guid.NewGuid();
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+                .Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
 				         				Id = treeNodeId.ToString(),
 										Action = "Index",
 				         			}, 
-							});
-			var inputModel = new ContentTreeNodeInputModel()
+							}.AsQueryable());
+            var inputModel = new ContentTreeNodeInputModel()
 			{
 				PageId = pageId.ToString(),
 				TreeNodeId = treeNodeId.ToString(),

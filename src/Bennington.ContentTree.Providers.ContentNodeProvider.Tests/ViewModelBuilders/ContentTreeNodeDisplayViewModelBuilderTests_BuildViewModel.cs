@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Routing;
 using AutoMoq;
 using Bennington.ContentTree.Models;
@@ -24,15 +25,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		{
 			mocker = new AutoMoqer();
 
-            mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("treeId"))
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
                         .Returns(new ContentTreePageNode[]
                              {
                                  new ContentTreePageNode()
                                      {
-                                         PageId = "actionId1"
+                                         PageId = "actionId1",
+                                         Id = "treeId",
                                      }, 
                                  new ContentTreePageNode()
                                      {
+                                         Id = "treeId",
                                          PageId = "actionId",
                                          HeaderText = "header",
                                          HeaderImage = "headerImageId",
@@ -40,9 +43,10 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
                                      }, 
                                 new ContentTreePageNode()
                                      {
+                                         Id = "treeId",
                                          PageId = "actionId2"
                                      }, 
-                             });
+                             }.AsQueryable());
 		}
 
         [TestMethod]
@@ -89,7 +93,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
         [TestMethod]
         public void Sets_url_to_header_image_to_null_when_a_matching_page_is_found_but_it_has_no_header_image_id_set()
         {
-            mocker.GetMock<IContentTreeNodeContext>().Setup(a => a.GetContentTreeNodesByTreeId("treeId"))
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
             .Returns(new ContentTreePageNode[]
                              {
                                  new ContentTreePageNode()
@@ -97,8 +101,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
                                          PageId = "actionId",
                                          HeaderText = "header",
                                          Body = "body",
+                                         Id = "treeId"
                                      }, 
-                             });
+                             }.AsQueryable());
 
             var result = mocker.Resolve<ContentTreeNodeDisplayViewModelBuilder>().BuildViewModel("treeId", "actionId");
 

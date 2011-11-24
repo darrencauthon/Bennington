@@ -20,7 +20,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 	{
 		private readonly IContentTreeNodeVersionContext contentTreeNodeVersionContext;
 		private readonly IContentTreeNodeToContentTreeNodeInputModelMapper contentTreeNodeToContentTreeNodeInputModelMapper;
-		private readonly IContentTreeNodeContext contentTreeNodeContext;
+        private readonly IContentTreeNodeVersionContext contentTreeNodeContext;
 		private readonly ITreeNodeRepository treeNodeRepository;
 		private readonly IContentTreeNodeProviderContext contentTreeNodeProviderContext;
 		private readonly ICommandBus commandBus;
@@ -32,9 +32,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 	    private readonly IContentTree contentTree;
 
 	    public ContentTreeNodeController(IContentTreeNodeVersionContext contentTreeNodeVersionContext, 
-											IContentTreeNodeToContentTreeNodeInputModelMapper contentTreeNodeToContentTreeNodeInputModelMapper, 
-											IContentTreeNodeContext contentTreeNodeContext, 
-											ITreeNodeRepository treeNodeRepository, 
+											IContentTreeNodeToContentTreeNodeInputModelMapper contentTreeNodeToContentTreeNodeInputModelMapper,
+                                            ITreeNodeRepository treeNodeRepository, 
 											IContentTreeNodeProviderContext contentTreeNodeProviderContext,  
 											IContentTreeNodeDisplayViewModelBuilder contentTreeNodeDisplayViewModelBuilder, 
 											IRawUrlGetter rawUrlGetter,
@@ -149,7 +148,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			if (ModelState.IsValid == false)
 				return View("Modify", new ModifyViewModel() { Action = "Modify", ContentTreeNodeInputModel = contentTreeNodeInputModel });
 
-			var contentTreeNode = contentTreeNodeContext.GetContentTreeNodesByTreeId(contentTreeNodeInputModel.TreeNodeId).Where(a => a.Action == contentTreeNodeInputModel.Action).FirstOrDefault();
+			var contentTreeNode = contentTreeNodeVersionContext.GetAllContentTreeNodes().Where(a => a.Id == contentTreeNodeInputModel.TreeNodeId && a.Action == contentTreeNodeInputModel.Action).FirstOrDefault();
 			if (contentTreeNode != null)
 			{
 				var modifyPageComand = new ModifyPageCommand()
