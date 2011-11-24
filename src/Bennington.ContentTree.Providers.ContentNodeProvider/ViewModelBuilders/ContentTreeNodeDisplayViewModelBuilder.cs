@@ -14,19 +14,19 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.ViewModelBuilders
 
 	public class ContentTreeNodeDisplayViewModelBuilder : IContentTreeNodeDisplayViewModelBuilder
 	{
-        private readonly IContentTreeNodeVersionContext contentTreeNodeVersionContext;
+        private readonly IContentTreePageNodeContext contentTreePageNodeContext;
 	    private readonly Func<IFileUploadContext> fileUploadContext;
 
-        public ContentTreeNodeDisplayViewModelBuilder(IContentTreeNodeVersionContext contentTreeNodeVersionContext,
+        public ContentTreeNodeDisplayViewModelBuilder(IContentTreePageNodeContext contentTreePageNodeContext,
                                                       Func<IFileUploadContext> fileUploadContext)
 	    {
 	        this.fileUploadContext = fileUploadContext;
-	        this.contentTreeNodeVersionContext = contentTreeNodeVersionContext;
+	        this.contentTreePageNodeContext = contentTreePageNodeContext;
 	    }
 
 	    public ContentTreeNodeDisplayViewModel BuildViewModel(string treeNodeId, string actionId)
 	    {
-            var node = contentTreeNodeVersionContext.GetAllContentTreePageNodes().Where(a => a.Id == treeNodeId && a.PageId == actionId).FirstOrDefault();
+            var node = contentTreePageNodeContext.GetAllContentTreePageNodes().Where(a => a.Id == treeNodeId && a.PageId == actionId).FirstOrDefault();
 
             if (node == null) return new ContentTreeNodeDisplayViewModel();
 

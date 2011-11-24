@@ -17,7 +17,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 
         public EngineTreeNodeProvider(IServiceLocator serviceLocator,
                                         Func<IContentTreeRepository> contentTreeRepository)
-            : base(serviceLocator.Resolve<IContentTreeNodeVersionContext>())
+            : base(serviceLocator.Resolve<IContentTreePageNodeContext>())
         {
             this.contentTreeRepository = contentTreeRepository;
         }

@@ -17,9 +17,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 {
 	public class ContentTreeNodeController : Controller
 	{
-		private readonly IContentTreeNodeVersionContext contentTreeNodeVersionContext;
 		private readonly IContentTreeNodeToContentTreeNodeInputModelMapper contentTreeNodeToContentTreeNodeInputModelMapper;
-        private readonly IContentTreeNodeVersionContext contentTreeNodeContext;
+        private readonly IContentTreePageNodeContext contentTreePageNodeContext;
 		private readonly ITreeNodeRepository treeNodeRepository;
 		private readonly IContentTreeNodeProviderContext contentTreeNodeProviderContext;
 		private readonly ICommandBus commandBus;
@@ -30,7 +29,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 	    private readonly IGetUrlOfFrontSideWebsite getUrlOfFrontSideWebsite;
 	    private readonly IContentTree contentTree;
 
-	    public ContentTreeNodeController(IContentTreeNodeVersionContext contentTreeNodeVersionContext, 
+	    public ContentTreeNodeController(IContentTreePageNodeContext contentTreePageNodeContext, 
 											IContentTreeNodeToContentTreeNodeInputModelMapper contentTreeNodeToContentTreeNodeInputModelMapper,
                                             ITreeNodeRepository treeNodeRepository, 
 											IContentTreeNodeProviderContext contentTreeNodeProviderContext,  
@@ -53,9 +52,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			this.commandBus = commandBus;
 			this.contentTreeNodeProviderContext = contentTreeNodeProviderContext;
 			this.treeNodeRepository = treeNodeRepository;
-			this.contentTreeNodeContext = contentTreeNodeContext;
 			this.contentTreeNodeToContentTreeNodeInputModelMapper = contentTreeNodeToContentTreeNodeInputModelMapper;
-			this.contentTreeNodeVersionContext = contentTreeNodeVersionContext;
+			this.contentTreePageNodeContext = contentTreePageNodeContext;
 		}
 
 		[Authorize]
@@ -147,7 +145,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			if (ModelState.IsValid == false)
 				return View("Modify", new ModifyViewModel() { Action = "Modify", ContentTreeNodeInputModel = contentTreeNodeInputModel });
 
-			var contentTreeNode = contentTreeNodeVersionContext.GetAllContentTreePageNodes().Where(a => a.Id == contentTreeNodeInputModel.TreeNodeId && a.Action == contentTreeNodeInputModel.Action).FirstOrDefault();
+			var contentTreeNode = contentTreePageNodeContext.GetAllContentTreePageNodes().Where(a => a.Id == contentTreeNodeInputModel.TreeNodeId && a.Action == contentTreeNodeInputModel.Action).FirstOrDefault();
 			if (contentTreeNode != null)
 			{
 				var modifyPageComand = new ModifyPageCommand()
@@ -215,7 +213,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 		{
 			if (string.IsNullOrEmpty(contentItemId)) contentItemId = "Index";		    
 
-			var contentTreeNode = contentTreeNodeVersionContext.GetAllContentTreePageNodes().Where(a => a.Id == treeNodeId && a.Action == contentItemId).FirstOrDefault();
+			var contentTreeNode = contentTreePageNodeContext.GetAllContentTreePageNodes().Where(a => a.Id == treeNodeId && a.Action == contentItemId).FirstOrDefault();
 			var contentTreeNodeInputModel = contentTreeNode == null ? new ContentTreeNodeInputModel()
 			                		                        	{
 			                		                        		TreeNodeId = treeNodeId,

@@ -24,7 +24,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		{
 			mocker = new AutoMoqer();
 
-            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreePageNodes())
+            mocker.GetMock<IContentTreePageNodeContext>().Setup(a => a.GetAllContentTreePageNodes())
                         .Returns(new ContentTreePageNode[]
                              {
                                  new ContentTreePageNode()
@@ -92,7 +92,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
         [TestMethod]
         public void Sets_url_to_header_image_to_null_when_a_matching_page_is_found_but_it_has_no_header_image_id_set()
         {
-            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreePageNodes())
+            mocker.GetMock<IContentTreePageNodeContext>().Setup(a => a.GetAllContentTreePageNodes())
             .Returns(new ContentTreePageNode[]
                              {
                                  new ContentTreePageNode()

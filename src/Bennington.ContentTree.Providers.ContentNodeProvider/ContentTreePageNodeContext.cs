@@ -7,12 +7,12 @@ using Bennington.Core;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider
 {
-	public interface IContentTreeNodeVersionContext
+	public interface IContentTreePageNodeContext
 	{
 		IQueryable<ContentTreePageNode> GetAllContentTreePageNodes();
 	}
 
-	public class ContentTreeNodeVersionContext : IContentTreeNodeVersionContext
+	public class ContentTreePageNodeContext : IContentTreePageNodeContext
 	{
 		private readonly Func<IContentNodeProviderDraftRepository> contentNodeProviderDraftRepository;
 		private readonly Func<IContentNodeProviderDraftToContentTreeNodeMapper> contentNodeProviderDraftToContentTreeNodeMapper;
@@ -20,7 +20,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 		private readonly Func<IContentNodeProviderPublishedVersionToContentTreeNodeMapper> contentNodeProviderPublishedVersionToContentTreeNodeMapper;
 		private readonly Func<IContentNodeProviderPublishedVersionRepository> contentNodeProviderPublishedVersionRepository;
 
-		public ContentTreeNodeVersionContext(Func<IContentNodeProviderDraftRepository> contentNodeProviderDraftRepository,
+		public ContentTreePageNodeContext(Func<IContentNodeProviderDraftRepository> contentNodeProviderDraftRepository,
 										Func<IContentNodeProviderDraftToContentTreeNodeMapper> contentNodeProviderDraftToContentTreeNodeMapper,
 										Func<IVersionContext> versionContext,
 										Func<IContentNodeProviderPublishedVersionToContentTreeNodeMapper> contentNodeProviderPublishedVersionToContentTreeNodeMapper,

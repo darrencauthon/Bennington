@@ -9,16 +9,16 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 {
 	public class ContentNodeProvider : IContentTreeNodeProvider
 	{
-		private readonly IContentTreeNodeVersionContext contentTreeNodeVersionContext;
+		private readonly IContentTreePageNodeContext contentTreePageNodeContext;
 
-		public ContentNodeProvider(IContentTreeNodeVersionContext contentTreeNodeVersionContext)
+		public ContentNodeProvider(IContentTreePageNodeContext contentTreePageNodeContext)
 		{
-			this.contentTreeNodeVersionContext = contentTreeNodeVersionContext;
+			this.contentTreePageNodeContext = contentTreePageNodeContext;
 		}
 
 		public virtual IQueryable<ContentTreeNode> GetAll()
 		{
-			var query = from item in contentTreeNodeVersionContext.GetAllContentTreePageNodes().Where(a => a.Action == "Index")
+			var query = from item in contentTreePageNodeContext.GetAllContentTreePageNodes().Where(a => a.Action == "Index")
 						select item;
 			
 			return query;

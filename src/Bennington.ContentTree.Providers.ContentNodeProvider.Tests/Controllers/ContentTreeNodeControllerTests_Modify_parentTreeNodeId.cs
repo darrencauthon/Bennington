@@ -70,7 +70,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			{
 				Name = "some name",
 			};
-			mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreePageNodes()).Returns(new ContentTreePageNode[]
+			mocker.GetMock<IContentTreePageNodeContext>().Setup(a => a.GetAllContentTreePageNodes()).Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
@@ -96,7 +96,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			                         	{
 											Name = "some name",
 			                         	};
-			mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreePageNodes())
+			mocker.GetMock<IContentTreePageNodeContext>().Setup(a => a.GetAllContentTreePageNodes())
 				.Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
