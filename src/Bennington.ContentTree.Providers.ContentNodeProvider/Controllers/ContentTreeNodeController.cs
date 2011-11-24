@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Bennington.ContentTree.Domain.Commands;
@@ -12,9 +11,7 @@ using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
 using Bennington.ContentTree.Providers.ContentNodeProvider.ViewModelBuilders;
 using Bennington.ContentTree.Repositories;
 using Bennington.Core;
-using Bennington.Core.Caching;
 using Bennington.Core.Helpers;
-using MvcTurbine.ComponentModel;
 using SimpleCqrs.Commanding;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
@@ -32,6 +29,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 	    private readonly ICurrentUserContext currentUserContext;
 	    private readonly ITreeNodeIdToUrl treeNodeIdToUrl;
 	    private readonly IGetUrlOfFrontSideWebsite getUrlOfFrontSideWebsite;
+	    private readonly IContentTree contentTree;
 
 	    public ContentTreeNodeController(IContentTreeNodeVersionContext contentTreeNodeVersionContext, 
 											IContentTreeNodeToContentTreeNodeInputModelMapper contentTreeNodeToContentTreeNodeInputModelMapper, 
@@ -45,8 +43,10 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 											IContentTreeNodeFileUploadPersister contentTreeNodeFileUploadPersister,
                                             ICurrentUserContext currentUserContext,
                                             ITreeNodeIdToUrl treeNodeIdToUrl,
-                                            IGetUrlOfFrontSideWebsite getUrlOfFrontSideWebsite)
+                                            IGetUrlOfFrontSideWebsite getUrlOfFrontSideWebsite,
+                                            IContentTree contentTree)
 		{
+	        this.contentTree = contentTree;
 	        this.getUrlOfFrontSideWebsite = getUrlOfFrontSideWebsite;
 	        this.treeNodeIdToUrl = treeNodeIdToUrl;
 	        this.currentUserContext = currentUserContext;
@@ -90,8 +90,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 											Action = "Create",
 				                      	});
 
-			var treeNodeId = contentTreeNodeContext.CreateTreeNodeAndReturnTreeNodeId(contentTreeNodeInputModel);
-			contentTreeNodeFileUploadPersister.SaveFilesByTreeNodeIdAndAction(treeNodeId, contentTreeNodeInputModel.Action);
+		    var treeNodeId = contentTree.Create(contentTreeNodeInputModel.ParentTreeNodeId, contentTreeNodeInputModel.Type, contentTreeNodeInputModel.ControllerName);
 			
 			commandBus.Send(new CreatePageCommand()
 			                	{
@@ -114,11 +113,16 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 				if (contentTreeNodeInputModel.FormAction.ToLower() == "save and exit")
 					return new RedirectToRouteResult(new RouteValueDictionary()
 			                                 	{
-			                                 		{"controller", "ContentTree"},
+			                                 		{"controller", "TreeManager"},
 													{"action", "Index"},
 			                                 	});
 			}
-			return new RedirectResult(GetRedirectUrlToModifyMethod(contentTreeNodeInputModel));
+		    return new RedirectToRouteResult(new RouteValueDictionary()
+		                                         {
+		                                             {"controller", GetType().Name.Replace("Controller", string.Empty)},
+		                                             {"action", "Modify"},
+		                                             {"TreeNodeId", treeNodeId}
+		                                         });
 		}
 
 		[Authorize]
