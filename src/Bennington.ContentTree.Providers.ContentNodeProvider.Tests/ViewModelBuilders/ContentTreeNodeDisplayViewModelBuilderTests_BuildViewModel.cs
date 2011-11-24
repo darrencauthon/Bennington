@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web.Routing;
 using AutoMoq;
 using Bennington.ContentTree.Models;
-using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
 using Bennington.ContentTree.Providers.ContentNodeProvider.ViewModelBuilders;
 using Bennington.Core.Helpers;
@@ -25,7 +24,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
 		{
 			mocker = new AutoMoqer();
 
-            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreePageNodes())
                         .Returns(new ContentTreePageNode[]
                              {
                                  new ContentTreePageNode()
@@ -93,7 +92,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.ViewModelBu
         [TestMethod]
         public void Sets_url_to_header_image_to_null_when_a_matching_page_is_found_but_it_has_no_header_image_id_set()
         {
-            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+            mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreePageNodes())
             .Returns(new ContentTreePageNode[]
                              {
                                  new ContentTreePageNode()

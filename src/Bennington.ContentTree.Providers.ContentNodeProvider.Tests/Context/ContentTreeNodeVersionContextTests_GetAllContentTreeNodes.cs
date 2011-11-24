@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMoq;
-using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Data;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Mappers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
@@ -36,7 +35,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 				         			}, 
 							});
 
-			var result = mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreeNodes();
+			var result = mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreePageNodes();
 
 			Assert.AreEqual("Action", result.First().Action);
 		}
@@ -54,7 +53,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 				         			}, 
 							}.AsQueryable());
 
-			mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreeNodes();
+			mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreePageNodes();
 
 			mocker.GetMock<IContentNodeProviderDraftToContentTreeNodeMapper>()
 				.Verify(a => a.CreateSet(It.Is<IEnumerable<ContentNodeProviderDraft>>(b => b.First().Action == "Action")), Times.Once());
@@ -74,7 +73,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 				         			}, 
 							}.AsQueryable());
 
-			mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreeNodes();
+			mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreePageNodes();
 
 			mocker.GetMock<IContentNodeProviderDraftToContentTreeNodeMapper>()
 				.Verify(a => a.CreateSet(It.Is<IEnumerable<ContentNodeProviderDraft>>(b => b.Where(c => c.Action == "Action").Count() > 0)), Times.Never());
@@ -94,7 +93,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 			                        }, 
 			                });
 
-			var result = mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreeNodes();
+			var result = mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreePageNodes();
 
 			Assert.AreEqual("Action", result.First().Action);
 		}
@@ -112,7 +111,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 				         			}, 
 							}.AsQueryable());
 
-			mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreeNodes();
+			mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreePageNodes();
 
 			mocker.GetMock<IContentNodeProviderPublishedVersionToContentTreeNodeMapper>()
 				.Verify(a => a.CreateSet(It.Is<IEnumerable<ContentNodeProviderPublishedVersion>>(b => b.First().Action == "Action")), Times.Once());
@@ -136,7 +135,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 				         			}, 
 							}.AsQueryable());
 
-			mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreeNodes();
+			mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreePageNodes();
 
 			mocker.GetMock<IContentNodeProviderPublishedVersionToContentTreeNodeMapper>()
 				.Verify(a => a.CreateSet(It.Is<IEnumerable<ContentNodeProviderPublishedVersion>>(b => b.Where(c => c.Action == "2").Count() > 0)), Times.Never());
@@ -160,7 +159,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 				         			}, 
 							}.AsQueryable());
 
-			mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreeNodes();
+			mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreePageNodes();
 
 			mocker.GetMock<IContentNodeProviderDraftToContentTreeNodeMapper>()
 				.Verify(a => a.CreateSet(It.Is<IEnumerable<ContentNodeProviderDraft>>(b => b.Count() == 2)), Times.Once());
@@ -179,7 +178,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Context
 				         			}, 
 							});
 
-			var result = mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreeNodes();
+			var result = mocker.Resolve<ContentTreeNodeVersionContext>().GetAllContentTreePageNodes();
 
 			Assert.AreEqual("Action", result.First().Action);
 		}

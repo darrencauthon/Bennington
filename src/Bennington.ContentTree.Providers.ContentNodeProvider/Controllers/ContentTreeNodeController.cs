@@ -4,7 +4,6 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Bennington.ContentTree.Domain.Commands;
 using Bennington.ContentTree.Helpers;
-using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Helpers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Mappers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
@@ -148,7 +147,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			if (ModelState.IsValid == false)
 				return View("Modify", new ModifyViewModel() { Action = "Modify", ContentTreeNodeInputModel = contentTreeNodeInputModel });
 
-			var contentTreeNode = contentTreeNodeVersionContext.GetAllContentTreeNodes().Where(a => a.Id == contentTreeNodeInputModel.TreeNodeId && a.Action == contentTreeNodeInputModel.Action).FirstOrDefault();
+			var contentTreeNode = contentTreeNodeVersionContext.GetAllContentTreePageNodes().Where(a => a.Id == contentTreeNodeInputModel.TreeNodeId && a.Action == contentTreeNodeInputModel.Action).FirstOrDefault();
 			if (contentTreeNode != null)
 			{
 				var modifyPageComand = new ModifyPageCommand()
@@ -216,7 +215,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 		{
 			if (string.IsNullOrEmpty(contentItemId)) contentItemId = "Index";		    
 
-			var contentTreeNode = contentTreeNodeVersionContext.GetAllContentTreeNodes().Where(a => a.Id == treeNodeId && a.Action == contentItemId).FirstOrDefault();
+			var contentTreeNode = contentTreeNodeVersionContext.GetAllContentTreePageNodes().Where(a => a.Id == treeNodeId && a.Action == contentItemId).FirstOrDefault();
 			var contentTreeNodeInputModel = contentTreeNode == null ? new ContentTreeNodeInputModel()
 			                		                        	{
 			                		                        		TreeNodeId = treeNodeId,

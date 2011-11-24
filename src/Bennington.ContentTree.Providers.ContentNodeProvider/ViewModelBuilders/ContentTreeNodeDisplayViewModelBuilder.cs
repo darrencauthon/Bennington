@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Routing;
-using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
 using Bennington.Core.Helpers;
 using Bennington.FileUploadHandling.Context;
@@ -27,7 +26,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.ViewModelBuilders
 
 	    public ContentTreeNodeDisplayViewModel BuildViewModel(string treeNodeId, string actionId)
 	    {
-            var node = contentTreeNodeVersionContext.GetAllContentTreeNodes().Where(a => a.Id == treeNodeId && a.PageId == actionId).FirstOrDefault();
+            var node = contentTreeNodeVersionContext.GetAllContentTreePageNodes().Where(a => a.Id == treeNodeId && a.PageId == actionId).FirstOrDefault();
 
             if (node == null) return new ContentTreeNodeDisplayViewModel();
 

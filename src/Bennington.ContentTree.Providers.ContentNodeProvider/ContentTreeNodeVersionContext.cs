@@ -5,11 +5,11 @@ using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Repositories;
 using Bennington.Core;
 
-namespace Bennington.ContentTree.Providers.ContentNodeProvider.Context
+namespace Bennington.ContentTree.Providers.ContentNodeProvider
 {
 	public interface IContentTreeNodeVersionContext
 	{
-		IQueryable<ContentTreePageNode> GetAllContentTreeNodes();
+		IQueryable<ContentTreePageNode> GetAllContentTreePageNodes();
 	}
 
 	public class ContentTreeNodeVersionContext : IContentTreeNodeVersionContext
@@ -33,7 +33,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Context
 			this.contentNodeProviderDraftRepository = contentNodeProviderDraftRepository;
 		}
 
-		public IQueryable<ContentTreePageNode> GetAllContentTreeNodes()
+		public IQueryable<ContentTreePageNode> GetAllContentTreePageNodes()
 		{
 		    var versionContextImpl = versionContext();
             if (versionContextImpl.GetCurrentVersionId() == VersionContext.Publish)

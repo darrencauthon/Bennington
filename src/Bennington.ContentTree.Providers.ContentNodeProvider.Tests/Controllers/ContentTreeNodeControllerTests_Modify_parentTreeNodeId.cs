@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using AutoMoq;
 using Bennington.ContentTree.Helpers;
-using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Controllers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Mappers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
@@ -71,7 +70,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			{
 				Name = "some name",
 			};
-			mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes()).Returns(new ContentTreePageNode[]
+			mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreePageNodes()).Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()
 				         			{
@@ -97,7 +96,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 			                         	{
 											Name = "some name",
 			                         	};
-			mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreeNodes())
+			mocker.GetMock<IContentTreeNodeVersionContext>().Setup(a => a.GetAllContentTreePageNodes())
 				.Returns(new ContentTreePageNode[]
 				         	{
 				         		new ContentTreePageNode()

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Routing;
 using Bennington.ContentTree.Models;
-using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
 using Action = Bennington.ContentTree.Models.Action;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider
@@ -19,7 +18,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 
 		public virtual IQueryable<ContentTreeNode> GetAll()
 		{
-			var query = from item in contentTreeNodeVersionContext.GetAllContentTreeNodes().Where(a => a.Action == "Index")
+			var query = from item in contentTreeNodeVersionContext.GetAllContentTreePageNodes().Where(a => a.Action == "Index")
 						select item;
 			
 			return query;

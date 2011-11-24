@@ -4,7 +4,6 @@ using System.Web.Mvc;
 using System.Web.Security;
 using AutoMoq;
 using Bennington.ContentTree.Domain.Commands;
-using Bennington.ContentTree.Providers.ContentNodeProvider.Context;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Controllers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Helpers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;

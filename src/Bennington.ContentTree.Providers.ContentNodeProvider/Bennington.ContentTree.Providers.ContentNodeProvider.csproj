@@ -116,7 +116,7 @@
     <Compile Include="Repositories\ContentNodeProviderDraftRepository.cs" />
     <Compile Include="Registration\TreeNodeExtensionProviderRegistration.cs" />
     <Compile Include="ContentNodeProvider.cs" />
-    <Compile Include="Context\ContentTreeNodeVersionContext.cs" />
+    <Compile Include="ContentTreeNodeVersionContext.cs" />
     <Compile Include="Routing\ContentControllerDisplayRouteRegistrator.cs" />
     <Compile Include="Routing\ContentTreeRouteRegistrator.cs" />
     <Compile Include="Validation\ContentTreeInputModelValidator.cs" />
