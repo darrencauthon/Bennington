@@ -51,11 +51,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider
 			get { return null; }
 		}
 
-		public IEnumerable<Action> Actions
-		{
-			get { throw new NotImplementedException(); }
-			set { throw new NotImplementedException(); }
-		}
+	    public IEnumerable<Action> Actions { get; set; }
 
 		public bool MayHaveChildNodes
 		{

@@ -56,11 +56,7 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider
 	        set { }
 	    }
 
-	    public IEnumerable<Action> Actions
-		{
-			get { throw new NotImplementedException(); }
-			set { throw new NotImplementedException(); }
-		}
+        public IEnumerable<Action> Actions { get; set; }
 
 		public bool MayHaveChildNodes
 		{
