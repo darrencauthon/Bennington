@@ -225,40 +225,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Denomarlize
 		}
 
 		[TestMethod]
-		public void Copies_header_image_file_from_draft_mode_folder()
-		{
-			var publishedVersionFileUploadPath = @"c:\publishedVersionUpload\";
-			var draftFileUploadPath = @"c:\draftUpload\";
-			mocker.GetMock<IApplicationSettingsValueGetter>()
-				.Setup(a => a.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.PublishedVersionFileUploadPath"))
-				.Returns(publishedVersionFileUploadPath);
-			mocker.GetMock<IApplicationSettingsValueGetter>()
-				.Setup(a => a.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.DraftFileUploadPath"))
-				.Returns(draftFileUploadPath);
-			var pageId = Guid.NewGuid();
-			mocker.GetMock<IContentNodeProviderDraftRepository>().Setup(a => a.GetAllContentNodeProviderDrafts())
-				.Returns(new ContentNodeProviderDraft[]
-				         	{
-				         		new ContentNodeProviderDraft()
-				         			{
-				         				PageId = pageId.ToString(),
-										Name = "x",
-										HeaderImage = "test.jpg",
-				         			}, 
-							}.AsQueryable());
-			mocker.GetMock<IFileSystem>().Setup(a => a.FileExists(draftFileUploadPath + pageId + @"\HeaderImage\test.jpg")).Returns(true);
-
-
-			mocker.Resolve<ContentNodeProviderPublishDenormalizer>().Handle(new PagePublishedEvent()
-																					{
-																						AggregateRootId = pageId,
-																					});
-
-			mocker.GetMock<IFileSystem>()
-				.Verify(a => a.Copy(draftFileUploadPath + pageId + @"\HeaderImage\test.jpg", publishedVersionFileUploadPath + pageId + @"\HeaderImage\test.jpg"), Times.Once());
-		}
-
-		[TestMethod]
 		public void Does_not_attempt_to_copy_header_image_file_from_draft_mode_folder_if_there_is_no_image_there()
 		{
 			var publishedVersionFileUploadPath = @"c:\publishedVersionUpload\";
@@ -290,78 +256,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Denomarlize
 
 			mocker.GetMock<IFileSystem>()
 				.Verify(a => a.Copy(draftFileUploadPath + pageId + @"\HeaderImage\test.jpg", publishedVersionFileUploadPath + pageId + @"\HeaderImage\test.jpg"), Times.Never());
-		}
-
-		[TestMethod]
-		public void Creates_published_version_header_image_folder_if_it_does_not_exist()
-		{
-			var pageId = Guid.NewGuid();
-			var publishedVersionFileUploadPath = @"c:\publishedVersionUpload\";
-			var draftFileUploadPath = @"c:\draftUpload\";
-			mocker.GetMock<IApplicationSettingsValueGetter>()
-				.Setup(a => a.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.PublishedVersionFileUploadPath"))
-				.Returns(publishedVersionFileUploadPath);
-			mocker.GetMock<IApplicationSettingsValueGetter>()
-				.Setup(a => a.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.DraftFileUploadPath"))
-				.Returns(draftFileUploadPath);
-			mocker.GetMock<IContentNodeProviderDraftRepository>().Setup(a => a.GetAllContentNodeProviderDrafts())
-				.Returns(new ContentNodeProviderDraft[]
-				         	{
-							}.AsQueryable());
-			mocker.GetMock<IContentNodeProviderDraftRepository>().Setup(a => a.GetAllContentNodeProviderDrafts())
-				.Returns(new ContentNodeProviderDraft[]
-				         	{
-				         		new ContentNodeProviderDraft()
-				         			{
-				         				PageId = pageId.ToString(),
-										Name = "x",
-										HeaderImage = "test.jpg",
-				         			}, 
-							}.AsQueryable());
-
-			mocker.Resolve<ContentNodeProviderPublishDenormalizer>().Handle(new PagePublishedEvent()
-																					{
-																						AggregateRootId = pageId,
-																					});
-
-			mocker.GetMock<IFileSystem>().Verify(a => a.CreateFolder(publishedVersionFileUploadPath + pageId + @"\HeaderImage"), Times.Once());
-		}
-
-		[TestMethod]
-		public void Does_not_attempt_to_create_published_version_header_image_folder_if_it_exists()
-		{
-			var pageId = Guid.NewGuid();
-			var publishedVersionFileUploadPath = @"c:\publishedVersionUpload\";
-			var draftFileUploadPath = @"c:\draftUpload\";
-			mocker.GetMock<IApplicationSettingsValueGetter>()
-				.Setup(a => a.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.PublishedVersionFileUploadPath"))
-				.Returns(publishedVersionFileUploadPath);
-			mocker.GetMock<IApplicationSettingsValueGetter>()
-				.Setup(a => a.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.DraftFileUploadPath"))
-				.Returns(draftFileUploadPath);
-			mocker.GetMock<IContentNodeProviderDraftRepository>().Setup(a => a.GetAllContentNodeProviderDrafts())
-				.Returns(new ContentNodeProviderDraft[]
-				         	{
-							}.AsQueryable());
-			mocker.GetMock<IContentNodeProviderDraftRepository>().Setup(a => a.GetAllContentNodeProviderDrafts())
-				.Returns(new ContentNodeProviderDraft[]
-				         	{
-				         		new ContentNodeProviderDraft()
-				         			{
-				         				PageId = pageId.ToString(),
-										Name = "x",
-										HeaderImage = "test.jpg",
-				         			}, 
-							}.AsQueryable());
-			mocker.GetMock<IFileSystem>().Setup(a => a.DirectoryExists(publishedVersionFileUploadPath + pageId + @"\HeaderImage"))
-				.Returns(true);
-
-			mocker.Resolve<ContentNodeProviderPublishDenormalizer>().Handle(new PagePublishedEvent()
-			{
-				AggregateRootId = pageId,
-			});
-
-			mocker.GetMock<IFileSystem>().Verify(a => a.CreateFolder(publishedVersionFileUploadPath + pageId + @"\HeaderImage"), Times.Never());
 		}
 
 		[TestMethod]

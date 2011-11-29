@@ -38,14 +38,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 			var existingPublishedVersion = contentNodeProviderPublishedVersionRepository.GetAllContentNodeProviderPublishedVersions()
 				.Where(a => a.PageId == domainEvent.AggregateRootId.ToString()).FirstOrDefault();
 
-			var draftFileUploadPath = applicationSettingsValueGetter.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.DraftFileUploadPath");
-			var publishedVersionFileUploadPath = applicationSettingsValueGetter.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.PublishedVersionFileUploadPath");
-			var draftVersionHeaderImagePath = string.Format(@"{0}{1}\HeaderImage\{2}", draftFileUploadPath, domainEvent.AggregateRootId, draftVersion.HeaderImage);
-			if (!fileSystem.DirectoryExists(publishedVersionFileUploadPath + domainEvent.AggregateRootId + @"\HeaderImage"))
-				fileSystem.CreateFolder(publishedVersionFileUploadPath + domainEvent.AggregateRootId + @"\HeaderImage");
-			if (fileSystem.FileExists(draftVersionHeaderImagePath))
-				fileSystem.Copy(draftVersionHeaderImagePath,
-								string.Format(@"{0}{1}\HeaderImage\{2}", publishedVersionFileUploadPath, domainEvent.AggregateRootId, draftVersion.HeaderImage));
+            //var draftFileUploadPath = applicationSettingsValueGetter.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.DraftFileUploadPath");
+            //var publishedVersionFileUploadPath = applicationSettingsValueGetter.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.PublishedVersionFileUploadPath");
+            //var draftVersionHeaderImagePath = string.Format(@"{0}{1}\HeaderImage\{2}", draftFileUploadPath, domainEvent.AggregateRootId, draftVersion.HeaderImage);
+            //if (!fileSystem.DirectoryExists(publishedVersionFileUploadPath + domainEvent.AggregateRootId + @"\HeaderImage"))
+            //    fileSystem.CreateFolder(publishedVersionFileUploadPath + domainEvent.AggregateRootId + @"\HeaderImage");
+            //if (fileSystem.FileExists(draftVersionHeaderImagePath))
+            //    fileSystem.Copy(draftVersionHeaderImagePath,
+            //                    string.Format(@"{0}{1}\HeaderImage\{2}", publishedVersionFileUploadPath, domainEvent.AggregateRootId, draftVersion.HeaderImage));
 
 			if (existingPublishedVersion == null)
 				contentNodeProviderPublishedVersionRepository
