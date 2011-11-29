@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using Bennington.Content.Configuration;
 using Bennington.Content.Data;
@@ -16,7 +17,16 @@ namespace Bennington.Content.Sql.Configuration
             : base(parentConfigurer)
         {
             this.connectionString = connectionString;
-            invalidateCacheUrl = new Uri(string.Format("net.pipe://localhost/caching/{0}/content_tree", ApplicationAssembly.GetName().Name.ToLower()));
+            invalidateCacheUrl = new Uri(string.Format("net.pipe://localhost/caching/{0}/content_tree", GetKeyForEndpointListener()));
+        }
+
+        private string GetKeyForEndpointListener()
+        {
+            var cacheListenerCachekey = "Bennington.Content.Routing.Cache.Listener.CacheKey";
+            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings[cacheListenerCachekey]))
+                return ApplicationAssembly.GetName().Name.ToLower();
+
+            return ConfigurationManager.AppSettings[cacheListenerCachekey];
         }
 
         public SqlContentConfigurer UseInvalidateCacheUri(string uri)
