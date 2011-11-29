@@ -27,21 +27,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                                                         IHandleDomainEvents<PageLastModifyDateSetEvent>
 	{
 		private readonly IContentNodeProviderDraftRepository contentNodeProviderDraftRepository;
-		private readonly IContentTreeNodeProviderContext contentTreeNodeProviderContext;
-		private readonly IContentTree contentTree;
-		private readonly IApplicationSettingsValueGetter applicationSettingsValueGetter;
-		private readonly IFileSystem fileSystem;
 
-		public ContentNodeProviderDraftDenormalizer(IContentNodeProviderDraftRepository contentNodeProviderDraftRepository,
-													IContentTreeNodeProviderContext contentTreeNodeProviderContext,
-													IContentTree contentTree,
-													IApplicationSettingsValueGetter applicationSettingsValueGetter,
-													IFileSystem fileSystem)
+		public ContentNodeProviderDraftDenormalizer(IContentNodeProviderDraftRepository contentNodeProviderDraftRepository)
 		{
-			this.fileSystem = fileSystem;
-			this.applicationSettingsValueGetter = applicationSettingsValueGetter;
-			this.contentTree = contentTree;
-			this.contentTreeNodeProviderContext = contentTreeNodeProviderContext;
 			this.contentNodeProviderDraftRepository = contentNodeProviderDraftRepository;
 		}
 
@@ -90,7 +78,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(PageUrlSegmentSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
-			var treeNodeSummary = contentTree.GetById(contentNodeProviderDraft.TreeNodeId);
 			
 			contentNodeProviderDraft.UrlSegment = domainEvent.UrlSegment;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
@@ -148,21 +135,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 
 		public void Handle(PageHeaderImageSetEvent domainEvent)
 		{
-
-			var providerUploadPath = applicationSettingsValueGetter.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.FileUploadPath");
-			var draftFileUploadPath = applicationSettingsValueGetter.GetValue("Bennington.ContentTree.Providers.ContentNodeProvider.DraftFileUploadPath");
-			var headerImageUploadPath = string.Format(@"{0}{1}\HeaderImage", draftFileUploadPath, domainEvent.AggregateRootId);
-			if (!fileSystem.DirectoryExists(headerImageUploadPath))
-			{
-				fileSystem.CreateFolder(headerImageUploadPath);
-			}
-
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
-			try
-			{
-				fileSystem.DeleteFile(string.Format(@"{0}{1}\HeaderImage\{2}", draftFileUploadPath, domainEvent.AggregateRootId, contentNodeProviderDraft.HeaderImage));
-			}
-			catch (Exception) { }
 			contentNodeProviderDraft.HeaderImage = domainEvent.HeaderImage;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
