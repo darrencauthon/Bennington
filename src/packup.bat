@@ -27,3 +27,5 @@ copy "C:\_Application\Bennington\src\Bennington.Content.Routing\bin\Debug\Bennin
 copy "C:\_Application\Bennington\src\Bennington.Content.Routing\bin\Debug\Bennington.Content.Routing.pdb" "C:\_Application\Bennington\localWorkingFolder\Deploy"
 copy "C:\_Application\Bennington\src\Bennington.Content.Sql\bin\Debug\Bennington.Content.Sql.dll" "C:\_Application\Bennington\localWorkingFolder\Deploy"
 copy "C:\_Application\Bennington\src\Bennington.Content.Sql\bin\Debug\Bennington.Content.Sql.pdb" "C:\_Application\Bennington\localWorkingFolder\Deploy"
+copy "C:\_Application\Bennington\src\Bennington.FileUploadHandling\bin\Debug\Bennington.FileUploadHandling.dll" "C:\_Application\Bennington\localWorkingFolder\Deploy"
+copy "C:\_Application\Bennington\src\Bennington.FileUploadHandling\bin\Debug\Bennington.FileUploadHandling.pdb" "C:\_Application\Bennington\localWorkingFolder\Deploy"
