@@ -70,7 +70,7 @@ namespace Bennington.FileUploadHandling
         private object GetBoundModelWhenThereAreNoFilesBeingUploaded(ModelBindingContext bindingContext, ControllerContext controllerContext, string propertyName)
         {
             var model = base.BindModel(controllerContext, bindingContext);
-            if (controllerContext.HttpContext.Request.Form[string.Format("{0}.Remove", propertyName)] == "remove")
+            if (controllerContext.HttpContext.Request.Form[string.Format("{0}.Remove", propertyName)] == "True")
             {
                 ((FileUploadInputModel) model).Id = null;
             }
