@@ -73,6 +73,7 @@ namespace Bennington.FileUploadHandling
             if (controllerContext.HttpContext.Request.Form[string.Format("{0}.Remove", propertyName)] == "True")
             {
                 ((FileUploadInputModel) model).Id = null;
+                ((FileUploadInputModel)model).UrlRelativeToFileUploadRoot = null;
             }
             return model;
         }
