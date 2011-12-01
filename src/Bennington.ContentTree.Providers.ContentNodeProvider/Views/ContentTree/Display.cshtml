@@ -4,8 +4,10 @@
 
 <h1>@Model.Header</h1>
 
-@Model.HeaderImage
-
+@if (!string.IsNullOrEmpty(Model.HeaderImage))
+{
+    <img src="@Model.HeaderImage" alt="@Model.Header" />
+}
 <div>@Html.Raw(Model.Body)</div>
 
 

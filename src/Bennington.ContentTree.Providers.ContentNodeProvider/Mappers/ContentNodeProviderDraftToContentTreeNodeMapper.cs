@@ -14,7 +14,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Mappers
 
 	public class ContentNodeProviderDraftToContentTreeNodeMapper : Mapper<Data.ContentNodeProviderDraft, Models.ContentTreePageNode>, IContentNodeProviderDraftToContentTreeNodeMapper
 	{
-	    private ITreeNodeRepository treeNodeRepository;
+	    private readonly ITreeNodeRepository treeNodeRepository;
 
 	    public ContentNodeProviderDraftToContentTreeNodeMapper(ITreeNodeRepository treeNodeRepository)
 	    {
