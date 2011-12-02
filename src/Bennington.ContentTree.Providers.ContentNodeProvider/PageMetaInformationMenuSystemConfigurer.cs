@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Bennington.Cms.MenuSystem;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Controllers;
+using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider
 {
@@ -47,10 +48,26 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
             var routeData = GetRootRouteData(controllerContext);
 
             subMenuItemViewModel.Visible = subMenuItemViewModel.Visible && routeData.Values["action"].ToString() == "Modify";
-            
-            subMenuItemViewModel.Url = urlHelper.Action(actionName, controllerName, new { TreeNodeId = controllerContext.RequestContext.HttpContext.Request["treeNodeId"] });
+
+            subMenuItemViewModel.Url = urlHelper.Action(actionName, controllerName, new { TreeNodeId = GetTreeNodeId(controllerContext), contentItemId = GetContentItemId(controllerContext) });
 
             return subMenuItemViewModel;
+        }
+
+        private static string GetContentItemId(ControllerContext controllerContext)
+        {
+            if (string.IsNullOrEmpty(controllerContext.RequestContext.HttpContext.Request["contentItemId"]))
+                return controllerContext.RequestContext.HttpContext.Request.Form[typeof (ContentTreeNodeInputModel).Name + ".Action"];
+
+            return controllerContext.RequestContext.HttpContext.Request["contentItemId"];
+        }
+
+        private static string GetTreeNodeId(ControllerContext controllerContext)
+        {
+            if (string.IsNullOrEmpty(controllerContext.RequestContext.HttpContext.Request["treeNodeId"]))
+                return controllerContext.RequestContext.HttpContext.Request.Form[typeof(ContentTreeNodeInputModel).Name + ".TreeNodeId"];
+
+            return controllerContext.RequestContext.HttpContext.Request["treeNodeId"];
         }
 
         private static RouteData GetRootRouteData(ControllerContext controllerContext)
