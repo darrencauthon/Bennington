@@ -24,7 +24,7 @@ namespace Bennington.Cms.MenuSystem
             this.routeValues = new RouteValueDictionary(routeValues);
         }
 
-        public SubMenuItemViewModel GetViewModel(ControllerContext controllerContext)
+        public virtual SubMenuItemViewModel GetViewModel(ControllerContext controllerContext)
         {
             var urlHelper = new UrlHelper(controllerContext.RequestContext);
             var routeData = GetRootRouteData(controllerContext);
