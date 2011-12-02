@@ -29,7 +29,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 	    private readonly ITreeNodeIdToUrl treeNodeIdToUrl;
 	    private readonly IGetUrlOfFrontSideWebsite getUrlOfFrontSideWebsite;
 	    private readonly IContentTree contentTree;
-	    private IContentTreeNodeMetaInformationViewModelBuilder contentTreeNodeMetaInformationViewModelBuilder;
+	    private readonly IContentTreeNodeMetaInformationViewModelBuilder contentTreeNodeMetaInformationViewModelBuilder;
 
 	    public ContentTreeNodeController(IContentTreePageNodeContext contentTreePageNodeContext, 
 											IContentTreeNodeToContentTreeNodeInputModelMapper contentTreeNodeToContentTreeNodeInputModelMapper,
@@ -262,6 +262,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
                                                                                   { "action", "ManageMetaInformation" }
                                                                               }));
             }
+
             return View("ManageMetaInformation", contentTreeNodeMetaInformationViewModelBuilder.BuildViewModel(contentTreeNodeMetaInformationInputModel));
         }
 
