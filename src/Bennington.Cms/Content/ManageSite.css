@@ -4,7 +4,7 @@ body {
     background: #c9d7de url(Canvas/Body-Bg.gif) top repeat-x;
 }
 #canvas { width: 915px; margin: 0 auto; }
-.contentNodeProviderForm { margin-top:60px;}
+.contentNodeProviderForm { margin-top:10px;}
 
 #header #title 
 { 
