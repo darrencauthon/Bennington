@@ -99,6 +99,8 @@
     <Compile Include="Controllers\ContentTreeNodeControllerTests_Modify_ContentPageInputModel.cs" />
     <Compile Include="Controllers\ContentTreeNodeControllerTests_Modify_parentTreeNodeId.cs" />
     <Compile Include="Controllers\ContentTreeNodeController_ContentItemNavigation.cs" />
+    <Compile Include="Controllers\ContentTreeNodeController_ManageMetaInformation_GET.cs" />
+    <Compile Include="Controllers\ContentTreeNodeController_ManageMetaInformation_POST.cs" />
     <Compile Include="Data\DataModelDataContextTests_ContentNodeProviderDraftVersion.cs" />
     <Compile Include="Data\DataModelDataContextTests_ContentNodeProviderPublishedVersion.cs" />
     <Compile Include="Denomarlizers\ContentNodeProviderDraftDenormalizerTests_Handle.cs" />

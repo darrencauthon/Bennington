@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -28,6 +29,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 	    private readonly ITreeNodeIdToUrl treeNodeIdToUrl;
 	    private readonly IGetUrlOfFrontSideWebsite getUrlOfFrontSideWebsite;
 	    private readonly IContentTree contentTree;
+	    private IContentTreeNodeMetaInformationViewModelBuilder contentTreeNodeMetaInformationViewModelBuilder;
 
 	    public ContentTreeNodeController(IContentTreePageNodeContext contentTreePageNodeContext, 
 											IContentTreeNodeToContentTreeNodeInputModelMapper contentTreeNodeToContentTreeNodeInputModelMapper,
@@ -41,8 +43,10 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
                                             ICurrentUserContext currentUserContext,
                                             ITreeNodeIdToUrl treeNodeIdToUrl,
                                             IGetUrlOfFrontSideWebsite getUrlOfFrontSideWebsite,
-                                            IContentTree contentTree)
+                                            IContentTree contentTree,
+                                            IContentTreeNodeMetaInformationViewModelBuilder contentTreeNodeMetaInformationViewModelBuilder)
 		{
+	        this.contentTreeNodeMetaInformationViewModelBuilder = contentTreeNodeMetaInformationViewModelBuilder;
 	        this.contentTree = contentTree;
 	        this.getUrlOfFrontSideWebsite = getUrlOfFrontSideWebsite;
 	        this.treeNodeIdToUrl = treeNodeIdToUrl;
@@ -234,6 +238,33 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			return View("Modify", viewModel);
 		}
 
+        [Authorize]
+        public virtual ActionResult ManageMetaInformation(string treeNodeId, string contentItemId)
+        {
+            return View("ManageMetaInformation", contentTreeNodeMetaInformationViewModelBuilder.BuildViewModel(null));
+        }
+
+        [Authorize]
+        [HttpPost]
+        public virtual ActionResult ManageMetaInformation(ContentTreeNodeMetaInformationInputModel contentTreeNodeMetaInformationInputModel)
+        {
+            if (ModelState.IsValid)
+            {
+                commandBus.Send(new ModifyPageMetaInformationCommand()
+                                        {
+                                            MetaDescription = contentTreeNodeMetaInformationInputModel.MetaDescription,
+                                            MetaKeywords = contentTreeNodeMetaInformationInputModel.MetaKeywords,
+                                            MetaTitle = contentTreeNodeMetaInformationInputModel.MetaTitle,
+                                        });
+                return new RedirectToRouteResult(new RouteValueDictionary(new Dictionary<string, object>()
+                                                                              {
+                                                                                  { "controller", typeof(ContentTreeNodeController).Name.Replace("Controller", string.Empty) },
+                                                                                  { "action", "ManageMetaInformation" }
+                                                                              }));
+            }
+            return View("ManageMetaInformation", contentTreeNodeMetaInformationViewModelBuilder.BuildViewModel(contentTreeNodeMetaInformationInputModel));
+        }
+
 		[Authorize]
 		public virtual ActionResult ContentItemNavigation(string treeNodeId)
 		{
@@ -250,12 +281,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 			}
 			if ((viewModel.ContentTreeNodeContentItems == null) || (viewModel.ContentTreeNodeContentItems.Count() == 0)) return null;
 			return View("ContentItemNavigation", viewModel);
-		}
-
-		private string GetRedirectUrlToModifyMethod(ContentTreeNodeInputModel contentTreeNodeInputModel)
-		{
-			if (Url == null) return "/";
-			return Url.Action("Modify", "ContentTreeNode", new { treeNodeId = contentTreeNodeInputModel == null ? "0" : contentTreeNodeInputModel.TreeNodeId });
 		}
 	}
 }

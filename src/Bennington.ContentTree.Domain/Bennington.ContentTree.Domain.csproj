@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandlers\ModifyPageMetaInformationCommandHandler.cs" />
+    <Compile Include="Commands\ModifyPageMetaInformationCommand.cs" />
     <Compile Include="Events\Section\SectionLastModifyDateSetEvent.cs" />
     <Compile Include="Events\Section\SectionLastModifyBySetEvent.cs" />
     <Compile Include="Events\Page\PageLastModifyDateSetEvent.cs" />

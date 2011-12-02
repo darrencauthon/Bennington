@@ -100,9 +100,11 @@
     <Compile Include="Mappers\ContentTreeNodeInputModelToContentTreeNodeMapper.cs" />
     <Compile Include="Mappers\ContentTreeNodeToContentTreeNodeInputModelMapper.cs" />
     <Compile Include="Models\ContentItemNavigationViewModel.cs" />
+    <Compile Include="Models\ContentTreeNodeMetaInformationInputModel.cs" />
     <Compile Include="Models\ContentTreePageNode.cs" />
     <Compile Include="Models\ContentTreeNodeDisplayViewModel.cs" />
     <Compile Include="Models\ContentTreeNodeInputModel.cs" />
+    <Compile Include="Models\ContentTreeNodeMetaInformationViewModel.cs" />
     <Compile Include="Models\ModifyViewModel.cs" />
     <Compile Include="PageMetaInformationMenuSystemConfigurer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,8 +123,10 @@
     <Compile Include="Routing\ContentControllerDisplayRouteRegistrator.cs" />
     <Compile Include="Routing\ContentTreeRouteRegistrator.cs" />
     <Compile Include="Validation\ContentTreeInputModelValidator.cs" />
+    <Compile Include="Validation\ContentTreeNodeMetaInformationInputModelValidator.cs" />
     <Compile Include="Validation\FileUploadInputModelValidator.cs" />
     <Compile Include="ViewModelBuilders\ContentTreeNodeDisplayViewModelBuilder.cs" />
+    <Compile Include="ViewModelBuilders\ContentTreeNodeMetaInformationViewModelBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
