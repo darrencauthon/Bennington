@@ -98,9 +98,9 @@
     <Compile Include="Events\Section\SectionDeletedEvent.cs" />
     <Compile Include="Events\Section\SectionInactiveSetEvent.cs" />
     <Compile Include="Events\Section\SectionHiddenSetEvent.cs" />
-    <Compile Include="Events\Page\MetaDescriptionSetEvent.cs" />
-    <Compile Include="Events\Page\MetaKeywordSetEvent.cs" />
-    <Compile Include="Events\Page\MetaTitleSetEvent.cs" />
+    <Compile Include="Events\Page\PageMetaDescriptionSetEvent.cs" />
+    <Compile Include="Events\Page\PageMetaKeywordSetEvent.cs" />
+    <Compile Include="Events\Page\PageMetaTitleSetEvent.cs" />
     <Compile Include="Events\Section\SectionNameSetEvent.cs" />
     <Compile Include="Events\Page\PageCreatedEvent.cs" />
     <Compile Include="AggregateRoots\Page.cs" />

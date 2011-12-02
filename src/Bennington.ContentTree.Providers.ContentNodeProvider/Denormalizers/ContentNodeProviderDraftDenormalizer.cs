@@ -14,8 +14,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 														IHandleDomainEvents<PageTreeNodeIdSetEvent>,
 														IHandleDomainEvents<PageNameSetEvent>,
 														IHandleDomainEvents<PageActionSetEvent>,
-														IHandleDomainEvents<MetaTitleSetEvent>,
-														IHandleDomainEvents<MetaDescriptionSetEvent>,
+														IHandleDomainEvents<PageMetaTitleSetEvent>,
+														IHandleDomainEvents<PageMetaDescriptionSetEvent>,
 														IHandleDomainEvents<HeaderTextSetEvent>,
 														IHandleDomainEvents<PageHeaderImageSetEvent>,
 														IHandleDomainEvents<BodySetEvent>,
@@ -61,14 +61,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
 
-		public void Handle(MetaTitleSetEvent domainEvent)
+		public void Handle(PageMetaTitleSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
 			contentNodeProviderDraft.MetaTitle = domainEvent.MetaTitle;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
 
-		public void Handle(MetaDescriptionSetEvent domainEvent)
+		public void Handle(PageMetaDescriptionSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
 			contentNodeProviderDraft.MetaDescription = domainEvent.MetaDescription;

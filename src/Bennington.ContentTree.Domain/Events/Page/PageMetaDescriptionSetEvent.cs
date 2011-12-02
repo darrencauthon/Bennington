@@ -2,7 +2,7 @@
 
 namespace Bennington.ContentTree.Domain.Events.Page
 {
-	public class MetaDescriptionSetEvent : DomainEvent
+	public class PageMetaDescriptionSetEvent : DomainEvent
 	{
 		public string MetaDescription { get; set; }
 	}

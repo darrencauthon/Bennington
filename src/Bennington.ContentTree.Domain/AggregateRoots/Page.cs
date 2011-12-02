@@ -1,5 +1,6 @@
 using System;
 using Bennington.ContentTree.Domain.Events.Page;
+using SimpleCqrs.Eventing;
 
 namespace Bennington.ContentTree.Domain.AggregateRoots
 {
@@ -59,17 +60,17 @@ namespace Bennington.ContentTree.Domain.AggregateRoots
 
 		public void SetMetaTitle(string metaTitle)
 		{
-			Apply(new MetaTitleSetEvent(){ MetaTitle = metaTitle });
+			Apply(new PageMetaTitleSetEvent(){ MetaTitle = metaTitle });
 		}
 
 		public void SetMetaDescription(string metaDescription)
 		{
-			Apply(new MetaDescriptionSetEvent() { AggregateRootId = Id, MetaDescription = metaDescription });
+			Apply(new PageMetaDescriptionSetEvent() { AggregateRootId = Id, MetaDescription = metaDescription });
 		}
 
 		public void SetMetaKeyword(string metaKeyword)
 		{
-			Apply(new MetaKeywordSetEvent() { AggregateRootId = Id, MetaKeyword = metaKeyword });
+			Apply(new PageMetaKeywordSetEvent() { AggregateRootId = Id, MetaKeyword = metaKeyword });
 		}
 
 		public void SetHeaderText(string headerText)
