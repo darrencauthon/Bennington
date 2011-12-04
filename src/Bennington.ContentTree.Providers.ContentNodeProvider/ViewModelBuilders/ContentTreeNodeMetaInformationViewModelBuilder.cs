@@ -15,7 +15,10 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.ViewModelBuilders
     {
         public ContentTreeNodeMetaInformationViewModel BuildViewModel(ContentTreeNodeMetaInformationInputModel contentTreeNodeMetaInformationInputModel)
         {
-            throw new NotImplementedException();
+            return new ContentTreeNodeMetaInformationViewModel()
+                       {
+                           ContentTreeNodeMetaInformationInputModel = contentTreeNodeMetaInformationInputModel
+                       };
         }
     }
 }

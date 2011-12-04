@@ -27,28 +27,38 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
         public void Returns_correct_view_name()
         {
             var result = mocker.Resolve<ContentTreeNodeController>()
-                                .ManageMetaInformation("id", "Index") as ViewResult;
+                                .ManageMetaInformation("id", "pageId") as ViewResult;
 
             Assert.AreEqual("ManageMetaInformation", result.ViewName);
+        }
+
+        [TestMethod]
+        public void Passes_input_model_with_contentItemId_and_treeNodeId_set()
+        {
+            mocker.Resolve<ContentTreeNodeController>().ManageMetaInformation("treeNodeId", "pageId");
+
+            mocker.GetMock<IContentTreeNodeMetaInformationViewModelBuilder>()
+                .Verify(a => a.BuildViewModel(It.Is<ContentTreeNodeMetaInformationInputModel>(b => b.PageId == "pageId" && b.TreeNodeId == "treeNodeId")), Times.Once());
         }
 
         [TestMethod]
         public void Returns_view_model_from_IContentTreeNodeMetaInformationViewModelBuilder()
         {
             mocker.GetMock<IContentTreeNodeMetaInformationViewModelBuilder>()
-                .Setup(a => a.BuildViewModel(null))
+                .Setup(a => a.BuildViewModel(It.Is<ContentTreeNodeMetaInformationInputModel>(b => b.PageId == "pageId" && b.TreeNodeId == "tree node id")))
                 .Returns(new ContentTreeNodeMetaInformationViewModel()
                              {
                                  ContentTreeNodeMetaInformationInputModel = new ContentTreeNodeMetaInformationInputModel()
                                                                                 {
-                                                                                    MetaDescription = "test",
+                                                                                    PageId = "pageId",
+                                                                                    TreeNodeId = "tree node id"
                                                                                 }
                              });
 
             var result = mocker.Resolve<ContentTreeNodeController>()
-                                .ManageMetaInformation(null, null) as ViewResult;
+                                .ManageMetaInformation("tree node id", "pageId") as ViewResult;
 
-            Assert.AreEqual("test", (result.ViewData.Model as ContentTreeNodeMetaInformationViewModel).ContentTreeNodeMetaInformationInputModel.MetaDescription);
+            Assert.AreEqual("tree node id", (result.ViewData.Model as ContentTreeNodeMetaInformationViewModel).ContentTreeNodeMetaInformationInputModel.TreeNodeId);
         }
     }
 }

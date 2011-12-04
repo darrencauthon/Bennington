@@ -1,0 +1,19 @@
+﻿@using System.Web.Mvc.Html
+@using Bennington.ContentTree.Providers.ContentNodeProvider.Models
+@using System.Web.Mvc
+@using System.Security.Policy
+@model Bennington.ContentTree.Providers.ContentNodeProvider.Models.ContentTreeNodeMetaInformationViewModel
+
+@using (Html.BeginForm())
+{
+	<div>
+
+		@Html.EditorFor(x => x.ContentTreeNodeMetaInformationInputModel)
+
+		<div class="commandButtonContainer">
+			<input type="button" class="button" value="Cancel" onclick="window.location='@Url.Action("Index", "ContentTree")';return(false);" />
+			<input type="submit" class="button" value="Save" />		
+		</div>
+
+	</div>
+}

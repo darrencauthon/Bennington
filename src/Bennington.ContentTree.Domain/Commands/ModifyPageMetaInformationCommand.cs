@@ -11,5 +11,7 @@ namespace Bennington.ContentTree.Domain.Commands
         public string MetaTitle { get; set; }
         public string MetaKeywords { get; set; }
         public string MetaDescription { get; set; }
+        public string TreeNodeId { get; set; }
+        public string Action { get; set; }
     }
 }

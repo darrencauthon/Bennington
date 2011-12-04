@@ -7,15 +7,23 @@ using System.Web.Routing;
 using Bennington.Cms.MenuSystem;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Controllers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Models;
+using Bennington.ContentTree.Providers.ContentNodeProvider.Repositories;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider
 {
     public class PageMetaInformationMenuSystemConfigurer : IMenuSystemConfigurer
     {
+        private readonly IContentNodeProviderDraftRepository contentNodeProviderDraftRepository;
+
+        public PageMetaInformationMenuSystemConfigurer(IContentNodeProviderDraftRepository contentNodeProviderDraftRepository)
+        {
+            this.contentNodeProviderDraftRepository = contentNodeProviderDraftRepository;
+        }
+
         public void Configure(IMenuRegistry menuRegistry)
         {
-            menuRegistry.Add(new SubActionOnlyVisibleDuringModifyAction("Page Information", "Modify", typeof(ContentTreeNodeController).Name.Replace("Controller", string.Empty)));
-            menuRegistry.Add(new SubActionOnlyVisibleDuringModifyAction("Meta Information", "ManageMetaInformation", typeof(ContentTreeNodeController).Name.Replace("Controller", string.Empty)));
+            menuRegistry.Add(new SubActionOnlyVisibleDuringModifyAction(contentNodeProviderDraftRepository, "Page Information", "Modify", typeof(ContentTreeNodeController).Name.Replace("Controller", string.Empty)));
+            menuRegistry.Add(new SubActionOnlyVisibleDuringModifyAction(contentNodeProviderDraftRepository, "Meta Information", "ManageMetaInformation", typeof(ContentTreeNodeController).Name.Replace("Controller", string.Empty)));
         }
     }
 
@@ -25,16 +33,20 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
         private readonly string actionName;
         private readonly string controllerName;
         private readonly object routeValues;
+        private readonly IContentNodeProviderDraftRepository contentNodeProviderDraftRepository;
 
-        public SubActionOnlyVisibleDuringModifyAction(string name, string actionName, string controllerName) : this(name, actionName, controllerName, null)
+        public SubActionOnlyVisibleDuringModifyAction(IContentNodeProviderDraftRepository contentNodeProviderDraftRepository, string name, string actionName, string controllerName) : this(contentNodeProviderDraftRepository, name, actionName, controllerName, null)
         {
+            this.contentNodeProviderDraftRepository = contentNodeProviderDraftRepository;
             this.name = name;
             this.actionName = actionName;
             this.controllerName = controllerName;
         }
 
-        public SubActionOnlyVisibleDuringModifyAction(string name, string actionName, string controllerName, object routeValues) : base(name, actionName, controllerName, routeValues)
+        public SubActionOnlyVisibleDuringModifyAction(IContentNodeProviderDraftRepository contentNodeProviderDraftRepository, string name, string actionName, string controllerName, object routeValues)
+            : base(name, actionName, controllerName, routeValues)
         {
+            this.contentNodeProviderDraftRepository = contentNodeProviderDraftRepository;
             this.name = name;
             this.actionName = actionName;
             this.controllerName = controllerName;
@@ -47,19 +59,37 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
             var subMenuItemViewModel = base.GetViewModel(controllerContext);
             var routeData = GetRootRouteData(controllerContext);
 
-            subMenuItemViewModel.Visible = subMenuItemViewModel.Visible && routeData.Values["action"].ToString() == "Modify";
+            subMenuItemViewModel.Visible = subMenuItemViewModel.Visible && (routeData.Values["action"].ToString() == "Modify" || routeData.Values["action"].ToString() == "ManageMetaInformation");
 
-            subMenuItemViewModel.Url = urlHelper.Action(actionName, controllerName, new { TreeNodeId = GetTreeNodeId(controllerContext), contentItemId = GetContentItemId(controllerContext) });
+            subMenuItemViewModel.Url = urlHelper.Action(actionName, controllerName, new { TreeNodeId = GetTreeNodeId(controllerContext), pageId = GetPageId(controllerContext, GetTreeNodeId(controllerContext)) });
 
             return subMenuItemViewModel;
         }
 
-        private static string GetContentItemId(ControllerContext controllerContext)
+        private string GetPageId(ControllerContext controllerContext, string treeNodeId)
+        {
+            var draft = contentNodeProviderDraftRepository
+                            .GetAllContentNodeProviderDrafts()
+                            .Where(a => a.TreeNodeId == treeNodeId && a.Action == GetContentItemId(controllerContext))
+                            .FirstOrDefault();
+
+            return draft == null ? null : draft.PageId;
+        }
+
+        private string GetContentItemId(ControllerContext controllerContext)
         {
             if (string.IsNullOrEmpty(controllerContext.RequestContext.HttpContext.Request["contentItemId"]))
-                return controllerContext.RequestContext.HttpContext.Request.Form[typeof (ContentTreeNodeInputModel).Name + ".Action"];
+            {
+                if (!string.IsNullOrEmpty(controllerContext.RequestContext.HttpContext.Request.Form[typeof(ContentTreeNodeInputModel).Name + ".Action"]))
+                {
+                    return controllerContext.RequestContext.HttpContext.Request.Form[typeof(ContentTreeNodeInputModel).Name + ".Action"];
+                }                
+            } else
+            {
+                return controllerContext.RequestContext.HttpContext.Request["contentItemId"];                
+            }
 
-            return controllerContext.RequestContext.HttpContext.Request["contentItemId"];
+            return "Index";
         }
 
         private static string GetTreeNodeId(ControllerContext controllerContext)

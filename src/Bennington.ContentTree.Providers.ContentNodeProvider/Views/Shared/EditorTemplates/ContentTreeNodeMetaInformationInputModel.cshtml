@@ -1,0 +1,30 @@
+﻿@model Bennington.ContentTree.Providers.ContentNodeProvider.Models.ContentTreeNodeMetaInformationInputModel
+
+@Html.ValidationSummary(true)
+            
+@Html.HiddenFor(model => model.TreeNodeId)
+@Html.HiddenFor(model => model.PageId)
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.MetaTitle)
+</div>
+<div class="editor-field">
+    @Html.TextBoxFor(model => model.MetaTitle)
+    @Html.ValidationMessageFor(model => model.MetaTitle)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.MetaKeywords)
+</div>
+<div class="editor-field">
+    @Html.TextAreaFor(model => model.MetaKeywords)
+    @Html.ValidationMessageFor(model => model.MetaKeywords)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.MetaDescription)
+</div>
+<div class="editor-field">
+    @Html.TextAreaFor(model => model.MetaDescription)
+    @Html.ValidationMessageFor(model => model.MetaDescription)
+</div>

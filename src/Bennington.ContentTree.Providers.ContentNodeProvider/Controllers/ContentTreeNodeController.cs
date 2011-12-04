@@ -239,12 +239,17 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 		}
 
         [Authorize]
-        public virtual ActionResult ManageMetaInformation(string treeNodeId, string contentItemId)
+        public virtual ActionResult ManageMetaInformation(string treeNodeId, string pageId)
         {
-            return View("ManageMetaInformation", contentTreeNodeMetaInformationViewModelBuilder.BuildViewModel(null));
+            var contentTreeNodeMetaInformationInputModel = new ContentTreeNodeMetaInformationInputModel()
+                                                               {
+                                                                   PageId = pageId,
+                                                                   TreeNodeId = treeNodeId,
+                                                               };
+            return View("ManageMetaInformation", contentTreeNodeMetaInformationViewModelBuilder.BuildViewModel(contentTreeNodeMetaInformationInputModel));
         }
 
-        [Authorize]
+	    [Authorize]
         [HttpPost]
         public virtual ActionResult ManageMetaInformation(ContentTreeNodeMetaInformationInputModel contentTreeNodeMetaInformationInputModel)
         {
@@ -255,6 +260,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
                                             MetaDescription = contentTreeNodeMetaInformationInputModel.MetaDescription,
                                             MetaKeywords = contentTreeNodeMetaInformationInputModel.MetaKeywords,
                                             MetaTitle = contentTreeNodeMetaInformationInputModel.MetaTitle,
+                                            TreeNodeId = contentTreeNodeMetaInformationInputModel.TreeNodeId,
+                                            Action = contentTreeNodeMetaInformationInputModel.PageId,
                                         });
                 return new RedirectToRouteResult(new RouteValueDictionary(new Dictionary<string, object>()
                                                                               {

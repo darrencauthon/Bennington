@@ -91,10 +91,16 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
                                         MetaDescription = "test",
                                         MetaKeywords = "keywords",
                                         MetaTitle = "title",
+                                        TreeNodeId = "tree id",
+                                        PageId = "page id"
                                     });
 
             mocker.GetMock<ICommandBus>()
-                .Verify(a => a.Send(It.Is<ModifyPageMetaInformationCommand>(b => b.MetaDescription == "test" && b.MetaKeywords == "keywords" && b.MetaTitle == "title")), Times.Once());
+                .Verify(a => a.Send(It.Is<ModifyPageMetaInformationCommand>(b => b.MetaDescription == "test" 
+                                                && b.MetaKeywords == "keywords" 
+                                                && b.MetaTitle == "title"
+                                                && b.TreeNodeId == "tree id"
+                                                && b.Action == "page id")), Times.Once());
         }
 
         [TestMethod]

@@ -8,6 +8,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Models
 {
     public class ContentTreeNodeMetaInformationInputModel
     {
+        public string TreeNodeId { get; set; }
+        public string PageId { get; set; }
+
         [DisplayName("Meta Title")]
         public string MetaTitle { get; set; }
         

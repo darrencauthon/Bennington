@@ -140,6 +140,8 @@
     <EmbeddedResource Include="Views\ContentTreeNode\Modify.cshtml" />
     <EmbeddedResource Include="Views\Shared\EditorTemplates\ContentTreeNodeInputModel.cshtml" />
     <EmbeddedResource Include="Views\ContentTree\Index.aspx" />
+    <EmbeddedResource Include="Views\ContentTreeNode\ManageMetaInformation.cshtml" />
+    <EmbeddedResource Include="Views\Shared\EditorTemplates\ContentTreeNodeMetaInformationInputModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
