@@ -68,9 +68,9 @@ namespace Bennington.ContentTree.Domain.AggregateRoots
 			Apply(new PageMetaDescriptionSetEvent() { AggregateRootId = Id, MetaDescription = metaDescription });
 		}
 
-		public void SetMetaKeyword(string metaKeyword)
+		public void SetMetaKeywords(string metaKeyword)
 		{
-			Apply(new PageMetaKeywordSetEvent() { AggregateRootId = Id, MetaKeyword = metaKeyword });
+			Apply(new PageMetaKeywordSetEvent() { AggregateRootId = Id, MetaKeywords = metaKeyword });
 		}
 
 		public void SetHeaderText(string headerText)

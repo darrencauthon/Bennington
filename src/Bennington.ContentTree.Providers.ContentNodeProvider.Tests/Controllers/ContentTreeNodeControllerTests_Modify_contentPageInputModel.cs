@@ -53,11 +53,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 												Action = "Index",
 												FormAction = "Save and Exit"
 											};
-			mocker.GetMock<IContentTreeNodeInputModelToContentTreeNodeMapper>()
-				.Setup(a => a.CreateInstance(contentTreeNodeInputModel)).Returns(new ContentTreePageNode()
-																					{
-																						Name = "name",
-																					});
 
 			var contentTreeNodeController = mocker.Resolve<ContentTreeNodeController>();
 			var result = contentTreeNodeController.Modify(contentTreeNodeInputModel);
@@ -74,11 +69,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 															TreeNodeId = Guid.NewGuid().ToString(),
 															Name = "name",
 														};
-			mocker.GetMock<IContentTreeNodeInputModelToContentTreeNodeMapper>()
-				.Setup(a => a.CreateInstance(contentTreeNodeInputModel)).Returns(new ContentTreePageNode()
-																					{
-																						Name = "name",
-																					});
 
 			var contentTreeNodeController = mocker.Resolve<ContentTreeNodeController>();
 			var result = contentTreeNodeController.Modify(contentTreeNodeInputModel);
@@ -105,11 +95,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 														Name = "name",
 														Action = "Index",
 													};
-			mocker.GetMock<IContentTreeNodeInputModelToContentTreeNodeMapper>()
-				.Setup(a => a.CreateInstance(contentTreeNodeInputModel)).Returns(new ContentTreePageNode()
-																					{
-																						Name = "name",
-																					});
 
 			var contentTreeNodeController = mocker.Resolve<ContentTreeNodeController>();
 			contentTreeNodeController.ModelState.AddModelError("key", "error");

@@ -239,14 +239,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 		}
 
         [Authorize]
-        public virtual ActionResult ManageMetaInformation(string treeNodeId, string pageId)
+        public virtual ActionResult ManageMetaInformation(string treeNodeId, string contentItemId)
         {
-            var contentTreeNodeMetaInformationInputModel = new ContentTreeNodeMetaInformationInputModel()
-                                                               {
-                                                                   PageId = pageId,
-                                                                   TreeNodeId = treeNodeId,
-                                                               };
-            return View("ManageMetaInformation", contentTreeNodeMetaInformationViewModelBuilder.BuildViewModel(contentTreeNodeMetaInformationInputModel));
+            return View("ManageMetaInformation", contentTreeNodeMetaInformationViewModelBuilder.BuildViewModel(treeNodeId, contentItemId));
         }
 
 	    [Authorize]
@@ -255,18 +250,22 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
         {
             if (ModelState.IsValid)
             {
+                var contentTreePageNode = contentTreePageNodeContext.GetAllContentTreePageNodes().Where(a => a.Id == contentTreeNodeMetaInformationInputModel.TreeNodeId && a.Action == contentTreeNodeMetaInformationInputModel.ContentItemId).FirstOrDefault();
                 commandBus.Send(new ModifyPageMetaInformationCommand()
                                         {
                                             MetaDescription = contentTreeNodeMetaInformationInputModel.MetaDescription,
                                             MetaKeywords = contentTreeNodeMetaInformationInputModel.MetaKeywords,
                                             MetaTitle = contentTreeNodeMetaInformationInputModel.MetaTitle,
                                             TreeNodeId = contentTreeNodeMetaInformationInputModel.TreeNodeId,
-                                            Action = contentTreeNodeMetaInformationInputModel.PageId,
+                                            Action = contentTreeNodeMetaInformationInputModel.ContentItemId,
+                                            AggregateRootId = new Guid(contentTreePageNode.PageId)
                                         });
                 return new RedirectToRouteResult(new RouteValueDictionary(new Dictionary<string, object>()
                                                                               {
                                                                                   { "controller", typeof(ContentTreeNodeController).Name.Replace("Controller", string.Empty) },
-                                                                                  { "action", "ManageMetaInformation" }
+                                                                                  { "action", "ManageMetaInformation" },
+                                                                                  { "contentItemId", contentTreeNodeMetaInformationInputModel.ContentItemId },
+                                                                                  { "TreeNodeId", contentTreeNodeMetaInformationInputModel.TreeNodeId}
                                                                               }));
             }
 

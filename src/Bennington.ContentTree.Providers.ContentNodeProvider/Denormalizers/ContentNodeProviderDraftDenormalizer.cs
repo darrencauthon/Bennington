@@ -15,6 +15,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 														IHandleDomainEvents<PageNameSetEvent>,
 														IHandleDomainEvents<PageActionSetEvent>,
 														IHandleDomainEvents<PageMetaTitleSetEvent>,
+                                                        IHandleDomainEvents<PageMetaKeywordSetEvent>,
 														IHandleDomainEvents<PageMetaDescriptionSetEvent>,
 														IHandleDomainEvents<HeaderTextSetEvent>,
 														IHandleDomainEvents<PageHeaderImageSetEvent>,
@@ -153,5 +154,12 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             contentNodeProviderDraft.LastModifyDate = domainEvent.DateTime;
             contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 	    }
+
+	    public void Handle(PageMetaKeywordSetEvent domainEvent)
+	    {
+            var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            contentNodeProviderDraft.MetaKeywords = domainEvent.MetaKeywords;
+            contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
+        }
 	}
 }

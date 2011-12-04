@@ -30,7 +30,7 @@ namespace Bennington.ContentTree.Domain.CommandHandlers
 			page.SetUrlSegment(command.UrlSegment);
 			page.SetMetaTitle(command.MetaTitle);
 			page.SetMetaDescription(command.MetaDescription);
-			page.SetMetaKeyword(command.MetaKeyword);
+			page.SetMetaKeywords(command.MetaKeyword);
 			page.SetSequence(command.Sequence);
             page.SetLastModifyBy(command.LastModifyBy);
             page.SetLastModifyDate(DateTime.Now);

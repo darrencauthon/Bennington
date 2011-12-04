@@ -12,7 +12,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Data
 		public string Action { get; set; }
 		public string MetaTitle { get; set; }
 		public string MetaDescription { get; set; }
-		public string MetaKeyword { get; set; }
+		public string MetaKeywords { get; set; }
 		public string HeaderText { get; set; }
 		public string HeaderImage { get; set; }
 		public string Body { get; set; }

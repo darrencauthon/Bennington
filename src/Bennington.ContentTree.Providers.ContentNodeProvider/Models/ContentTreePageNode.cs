@@ -16,5 +16,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Models
             get { return iconUrl; }
             set { iconUrl = value; }
         }
+        public string MetaTitle { get; set; }
+        public string MetaDescription { get; set; }
+        public string MetaKeywords { get; set; }
 	}
 }

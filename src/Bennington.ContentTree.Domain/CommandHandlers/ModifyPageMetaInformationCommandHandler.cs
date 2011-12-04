@@ -13,7 +13,7 @@ namespace Bennington.ContentTree.Domain.CommandHandlers
         public override void Handle(ModifyPageMetaInformationCommand command, Page page)
         {
             page.SetMetaTitle(command.MetaTitle);
-            page.SetMetaKeyword(command.MetaKeywords);
+            page.SetMetaKeywords(command.MetaKeywords);
             page.SetMetaDescription(command.MetaDescription);
         }
     }

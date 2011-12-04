@@ -97,8 +97,8 @@
     <Compile Include="Mappers\ContentNodeProviderDraftToContentNodeProviderPublishedVersionMapper.cs" />
     <Compile Include="Mappers\ContentNodeProviderDraftToContentTreeNodeMapper.cs" />
     <Compile Include="Mappers\ContentNodeProviderPublishedVersionToContentTreeNodeMapper.cs" />
-    <Compile Include="Mappers\ContentTreeNodeInputModelToContentTreeNodeMapper.cs" />
     <Compile Include="Mappers\ContentTreeNodeToContentTreeNodeInputModelMapper.cs" />
+    <Compile Include="Mappers\ContentTreePageNodeToContentTreeNodeMetaInformationInputModelMapper.cs" />
     <Compile Include="Models\ContentItemNavigationViewModel.cs" />
     <Compile Include="Models\ContentTreeNodeMetaInformationInputModel.cs" />
     <Compile Include="Models\ContentTreePageNode.cs" />

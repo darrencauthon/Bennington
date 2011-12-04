@@ -131,6 +131,30 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Denomarlize
 				.Verify(a => a.Update(It.Is<ContentNodeProviderDraft>(b => b.MetaDescription == "MetaDescription" && b.PageId == guid.ToString() && b.Body == "Body")), Times.Once());
 		}
 
+        [TestMethod]
+        public void Calls_Update_method_of_IContentNodeProviderDraftRepository_with_PageId_and_MetaKeywords_set_for_PageMetaKeywordsSetEvent()
+        {
+            var guid = new Guid();
+            mocker.GetMock<IContentNodeProviderDraftRepository>().Setup(a => a.GetAllContentNodeProviderDrafts())
+                .Returns(new ContentNodeProviderDraft[]
+				         	{
+				         		new ContentNodeProviderDraft()
+				         			{
+										PageId = guid.ToString(),
+				         				Body = "Body"
+				         			}, 
+							}.AsQueryable());
+
+            mocker.Resolve<ContentNodeProviderDraftDenormalizer>().Handle(new PageMetaKeywordSetEvent()
+                                                                            {
+                                                                                AggregateRootId = guid,
+                                                                                MetaKeywords = "meta keywords"
+                                                                            });
+
+            mocker.GetMock<IContentNodeProviderDraftRepository>()
+                .Verify(a => a.Update(It.Is<ContentNodeProviderDraft>(b => b.MetaKeywords == "meta keywords" && b.PageId == guid.ToString() && b.Body == "Body")), Times.Once());
+        }
+
 		[TestMethod]
 		public void Calls_Update_method_of_IContentNodeProviderDraftRepository_with_PageId_and_UrlSegment_set_for_PageUrlSegmentSetEvent()
 		{
