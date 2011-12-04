@@ -14,6 +14,8 @@ Bennington.ContentTree.TreeManager
 Bennington.ContentTree.Providers.ContentNodeProvider
 Bennington.ContentTree.Providers.SectionNodeProvider
 Bennington.ContentTree.Providers.ToolLinkNodeProvider
+Bennington.Content
+Bennington.Content.Sql
 
 If you're using your CMS under /Manage:
 ---------------------------------------
@@ -29,3 +31,6 @@ Bennington.ContentTree
 Bennington.ContentTree.Providers.CotnentNodeProvider
 Bennington.ContentTree.Providers.SectionNodeProvider
 Bennington.ContentTree.Providers.ToolLinkNodeProvider
+Bennington.Content
+Bennington.Content.Routing
+Bennington.Content.Sql
