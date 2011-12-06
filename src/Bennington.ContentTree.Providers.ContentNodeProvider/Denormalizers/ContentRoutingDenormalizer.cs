@@ -43,11 +43,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             var provider = contentTreeNodeProviderContext.GetProviderForTreeNode(treeNode);
             provider.Controller = treeNode.ControllerName;
 
-            foreach (var contentTreeNode in contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNode.TreeNodeId))
-            {
-                contentTreeRepository.Delete(contentTreeNode.Id);
-            }
-
             var indexDraft = contentNodeProviderDraftRepository.GetAllContentNodeProviderDrafts().Where(a => a.TreeNodeId == treeNode.TreeNodeId && a.Action == "Index").FirstOrDefault();
             if (indexDraft == null) return;
             if (indexDraft.Inactive) return;
@@ -60,7 +55,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                                            {
                                                Action = action.ControllerAction,
                                                Controller = provider.Controller,
-                                               Id = Guid.NewGuid().ToString(),
+                                               Id = GetIdForContentTreeRow(treeNode.TreeNodeId, action.ControllerAction),
                                                ParentId = GetParentId(treeNode, action.ControllerAction),
                                                Segment = draft != null ? draft.UrlSegment ?? action.ControllerAction : action.ControllerAction,
                                                TreeNodeId = treeNode.TreeNodeId,
@@ -69,6 +64,12 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             }
 
             InvalidateRoutingCache();
+        }
+
+        private string GetIdForContentTreeRow(string treeNodeId, string controllerAction)
+        {
+            var contentTreeRow = contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNodeId && a.Action == controllerAction).FirstOrDefault();
+            return contentTreeRow == null ? Guid.NewGuid().ToString() : contentTreeRow.Id;
         }
 
         private void InvalidateRoutingCache()
