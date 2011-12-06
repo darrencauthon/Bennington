@@ -14,9 +14,9 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 														IHandleDomainEvents<PageTreeNodeIdSetEvent>,
 														IHandleDomainEvents<PageNameSetEvent>,
 														IHandleDomainEvents<PageActionSetEvent>,
-														IHandleDomainEvents<PageMetaTitleSetEvent>,
-                                                        IHandleDomainEvents<PageMetaKeywordSetEvent>,
-														IHandleDomainEvents<PageMetaDescriptionSetEvent>,
+														IHandleDomainEvents<MetaTitleSetEvent>,
+                                                        IHandleDomainEvents<MetaKeywordSetEvent>,
+														IHandleDomainEvents<MetaDescriptionSetEvent>,
 														IHandleDomainEvents<HeaderTextSetEvent>,
 														IHandleDomainEvents<PageHeaderImageSetEvent>,
 														IHandleDomainEvents<BodySetEvent>,
@@ -62,14 +62,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
 
-		public void Handle(PageMetaTitleSetEvent domainEvent)
+		public void Handle(MetaTitleSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
 			contentNodeProviderDraft.MetaTitle = domainEvent.MetaTitle;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
 
-		public void Handle(PageMetaDescriptionSetEvent domainEvent)
+		public void Handle(MetaDescriptionSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
 			contentNodeProviderDraft.MetaDescription = domainEvent.MetaDescription;
@@ -155,7 +155,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 	    }
 
-	    public void Handle(PageMetaKeywordSetEvent domainEvent)
+	    public void Handle(MetaKeywordSetEvent domainEvent)
 	    {
             var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
             contentNodeProviderDraft.MetaKeywords = domainEvent.MetaKeywords;

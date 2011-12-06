@@ -2,7 +2,7 @@
 
 namespace Bennington.ContentTree.Domain.Events.Page
 {
-	public class PageMetaTitleSetEvent : DomainEvent
+	public class MetaTitleSetEvent : DomainEvent
 	{
 		public string MetaTitle { get; set; }
 	}

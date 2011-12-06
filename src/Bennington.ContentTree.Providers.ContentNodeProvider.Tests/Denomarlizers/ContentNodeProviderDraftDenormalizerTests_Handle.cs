@@ -97,7 +97,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Denomarlize
 				         			}, 
 							}.AsQueryable());
 
-			mocker.Resolve<ContentNodeProviderDraftDenormalizer>().Handle(new PageMetaTitleSetEvent()
+			mocker.Resolve<ContentNodeProviderDraftDenormalizer>().Handle(new MetaTitleSetEvent()
 																				{
 																					AggregateRootId = guid,
 																					MetaTitle = "MetaTitle"
@@ -121,7 +121,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Denomarlize
 				         			}, 
 							}.AsQueryable());
 
-			mocker.Resolve<ContentNodeProviderDraftDenormalizer>().Handle(new PageMetaDescriptionSetEvent()
+			mocker.Resolve<ContentNodeProviderDraftDenormalizer>().Handle(new MetaDescriptionSetEvent()
 																				{
 																					AggregateRootId = guid,
 																					MetaDescription = "MetaDescription"
@@ -145,7 +145,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Denomarlize
 				         			}, 
 							}.AsQueryable());
 
-            mocker.Resolve<ContentNodeProviderDraftDenormalizer>().Handle(new PageMetaKeywordSetEvent()
+            mocker.Resolve<ContentNodeProviderDraftDenormalizer>().Handle(new MetaKeywordSetEvent()
                                                                             {
                                                                                 AggregateRootId = guid,
                                                                                 MetaKeywords = "meta keywords"

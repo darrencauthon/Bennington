@@ -60,17 +60,17 @@ namespace Bennington.ContentTree.Domain.AggregateRoots
 
 		public void SetMetaTitle(string metaTitle)
 		{
-			Apply(new PageMetaTitleSetEvent(){ MetaTitle = metaTitle });
+			Apply(new MetaTitleSetEvent(){ MetaTitle = metaTitle });
 		}
 
 		public void SetMetaDescription(string metaDescription)
 		{
-			Apply(new PageMetaDescriptionSetEvent() { AggregateRootId = Id, MetaDescription = metaDescription });
+			Apply(new MetaDescriptionSetEvent() { AggregateRootId = Id, MetaDescription = metaDescription });
 		}
 
 		public void SetMetaKeywords(string metaKeyword)
 		{
-			Apply(new PageMetaKeywordSetEvent() { AggregateRootId = Id, MetaKeywords = metaKeyword });
+			Apply(new MetaKeywordSetEvent() { AggregateRootId = Id, MetaKeywords = metaKeyword });
 		}
 
 		public void SetHeaderText(string headerText)
