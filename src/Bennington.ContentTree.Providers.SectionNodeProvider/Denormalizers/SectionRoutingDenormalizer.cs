@@ -45,11 +45,6 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Denormalizers
 
 	    private void CreateRouteForSection(SectionNodeProviderDraft sectionNodeProviderDraft)
 	    {
-	        foreach (var contentTreeRoute in contentTreeRepository.GetAll().Where(a => a.TreeNodeId == sectionNodeProviderDraft.TreeNodeId))
-	        {
-	            contentTreeRepository.Delete(contentTreeRoute.Id);
-	        }
-
             if (sectionNodeProviderDraft.Inactive) return;
 
             var treeNode = treeNodeRepository.GetAll().Where(a => a.TreeNodeId == sectionNodeProviderDraft.TreeNodeId).FirstOrDefault();
@@ -60,7 +55,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Denormalizers
                                             {
                                                 Action = "Index",
                                                 Controller = "ContentTreeSection",
-                                                Id = Guid.NewGuid().ToString(),
+                                                Id = GetIdForContentTreeRow(treeNode.TreeNodeId),
                                                 ParentId = GetParentId(treeNode),
                                                 Segment = sectionNodeProviderDraft.UrlSegment,
                                                 TreeNodeId = treeNode.TreeNodeId,
@@ -77,6 +72,12 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Denormalizers
 			var sectionNodeProviderDraft = GetSectionNodeProviderDraftFromDomainEvent(domainEvent);
 		    CreateRouteForSection(sectionNodeProviderDraft);
 		}
+
+        private string GetIdForContentTreeRow(string treeNodeId)
+        {
+            var contentTreeRow = contentTreeRepository.GetAll().Where(a => a.TreeNodeId == treeNodeId).FirstOrDefault();
+            return contentTreeRow == null ? Guid.NewGuid().ToString() : contentTreeRow.Id;
+        }
 
         private SectionNodeProviderDraft GetSectionNodeProviderDraftFromDomainEvent(DomainEvent domainEvent)
         {
