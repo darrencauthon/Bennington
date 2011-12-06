@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using MvcTurbine.ComponentModel;
 using SimpleCqrs.Commanding;
 using SimpleCqrs.EventStore.SqlServer;
@@ -28,7 +29,7 @@ namespace Bennington.ContentTree.Domain.Registration
                             new SimpleCqrs.EventStore.SqlServer.Serializers.JsonDomainEventSerializer()));                
             } else
             {
-                benningtonContentTreeSimpleCqrsRuntime.ServiceLocator.Register<IEventStore>(new MemoryEventStore());
+                throw new Exception("Cannot find connection string for 'Bennington.ContentTree.Domain.ConnectionString' in the event store");
             }
 
             var commandBus = benningtonContentTreeSimpleCqrsRuntime.ServiceLocator.Resolve<ICommandBus>();
