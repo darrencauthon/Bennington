@@ -96,6 +96,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HttpModules\LogoutHttpModule.cs" />
+    <Compile Include="IconMenuRegistration.cs" />
     <Compile Include="Mappers\UserInputModelToUserMapper.cs" />
     <Compile Include="Mappers\UserToUserInputModelMapper.cs" />
     <Compile Include="Models\Group.cs" />
@@ -104,7 +105,6 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserInputModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registration\ContentManagementMenuRegistration.cs" />
     <Compile Include="Registration\RegisterInterfaceToSingleImplementations.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Routing\RegisterRoutes.cs" />
@@ -131,6 +131,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bennington.Cms\Bennington.Cms.csproj">
+      <Project>{FF8F2B28-E0B8-4B6E-92C2-A8FFD0A68C8A}</Project>
+      <Name>Bennington.Cms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bennington.Core\Bennington.Core.csproj">
       <Project>{3DE65C2E-791C-4B05-815F-986782A5153A}</Project>
       <Name>Bennington.Core</Name>
