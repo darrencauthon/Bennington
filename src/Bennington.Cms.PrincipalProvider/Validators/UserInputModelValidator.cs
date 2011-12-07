@@ -5,15 +5,16 @@ using System.Web;
 using Bennington.Cms.PrincipalProvider.Models;
 using FluentValidation;
 using FluentValidation.Results;
+using FluentValidation.Validators;
 
 namespace Bennington.Cms.PrincipalProvider.Validators
 {
 	public class UserInputModelValidator : AbstractValidator<UserInputModel>
 	{
-		public UserInputModelValidator()
+		public UserInputModelValidator(EmailValidator emailValidator)
 		{
 			RuleFor(a => a.Username).Must(b => !string.IsNullOrEmpty(b));
-			RuleFor(a => a.Password).Must(b => !string.IsNullOrEmpty(b));
+            RuleFor(a => a.Email).EmailAddress();
 		}
 
 		public override FluentValidation.Results.ValidationResult Validate(UserInputModel instance)

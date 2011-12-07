@@ -40,5 +40,25 @@ namespace Bennington.Cms.PrincipalProvider.Tests.Validators
 			Assert.IsTrue(result.Errors.Where(a => a.PropertyName == "Password").Count() > 0);
 			Assert.IsTrue(result.Errors.Where(a => a.PropertyName == "ConfirmPassword").Count() > 0);
 		}
+
+        [TestMethod]
+        public void Does_not_return_error_for_blank_passwords()
+        {
+            var result = mocker.Resolve<UserInputModelValidator>().Validate(new UserInputModel());
+
+            Assert.AreEqual(0, result.Errors.Where(a => a.PropertyName == "Password").Count());
+            Assert.AreEqual(0, result.Errors.Where(a => a.PropertyName == "ConfirmPassword").Count());            
+        }
+
+        [TestMethod]
+        public void Returns_error_for_invalid_email()
+        {
+            var result = mocker.Resolve<UserInputModelValidator>().Validate(new UserInputModel()
+                                                                                {
+                                                                                    Email = "z"
+                                                                                });
+
+            Assert.AreEqual(1, result.Errors.Where(a => a.PropertyName == "Email").Count());
+        }
 	}
 }

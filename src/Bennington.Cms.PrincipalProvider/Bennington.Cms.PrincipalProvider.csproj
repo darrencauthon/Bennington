@@ -47,18 +47,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentValidation.3.1.0.0\lib\Net40\FluentValidation.dll</HintPath>
     </Reference>
-    <Reference Include="MvcContrib, Version=3.0.51.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\MvcContrib.dll</HintPath>
-    </Reference>
-    <Reference Include="MvcContrib.FluentHtml">
-      <HintPath>..\..\lib\MvcContrib.FluentHtml.dll</HintPath>
-    </Reference>
     <Reference Include="MvcTurbine, Version=3.4.0.0, Culture=neutral, PublicKeyToken=0e426322531bc5b0, processorArchitecture=MSIL">
       <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.dll</HintPath>
-    </Reference>
-    <Reference Include="MvcTurbine.FluentValidation">
-      <HintPath>..\packages\MvcTurbine.FluentValidation.3.0\lib\MvcTurbine.FluentValidation.dll</HintPath>
     </Reference>
     <Reference Include="MvcTurbine.MembershipProvider">
       <HintPath>..\packages\MvcTurbine.MembershipProvider.3.0\lib\MvcTurbine.MembershipProvider.dll</HintPath>
@@ -116,8 +106,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <EmbeddedResource Include="Views\User\Index.aspx" />
+    <EmbeddedResource Include="Views\User\CellTemplates\Username.cshtml" />
     <EmbeddedResource Include="Views\User\Modify.aspx" />
+    <None Include="Views\Shared\EditorTemplates\UserInputModel+.cshtml" />
+    <EmbeddedResource Include="Views\Shared\EditorTemplates\UserInputModel.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

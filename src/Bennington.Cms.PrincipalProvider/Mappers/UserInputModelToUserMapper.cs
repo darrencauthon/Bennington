@@ -15,7 +15,7 @@ namespace Bennington.Cms.PrincipalProvider.Mappers
 
 	public class UserInputModelToUserMapper : Mapper<UserInputModel, User>, IUserInputModelToUserMapper
 	{
-		private IEncryptionService encryptionService;
+		private readonly IEncryptionService encryptionService;
 
 		public UserInputModelToUserMapper(IEncryptionService encryptionService)
 		{

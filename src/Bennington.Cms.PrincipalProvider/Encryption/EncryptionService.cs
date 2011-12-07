@@ -14,6 +14,7 @@ namespace Bennington.Cms.PrincipalProvider.Encryption
 	{
 		public string Encrypt(string s)
 		{
+            if (string.IsNullOrEmpty(s)) return s;
 			return HashString(s);
 		}
 

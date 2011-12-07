@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Bennington.Cms.Controllers;
 using Bennington.Cms.PrincipalProvider.Mappers;
 using Bennington.Cms.PrincipalProvider.Models;
 using Bennington.Cms.PrincipalProvider.Repositories;
@@ -14,18 +15,15 @@ using Bennington.Repository;
 
 namespace Bennington.Cms.PrincipalProvider.Controllers
 {
-    public class UserController : Controller
+    [Authorize]
+    public class UserController : ListManageController<User, UserInputModel>
     {
-    	private readonly IIndexViewModelBuilder indexViewModelBuilder;
-    	private readonly IModifyViewModelBuilder modifyViewModelBuilder;
     	private readonly IProcessUserInputModelService processUserInputModelService;
     	private readonly IUserRepository userRepository;
     	private readonly IUserToUserInputModelMapper userToUserInputModelMapper;
     	private readonly IGuidGetter guidGetter;
 
-    	public UserController(IIndexViewModelBuilder indexViewModelBuilder,
-								IModifyViewModelBuilder modifyViewModelBuilder,
-								IProcessUserInputModelService processUserInputModelService,
+    	public UserController(IProcessUserInputModelService processUserInputModelService,
 								IUserRepository userRepository,
 								IUserToUserInputModelMapper userToUserInputModelMapper,
 								IGuidGetter guidGetter)
@@ -34,71 +32,104 @@ namespace Bennington.Cms.PrincipalProvider.Controllers
     		this.userToUserInputModelMapper = userToUserInputModelMapper;
     		this.userRepository = userRepository;
     		this.processUserInputModelService = processUserInputModelService;
-    		this.modifyViewModelBuilder = modifyViewModelBuilder;
-    		this.indexViewModelBuilder = indexViewModelBuilder;
     	}
 
-		[Authorize]
-    	public ActionResult Index()
+        protected override IQueryable<User> GetListItems(Core.List.ListViewModel listViewModel)
         {
-			return View("Index", indexViewModelBuilder.BuildViewModel());
+            return userRepository.GetAll().AsQueryable();
         }
 
-		[Authorize]
-		public ActionResult Create()
-		{
-			return View("Modify", new ModifyViewModel()
-										{
-											UserInputModel = new UserInputModel()
-											{
-												Id = guidGetter.GetGuid().ToString()
-											}
-										});
-		}
+        public override UserInputModel GetFormById(object id)
+        {
+            return userToUserInputModelMapper.CreateInstance(userRepository.GetAll().Where(a => a.Id == id.ToString()).FirstOrDefault());
+        }
 
-		[Authorize]
-		[HttpPost]
-		public ActionResult Create(UserInputModel userInputModel)
-		{
-			return Modify(userInputModel);
-		}
+        public override void InsertForm(UserInputModel form)
+        {
+            form.Id = guidGetter.GetGuid().ToString();
+            processUserInputModelService.ProcessAndReturnId(form);
+            base.InsertForm(form);
+        }
 
-		[Authorize]
-		public ActionResult Modify(string id)
-		{
-			var user = userRepository.GetAll().Where(a => a.Id == id).FirstOrDefault();
+        public override void UpdateForm(UserInputModel form)
+        {
+            processUserInputModelService.ProcessAndReturnId(form);
+            base.UpdateForm(form);
+        }
 
-			return View("Modify", modifyViewModelBuilder.BuildViewModel(userToUserInputModelMapper.CreateInstance(user)));
-		}
+        public override ActionResult Delete(object id)
+        {
+            userRepository.Delete(GetIdForDelete(id));
+            return base.Delete(id);
+        }
 
-		[Authorize]
-		[HttpPost]
-		public ActionResult Modify(UserInputModel userInputModel)
-		{
-			if (ModelState.IsValid)
-			{
-				processUserInputModelService.ProcessAndReturnId(userInputModel);
-				var routeValues = new RouteValueDictionary();
-				routeValues.Add("Controller", "User");
-				routeValues.Add("Action", "Modify");
-				routeValues.Add("id", userInputModel.Id);
+        private static string GetIdForDelete(object id)
+        {
+            var idToUse = id as string;
+            if (idToUse == null)
+            {
+                var idArray = id as string[];
+                if (idArray == null) return null;
+                idToUse = idArray.FirstOrDefault();
+            }
+            return idToUse;
+        }
 
-				return new RedirectToRouteResult(routeValues);
-			}
+        //[Authorize]
+        //public ActionResult Create()
+        //{
+        //    return View("Modify", new ModifyViewModel()
+        //                                {
+        //                                    UserInputModel = new UserInputModel()
+        //                                    {
+        //                                        Id = guidGetter.GetGuid().ToString()
+        //                                    }
+        //                                });
+        //}
 
-			return View("Modify", modifyViewModelBuilder.BuildViewModel(userInputModel));
-		}
+        //[Authorize]
+        //[HttpPost]
+        //public ActionResult Create(UserInputModel userInputModel)
+        //{
+        //    return Modify(userInputModel);
+        //}
 
-		[Authorize]
-		public ActionResult Delete(string id)
-		{
-			var routeValues = new RouteValueDictionary();
-			routeValues.Add("Controller", "User");
-			routeValues.Add("Action", "Index");
+        //[Authorize]
+        //public ActionResult Modify(string id)
+        //{
+        //    var user = userRepository.GetAll().Where(a => a.Id == id).FirstOrDefault();
+
+        //    return View("Modify", modifyViewModelBuilder.BuildViewModel(userToUserInputModelMapper.CreateInstance(user)));
+        //}
+
+        //[Authorize]
+        //[HttpPost]
+        //public ActionResult Modify(UserInputModel userInputModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        processUserInputModelService.ProcessAndReturnId(userInputModel);
+        //        var routeValues = new RouteValueDictionary();
+        //        routeValues.Add("Controller", "User");
+        //        routeValues.Add("Action", "Modify");
+        //        routeValues.Add("id", userInputModel.Id);
+
+        //        return new RedirectToRouteResult(routeValues);
+        //    }
+
+        //    return View("Modify", modifyViewModelBuilder.BuildViewModel(userInputModel));
+        //}
+
+        //[Authorize]
+        //public ActionResult Delete(string id)
+        //{
+        //    var routeValues = new RouteValueDictionary();
+        //    routeValues.Add("Controller", "User");
+        //    routeValues.Add("Action", "Index");
 			
-			userRepository.Delete(id);
+        //    userRepository.Delete(id);
 
-			return new RedirectToRouteResult(routeValues);
-		}
+        //    return new RedirectToRouteResult(routeValues);
+        //}
     }
 }

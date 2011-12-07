@@ -44,9 +44,6 @@
     <Reference Include="MvcTurbine, Version=3.4.0.0, Culture=neutral, PublicKeyToken=0e426322531bc5b0, processorArchitecture=MSIL">
       <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.dll</HintPath>
     </Reference>
-    <Reference Include="MvcTurbine.FluentValidation">
-      <HintPath>..\packages\MvcTurbine.FluentValidation.3.0\lib\MvcTurbine.FluentValidation.dll</HintPath>
-    </Reference>
     <Reference Include="MvcTurbine.MembershipProvider">
       <HintPath>..\packages\MvcTurbine.MembershipProvider.3.0\lib\MvcTurbine.MembershipProvider.dll</HintPath>
     </Reference>

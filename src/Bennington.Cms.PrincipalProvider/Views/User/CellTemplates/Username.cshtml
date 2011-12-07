@@ -1,0 +1,4 @@
+﻿@using Bennington.Cms.PrincipalProvider.Models
+@model User
+
+<a href="@Url.Action("Manage", new { Id = @Model.Id })">@Model.Username</a>

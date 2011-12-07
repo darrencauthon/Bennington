@@ -27,7 +27,13 @@ namespace Bennington.Cms.PrincipalProvider.Services
 
 		public string ProcessAndReturnId(UserInputModel userInputModel)
 		{
-			return userRepository.SaveAndReturnId(userInputModelToUserMapper.CreateInstance(userInputModel));
+		    var existingUser = userRepository.GetAll().Where(a => a.Id == userInputModel.Id).FirstOrDefault();
+		    
+            var user = userInputModelToUserMapper.CreateInstance(userInputModel);
+            if ((user != null) && (string.IsNullOrEmpty(user.Password)) && (existingUser != null))
+		        user.Password = existingUser.Password;
+			
+            return userRepository.SaveAndReturnId(user);
 		}
 	}
 }
