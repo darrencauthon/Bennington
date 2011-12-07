@@ -19,15 +19,15 @@ namespace Bennington.ContentTree.Helpers
 
 		public string GetUrlByTreeNodeId(string treeNodeId)
 		{
-			var treeNodeSummary = contentTree.GetById(treeNodeId);
-			if (treeNodeSummary == null) return null;
+			var contentTreeNode = contentTree.GetById(treeNodeId);
+			if (contentTreeNode == null) return null;
 
 			var segments = new List<string>();
 			do
 			{
-				segments.Add(treeNodeSummary.UrlSegment);
-				treeNodeSummary = contentTree.GetById(treeNodeSummary.ParentTreeNodeId);
-			} while (treeNodeSummary != null);
+				segments.Add(contentTreeNode.UrlSegment);
+				contentTreeNode = contentTree.GetById(contentTreeNode.ParentTreeNodeId);
+			} while (contentTreeNode != null);
 
 
 			segments.Reverse();
