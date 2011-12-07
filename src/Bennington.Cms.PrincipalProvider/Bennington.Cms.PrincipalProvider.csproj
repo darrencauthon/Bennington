@@ -108,7 +108,6 @@
     <Content Include="Global.asax" />
     <EmbeddedResource Include="Views\User\CellTemplates\Username.cshtml" />
     <EmbeddedResource Include="Views\User\Modify.aspx" />
-    <None Include="Views\Shared\EditorTemplates\UserInputModel+.cshtml" />
     <EmbeddedResource Include="Views\Shared\EditorTemplates\UserInputModel.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

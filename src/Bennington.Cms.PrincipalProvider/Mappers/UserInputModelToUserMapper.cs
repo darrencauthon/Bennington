@@ -25,7 +25,6 @@ namespace Bennington.Cms.PrincipalProvider.Mappers
 		public override void DefineMap(AutoMapper.IConfiguration configuration)
 		{
 			configuration.CreateMap<UserInputModel, User>()
-					.ForMember(a => a.Groups, b => b.Ignore())
 				;
 		}
 
