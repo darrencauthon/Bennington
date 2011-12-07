@@ -1,4 +1,3 @@
-#!/bin/bash 
 copy "C:\_Application\Bennington\src\Bennington.Core\bin\Debug\Bennington.Core.dll" "C:\_Application\Bennington\localWorkingFolder\Deploy"
 copy "C:\_Application\Bennington\src\Bennington.Core\bin\Debug\Bennington.Core.pdb" "C:\_Application\Bennington\localWorkingFolder\Deploy"
 copy "C:\_Application\Bennington\src\Bennington.Cms\bin\Bennington.Cms.dll" "C:\_Application\Bennington\localWorkingFolder\Deploy"
@@ -11,6 +10,8 @@ copy "C:\_Application\Bennington\src\Bennington.ContentTree.Domain\bin\Debug\Ben
 copy "C:\_Application\Bennington\src\Bennington.ContentTree.Domain\bin\Debug\Bennington.ContentTree.Domain.pdb" "C:\_Application\Bennington\localWorkingFolder\Deploy"
 copy "C:\_Application\Bennington\src\Bennington.ContentTree.Providers.ContentNodeProvider\bin\Debug\Bennington.ContentTree.Providers.ContentNodeProvider.dll" "C:\_Application\Bennington\localWorkingFolder\Deploy"
 copy "C:\_Application\Bennington\src\Bennington.ContentTree.Providers.ContentNodeProvider\bin\Debug\Bennington.ContentTree.Providers.ContentNodeProvider.pdb" "C:\_Application\Bennington\localWorkingFolder\Deploy"
+copy "C:\_Application\Bennington\src\Bennington.ContentTree.Providers.ContentNodeProviderManagement\bin\Debug\Bennington.ContentTree.Providers.ContentNodeProviderManagement.dll" "C:\_Application\Bennington\localWorkingFolder\Deploy"
+copy "C:\_Application\Bennington\src\Bennington.ContentTree.Providers.ContentNodeProviderManagement\bin\Debug\Bennington.ContentTree.Providers.ContentNodeProviderManagement.pdb" "C:\_Application\Bennington\localWorkingFolder\Deploy"
 copy "C:\_Application\Bennington\src\Bennington.ContentTree.Providers.SectionNodeProvider\bin\Debug\Bennington.ContentTree.Providers.SectionNodeProvider.dll" "C:\_Application\Bennington\localWorkingFolder\Deploy"
 copy "C:\_Application\Bennington\src\Bennington.ContentTree.Providers.SectionNodeProvider\bin\Debug\Bennington.ContentTree.Providers.SectionNodeProvider.pdb" "C:\_Application\Bennington\localWorkingFolder\Deploy"
 copy "C:\_Application\Bennington\src\Bennington.Login\bin\Bennington.Login.dll" "C:\_Application\Bennington\localWorkingFolder\Deploy"
