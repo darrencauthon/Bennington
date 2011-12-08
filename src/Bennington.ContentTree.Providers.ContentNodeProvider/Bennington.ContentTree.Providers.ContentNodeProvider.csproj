@@ -98,6 +98,7 @@
     <Compile Include="Mappers\ContentNodeProviderDraftToContentTreeNodeMapper.cs" />
     <Compile Include="Mappers\ContentNodeProviderPublishedVersionToContentTreeNodeMapper.cs" />
     <Compile Include="Mappers\ContentTreeNodeToContentTreeNodeInputModelMapper.cs" />
+    <Compile Include="Mappers\ContentTreePageNodeToContentTreeNodeDisplayMetaViewModelMapper.cs" />
     <Compile Include="Mappers\ContentTreePageNodeToContentTreeNodeMetaInformationInputModelMapper.cs" />
     <Compile Include="Models\ContentItemNavigationViewModel.cs" />
     <Compile Include="Models\ContentTreeNodeDisplayMetaViewModel.cs" />
@@ -143,6 +144,7 @@
     <EmbeddedResource Include="Views\ContentTree\Index.aspx" />
     <EmbeddedResource Include="Views\ContentTreeNode\ManageMetaInformation.cshtml" />
     <EmbeddedResource Include="Views\Shared\EditorTemplates\ContentTreeNodeMetaInformationInputModel.cshtml" />
+    <EmbeddedResource Include="Views\ContentTree\DisplayMeta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

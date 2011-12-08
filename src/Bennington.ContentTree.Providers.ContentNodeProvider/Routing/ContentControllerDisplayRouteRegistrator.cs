@@ -13,6 +13,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Routing
         public void Register(RouteCollection routes)
         {
             routes.MapRoute("ContentDisplayRoute", GetType().Name, new {Controller = "ContentTree", Action = "Display"});
+            routes.MapRoute("ContentDisplayMetaRoute", GetType().Name, new { Controller = "ContentTree", Action = "DisplayMeta" });
         }
     }
 }

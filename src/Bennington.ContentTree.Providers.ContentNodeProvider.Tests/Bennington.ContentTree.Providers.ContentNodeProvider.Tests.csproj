@@ -112,6 +112,7 @@
     <Compile Include="Mappers\ContentNodeProviderDraftToContentTreeNodeMapperTests.cs" />
     <Compile Include="Mappers\ContentNodeProviderPublishedVersionToContentTreeNodeMapperTests.cs" />
     <Compile Include="Mappers\ContentTreeNodeToContentTreeNodeInputModelMapperTest.cs" />
+    <Compile Include="Mappers\ContentTreePageNodeToContentTreeNodeDisplayMetaViewModelMapperTests.cs" />
     <Compile Include="Mappers\ContentTreePageNodeToContentTreeNodeMetaInformationInputModelMapperTests.cs" />
     <Compile Include="Validation\ContentTreeInputModelValidatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
