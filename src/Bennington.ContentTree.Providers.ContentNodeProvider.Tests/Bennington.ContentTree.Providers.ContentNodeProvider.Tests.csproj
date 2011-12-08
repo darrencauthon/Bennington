@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\ContentTreeNodeVersionContextTests_GetAllContentTreeNodes.cs" />
+    <Compile Include="Controllers\ContentTreeControllerTests_DisplayMeta.cs" />
     <Compile Include="Controllers\ContentTreeNodeControllerTests_Create_ContentPageInputModel.cs" />
     <Compile Include="Controllers\ContentTreeNodeControllerTests_Create_parentTreeNodeId_providerType.cs" />
     <Compile Include="Controllers\ContentTreeNodeControllerTests_Delete.cs" />
