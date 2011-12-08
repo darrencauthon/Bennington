@@ -7,9 +7,9 @@ namespace Bennington.ContentTree.Repositories
     public interface IContentTreeRepository
     {
         Data.ContentType[] GetAllContentTypes();
-        Data.ContentTreeNode[] GetAll();
+        Data.ContentTreeTableRow[] GetAll();
         Data.ContentAction[] GetAllContentActions();
-        void Save(Data.ContentTreeNode instance);
+        void Save(Data.ContentTreeTableRow instance);
         void Delete(string id);
     }
 
@@ -29,14 +29,14 @@ namespace Bennington.ContentTree.Repositories
             return list.ToArray();            
         }
 
-        public Data.ContentTreeNode[] GetAll()
+        public Data.ContentTreeTableRow[] GetAll()
         {
-            var list = new List<Data.ContentTreeNode>();
-            list.AddRange(GetDatabase().ContentTree.All().Cast<Data.ContentTreeNode>());
+            var list = new List<Data.ContentTreeTableRow>();
+            list.AddRange(GetDatabase().ContentTree.All().Cast<Data.ContentTreeTableRow>());
             return list.ToArray();
         }
 
-        public void Save(Data.ContentTreeNode instance)
+        public void Save(Data.ContentTreeTableRow instance)
         {
             var db = GetDatabase();
 

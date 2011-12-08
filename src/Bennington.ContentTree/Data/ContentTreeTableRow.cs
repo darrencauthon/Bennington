@@ -1,6 +1,6 @@
 ﻿namespace Bennington.ContentTree.Data
 {
-    public class ContentTreeNode
+    public class ContentTreeTableRow
     {
         public string Id { get; set; }
         public string ParentId { get; set; }

@@ -51,7 +51,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Denormalizers
             if (treeNode == null)
                 throw new Exception("Tree node not found: " + sectionNodeProviderDraft.TreeNodeId);
 
-            contentTreeRepository.Save(new ContentTreeNode()
+            contentTreeRepository.Save(new ContentTreeTableRow()
                                             {
                                                 Action = "Index",
                                                 Controller = "ContentTreeSection",

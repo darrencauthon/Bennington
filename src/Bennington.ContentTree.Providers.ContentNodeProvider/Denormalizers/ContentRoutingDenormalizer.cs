@@ -51,7 +51,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             {
                 var draft = contentNodeProviderDraftRepository.GetAllContentNodeProviderDrafts().Where(a => a.TreeNodeId == treeNode.TreeNodeId && a.Action == action.ControllerAction).FirstOrDefault();
 
-                contentTreeRepository.Save(new ContentTreeNode()
+                contentTreeRepository.Save(new ContentTreeTableRow()
                                            {
                                                Action = action.ControllerAction,
                                                Controller = provider.Controller,
