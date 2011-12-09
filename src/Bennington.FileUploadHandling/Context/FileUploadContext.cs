@@ -12,8 +12,8 @@ namespace Bennington.FileUploadHandling.Context
 {
     public interface IFileUploadContext
     {
-        FileInfo GetFileFromId(string containerName, string propertyName, string id);
-        string GetUrlRelativeToUploadRoot(string containerName, string propertyName, string id);
+        FileInfo GetFileFromId(string inputModelName, string inputModelPropertyName, string id);
+        string GetUrlRelativeToUploadRoot(string inputModelName, string inputModelPropertyName, string id);
         string GetUrlForFileUploadFolder();
     }
 
@@ -29,7 +29,7 @@ namespace Bennington.FileUploadHandling.Context
             this.getRootPathToSaveUploadedFilesToHelper = getRootPathToSaveUploadedFilesToHelper;
         }
 
-        public FileInfo GetFileFromId(string containerName, string propertyName, string id)
+        public FileInfo GetFileFromId(string inputModelName, string inputModelPropertyName, string id)
         {
             var rootPathToSaveTo = getRootPathToSaveUploadedFilesToHelper.GetRootPathToSaveUploadedFilesTo(HttpContext.Current);
 
@@ -40,8 +40,8 @@ namespace Bennington.FileUploadHandling.Context
                                      : rootPathToSaveTo + Path.DirectorySeparatorChar,
                                  id,
                                  Path.DirectorySeparatorChar,
-                                 GetNameFromFullname(containerName),
-                                 propertyName);
+                                 GetNameFromFullname(inputModelName),
+                                 inputModelPropertyName);
 
             if (!Directory.Exists(pathToCheckForFile))
                 return null;
@@ -56,9 +56,9 @@ namespace Bennington.FileUploadHandling.Context
             return new FileInfo(pathToFile);
         }
 
-        public string GetUrlRelativeToUploadRoot(string containerName, string propertyName, string id)
+        public string GetUrlRelativeToUploadRoot(string inputModelName, string inputModelPropertyName, string id)
         {
-            var fileInfo = GetFileFromId(containerName, propertyName, id);
+            var fileInfo = GetFileFromId(inputModelName, inputModelPropertyName, id);
             return GetUrlRelativeToUploadRoot(fileInfo);
         }
 
