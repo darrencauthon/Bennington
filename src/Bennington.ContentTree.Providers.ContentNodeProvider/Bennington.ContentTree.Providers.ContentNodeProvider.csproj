@@ -141,7 +141,9 @@
     <EmbeddedResource Include="Views\ContentTree\Display.cshtml" />
     <EmbeddedResource Include="Views\ContentTreeNode\Modify.cshtml" />
     <EmbeddedResource Include="Views\Shared\EditorTemplates\ContentTreeNodeInputModel.cshtml" />
-    <EmbeddedResource Include="Views\ContentTree\Index.aspx" />
+    <EmbeddedResource Include="Views\ContentTree\Index.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ContentTreeNode\ManageMetaInformation.cshtml" />
     <EmbeddedResource Include="Views\Shared\EditorTemplates\ContentTreeNodeMetaInformationInputModel.cshtml" />
     <EmbeddedResource Include="Views\ContentTree\DisplayMeta.cshtml" />

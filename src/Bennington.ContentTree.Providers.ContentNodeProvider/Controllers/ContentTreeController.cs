@@ -27,7 +27,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 
         public virtual ActionResult Display(string treeNodeId, string actionId)
         {
-            return View("Display", contentTreeNodeDisplayViewModelBuilder().BuildViewModel(treeNodeId, actionId));
+            return PartialView("Display", contentTreeNodeDisplayViewModelBuilder().BuildViewModel(treeNodeId, actionId));
         }
 
         public virtual ActionResult DisplayMeta(string treeNodeId, string actionId)
