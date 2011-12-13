@@ -1,4 +1,6 @@
 <%@ Page Language="C#" %>
+<%@ Import Namespace="Bennington.Core" %>
+<%@ Import Namespace="MvcTurbine.ComponentModel" %>
 <script runat="server">
 	/**
 	 * This is login example page check the input parameters and sets up a session.
@@ -7,27 +9,47 @@
 
 	string message = "";
 	string username = "demo";
-	string password = ""; // Change the password to something suitable
+	string password = "demo"; // Change the password to something suitable
 
-	void Page_Load(object sender, EventArgs e) {
-		if (password == "")
-			message = "You must set a password in the file \"login_session_auth.aspx\" inorder to login using this page or reconfigure it the authenticator config options to fit your needs. Consult the <a href=\"http://wiki.moxiecode.com/index.php/Main_Page\" target=\"_blank\">Wiki</a> for more details.";
+	void Page_Load(object sender, EventArgs e)
+    {
+        var currentUser = ServiceLocatorManager.Current.Resolve<ICurrentUserContext>().GetCurrentPrincipal();
+        if (currentUser != null) 
+        {
+            if (currentUser.Identity.IsAuthenticated)
+            {
+			    // Set the sessions that the SessionAuthenticatorImpl class checks for
+			    Session["mc_isLoggedIn"] = "true";
+			    Session["mc_user"] = Request["login"];
+			    Session["mc_groups"] = "";
 
-		// Handle logic (this is where you should put your custom login logic)
-		if (Request["login"] == username && Request["password"] == password && password != "") {
-			// Set the sessions that the SessionAuthenticatorImpl class checks for
-			Session["mc_isLoggedIn"] = "true";
-			Session["mc_user"] = Request["login"];
-			Session["mc_groups"] = "";
+			    // Override config options
+			    //Session["imagemanager.filesystem.rootpath"] = "some path";
+			    //Session["filemanager.filesystem.rootpath"] = "c:/";
 
-			// Override config options
-			//Session["imagemanager.filesystem.rootpath"] = "some path";
-			//Session["filemanager.filesystem.rootpath"] = "c:/";
+			    Response.Redirect(Request["return_url"], true);
+            }
+        }
+        
+        
+        //if (password == "")
+        //    message = "You must set a password in the file \"login_session_auth.aspx\" inorder to login using this page or reconfigure it the authenticator config options to fit your needs. Consult the <a href=\"http://wiki.moxiecode.com/index.php/Main_Page\" target=\"_blank\">Wiki</a> for more details.";
 
-			Response.Redirect(Request["return_url"], true);
-		} else if (Request["submit_button"] != null) {
-			message = "Wrong username/password.";
-		}
+        //// Handle logic (this is where you should put your custom login logic)
+        //if (Request["login"] == username && Request["password"] == password && password != "") {
+        //    // Set the sessions that the SessionAuthenticatorImpl class checks for
+        //    Session["mc_isLoggedIn"] = "true";
+        //    Session["mc_user"] = Request["login"];
+        //    Session["mc_groups"] = "";
+
+        //    // Override config options
+        //    //Session["imagemanager.filesystem.rootpath"] = "some path";
+        //    //Session["filemanager.filesystem.rootpath"] = "c:/";
+
+        //    Response.Redirect(Request["return_url"], true);
+        //} else if (Request["submit_button"] != null) {
+        //    message = "Wrong username/password.";
+        //}
 	}
 </script>
 
