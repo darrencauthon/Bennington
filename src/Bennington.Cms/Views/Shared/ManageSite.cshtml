@@ -38,7 +38,7 @@
     @RenderSection("AdditionalScripts", false)
 
     <script type="text/javascript">
-        $(function () {
+        $(document).ready(function() {
             $('textarea.htmlEditor').tinymce({
                 // Location of TinyMCE script
                 script_url: '/Scripts/HtmlEditor/tiny_mce/tiny_mce.js',
