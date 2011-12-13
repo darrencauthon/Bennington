@@ -1,6 +1,8 @@
 <%@ Page Language="C#" %>
 <%@ Import Namespace="Bennington.Core" %>
+<%@ Import Namespace="Bennington.Core.Helpers" %>
 <%@ Import Namespace="MvcTurbine.ComponentModel" %>
+<%@ Import Namespace="System.IO" %>
 <script runat="server">
 	/**
 	 * This is login example page check the input parameters and sets up a session.
@@ -25,7 +27,12 @@
 
 			    // Override config options
 			    //Session["imagemanager.filesystem.rootpath"] = "some path";
-			    //Session["filemanager.filesystem.rootpath"] = "c:/";
+
+                var pathToImageUploadFolder = ServiceLocatorManager.Current.Resolve<IGetPathToWorkingDirectoryService>().GetPathToDirectory() + "FileManager" + Path.DirectorySeparatorChar;
+                if (!Directory.Exists(pathToImageUploadFolder))
+                    Directory.CreateDirectory(pathToImageUploadFolder);
+                
+                Session["filemanager.filesystem.rootpath"] = pathToImageUploadFolder;
 
 			    Response.Redirect(Request["return_url"], true);
             }
