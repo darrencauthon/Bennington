@@ -165,27 +165,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scripts\jquery-1.6.4.min.js" />
-    <EmbeddedResource Include="Scripts\jquery.jstree.js" />
-    <EmbeddedResource Include="Scripts\jstreegrid.js" />
-    <Content Include="Scripts\themes\apple\bg.jpg" />
-    <Content Include="Scripts\themes\apple\d.png" />
-    <Content Include="Scripts\themes\apple\dot_for_ie.gif" />
-    <Content Include="Scripts\themes\apple\style.css" />
-    <Content Include="Scripts\themes\apple\throbber.gif" />
-    <Content Include="Scripts\themes\classic\d.gif" />
-    <Content Include="Scripts\themes\classic\d.png" />
-    <Content Include="Scripts\themes\classic\dot_for_ie.gif" />
-    <Content Include="Scripts\themes\classic\style.css" />
-    <Content Include="Scripts\themes\classic\throbber.gif" />
-    <Content Include="Scripts\themes\default-rtl\d.gif" />
-    <Content Include="Scripts\themes\default-rtl\d.png" />
-    <Content Include="Scripts\themes\default-rtl\dots.gif" />
-    <Content Include="Scripts\themes\default-rtl\style.css" />
-    <Content Include="Scripts\themes\default-rtl\throbber.gif" />
-    <EmbeddedResource Include="Scripts\themes\default\d.gif" />
-    <EmbeddedResource Include="Scripts\themes\default\d.png" />
-    <EmbeddedResource Include="Scripts\themes\default\style.css" />
-    <EmbeddedResource Include="Scripts\themes\default\throbber.gif" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
