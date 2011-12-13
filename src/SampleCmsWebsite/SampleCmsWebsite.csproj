@@ -241,10 +241,11 @@
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\bin\safe\MCFileManager.dll" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\bin\safe\MCManager.dll" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\changelog.txt" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\editor_plugin.js" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\css\default.aspx" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\default.aspx" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\docs\license.html" />
-    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\editor_plugin.js" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\editor_plugin_REMOVE.js" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\editor_plugin_src.js" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\examples.html" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\files\moreimages\dogleft.jpg" />
