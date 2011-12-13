@@ -32,7 +32,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 
         public virtual ActionResult DisplayMeta(string treeNodeId, string actionId)
         {
-            return View("DisplayMeta", contentTreeNodeDisplayMetaViewModelBuilder().BuildViewModel(treeNodeId, actionId));
+            return PartialView("DisplayMeta", contentTreeNodeDisplayMetaViewModelBuilder().BuildViewModel(treeNodeId, actionId));
         }
     }
 }
