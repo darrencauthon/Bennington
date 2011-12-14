@@ -28,11 +28,11 @@
 			    // Override config options
 			    //Session["imagemanager.filesystem.rootpath"] = "some path";
 
-                var pathToImageUploadFolder = ServiceLocatorManager.Current.Resolve<IGetPathToWorkingDirectoryService>().GetPathToDirectory() + "FileManager" + Path.DirectorySeparatorChar;
-                if (!Directory.Exists(pathToImageUploadFolder))
-                    Directory.CreateDirectory(pathToImageUploadFolder);
+                //var pathToImageUploadFolder = ServiceLocatorManager.Current.Resolve<IGetPathToWorkingDirectoryService>().GetPathToDirectory() + "FileManager" + Path.DirectorySeparatorChar;
+                //if (!Directory.Exists(pathToImageUploadFolder))
+                //    Directory.CreateDirectory(pathToImageUploadFolder);
                 
-                Session["filemanager.filesystem.rootpath"] = pathToImageUploadFolder;
+                //Session["filemanager.filesystem.rootpath"] = pathToImageUploadFolder;
 
 			    Response.Redirect(Request["return_url"], true);
             }

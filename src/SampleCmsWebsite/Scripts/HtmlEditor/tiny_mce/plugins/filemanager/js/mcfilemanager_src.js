@@ -8,10 +8,10 @@
 (function() {
 	window.mcFileManager = {
 		settings : {
-			document_base_url : '',
-			relative_urls : false,
+			document_base_url : 'zzzzzzz',
+			relative_urls : true,
 			remove_script_host : false,
-			use_url_path : true,
+			use_url_path : false,
 			remember_last_path : 'auto',
 			target_elements : '',
 			target_form : '',
