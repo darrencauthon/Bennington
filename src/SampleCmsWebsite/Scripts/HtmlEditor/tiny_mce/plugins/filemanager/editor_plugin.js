@@ -11,7 +11,7 @@
             document_base_url: '/Resource_/',
             relative_urls: false,
             remove_script_host: false,
-            use_url_path: false,
+            use_url_path: true,
             remember_last_path: 'auto',
             target_elements: '',
             target_form: '',
