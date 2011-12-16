@@ -656,7 +656,6 @@
     <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Uploaded\src\build.bat" />
     <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\_Template\src\csharp\build.bat" />
     <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\_Template\src\vb\build.bat" />
-    <Content Include="Views\Shared\ManageSite.cshtml" />
     <None Include="Views\Some\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
