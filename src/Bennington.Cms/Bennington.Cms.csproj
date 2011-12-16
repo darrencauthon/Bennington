@@ -283,7 +283,9 @@
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\js\index.aspx" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\js\mcfilemanager.js" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\js\mcfilemanager_src.js" />
-    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\default.aspx" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\default.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\fm\download_more.txt" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\fm\en.xml" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\index.aspx" />
