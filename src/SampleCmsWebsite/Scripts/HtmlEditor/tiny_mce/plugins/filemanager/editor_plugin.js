@@ -290,7 +290,7 @@
                         u = tinyMCE.activeEditor.convertURL(u, null, true);
 
                     // patch for Bennington.Cms integration
-                    u = t.settings.document_base_url + u;
+                    u = t.settings.document_base_url + 'FileManager' + u;
 
                     // Set alt and title info
                     if (inf.custom && inf.custom.description) {

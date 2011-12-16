@@ -166,9 +166,6 @@
     <EmbeddedResource Include="Content\dataTable\sort_desc_disabled.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Shared\ManageSite.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Views\EmptyDashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
