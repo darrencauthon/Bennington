@@ -5,29 +5,6 @@
 @using System.Security.Policy
 
 
-@section head {
-    <script type="text/javascript" src="@Url.Content("~/Scripts/ContentNodeProvider/tiny_mce/jquery.tinymce.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/ContentNodeProvider/tiny_mce/tiny_mce.js")"></script>
-}
-
-<script type="text/javascript">
-    $(function () {
-               $('textarea.tinymce').tinymce({
-                   // Location of TinyMCE script
-                   script_url: '@Url.Content("~/Scripts/ContentNodeProvider/tiny_mce/tiny_mce.js")',
-
-                   // General options
-                   theme: "advanced",
-                   plugins: "",
-                   theme_advanced_toolbar_location: "top",
-                   theme_advanced_toolbar_align: "left",
-                   theme_advanced_statusbar_location: "bottom",
-                   theme_advanced_resizing: true,
-               });
-           });
-</script>
-
-
 @{ Html.RenderAction("ContentItemNavigation", "ContentTreeNode", new { TreeNodeId = Model.ContentTreeNodeInputModel.TreeNodeId }); }
 
 	@*<% using (Html.BeginForm(Model.Action, "ContentTreeNode", FormMethod.Post, new { Id = "form" })) { %>*@
