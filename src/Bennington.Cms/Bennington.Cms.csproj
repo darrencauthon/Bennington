@@ -465,8 +465,8 @@
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\readme.txt" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\rpc\default.aspx" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\rpc\index.aspx" />
-    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\stream\default.aspx" />
-    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\stream\index.aspx" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\stream\default.aspx" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\stream\index.aspx" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\fullpage\css\fullpage.css" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\fullpage\editor_plugin.js" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\fullpage\editor_plugin_src.js" />
