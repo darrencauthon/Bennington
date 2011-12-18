@@ -60,7 +60,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
 			set { throw new NotImplementedException(); }
 		}
 
-		public bool MayHaveChildNodes
+		public virtual bool MayHaveChildNodes
 		{
 			get { return true; }
 			set { throw new NotImplementedException(); }
