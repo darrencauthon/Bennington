@@ -241,6 +241,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
         [Authorize]
         public virtual ActionResult ManageMetaInformation(string treeNodeId, string contentItemId)
         {
+            if (string.IsNullOrEmpty(contentItemId)) contentItemId = "Index";
             return View("ManageMetaInformation", contentTreeNodeMetaInformationViewModelBuilder.BuildViewModel(treeNodeId, contentItemId));
         }
 

@@ -36,6 +36,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider
             return treeNodeExtensions.AsQueryable();
         }
 
+        public override bool MayHaveChildNodes
+        {
+            get { return false; }
+            set
+            {
+                base.MayHaveChildNodes = value;
+            }
+        }
 
         public override string Controller { get; set; }
 

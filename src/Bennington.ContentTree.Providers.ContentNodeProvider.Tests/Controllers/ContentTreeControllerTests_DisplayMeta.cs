@@ -25,7 +25,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
         [TestMethod]
         public void Returns_correct_view_name()
         {
-            var result = mocker.Resolve<ContentTreeController>().DisplayMeta("treeNodeId", "actionId") as ViewResult;
+            var result = mocker.Resolve<ContentTreeController>().DisplayMeta("treeNodeId", "actionId") as PartialViewResult;
 
             Assert.AreEqual("DisplayMeta", result.ViewName);
         }
@@ -40,7 +40,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
                                  MetaDescription = "meta description",
                              });
 
-            var result = mocker.Resolve<ContentTreeController>().DisplayMeta("treeNodeId", "actionId") as ViewResult;
+            var result = mocker.Resolve<ContentTreeController>().DisplayMeta("treeNodeId", "actionId") as PartialViewResult;
 
             Assert.AreEqual("meta description", (result.ViewData.Model as ContentTreeNodeDisplayMetaViewModel).MetaDescription);
         }

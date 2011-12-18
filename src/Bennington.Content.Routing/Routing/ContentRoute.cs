@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -41,10 +42,35 @@ namespace Bennington.Content.Routing
             if(routeData == null)
                 return null;
 
-            routeValues.Remove("controller");
-            routeValues.Remove("action");
+            var url = GetUrlForTreeNode(treeNode);
+            var stringBuilder = new StringBuilder();
+            foreach (var routeValueKey in values.Keys)
+            {
+                if (routeValueKey.Equals("controller", StringComparison.CurrentCultureIgnoreCase)) continue;
+                if (routeValueKey.Equals("action", StringComparison.CurrentCultureIgnoreCase)) continue;
+                
+                stringBuilder.Append(string.Format("{0}={1}", routeValueKey, routeValues[routeValueKey]));
+            }
+            if (!string.IsNullOrEmpty(stringBuilder.ToString()))
+                url = url + "?" + stringBuilder.ToString();
+            return new VirtualPathData(null, url);
 
-            return base.GetVirtualPath(new RequestContext(requestContext.HttpContext, routeData), routeValues);
+            //routeValues.Remove("controller");
+            //routeValues.Remove("action");
+
+            //return base.GetVirtualPath(new RequestContext(requestContext.HttpContext, routeData), routeValues);
+        }
+
+        private string GetUrlForTreeNode(ContentTreeNode contentTreeNode)
+        {
+            var segments = contentTreeNode.GetPath();
+            var sb = new StringBuilder();
+            for(var n = 0; n < segments.Count(); n++)
+            {
+                sb.Append(segments[n]);
+                if (n < segments.Count() - 1) sb.Append("/");
+            }
+            return sb.ToString();
         }
 
         private static string[] GetRequestUrlSegments(HttpContextBase httpContext)
