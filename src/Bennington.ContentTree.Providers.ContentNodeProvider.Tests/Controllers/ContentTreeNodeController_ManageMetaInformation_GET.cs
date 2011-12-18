@@ -60,5 +60,14 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Tests.Controllers
 
             Assert.AreEqual("tree node id", (result.ViewData.Model as ContentTreeNodeMetaInformationViewModel).ContentTreeNodeMetaInformationInputModel.TreeNodeId);
         }
+
+        [TestMethod]
+        public void Sets_action_to_Index_if_it_is_not_set_view_model_builder()
+        {
+            mocker.Resolve<ContentTreeNodeController>().ManageMetaInformation("treeNodeId", null);
+
+            mocker.GetMock<IContentTreeNodeMetaInformationViewModelBuilder>()
+                .Verify(a => a.BuildViewModel(It.IsAny<string>(), "Index"), Times.Once());
+        }
     }
 }
