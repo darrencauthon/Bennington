@@ -70,6 +70,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.FileUploadHandli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.ContentTree.Providers.ContentNodeProviderManagement", "Bennington.ContentTree.Providers.ContentNodeProviderManagement\Bennington.ContentTree.Providers.ContentNodeProviderManagement.csproj", "{CF733385-9551-42E5-909F-B3B871EAA93C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.Cms.TinyMCEFileManagerPlugin", "Bennington.Cms.TinyMCEFileManagerPlugin\Bennington.Cms.TinyMCEFileManagerPlugin.csproj", "{A8AB77D0-D3F0-497F-87E4-6E7ACCBBE4E7}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Bennington.vsmdi
@@ -199,6 +201,10 @@ Global
 		{CF733385-9551-42E5-909F-B3B871EAA93C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF733385-9551-42E5-909F-B3B871EAA93C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF733385-9551-42E5-909F-B3B871EAA93C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8AB77D0-D3F0-497F-87E4-6E7ACCBBE4E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8AB77D0-D3F0-497F-87E4-6E7ACCBBE4E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8AB77D0-D3F0-497F-87E4-6E7ACCBBE4E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8AB77D0-D3F0-497F-87E4-6E7ACCBBE4E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

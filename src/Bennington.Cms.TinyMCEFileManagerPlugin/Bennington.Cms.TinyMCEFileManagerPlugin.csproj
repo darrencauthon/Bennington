@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A8AB77D0-D3F0-497F-87E4-6E7ACCBBE4E7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bennington.Cms.TinyMCEFileManagerPlugin</RootNamespace>
+    <AssemblyName>Bennington.Cms.TinyMCEFileManagerPlugin</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\CustomInfoExample\src\csharp\CustomInfoExamplePlugin.cs" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\src\csharp\ExternalAuthenticator.cs" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\src\csharp\FavoritePlugin.cs" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\src\csharp\HistoryPlugin.cs" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Uploaded\src\csharp\UploadedPlugin.cs" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\_Template\src\csharp\TemplatePlugin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\jquery.tinymce.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\langs\en.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advhr\css\advhr.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advhr\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advhr\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advhr\js\rule.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advhr\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advhr\rule.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advimage\css\advimage.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advimage\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advimage\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advimage\image.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advimage\img\sample.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advimage\js\image.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advimage\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advlink\css\advlink.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advlink\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advlink\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advlink\js\advlink.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advlink\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advlink\link.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advlist\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\advlist\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\autolink\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\autolink\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\autoresize\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\autoresize\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\autosave\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\autosave\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\autosave\langs\en.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\bbcode\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\bbcode\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\contextmenu\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\contextmenu\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\directionality\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\directionality\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\emotions.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-cool.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-cry.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-embarassed.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-foot-in-mouth.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-frown.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-innocent.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-kiss.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-laughing.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-money-mouth.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-sealed.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-smile.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-surprised.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-tongue-out.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-undecided.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-wink.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\img\smiley-yell.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\js\emotions.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\emotions\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\example\dialog.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\example\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\example\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\example\img\example.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\example\js\dialog.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\example\langs\en.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\example\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\example_dependency\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\example_dependency\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\bin\ICSharpCode.SharpZipLib.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\bin\MCFileManager.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\bin\MCManager.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\bin\safe\MCFileManager.dll" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\bin\safe\MCManager.dll" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\docs\license.html" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\CustomInfoExample\bin\CustomInfoExamplePlugin.dll" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\CustomInfoExample\fm_example.html" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\CustomInfoExample\fm_tinymce_example.htm" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\CustomInfoExample\im_example.html" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\CustomInfoExample\im_tinymce_example.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\fullpage\css\fullpage.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\fullpage\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\fullpage\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\fullpage\fullpage.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\fullpage\js\fullpage.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\fullpage\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\fullscreen\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\fullscreen\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\fullscreen\fullscreen.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\iespell\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\iespell\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\inlinepopups\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\inlinepopups\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\alert.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\button.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\buttons.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\confirm.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\corners.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\horizontal.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\vertical.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\window.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\inlinepopups\template.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\insertdatetime\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\insertdatetime\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\layer\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\layer\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\legacyoutput\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\legacyoutput\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\lists\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\lists\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\media\css\media.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\media\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\media\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\media\js\embed.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\media\js\media.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\media\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\media\media.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\media\moxieplayer.swf" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\nonbreaking\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\nonbreaking\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\noneditable\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\noneditable\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\pagebreak\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\pagebreak\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\paste\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\paste\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\paste\js\pastetext.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\paste\js\pasteword.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\paste\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\paste\pastetext.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\paste\pasteword.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\preview\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\preview\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\preview\example.html" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\preview\jscripts\embed.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\preview\preview.html" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\print\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\print\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\save\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\save\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\searchreplace\css\searchreplace.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\searchreplace\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\searchreplace\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\searchreplace\js\searchreplace.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\searchreplace\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\searchreplace\searchreplace.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\spellchecker\css\content.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\spellchecker\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\spellchecker\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\spellchecker\img\wline.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\style\css\props.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\style\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\style\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\style\js\props.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\style\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\style\props.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\tabfocus\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\tabfocus\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\cell.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\css\cell.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\css\row.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\css\table.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\js\cell.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\js\merge_cells.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\js\row.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\js\table.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\merge_cells.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\row.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\table\table.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\template\blank.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\template\css\template.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\template\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\template\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\template\js\template.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\template\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\template\template.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\visualchars\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\visualchars\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\wordcount\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\wordcount\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\abbr.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\acronym.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\attributes.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\cite.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\css\attributes.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\css\popup.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\del.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\ins.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\js\abbr.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\js\acronym.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\js\attributes.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\js\cite.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\js\del.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\js\element_common.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\js\ins.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\xhtmlxtras\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\jquery-1.6.4.min.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\utils\validate.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\utils\mctabs.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\utils\form_utils.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\utils\editable_selects.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\tiny_mce_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\tiny_mce_popup.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\tiny_mce.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\simple\skins\o2k7\ui.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\simple\skins\o2k7\img\button_bg.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\simple\skins\o2k7\content.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\simple\skins\default\ui.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\simple\skins\default\content.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\simple\langs\en.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\simple\img\icons.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\simple\editor_template_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\simple\editor_template.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\source_editor.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\o2k7\ui_silver.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\o2k7\ui_black.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\o2k7\ui.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\o2k7\img\button_bg_silver.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\o2k7\img\button_bg_black.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\o2k7\img\button_bg.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\o2k7\dialog.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\o2k7\content.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\highcontrast\ui.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\highcontrast\dialog.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\highcontrast\content.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\default\ui.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\default\img\tabs.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\default\img\progress.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\default\img\menu_check.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\default\img\menu_arrow.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\default\img\items.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\default\img\buttons.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\default\dialog.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\skins\default\content.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\shortcuts.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\link.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\langs\en_dlg.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\langs\en.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\js\source_editor.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\js\link.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\js\image.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\js\color_picker.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\js\charmap.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\js\anchor.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\js\about.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\img\windowsmedia.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\img\video.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\img\trans.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\img\shockwave.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\img\realmedia.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\img\quicktime.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\img\pagebreak.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\img\iframe.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\img\icons.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\img\flash.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\img\colorpicker.jpg" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\image.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\editor_template_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\editor_template.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\color_picker.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\charmap.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\anchor.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\themes\advanced\about.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\stream\index.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\stream\default.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\rpc\index.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\rpc\default.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\readme.txt" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Uploaded\resources.xml" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Uploaded\js\uploaded.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Uploaded\img\go-up.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Uploaded\css\uploaded.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Uploaded\bin\UploadedPlugin.dll" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\resources.xml" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\js\history.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\img\clock.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\css\history.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\bin\HistoryPlugin.dll" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\resources.xml" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\js\favorites.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\img\favorites.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\css\favorites.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\bin\FavoritesPlugin.dll" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\md5.asp" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\bin\ExternalAuthenticator.dll" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\auth_example.asp" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\_Template\bin\TemplatePlugin.dll" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\_Template\src\vb\TemplatePlugin.vb" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\upload.html" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\resources.xml" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\utils\tinymce.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\utils\swfobject.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\utils\rpc.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\utils\gears_init.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\utils\fixpng.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\utils\domain.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\utils\basemanager.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\upload.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\plupload\plupload.silverlight.xap" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\plupload\plupload.full.min.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\plupload\plupload.flash.swf" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\plupload\gears_init.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\jquery\jquery.uri.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\jquery\jquery.template.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\jquery\jquery.template.ext.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\jquery\jquery.sortarray.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\jquery\jquery.scrollto.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\jquery\jquery.json.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\jquery\jquery.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\jquery\jquery.i18n.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\jquery\jquery.dropmenu.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\jquery\jquery.domutils.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\jquery\jquery.dialog.status.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\jquery\jquery.dialog.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\jquery\jquery.cleanname.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\filemanager.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\edit.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\createzip.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\createdoc.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\js\createdir.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\index.html" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\x.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\transparent.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\toolbar.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\submit-wide.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\submit-greyWide.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\submit-grey.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\submit-delete.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\submit-default.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\submit-cancel.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\sortdesc.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\sortasc.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\separator.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\right.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\progress.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\preview.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\navdesc_bg.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\loading.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\left.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\insertfile.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\im.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\im-topright.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\im-topleft.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\im-info.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\im-edit.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\im-delete.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\im-botleft.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\up.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\toggle_selection.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\settings.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\save.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\revert.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\resize.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\reload.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\newfolder.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\newdoc.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\imagemanager.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\help.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\crop.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\category-open.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\category-closed.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\icons\add.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\google_gears_logo.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\folder_big.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\folder.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\folder-top-bg.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\folder-small.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\folder-middle-bg.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\folder-bottom-bg.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\folder-bg.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\folder-bg.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\xml.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\word.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\up_folder.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\unknown.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\txt.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\trash.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\swf.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\sound.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\powerpoint.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\pdf.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\movie.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\image.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\html.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\folder.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\exe.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\excel.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\document.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filetypes\archive.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filelist-headbg2.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filelist-headbg.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\filelist-border.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\dialog-top.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\dialog-icon-upload.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\dialog-icon-newfolder.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\dialog-icon-newfile.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\dialog-icon-edit.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\dialog-icon-compress.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\close.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\transparent.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\top_right.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\top_middle_fg.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\top_middle.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\top_left.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\top_chromeless_right.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\top_chromeless_middle.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\top_chromeless_left.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\statusbar_right.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\statusbar_resize.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\statusbar_middle.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\statusbar_left.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\middle_right.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\middle_left.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\buttons.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\button.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\bottom_right.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\bottom_middle.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\bottom_left.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\alert_warn.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\alert_info.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\clearlooks2\alert_error.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\checkbox.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\check_arrow.gif" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\img\alert-small.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\edit.html" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\css\window_clearlooks2.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\css\toolbar.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\css\forms.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\css\filetypes.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\css\filemanager.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\css\dropmenu.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\css\dialog.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\css\core.css" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\createzip.html" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\createdoc.html" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\createdir.html" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\login_session_auth.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\login_forms_auth.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\index.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\fm\en.xml" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\fm\download_more.txt" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\default.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\js\mcfilemanager_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\js\mcfilemanager.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\js\index.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\js\default.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\index.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\files\templates\readme.txt" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\files\templates\document.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\files\templates\directory\index.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\files\templates\directory\images\gotmoxie.png" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\files\templates\another_document.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\files\templates\another_directory\index.htm" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\files\teddybear.jpg" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\files\sample.html" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\files\moreimages\dogleft.jpg" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\examples.html" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\editor_plugin_src.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\editor_plugin_REMOVE.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\editor_plugin.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\default.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\css\default.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\changelog.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\docs\FileManager_API.chm" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\docs\Manager_API.chm" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\mime.types" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\CustomInfoExample\src\build.bat" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\auth_example.jsp" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\auth_example.php" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\src\csharp\build.bat" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\src\build.bat" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\src\build.bat" />
+    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Uploaded\src\build.bat" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\_Template\src\csharp\build.bat" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\_Template\src\vb\build.bat" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\Web.Config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\css\_cache\" />
+    <Folder Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\js\_cache\" />
+    <Folder Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\logs\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
