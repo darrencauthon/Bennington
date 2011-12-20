@@ -31,18 +31,27 @@ namespace Bennington.Cms.Blades
                 partialPathToResource = partialPathToResource.Substring(1, partialPathToResource.Length - 1);
 
                 var pathToCopyTo = pathToWebroot + partialPathToResource;
-                using (var sourceFile = thisAssembly.GetManifestResourceStream("AssemblyName.ImageFile.jpg"))
+                if (File.Exists(pathToCopyTo)) continue;
+
+                using (var sourceFile = thisAssembly.GetManifestResourceStream(resourceName))
                 {
                     if (sourceFile == null) continue;
+                    
+                    var folderToCopyInto = Path.GetDirectoryName(pathToCopyTo);
+                    if (folderToCopyInto == null) continue;
+
+                    if (!folderToCopyInto.Contains(string.Format("Scripts{0}HtmlEditor{0}", Path.DirectorySeparatorChar)))
+                        continue;
+
+                    if (!Directory.Exists(folderToCopyInto))
+                        Directory.CreateDirectory(folderToCopyInto);
+
                     using (var destinationFile = new FileStream(pathToCopyTo, FileMode.CreateNew))
                     {
                         sourceFile.CopyTo(destinationFile);
                     }
                 }
-
             }
-
-            //this.pictureBox1.Image = Image.FromStream(file);
         }
 
         private string GetFilenameFromResourceName(Assembly thisAssembly, string resource)

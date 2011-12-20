@@ -285,12 +285,12 @@
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\js\index.aspx" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\js\mcfilemanager.js" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\js\mcfilemanager_src.js" />
-    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\default.aspx">
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\default.aspx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\fm\download_more.txt" />
-    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\fm\en.xml" />
-    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\index.aspx" />
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\fm\download_more.txt" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\fm\en.xml" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\language\index.aspx" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\login_forms_auth.aspx" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\login_session_auth.aspx" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\createdir.html" />
@@ -447,19 +447,19 @@
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\CustomInfoExample\im_example.html" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\CustomInfoExample\im_tinymce_example.htm" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\auth_example.asp" />
-    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\bin\ExternalAuthenticator.dll" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\bin\ExternalAuthenticator.dll" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\md5.asp" />
-    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\bin\FavoritesPlugin.dll" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\bin\FavoritesPlugin.dll" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\css\favorites.css" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\img\favorites.png" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\js\favorites.js" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\resources.xml" />
-    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\bin\HistoryPlugin.dll" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\bin\HistoryPlugin.dll" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\css\history.css" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\img\clock.png" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\js\history.js" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\resources.xml" />
-    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Uploaded\bin\UploadedPlugin.dll" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Uploaded\bin\UploadedPlugin.dll" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Uploaded\css\uploaded.css" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Uploaded\img\go-up.png" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Uploaded\js\uploaded.js" />
@@ -469,8 +469,8 @@
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\readme.txt" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\rpc\default.aspx" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\rpc\index.aspx" />
-    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\stream\default.aspx" />
-    <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\stream\index.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\stream\default.aspx" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\stream\index.aspx" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\fullpage\css\fullpage.css" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\fullpage\editor_plugin.js" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\fullpage\editor_plugin_src.js" />

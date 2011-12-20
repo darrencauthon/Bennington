@@ -74,9 +74,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.dll</HintPath>
     </Reference>
-    <Reference Include="MvcTurbine.FluentValidation, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\MvcTurbine.FluentValidation.dll</HintPath>
+    <Reference Include="MvcTurbine.MembershipProvider, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcTurbine.MembershipProvider.3.0\lib\MvcTurbine.MembershipProvider.dll</HintPath>
     </Reference>
     <Reference Include="MvcTurbine.Unity, Version=3.4.0.0, Culture=neutral, PublicKeyToken=0e426322531bc5b0, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -166,6 +165,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Target_\Active\CorePlugin.config" />
+    <Content Include="Target_\Active\FileManagerPlugin.config" />
     <None Include="Views\Some\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

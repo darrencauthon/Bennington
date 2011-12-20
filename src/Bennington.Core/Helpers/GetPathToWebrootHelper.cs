@@ -27,8 +27,6 @@ namespace Bennington.Core.Helpers
             if (!string.IsNullOrEmpty(overridePath))
                 return overridePath;
 
-            const string localWorkingFolderName = "localWorkingFolder";
-
             var x = Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
             if (x.IndexOf("DevServer", 0) > 0)
             {
