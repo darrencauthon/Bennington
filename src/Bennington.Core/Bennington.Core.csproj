@@ -68,6 +68,7 @@
     <Compile Include="Helpers\GetCurrentDateTime.cs" />
     <Compile Include="Helpers\GetParentRouteDataDictionaryFromChildActionRouteData.cs" />
     <Compile Include="Helpers\GetPathToDataDirectoryService.cs" />
+    <Compile Include="Helpers\GetPathToWebrootHelper.cs" />
     <Compile Include="Helpers\GetUrlToResourceFolderHelper.cs" />
     <Compile Include="Helpers\GuidGetter.cs" />
     <Compile Include="Helpers\RawUrlGetter.cs" />

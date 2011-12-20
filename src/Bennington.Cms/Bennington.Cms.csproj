@@ -76,6 +76,7 @@
     <Compile Include="Attributes\DoNotUseTheDefaultMasterPage.cs" />
     <Compile Include="Attributes\IdentifierAttribute.cs" />
     <Compile Include="Attributes\NoIdentifierAttribute.cs" />
+    <Compile Include="Blades\UnpackHtmlEditorResourcesBlade.cs" />
     <Compile Include="Controllers\ListManageController.cs" />
     <Compile Include="Helpers\ValidationSummaryHelpers.cs" />
     <Compile Include="List\CmsListViewModelOptions.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Blades\CmsBlade.cs" />
     <Compile Include="MenuSystem\IMenuRegistry.cs" />
     <Compile Include="MenuSystem\UrlIconMenuItem.cs" />
+    <Compile Include="Attributes\HtmlEditorAttribute.cs" />
     <Compile Include="MetaData\HtmlEditorAttributeHandler.cs" />
     <Compile Include="MetaData\TextareaAttribute.cs" />
     <Compile Include="Models\MenuSystem\IconMenuItemViewModel.cs" />

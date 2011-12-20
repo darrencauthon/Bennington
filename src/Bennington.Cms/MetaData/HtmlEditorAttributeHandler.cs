@@ -3,10 +3,6 @@ using MvcTurbine.Web.Metadata;
 
 namespace Bennington.Cms.Metadata
 {
-    public class HtmlEditorAttribute : TextareaAttribute
-    {
-    }
-
     public class HtmlEditorAttributeHandler : IMetadataAttributeHandler<HtmlEditorAttribute>
     {
         public virtual void AlterMetadata(ModelMetadata metadata, CreateMetadataArguments args)
