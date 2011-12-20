@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\CustomInfoExample\src\csharp\CustomInfoExamplePlugin.cs" />
+    <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\CustomInfoExample\src\csharp\CustomInfoExamplePlugin.cs" />
     <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\src\csharp\ExternalAuthenticator.cs" />
     <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\src\csharp\FavoritePlugin.cs" />
     <None Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\History\src\csharp\HistoryPlugin.cs" />
