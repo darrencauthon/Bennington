@@ -65,6 +65,7 @@
     <Compile Include="Attributes\IdentifierAttribute.cs" />
     <Compile Include="Attributes\NoIdentifierAttribute.cs" />
     <Compile Include="Controllers\ListManageController.cs" />
+    <Compile Include="Helpers\SlugGenerator.cs" />
     <Compile Include="Helpers\ValidationSummaryHelpers.cs" />
     <Compile Include="List\CmsListViewModelOptions.cs" />
     <Compile Include="MenuSystem\ActionIconMenuItem.cs" />
