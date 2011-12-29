@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\..\AGCCNSNSDCS\lib\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
     <Reference Include="MvcTurbine">
       <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.dll</HintPath>
     </Reference>
