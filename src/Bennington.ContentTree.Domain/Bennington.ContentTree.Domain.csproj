@@ -125,7 +125,7 @@
     <Compile Include="Events\Section\SectionUrlSegmentSetEvent.cs" />
     <Compile Include="Events\TreeNode\TreeNodeTypeSetEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registration\SimpleCqrsRegistration.cs" />
+    <Compile Include="Registration\SimpleCqrsRuntimeBootstrapper.cs" />
     <Compile Include="BenningtonContentTreeSimpleCqrsRuntime.cs" />
   </ItemGroup>
   <ItemGroup>
