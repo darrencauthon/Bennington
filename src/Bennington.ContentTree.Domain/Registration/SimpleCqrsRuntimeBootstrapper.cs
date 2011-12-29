@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Configuration;
+using System.Linq;
 using MvcTurbine.ComponentModel;
 using SimpleCqrs;
 using SimpleCqrs.Commanding;
 using SimpleCqrs.EventStore.SqlServer;
 using SimpleCqrs.Eventing;
+using SimpleCqrs.EventStore.SqlServer.Serializers;
 using IServiceLocator = MvcTurbine.ComponentModel.IServiceLocator;
 
 namespace Bennington.ContentTree.Domain.Registration
@@ -20,30 +22,31 @@ namespace Bennington.ContentTree.Domain.Registration
 
 	    public void Register(IServiceLocator locator)
 	    {
-            var simpleCqrsRuntimes = serviceLocator.ResolveServices<ISimpleCqrsRuntime>();
-            if (simpleCqrsRuntimes.Count > 0) return;
+            var settings = ConfigurationManager.ConnectionStrings["Bennington.ContentTree.Domain.ConnectionString"];
 
-            var benningtonContentTreeSimpleCqrsRuntime = new BenningtonContentTreeSimpleCqrsRuntime();
+            if (settings == null)
+                throw new Exception("Cannot find connection string for 'Bennington.ContentTree.Domain.ConnectionString' in the configuration file");
 
-            benningtonContentTreeSimpleCqrsRuntime.Start();
+            if (serviceLocator.ResolveServices<ISimpleCqrsRuntime>().Any())
+                return;
 
-            var connectionStringSettings = ConfigurationManager.ConnectionStrings["Bennington.ContentTree.Domain.ConnectionString"];
-            if (connectionStringSettings != null)
-            {
-                benningtonContentTreeSimpleCqrsRuntime.ServiceLocator.Register<IEventStore>(
-                        new SqlServerEventStore(
-                            new SqlServerConfiguration(ConfigurationManager.ConnectionStrings["Bennington.ContentTree.Domain.ConnectionString"].ConnectionString),
-                            new SimpleCqrs.EventStore.SqlServer.Serializers.JsonDomainEventSerializer()));
-            }
-            else
-            {
-                throw new Exception("Cannot find connection string for 'Bennington.ContentTree.Domain.ConnectionString' in the event store");
-            }
+            RegisterAndStartRuntime(settings);
+	    }
 
-            var commandBus = benningtonContentTreeSimpleCqrsRuntime.ServiceLocator.Resolve<ICommandBus>();
-            serviceLocator.Register(commandBus);
+	    void RegisterAndStartRuntime(ConnectionStringSettings settings)
+	    {
+            var runtime = new BenningtonContentTreeSimpleCqrsRuntime();
 
-            serviceLocator.Register<SimpleCqrs.IServiceLocator>(benningtonContentTreeSimpleCqrsRuntime.ServiceLocator);
+            runtime.Start();
+
+            runtime.ServiceLocator.Register<IEventStore>(
+                new SqlServerEventStore(
+                    new SqlServerConfiguration(settings.ToString()),
+                    new JsonDomainEventSerializer()));
+
+            serviceLocator.Register(runtime.ServiceLocator.Resolve<ICommandBus>());
+
+            serviceLocator.Register<SimpleCqrs.IServiceLocator>(runtime.ServiceLocator);
 	    }
 	}
 }
