@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Configuration;
-using System.Linq;
 using MvcTurbine.ComponentModel;
 using SimpleCqrs;
 using SimpleCqrs.Commanding;
@@ -20,21 +19,28 @@ namespace Bennington.ContentTree.Domain.Registration
 	        this.serviceLocator = serviceLocator;
 	    }
 
-	    public void Register(IServiceLocator locator)
+        public void Register(IServiceLocator serviceLocator)
 	    {
+            try
+            {
+                serviceLocator.Resolve<ISimpleCqrsRuntime>();
+                return;
+            }
+            catch (Exception exception)
+            {
+
+            }
+
+            RegisterAndStartRuntime();
+	    }
+
+        void RegisterAndStartRuntime()
+        {
             var settings = ConfigurationManager.ConnectionStrings["Bennington.ContentTree.Domain.ConnectionString"];
 
             if (settings == null)
                 throw new Exception("Cannot find connection string for 'Bennington.ContentTree.Domain.ConnectionString' in the configuration file");
 
-            if (serviceLocator.ResolveServices<ISimpleCqrsRuntime>().Any())
-                return;
-
-            RegisterAndStartRuntime(settings);
-	    }
-
-	    void RegisterAndStartRuntime(ConnectionStringSettings settings)
-	    {
             var runtime = new BenningtonContentTreeSimpleCqrsRuntime();
 
             runtime.Start();
@@ -47,6 +53,6 @@ namespace Bennington.ContentTree.Domain.Registration
             serviceLocator.Register(runtime.ServiceLocator.Resolve<ICommandBus>());
 
             serviceLocator.Register<SimpleCqrs.IServiceLocator>(runtime.ServiceLocator);
-	    }
+        }
 	}
 }
