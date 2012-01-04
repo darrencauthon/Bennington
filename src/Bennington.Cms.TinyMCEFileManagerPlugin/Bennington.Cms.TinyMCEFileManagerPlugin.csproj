@@ -348,9 +348,7 @@
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\css\favorites.css" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\Favorites\bin\FavoritesPlugin.dll" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\md5.asp" />
-    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\bin\ExternalAuthenticator.dll" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\auth_example.asp" />
-    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\_Template\bin\TemplatePlugin.dll" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\_Template\src\vb\TemplatePlugin.vb" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\upload.html" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\pages\fm\resources.xml" />
@@ -549,6 +547,8 @@
     <Folder Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\css\_cache\" />
     <Folder Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\js\_cache\" />
     <Folder Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\logs\" />
+    <Folder Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\ExternalAuthenticator\bin\" />
+    <Folder Include="Scripts\HtmlEditor\tiny_mce\plugins\filemanager\plugins\_Template\bin\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
