@@ -74,7 +74,7 @@ namespace Bennington.Core.List
             return ViewEngines.Engines.PartialViewExists(controllerContext, cellTemplateLocation) ? cellTemplateLocation : null;
         }
 
-        private class SortingValues
+        public class SortingValues
         {
             public string SortBy { get; set; }
             public SortDirection? SortDirection { get; set; }

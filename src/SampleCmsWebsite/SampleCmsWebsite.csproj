@@ -235,6 +235,10 @@
       <Project>{AAB424EE-5CFA-42BE-9F9A-2350C5C8E715}</Project>
       <Name>Bennington.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bennington.EmailCommunication\Bennington.EmailCommunication.csproj">
+      <Project>{6B4DA420-53BD-475E-AF7F-E1CA61F9B7CB}</Project>
+      <Name>Bennington.EmailCommunication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bennington.Login\Bennington.Login.csproj">
       <Project>{7DBAF057-8A9B-4EC2-B8FC-505978DA86DE}</Project>
       <Name>Bennington.Login</Name>

@@ -1,0 +1,4 @@
+﻿@using Bennington.EmailCommunication.Models
+@model EmailGroup
+
+<a href="@Url.Action("Manage", new { Id = @Model.Id })">@Model.Name</a>
