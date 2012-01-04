@@ -167,6 +167,8 @@
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Target_\Active\CorePlugin.config" />
     <Content Include="Target_\Active\FileManagerPlugin.config" />
+    <Content Include="Views\Shared\EditorTemplates\EmailGroupInputModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EmailInputModel.cshtml" />
     <None Include="Views\Some\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

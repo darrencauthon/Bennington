@@ -1,0 +1,69 @@
+﻿@model Bennington.EmailCommunication.Models.EmailInputModel
+
+<fieldset>
+    <div style="padding-top:20px;"></div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Name)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.AdministratorInsturctionText)
+    </div>
+    <div class="editor-field">
+        @Html.TextAreaFor(model => model.AdministratorInsturctionText)
+        @Html.ValidationMessageFor(model => model.AdministratorInsturctionText)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ShowToField)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.ShowToField)
+        @Html.ValidationMessageFor(model => model.ShowToField)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ToEmail)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.ToEmail)
+        @Html.ValidationMessageFor(model => model.ToEmail)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.CcEmails)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.CcEmails)
+        @Html.ValidationMessageFor(model => model.CcEmails)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.BccEmails)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.BccEmails)
+        @Html.ValidationMessageFor(model => model.BccEmails)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.FromEmail)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.FromEmail)
+        @Html.ValidationMessageFor(model => model.FromEmail)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.BodyText)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.BodyText)
+        @Html.ValidationMessageFor(model => model.BodyText)
+    </div>
+
+</fieldset>

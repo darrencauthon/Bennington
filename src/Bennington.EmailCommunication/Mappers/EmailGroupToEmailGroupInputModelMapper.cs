@@ -14,5 +14,13 @@ namespace Bennington.EmailCommunication.Mappers
 
     public class EmailGroupToEmailGroupInputModelMapper : Mapper<EmailGroup, EmailGroupInputModel>, IEmailGroupToEmailGroupInputModelMapper
     {
+        public override void DefineMap(AutoMapper.IConfiguration configuration)
+        {
+            configuration.CreateMap<EmailModel, EmailInputModel>();
+
+            configuration.CreateMap<EmailGroup, EmailGroupInputModel>()
+                    .ForMember(a => a.EmailInputModels, b => b.MapFrom(c => c.EmailModels))
+                ;
+        }
     }
 }

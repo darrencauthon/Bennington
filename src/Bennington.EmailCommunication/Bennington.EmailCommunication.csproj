@@ -50,6 +50,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.dll</HintPath>
     </Reference>
+    <Reference Include="MvcTurbine.Web, Version=3.4.0.0, Culture=neutral, PublicKeyToken=0e426322531bc5b0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -90,6 +94,7 @@
     <Compile Include="Routing\EmailCommunicationManagementRouting.cs" />
     <Compile Include="Services\EmailGroupInputModelProcessingService.cs" />
     <Compile Include="Validators\EmailGroupInputModelValidator.cs" />
+    <Compile Include="Validators\EmailInputModelValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Content\Canvas\emailicon.png" />
@@ -124,9 +129,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Shared\EditorTemplates\EmailGroupInputModel.cshtml" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

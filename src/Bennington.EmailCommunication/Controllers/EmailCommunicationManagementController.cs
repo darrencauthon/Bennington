@@ -12,6 +12,7 @@ using Bennington.Repository;
 
 namespace Bennington.EmailCommunication.Controllers
 {
+    [Authorize]
     public class EmailCommunicationManagementController : ListManageController<EmailGroup, EmailGroupInputModel>
     {
         private readonly IEmailGroupRepository emailGroupRepository;
@@ -27,6 +28,19 @@ namespace Bennington.EmailCommunication.Controllers
             this.emailGroupRepository = emailGroupRepository;
         }
 
+        [ValidateInput(false)]
+        public override ActionResult  Manage(EmailGroupInputModel form)
+        {
+ 	         var reuslt = base.Manage(form);
+            return reuslt;
+        }
+
+        public override ActionResult Manage()
+        {
+            var result = base.Manage();
+            return result;
+        }
+
         protected override IQueryable<EmailGroup> GetListItems(Core.List.ListViewModel listViewModel)
         {
             return emailGroupRepository.GetAll().AsQueryable();
@@ -37,7 +51,30 @@ namespace Bennington.EmailCommunication.Controllers
             var emailGroup = emailGroupRepository.GetById(id.ToString());
             if (emailGroup == null) return base.GetFormById(id);
 
-            return emailGroupToEmailGroupInputModelMapper.CreateInstance(emailGroup);
+            var emailGroupInpuModel = emailGroupToEmailGroupInputModelMapper.CreateInstance(emailGroup);
+            if (emailGroupInpuModel.EmailInputModels == null) emailGroupInpuModel.EmailInputModels = new EmailInputModel[]{};
+            if (emailGroupInpuModel.EmailInputModels.Count() < emailGroup.EmailCount)
+            {
+                var emails = emailGroupInpuModel.EmailInputModels.ToList();
+                for (var n = 0; n <= emailGroup.EmailCount - emails.Count; n++)
+                {
+                    emails.Add(new EmailInputModel());
+                }
+                emailGroupInpuModel.EmailInputModels = emails.ToArray();
+
+                return emailGroupInpuModel;
+            }
+
+            if (emailGroupInpuModel.EmailInputModels.Count() > emailGroup.EmailCount)
+            {
+                var emails = emailGroupInpuModel.EmailInputModels.ToList();
+                var extraEmailCount = emailGroupInpuModel.EmailInputModels.Count() - emailGroup.EmailCount;
+                emails.RemoveRange(emails.Count - extraEmailCount, extraEmailCount);
+
+                emailGroupInpuModel.EmailInputModels = emails.ToArray();
+            }
+
+            return emailGroupInpuModel;
         }
 
         public override void InsertForm(EmailGroupInputModel form)

@@ -1,0 +1,34 @@
+﻿@model Bennington.EmailCommunication.Models.EmailGroupInputModel
+
+
+@Html.ValidationSummary(true)
+<fieldset>
+
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Name)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.EmailCount)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.EmailCount)
+        @Html.ValidationMessageFor(model => model.EmailCount)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.EngineerId)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.EngineerId)
+        @Html.ValidationMessageFor(model => model.EngineerId)
+    </div>
+
+    @Html.EditorFor(a => a.EmailInputModels)
+</fieldset>

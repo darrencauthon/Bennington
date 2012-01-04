@@ -17,9 +17,13 @@ namespace Bennington.EmailCommunication.Mappers
     {
         public override void DefineMap(AutoMapper.IConfiguration configuration)
         {
+            configuration.CreateMap<EmailInputModel, EmailModel>()
+                ;
+
             configuration.CreateMap<EmailGroupInputModel, EmailGroup>()
                     .ForMember(a => a.CreateDate, b => b.Ignore())
                     .ForMember(a => a.LastModifyDate, b => b.Ignore())
+                    .ForMember(a => a.EmailModels, b => b.MapFrom(c => c.EmailInputModels))
                 ;
         }
     }
