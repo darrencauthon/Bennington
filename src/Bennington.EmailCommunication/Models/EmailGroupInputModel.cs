@@ -18,6 +18,7 @@ namespace Bennington.EmailCommunication.Models
         [DisplayName("Id to use for pulling these emails from code")]
         public string EngineerId { get; set; }
 
+        [DisplayName("The number of emails for this group.  DECREMENTING THIS NUMBER IS NOT A REVERSIBLE OPERATION")]
         public int EmailCount { get; set; }
 
         public EmailInputModel[] EmailInputModels { get; set; }
