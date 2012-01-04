@@ -87,6 +87,7 @@
     <Compile Include="ActionIconMenuItemTests.cs" />
     <Compile Include="ActionSectionMenuItemTests.cs" />
     <Compile Include="ActionSubMenuItemTests.cs" />
+    <Compile Include="Helpers\SlugGeneratorTests.cs" />
     <Compile Include="ListViewModelBinderTests.cs" />
     <Compile Include="Mocks\MockModelValidatorProvider.cs" />
     <Compile Include="ModelValidtorProvidersExtensions.cs" />

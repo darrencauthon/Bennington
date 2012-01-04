@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\..\AGCCNSNSDCS\lib\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
     <Reference Include="MvcTurbine">
       <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.dll</HintPath>
     </Reference>
@@ -125,7 +128,7 @@
     <Compile Include="Events\Section\SectionUrlSegmentSetEvent.cs" />
     <Compile Include="Events\TreeNode\TreeNodeTypeSetEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registration\SimpleCqrsRegistration.cs" />
+    <Compile Include="Registration\SimpleCqrsRuntimeBootstrapper.cs" />
     <Compile Include="BenningtonContentTreeSimpleCqrsRuntime.cs" />
   </ItemGroup>
   <ItemGroup>
