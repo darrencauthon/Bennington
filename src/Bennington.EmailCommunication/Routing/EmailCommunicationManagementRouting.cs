@@ -13,7 +13,7 @@ namespace Bennington.EmailCommunication.Routing
     {
         public void Register(RouteCollection routes)
         {
-            routes.MapRoute("EmailCommunicationManagement", typeof(EmailCommunicationManagementController).Name.Replace("Controller", string.Empty), new { controller = typeof(EmailCommunicationManagementController).Name.Replace("Controller", string.Empty), action = "Index" });
+            routes.MapRoute("EmailCommunicationManagement", "EmailManagement/{action}", new { controller = typeof(EmailCommunicationManagementController).Name.Replace("Controller", string.Empty), action = "Index" });
         }
     }
 }

@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.3.1.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\TinyMce\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -115,6 +118,7 @@
     <Compile Include="Routing\EmptyDashboardRoute.cs" />
     <Compile Include="Routing\RegisterMenuSystemRoute.cs" />
     <Compile Include="Filters\DefaultTheMasterPageToTheManageSite.cs" />
+    <Compile Include="Validators\ListManageValidators.cs" />
     <Compile Include="Views\ListManage\Helpers.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

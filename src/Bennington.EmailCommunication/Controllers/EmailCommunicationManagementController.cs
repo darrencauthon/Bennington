@@ -7,6 +7,7 @@ using Bennington.Cms.Controllers;
 using Bennington.EmailCommunication.Mappers;
 using Bennington.EmailCommunication.Models;
 using Bennington.EmailCommunication.Repositories;
+using Bennington.EmailCommunication.Services;
 using Bennington.Repository;
 
 namespace Bennington.EmailCommunication.Controllers
@@ -15,13 +16,13 @@ namespace Bennington.EmailCommunication.Controllers
     {
         private readonly IEmailGroupRepository emailGroupRepository;
         private readonly IEmailGroupToEmailGroupInputModelMapper emailGroupToEmailGroupInputModelMapper;
-        private readonly IEmailGroupInputModelToEmailGroupMapper emailGroupInputModelToEmailGroupMapper;
+        private readonly IEmailGroupInputModelProcessingService emailGroupInputModelProcessingService;
 
         public EmailCommunicationManagementController(IEmailGroupRepository emailGroupRepository,
                                                       IEmailGroupToEmailGroupInputModelMapper emailGroupToEmailGroupInputModelMapper,
-                                                      IEmailGroupInputModelToEmailGroupMapper emailGroupInputModelToEmailGroupMapper)
+                                                      IEmailGroupInputModelProcessingService emailGroupInputModelProcessingService)
         {
-            this.emailGroupInputModelToEmailGroupMapper = emailGroupInputModelToEmailGroupMapper;
+            this.emailGroupInputModelProcessingService = emailGroupInputModelProcessingService;
             this.emailGroupToEmailGroupInputModelMapper = emailGroupToEmailGroupInputModelMapper;
             this.emailGroupRepository = emailGroupRepository;
         }
@@ -41,28 +42,23 @@ namespace Bennington.EmailCommunication.Controllers
 
         public override void InsertForm(EmailGroupInputModel form)
         {
-            form.Id = SaveAndReturnId(form);
+            form.Id = emailGroupInputModelProcessingService.SaveAndReturnId(form);
 
             base.InsertForm(form);
         }
 
-        private string SaveAndReturnId(EmailGroupInputModel form)
+        public override void UpdateForm(EmailGroupInputModel form)
         {
-            var emailGroup = emailGroupRepository.GetAll().Where(a => a.Id == form.Id).FirstOrDefault();
-            if (emailGroup != null) emailGroupInputModelToEmailGroupMapper.LoadIntoInstance(form, emailGroup ?? new EmailGroup());
-            else
-                emailGroup = emailGroupInputModelToEmailGroupMapper.CreateInstance(form);
-
-            emailGroup.Id = emailGroup.Id ?? Guid.NewGuid().ToString();
-            emailGroup.CreateDate = emailGroup.CreateDate == DateTime.MinValue ? DateTime.Now : emailGroup.CreateDate;
-            emailGroup.LastModifyDate = DateTime.Now;
-            emailGroupRepository.SaveAndReturnId(emailGroup);
-            return emailGroup.Id;
+            form.Id = emailGroupInputModelProcessingService.SaveAndReturnId(form);
+            base.UpdateForm(form);
         }
 
         public override void DeleteItem(object id)
         {
-            emailGroupRepository.Delete(id.ToString());
+            var isThisAStringArray = id as string[];
+            var idToUse = isThisAStringArray != null ? isThisAStringArray[0] : id.ToString();
+            emailGroupRepository.Delete(idToUse);
+
             base.DeleteItem(id);
         }
     }
