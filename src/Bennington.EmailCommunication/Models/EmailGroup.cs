@@ -31,6 +31,7 @@ namespace Bennington.EmailCommunication.Models
         public string Name { get; set; }
         public string AdministratorInsturctionText { get; set; }
         public bool ShowToField { get; set; }
+        public string EngineerId { get; set; }
         public string ToEmail { get; set; }
         public string CcEmails { get; set; }
         public string BccEmails { get; set; }

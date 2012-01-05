@@ -31,6 +31,9 @@ namespace Bennington.EmailCommunication.Models
         [DisplayName("The text administrators see")]
         public string AdministratorInsturctionText { get; set; }
 
+        [DisplayName("Engineer Id")]
+        public string EngineerId { get; set; }
+
         [DisplayName("Show To field?")]
         public bool ShowToField { get; set; }
 

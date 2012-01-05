@@ -18,27 +18,23 @@ namespace Bennington.EmailCommunication.Controllers
         private readonly IEmailGroupRepository emailGroupRepository;
         private readonly IEmailGroupToEmailGroupInputModelMapper emailGroupToEmailGroupInputModelMapper;
         private readonly IEmailGroupInputModelProcessingService emailGroupInputModelProcessingService;
+        private IEmailAdministratorContext emailAdministratorContext;
 
         public EmailCommunicationManagementController(IEmailGroupRepository emailGroupRepository,
                                                       IEmailGroupToEmailGroupInputModelMapper emailGroupToEmailGroupInputModelMapper,
-                                                      IEmailGroupInputModelProcessingService emailGroupInputModelProcessingService)
+                                                      IEmailGroupInputModelProcessingService emailGroupInputModelProcessingService,
+                                                      IEmailAdministratorContext emailAdministratorContext)
         {
+            this.emailAdministratorContext = emailAdministratorContext;
             this.emailGroupInputModelProcessingService = emailGroupInputModelProcessingService;
             this.emailGroupToEmailGroupInputModelMapper = emailGroupToEmailGroupInputModelMapper;
             this.emailGroupRepository = emailGroupRepository;
         }
 
         [ValidateInput(false)]
-        public override ActionResult  Manage(EmailGroupInputModel form)
+        public override ActionResult Manage(EmailGroupInputModel form)
         {
- 	         var reuslt = base.Manage(form);
-            return reuslt;
-        }
-
-        public override ActionResult Manage()
-        {
-            var result = base.Manage();
-            return result;
+            return base.Manage(form);
         }
 
         protected override IQueryable<EmailGroup> GetListItems(Core.List.ListViewModel listViewModel)
