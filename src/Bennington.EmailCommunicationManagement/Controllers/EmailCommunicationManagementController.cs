@@ -2,9 +2,9 @@
 using System.Web.Mvc;
 using Bennington.Cms.Controllers;
 using Bennington.EmailCommunication.Models;
+using Bennington.EmailCommunication.Repositories;
 using Bennington.EmailCommunicationManagement.Mappers;
 using Bennington.EmailCommunicationManagement.Models;
-using Bennington.EmailCommunicationManagement.Repositories;
 using Bennington.EmailCommunicationManagement.Services;
 
 namespace Bennington.EmailCommunicationManagement.Controllers

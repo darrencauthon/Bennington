@@ -44,7 +44,9 @@ namespace Bennington.EmailCommunicationManagement.Models
 
         [DisplayName("From Email")]
         public string FromEmail { get; set; }
-        
+
+        public string Subject { get; set; }
+
         [HtmlEditor]
         [DisplayName("Body Text")]
         public string BodyText { get; set; }

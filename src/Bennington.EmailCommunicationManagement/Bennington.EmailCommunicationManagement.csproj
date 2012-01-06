@@ -90,7 +90,6 @@
     <Compile Include="Models\EmailGroupInputModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration\RegisterInterfaceToSingleImplementations.cs" />
-    <Compile Include="Repositories\EmailGroupRepository.cs" />
     <Compile Include="Routing\EmailCommunicationManagementRouting.cs" />
     <Compile Include="Services\EmailGroupInputModelProcessingService.cs" />
     <Compile Include="Validators\EmailGroupInputModelValidator.cs" />

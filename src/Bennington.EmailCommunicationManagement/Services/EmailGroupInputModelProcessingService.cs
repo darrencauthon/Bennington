@@ -2,9 +2,9 @@
 using System.Linq;
 using Bennington.Core.Helpers;
 using Bennington.EmailCommunication.Models;
+using Bennington.EmailCommunication.Repositories;
 using Bennington.EmailCommunicationManagement.Mappers;
 using Bennington.EmailCommunicationManagement.Models;
-using Bennington.EmailCommunicationManagement.Repositories;
 
 namespace Bennington.EmailCommunicationManagement.Services
 {

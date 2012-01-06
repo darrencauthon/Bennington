@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using Bennington.Core.Helpers;
 using Bennington.EmailCommunication.Models;
-using Bennington.EmailCommunicationManagement.Models;
 using Bennington.Repository;
 using Bennington.Repository.Helpers;
 
-namespace Bennington.EmailCommunicationManagement.Repositories
+namespace Bennington.EmailCommunication.Repositories
 {
     public interface IEmailGroupRepository
     {
