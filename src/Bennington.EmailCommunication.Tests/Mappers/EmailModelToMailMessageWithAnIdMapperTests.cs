@@ -100,13 +100,29 @@ namespace Bennington.EmailCommunication.Tests.Mappers
         }
 
         [TestMethod]
-        public void Sets_Body_to_be_html_correctly()
+        public void Sets_Body_to_be_html_correctly_when_body_is_not_html()
         {
             var result = mocker.Resolve<EmailModelToMailMessageWithAnIdMapper>().CreateInstance(new EmailModel()
             {
                 ToEmail = "to@to.net",
                 FromEmail = "from@from.net",
                 BccEmails = "1@1.net;2@2.net",
+                IsBodyHtml = false,
+                BodyText = "body text",
+            });
+
+            Assert.IsFalse(result.IsBodyHtml);
+        }
+
+        [TestMethod]
+        public void Sets_Body_to_be_html_correctly_when_body_is_html()
+        {
+            var result = mocker.Resolve<EmailModelToMailMessageWithAnIdMapper>().CreateInstance(new EmailModel()
+            {
+                ToEmail = "to@to.net",
+                FromEmail = "from@from.net",
+                BccEmails = "1@1.net;2@2.net",
+                IsBodyHtml = true,
                 BodyText = "body text",
             });
 

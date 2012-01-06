@@ -36,6 +36,7 @@ namespace Bennington.EmailCommunication.Models
         public string BccEmails { get; set; }
         public string FromEmail { get; set; }
         public string Subject { get; set; }
+        public bool IsBodyHtml { get; set; }
         public string BodyText { get; set; }
     }
 }

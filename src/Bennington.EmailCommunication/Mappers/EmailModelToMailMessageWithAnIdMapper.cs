@@ -62,7 +62,7 @@ namespace Bennington.EmailCommunication.Mappers
                 result.Bcc.Add(emailModel.BccEmails.Replace(';', ','));
 
             result.Body = emailModel.BodyText;
-            result.IsBodyHtml = true;
+            result.IsBodyHtml = emailModel.IsBodyHtml;
 
             return result;
         }

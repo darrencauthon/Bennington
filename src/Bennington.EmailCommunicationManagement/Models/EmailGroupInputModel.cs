@@ -47,6 +47,9 @@ namespace Bennington.EmailCommunicationManagement.Models
 
         public string Subject { get; set; }
 
+        [DisplayName("Html Email?")]
+        public bool IsBodyHtml { get; set; }
+
         [HtmlEditor]
         [DisplayName("Body Text")]
         public string BodyText { get; set; }

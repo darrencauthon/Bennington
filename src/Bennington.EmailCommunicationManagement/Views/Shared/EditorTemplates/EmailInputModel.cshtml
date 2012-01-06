@@ -33,11 +33,20 @@
             @Html.EditorFor(model => model.EngineerId)
             @Html.ValidationMessageFor(model => model.EngineerId)
         </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsBodyHtml)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsBodyHtml)
+            @Html.ValidationMessageFor(model => model.IsBodyHtml)
+        </div>
     }
     else
     {
         @Html.HiddenFor(a => a.AdministratorInsturctionText)
         @Html.HiddenFor(a => a.EngineerId)
+        @Html.HiddenFor(a => a.IsBodyHtml)
         
         <div class="editor-label">
             @Html.LabelFor(model => model.EngineerId)
@@ -113,7 +122,15 @@
         @Html.LabelFor(model => model.BodyText)
     </div>
     <div class="editor-field">
-        @Html.EditorFor(model => model.BodyText)
+        @if (Model.IsBodyHtml)
+        {
+            @Html.EditorFor(model => model.BodyText)
+        }
+        else
+        {
+            @Html.TextAreaFor(model => model.BodyText)
+        }
+        
         @Html.ValidationMessageFor(model => model.BodyText)
     </div>
 
