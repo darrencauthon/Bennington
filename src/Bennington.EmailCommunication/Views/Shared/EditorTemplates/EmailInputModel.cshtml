@@ -38,6 +38,12 @@
     {
         @Html.HiddenFor(a => a.AdministratorInsturctionText)
         @Html.HiddenFor(a => a.EngineerId)
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EngineerId)
+        </div>
+        <div class="editor-field">@Model.EngineerId</div>
+        
         <div class="editor-field">@Html.Raw(Model.AdministratorInsturctionText)</div>
     }
 

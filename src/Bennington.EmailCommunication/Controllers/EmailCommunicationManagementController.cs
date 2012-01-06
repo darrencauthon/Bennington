@@ -18,14 +18,11 @@ namespace Bennington.EmailCommunication.Controllers
         private readonly IEmailGroupRepository emailGroupRepository;
         private readonly IEmailGroupToEmailGroupInputModelMapper emailGroupToEmailGroupInputModelMapper;
         private readonly IEmailGroupInputModelProcessingService emailGroupInputModelProcessingService;
-        private IEmailAdministratorContext emailAdministratorContext;
 
         public EmailCommunicationManagementController(IEmailGroupRepository emailGroupRepository,
                                                       IEmailGroupToEmailGroupInputModelMapper emailGroupToEmailGroupInputModelMapper,
-                                                      IEmailGroupInputModelProcessingService emailGroupInputModelProcessingService,
-                                                      IEmailAdministratorContext emailAdministratorContext)
+                                                      IEmailGroupInputModelProcessingService emailGroupInputModelProcessingService)
         {
-            this.emailAdministratorContext = emailAdministratorContext;
             this.emailGroupInputModelProcessingService = emailGroupInputModelProcessingService;
             this.emailGroupToEmailGroupInputModelMapper = emailGroupToEmailGroupInputModelMapper;
             this.emailGroupRepository = emailGroupRepository;

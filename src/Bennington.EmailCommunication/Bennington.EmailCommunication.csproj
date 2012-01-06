@@ -96,6 +96,8 @@
     <Compile Include="Services\EmailGroupInputModelProcessingService.cs" />
     <Compile Include="Validators\EmailGroupInputModelValidator.cs" />
     <Compile Include="Validators\EmailInputModelValidator.cs" />
+    <Compile Include="Validators\EmailValidator.cs" />
+    <Compile Include="Validators\Helpers\ValidateSemiColonDelimitedEmailListHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Content\Canvas\emailicon.png" />
@@ -129,12 +131,14 @@
       <Name>Bennington.Repository</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Views\Shared\EditorTemplates\EmailGroupInputModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Shared\EditorTemplates\EmailInputModel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\EmailCommunicationManagement\Manage.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

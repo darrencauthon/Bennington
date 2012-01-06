@@ -39,6 +39,12 @@
     }
     else
     {
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EngineerId)
+        </div>
+        <div class="editor-field">@Model.EngineerId</div>
+
+        
         @Html.HiddenFor(a => a.EmailCount)
         @Html.HiddenFor(a => a.EngineerId)
     }

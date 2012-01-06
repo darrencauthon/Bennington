@@ -13,8 +13,10 @@ namespace Bennington.EmailCommunication.Models
 
         public string Name { get; set; }
 
+        [Hidden]
         public string EngineerId { get; set; }
 
+        [Hidden]
         public int EmailCount { get; set; }
 
         [Hidden]

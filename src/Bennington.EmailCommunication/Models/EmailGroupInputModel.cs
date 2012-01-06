@@ -15,7 +15,7 @@ namespace Bennington.EmailCommunication.Models
 
         public string Name { get; set; }
 
-        [DisplayName("Id to use for pulling these emails from code")]
+        [DisplayName("Email Group ID")]
         public string EngineerId { get; set; }
 
         [DisplayName("The number of emails for this group.  DECREMENTING THIS NUMBER IS NOT A REVERSIBLE OPERATION")]
@@ -31,7 +31,7 @@ namespace Bennington.EmailCommunication.Models
         [DisplayName("The text administrators see")]
         public string AdministratorInsturctionText { get; set; }
 
-        [DisplayName("Engineer Id")]
+        [DisplayName("Email ID")]
         public string EngineerId { get; set; }
 
         [DisplayName("Show To field?")]
