@@ -70,9 +70,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.FileUploadHandli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.ContentTree.Providers.ContentNodeProviderManagement", "Bennington.ContentTree.Providers.ContentNodeProviderManagement\Bennington.ContentTree.Providers.ContentNodeProviderManagement.csproj", "{CF733385-9551-42E5-909F-B3B871EAA93C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.EmailCommunication", "Bennington.EmailCommunication\Bennington.EmailCommunication.csproj", "{6B4DA420-53BD-475E-AF7F-E1CA61F9B7CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.EmailCommunicationManagement", "Bennington.EmailCommunicationManagement\Bennington.EmailCommunicationManagement.csproj", "{6B4DA420-53BD-475E-AF7F-E1CA61F9B7CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.EmailCommunication.Tests", "Bennington.EmailCommunication.Tests\Bennington.EmailCommunication.Tests.csproj", "{82BAE10E-5811-4CE8-B825-21BBBEA20AFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.EmailCommunicationManagement.Tests", "Bennington.EmailCommunicationManagement.Tests\Bennington.EmailCommunicationManagement.Tests.csproj", "{82BAE10E-5811-4CE8-B825-21BBBEA20AFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.EmailCommunication", "Bennington.EmailCommunication\Bennington.EmailCommunication.csproj", "{AE3B9894-2112-4518-A3AE-17C9BD8B4CFC}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -211,6 +213,10 @@ Global
 		{82BAE10E-5811-4CE8-B825-21BBBEA20AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82BAE10E-5811-4CE8-B825-21BBBEA20AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82BAE10E-5811-4CE8-B825-21BBBEA20AFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE3B9894-2112-4518-A3AE-17C9BD8B4CFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE3B9894-2112-4518-A3AE-17C9BD8B4CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE3B9894-2112-4518-A3AE-17C9BD8B4CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE3B9894-2112-4518-A3AE-17C9BD8B4CFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

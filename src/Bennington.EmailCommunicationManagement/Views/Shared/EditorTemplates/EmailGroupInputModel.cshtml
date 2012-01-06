@@ -1,0 +1,53 @@
+﻿@using Bennington.EmailCommunicationManagement
+@using MvcTurbine.ComponentModel
+@model Bennington.EmailCommunicationManagement.Models.EmailGroupInputModel
+
+@{
+    var thisUserIsASuperUser = ServiceLocatorManager.Current.Resolve<IEmailAdministratorContext>().IsThisUserASuperUser();
+}
+
+@Html.ValidationSummary(true)
+<fieldset>
+
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Name)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+
+    @if (thisUserIsASuperUser)
+    {
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmailCount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmailCount)
+            @Html.ValidationMessageFor(model => model.EmailCount)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EngineerId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EngineerId)
+            @Html.ValidationMessageFor(model => model.EngineerId)
+        </div>
+    }
+    else
+    {
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EngineerId)
+        </div>
+        <div class="editor-field">@Model.EngineerId</div>
+
+        
+        @Html.HiddenFor(a => a.EmailCount)
+        @Html.HiddenFor(a => a.EngineerId)
+    }
+        
+    @Html.EditorFor(a => a.EmailInputModels)
+</fieldset>

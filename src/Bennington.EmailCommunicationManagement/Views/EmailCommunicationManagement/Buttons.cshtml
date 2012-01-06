@@ -1,0 +1,10 @@
+﻿@model Bennington.Core.List.ListViewModel
+@using MvcTurbine.ComponentModel
+@using Bennington.EmailCommunicationManagement
+@{
+    var thisUserIsASuperUser = ServiceLocatorManager.Current.Resolve<IEmailAdministratorContext>().IsThisUserASuperUser();
+}
+
+@if (thisUserIsASuperUser) {
+    @Html.ActionLink("Create", "Create", null, new { @class = "button" })
+}
