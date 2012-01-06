@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Linq;
 using System.Linq;
+using System.Runtime.Caching;
 using System.Transactions;
 using Bennington.Content.Data;
 using Bennington.Content.Sql.Data;
@@ -10,6 +11,7 @@ namespace Bennington.Content.Sql
     public class SqlContentTypeRegistry : IContentTypeRegistry
     {
         private readonly string connectionString;
+        private readonly ObjectCache cache = MemoryCache.Default;
 
         public SqlContentTypeRegistry(string connectionString)
         {
@@ -18,26 +20,36 @@ namespace Bennington.Content.Sql
 
         public ContentType[] GetContentTypes()
         {
-            using (var dataContext = new ContentDataContext(connectionString))
-            {
-                var types = dataContext.ContentTypeItems.ToArray();
-                var actions = dataContext.ContentActionItems.ToArray();
+            var contentTypes = cache["ContentTypes"] as ContentType[];
 
-                return (from type in types
-                        select new ContentType(type.Type, type.DisplayName, type.ControllerName, actions.Where(c => c.ContentType == type.Type)
-                                                                                                        .Select(a => new ContentAction()
-                                                                                                                         {
-                                                                                                                             Action = a.Action,
-                                                                                                                             DisplayName = a.DisplayName
-                                                                                                                         }).ToArray())
-                                               ).ToArray();
+            if (contentTypes == null)
+            {
+                using (var dataContext = new ContentDataContext(connectionString))
+                {
+                    var types = dataContext.ContentTypeItems.ToArray();
+                    var actions = dataContext.ContentActionItems.ToArray();
+
+                    contentTypes = (from type in types
+                                    select new ContentType(type.Type, type.DisplayName, type.ControllerName, actions.Where(c => c.ContentType == type.Type)
+                                                                                                                 .Select(a => new ContentAction
+                                                                                                                 {
+                                                                                                                     Action = a.Action,
+                                                                                                                     DisplayName =
+                                                                                                                         a.DisplayName
+                                                                                                                 }).ToArray())
+                                   ).ToArray();
+
+                    cache.Add("ContentTypes", contentTypes, new DateTimeOffset(DateTime.Now.AddHours(1)));
+                }
             }
+
+            return contentTypes;
         }
 
         public void Save(params ContentType[] contentTypes)
         {
-            using(var ts = new TransactionScope())
-            using(var dataContext = new ContentDataContext(connectionString))
+            using (var ts = new TransactionScope())
+            using (var dataContext = new ContentDataContext(connectionString))
             {
                 var loadOptions = new DataLoadOptions();
                 loadOptions.LoadWith<ContentTypeItem>(ct => ct.ContentActionItems);
@@ -52,7 +64,7 @@ namespace Bennington.Content.Sql
                 var itemsToUpdate = (from data in contentTypeItems
                                      let type = contentTypes.SingleOrDefault(t => t.Type == data.Type && t.ControllerName == data.ControllerName)
                                      where type != null
-                                     select new {data, type}).ToList();
+                                     select new { data, type }).ToList();
 
                 var itemsToInsert = (from type in contentTypes
                                      where !contentTypeItems.Any(t => t.Type == type.Type && t.ControllerName == type.ControllerName)
@@ -79,11 +91,12 @@ namespace Bennington.Content.Sql
             var actionsToUpdate = (from item in contentTypeItem.ContentActionItems
                                    let action = contentType.Actions.SingleOrDefault(a => a.Action == item.Action)
                                    where action != null
-                                   select new {item, action}).ToList();
+                                   select new { item, action }).ToList();
 
             var actionsToInsert = (from action in contentType.Actions
                                    where !contentTypeItem.ContentActionItems.Any(a => a.Action == action.Action)
-                                   select new ContentActionItem {Action = action.Action, ContentType = contentTypeItem.Type, DisplayName = action.DisplayName}).ToList();
+                                   select new ContentActionItem { Action = action.Action, ContentType = contentTypeItem.Type, DisplayName = action.DisplayName }).
+                ToList();
 
             contentDataContext.ContentActionItems.DeleteAllOnSubmit(actionsToDelete);
             actionsToUpdate.ForEach(a => { a.item.DisplayName = a.action.DisplayName; });
@@ -92,8 +105,10 @@ namespace Bennington.Content.Sql
 
         private static ContentTypeItem CreateContentTypeItem(ContentType contentType)
         {
-            var contentTypeItem = new ContentTypeItem {Type = contentType.Type, DisplayName = contentType.DisplayName, ControllerName = contentType.ControllerName};
-            var contentActionItems = contentType.Actions.Select(action => new ContentActionItem {Action = action.Action, ContentType = contentType.Type, DisplayName = action.DisplayName});
+            var contentTypeItem = new ContentTypeItem { Type = contentType.Type, DisplayName = contentType.DisplayName, ControllerName = contentType.ControllerName };
+            var contentActionItems =
+                contentType.Actions.Select(
+                    action => new ContentActionItem { Action = action.Action, ContentType = contentType.Type, DisplayName = action.DisplayName });
             contentTypeItem.ContentActionItems.AddRange(contentActionItems);
             return contentTypeItem;
         }
