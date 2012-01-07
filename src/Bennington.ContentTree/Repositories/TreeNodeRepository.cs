@@ -3,6 +3,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Runtime.Caching;
+using System.Threading;
 using Bennington.ContentTree.Data;
 using Bennington.Core.Helpers;
 
@@ -49,6 +50,7 @@ namespace Bennington.ContentTree.Repositories
         public TreeNode Create(TreeNode treeNode)
         {
             dataModelDataContext.Create(treeNode);
+            Thread.Sleep(1500);
             return treeNode;
         }
 
