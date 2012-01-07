@@ -37,8 +37,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
             {
                 items = dataModelDataContext.ContentNodeProviderPublishedVersions.ToArray();
                 var policy = new CacheItemPolicy();
-                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"ContentNodeProviderPublishedVersions.xml"),
-                                                                                        Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"ContentNodeProviderDrafts.xml") }));
+                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"ContentNodeProviderPublishedVersions.xml") }));
 
                 cache.Add(GetType().AssemblyQualifiedName, items, policy);
             }
