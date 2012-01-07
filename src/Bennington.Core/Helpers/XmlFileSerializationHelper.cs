@@ -19,9 +19,12 @@ namespace Bennington.Core.Helpers
 			CreateEmptyFileIfItDoesntExist<T>(path);
 
 			var serializer = new XmlSerializer(typeof(T));
-			TextWriter textWriter = new StreamWriter(path);
-			serializer.Serialize(textWriter, data);
-			textWriter.Close();
+			using (var textWriter = new StreamWriter(path))
+			{
+                serializer.Serialize(textWriter, data);
+                textWriter.Flush();
+                textWriter.Close();
+			}
 		}
 
 		public T DeserializeFromPath<T>(string path)
@@ -29,11 +32,12 @@ namespace Bennington.Core.Helpers
 			CreateEmptyFileIfItDoesntExist<T>(path);
 
 			var deserializer = new XmlSerializer(typeof(T));
-			TextReader textReader = new StreamReader(path);
-			var data = (T)deserializer.Deserialize(textReader);
-			textReader.Close();
-
-			return data;
+			using (var textReader = new StreamReader(path))
+			{
+                var data = (T)deserializer.Deserialize(textReader);
+                textReader.Close();
+                return data;
+			}
 		}
 
 		public void SerializeListToPath<T>(List<T> data, string path)
@@ -41,9 +45,12 @@ namespace Bennington.Core.Helpers
 			CreateEmptyFileIfItDoesntExist<T>(path);
 
 			var serializer = new XmlSerializer(typeof(List<T>));
-			TextWriter textWriter = new StreamWriter(path);
-			serializer.Serialize(textWriter, data);
-			textWriter.Close();
+			using (TextWriter textWriter = new StreamWriter(path))
+			{
+                serializer.Serialize(textWriter, data);
+                textWriter.Flush();
+                textWriter.Close();
+			}
 		}
 
 		public List<T> DeserializeListFromPath<T>(string path)
@@ -51,14 +58,15 @@ namespace Bennington.Core.Helpers
 			CreateEmptyFileIfItDoesntExist<T>(path);
 
 			var deserializer = new XmlSerializer(typeof(List<T>));
-			TextReader textReader = new StreamReader(path);
-			var data = (List<T>)deserializer.Deserialize(textReader);
-			textReader.Close();
-
-			return data;
+			using (var textReader = new StreamReader(path))
+			{
+                var data = (List<T>)deserializer.Deserialize(textReader);
+                textReader.Close();
+                return data;			    
+			}
 		}
 
-		private void CreateEmptyFileIfItDoesntExist<T>(string path)
+		private static void CreateEmptyFileIfItDoesntExist<T>(string path)
 		{
 			if (!File.Exists(path))
 			{
@@ -69,12 +77,14 @@ namespace Bennington.Core.Helpers
 					Directory.CreateDirectory(s);
 				}
 
-				using (System.IO.File.Create(path)){}
+				using (File.Create(path)){}
 
 				var serializer = new XmlSerializer(typeof(List<T>));
-				TextWriter textWriter = new StreamWriter(path);
-				serializer.Serialize(textWriter, new List<T>());
-				textWriter.Close();	
+				using (var textWriter = new StreamWriter(path))
+				{
+                    serializer.Serialize(textWriter, new List<T>());
+                    textWriter.Close();				    
+				}
 			}
 		}
 	}
