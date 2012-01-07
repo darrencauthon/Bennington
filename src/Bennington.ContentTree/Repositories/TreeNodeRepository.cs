@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Caching;
 using Bennington.ContentTree.Data;
+using Bennington.Core.Helpers;
 
 namespace Bennington.ContentTree.Repositories
 {
@@ -19,29 +20,30 @@ namespace Bennington.ContentTree.Repositories
     {
         private readonly IDataModelDataContext dataModelDataContext;
         private readonly ObjectCache cache = MemoryCache.Default;
+        private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
 
-        public TreeNodeRepository(IDataModelDataContext dataModelDataContext)
+        public TreeNodeRepository(IDataModelDataContext dataModelDataContext, IGetPathToDataDirectoryService getPathToDataDirectoryService)
         {
+            this.getPathToDataDirectoryService = getPathToDataDirectoryService;
             this.dataModelDataContext = dataModelDataContext;
         }
 
         public IQueryable<TreeNode> GetAll()
         {
-            var treeNodes = cache["TreeNodes"] as IQueryable<TreeNode>;
+            var treeNodes = cache[GetType().AssemblyQualifiedName] as TreeNode[];
 
             if (treeNodes == null)
             {
-                treeNodes = dataModelDataContext.TreeNodes;
+                treeNodes = dataModelDataContext.TreeNodes.ToArray();
 
-                var localWorkingFolder = Path.Combine(ConfigurationManager.AppSettings["Bennington.LocalWorkingFolder"], @"BenningtonData\");
+                var pathToDataStore = Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"TreeNodes.xml");
                 var policy = new CacheItemPolicy();
+                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { pathToDataStore }));
 
-                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { localWorkingFolder }));
-
-                cache.Add("TreeNodes", treeNodes, policy);
+                cache.Add(GetType().AssemblyQualifiedName, treeNodes, policy);
             }
 
-            return treeNodes;
+            return treeNodes.AsQueryable();
         }
 
         public TreeNode Create(TreeNode treeNode)

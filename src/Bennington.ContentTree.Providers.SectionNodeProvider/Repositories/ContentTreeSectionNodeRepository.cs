@@ -7,6 +7,7 @@ using Bennington.ContentTree.Providers.SectionNodeProvider.Data;
 using Bennington.ContentTree.Providers.SectionNodeProvider.Mappers;
 using Bennington.ContentTree.Providers.SectionNodeProvider.Models;
 using Bennington.ContentTree.Repositories;
+using Bennington.Core.Helpers;
 
 namespace Bennington.ContentTree.Providers.SectionNodeProvider.Repositories
 {
@@ -22,10 +23,13 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Repositories
         private readonly ITreeNodeRepository treeNodeRepository;
         private readonly ISectionNodeProviderDraftToContentTreeSectionNodeMapper sectionNodeProviderDraftToContentTreeSectionNodeMapper;
         private readonly ObjectCache cache = MemoryCache.Default;
+        private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
 
         public ContentTreeSectionNodeRepository(IDataModelDataContext dataModelDataContext, ITreeNodeRepository treeNodeRepository,
-                                                ISectionNodeProviderDraftToContentTreeSectionNodeMapper sectionNodeProviderDraftToContentTreeSectionNodeMapper)
+                                                ISectionNodeProviderDraftToContentTreeSectionNodeMapper sectionNodeProviderDraftToContentTreeSectionNodeMapper,
+                                                IGetPathToDataDirectoryService getPathToDataDirectoryService)
         {
+            this.getPathToDataDirectoryService = getPathToDataDirectoryService;
             this.sectionNodeProviderDraftToContentTreeSectionNodeMapper = sectionNodeProviderDraftToContentTreeSectionNodeMapper;
             this.treeNodeRepository = treeNodeRepository;
             this.dataModelDataContext = dataModelDataContext;
@@ -33,21 +37,19 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Repositories
 
         public IQueryable<ContentTreeSectionNode> GetAllContentTreeSectionNodes()
         {
-            var items = cache["ContentTreeSectionNodes"] as IQueryable<ContentTreeSectionNode>;
+            var items = cache[GetType().AssemblyQualifiedName] as ContentTreeSectionNode[];
 
             if (items == null)
             {
-                items = sectionNodeProviderDraftToContentTreeSectionNodeMapper.CreateSet(dataModelDataContext.GetAllSectionNodeProviderDrafts()).AsQueryable();
-
-                var localWorkingFolder = Path.Combine(ConfigurationManager.AppSettings["Bennington.LocalWorkingFolder"], @"BenningtonData\");
+                items = sectionNodeProviderDraftToContentTreeSectionNodeMapper.CreateSet(dataModelDataContext.GetAllSectionNodeProviderDrafts()).ToArray();
+                var pathToDataStore = Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"SectionNodeProviderDrafts.xml");
                 var policy = new CacheItemPolicy();
+                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { pathToDataStore }));
 
-                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { localWorkingFolder }));
-
-                cache.Add("ContentTreeSectionNodes", items, policy);
+                cache.Add(GetType().AssemblyQualifiedName, items, policy);
             }
 
-            return items;
+            return items.AsQueryable();
         }
 
         public void Delete(ContentTreeSectionNode instance)

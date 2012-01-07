@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Runtime.Caching;
@@ -19,30 +18,30 @@ namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Repositories
     public class ToolLinkProviderDraftRepository : ObjectStore<ToolLinkProviderDraft>, IToolLinkProviderDraftRepository
     {
         private readonly ObjectCache cache = MemoryCache.Default;
+        private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
 
         public ToolLinkProviderDraftRepository(IXmlFileSerializationHelper xmlFileSerializationHelper, IGetDataPathForType getDataPathForType,
-                                               IGetValueOfIdPropertyForInstance getValueOfIdPropertyForInstance, IGuidGetter guidGetter, IFileSystem fileSystem)
+                                               IGetValueOfIdPropertyForInstance getValueOfIdPropertyForInstance, IGuidGetter guidGetter, IFileSystem fileSystem, IGetPathToDataDirectoryService getPathToDataDirectoryService)
             : base(xmlFileSerializationHelper, getDataPathForType, getValueOfIdPropertyForInstance, guidGetter, fileSystem)
         {
+            this.getPathToDataDirectoryService = getPathToDataDirectoryService;
         }
 
         public IQueryable<ToolLinkProviderDraft> GetAll()
         {
-            var toolLinks = cache["ToolLinks"] as IQueryable<ToolLinkProviderDraft>;
+            var toolLinks = cache[GetType().AssemblyQualifiedName] as ToolLinkProviderDraft[];
 
             if (toolLinks == null)
             {
-                toolLinks = base.GetAll().AsQueryable();
+                toolLinks = base.GetAll().ToArray();
 
-                var localWorkingFolder = Path.Combine(ConfigurationManager.AppSettings["Bennington.LocalWorkingFolder"], @"BenningtonData\");
+                var pathToDataStore = Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), typeof(ToolLinkProviderDraft).FullName);
                 var policy = new CacheItemPolicy();
-
-                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { localWorkingFolder }));
-
-                cache.Add("ToolLinks", toolLinks, policy);
+                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { pathToDataStore }));
+                cache.Add(GetType().AssemblyQualifiedName, toolLinks, policy);
             }
 
-            return toolLinks;
+            return toolLinks.AsQueryable();
         }
     }
 }

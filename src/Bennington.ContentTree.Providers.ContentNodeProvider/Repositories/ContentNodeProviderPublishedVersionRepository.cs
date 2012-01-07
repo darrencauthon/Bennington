@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Caching;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Data;
+using Bennington.Core.Helpers;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
 {
@@ -19,29 +20,30 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
     {
         private readonly IDataModelDataContext dataModelDataContext;
         private readonly ObjectCache cache = MemoryCache.Default;
+        private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
 
-        public ContentNodeProviderPublishedVersionRepository(IDataModelDataContext dataModelDataContext)
+        public ContentNodeProviderPublishedVersionRepository(IDataModelDataContext dataModelDataContext,
+                                                            IGetPathToDataDirectoryService getPathToDataDirectoryService)
         {
+            this.getPathToDataDirectoryService = getPathToDataDirectoryService;
             this.dataModelDataContext = dataModelDataContext;
         }
 
         public IQueryable<ContentNodeProviderPublishedVersion> GetAllContentNodeProviderPublishedVersions()
         {
-            var items = cache["ContentNodeProviderPublishedVersions"] as IQueryable<ContentNodeProviderPublishedVersion>;
+            var items = cache[GetType().AssemblyQualifiedName] as ContentNodeProviderPublishedVersion[];
 
             if (items == null)
             {
-                items = dataModelDataContext.ContentNodeProviderPublishedVersions;
-
-                var localWorkingFolder = Path.Combine(ConfigurationManager.AppSettings["Bennington.LocalWorkingFolder"], @"BenningtonData\");
+                items = dataModelDataContext.ContentNodeProviderPublishedVersions.ToArray();
                 var policy = new CacheItemPolicy();
+                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"ContentNodeProviderPublishedVersions.xml"),
+                                                                                        Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"ContentNodeProviderDrafts.xml") }));
 
-                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { localWorkingFolder }));
-
-                cache.Add("ContentNodeProviderPublishedVersions", items, policy);
+                cache.Add(GetType().AssemblyQualifiedName, items, policy);
             }
 
-            return items;
+            return items.AsQueryable();
         }
 
         public void Update(ContentNodeProviderPublishedVersion instance)
