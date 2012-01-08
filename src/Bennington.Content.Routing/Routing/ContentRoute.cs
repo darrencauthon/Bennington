@@ -55,11 +55,6 @@ namespace Bennington.Content.Routing
             if (!string.IsNullOrEmpty(stringBuilder.ToString()))
                 url = url + "?" + stringBuilder.ToString();
             return new VirtualPathData(null, url);
-
-            //routeValues.Remove("controller");
-            //routeValues.Remove("action");
-
-            //return base.GetVirtualPath(new RequestContext(requestContext.HttpContext, routeData), routeValues);
         }
 
         private string GetUrlForTreeNode(ContentTreeNode contentTreeNode)
