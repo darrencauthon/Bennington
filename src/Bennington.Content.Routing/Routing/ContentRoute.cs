@@ -44,12 +44,13 @@ namespace Bennington.Content.Routing
 
             var url = GetUrlForTreeNode(treeNode);
             var stringBuilder = new StringBuilder();
+            var count = 0;
             foreach (var routeValueKey in values.Keys)
             {
                 if (routeValueKey.Equals("controller", StringComparison.CurrentCultureIgnoreCase)) continue;
                 if (routeValueKey.Equals("action", StringComparison.CurrentCultureIgnoreCase)) continue;
-                
-                stringBuilder.Append(string.Format("{0}={1}", routeValueKey, routeValues[routeValueKey]));
+                stringBuilder.Append(string.Format("{0}{1}={2}", count > 0 ? "&" : string.Empty, routeValueKey, routeValues[routeValueKey]));
+                count++;
             }
             if (!string.IsNullOrEmpty(stringBuilder.ToString()))
                 url = url + "?" + stringBuilder.ToString();
