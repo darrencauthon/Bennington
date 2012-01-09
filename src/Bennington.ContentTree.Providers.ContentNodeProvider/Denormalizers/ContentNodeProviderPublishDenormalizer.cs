@@ -13,17 +13,11 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		private readonly IContentNodeProviderPublishedVersionRepository contentNodeProviderPublishedVersionRepository;
 		private readonly IContentNodeProviderDraftToContentNodeProviderPublishedVersionMapper contentNodeProviderDraftToContentNodeProviderPublishedVersionMapper;
 		private readonly IContentNodeProviderDraftRepository contentNodeProviderDraftRepository;
-		private readonly IApplicationSettingsValueGetter applicationSettingsValueGetter;
-		private readonly IFileSystem fileSystem;
 
 		public ContentNodeProviderPublishDenormalizer(IContentNodeProviderPublishedVersionRepository contentNodeProviderPublishedVersionRepository,
 			IContentNodeProviderDraftToContentNodeProviderPublishedVersionMapper contentNodeProviderDraftToContentNodeProviderPublishedVersionMapper,
-			IContentNodeProviderDraftRepository contentNodeProviderDraftRepository,
-			IApplicationSettingsValueGetter applicationSettingsValueGetter,
-			IFileSystem fileSystem)
+			IContentNodeProviderDraftRepository contentNodeProviderDraftRepository)
 		{
-			this.fileSystem = fileSystem;
-			this.applicationSettingsValueGetter = applicationSettingsValueGetter;
 			this.contentNodeProviderDraftRepository = contentNodeProviderDraftRepository;
 			this.contentNodeProviderDraftToContentNodeProviderPublishedVersionMapper = contentNodeProviderDraftToContentNodeProviderPublishedVersionMapper;
 			this.contentNodeProviderPublishedVersionRepository = contentNodeProviderPublishedVersionRepository;
