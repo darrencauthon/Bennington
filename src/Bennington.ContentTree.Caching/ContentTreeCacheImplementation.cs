@@ -57,7 +57,7 @@ namespace Bennington.ContentTree.Caching
 
         private IList<string> GetListOfFilePathDependencies()
         {
-            new List<string>
+            return new List<string>
                 {
                     Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"TreeNodex.xml"),
                     Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"SectionNodeProviderDrafts.xml"),

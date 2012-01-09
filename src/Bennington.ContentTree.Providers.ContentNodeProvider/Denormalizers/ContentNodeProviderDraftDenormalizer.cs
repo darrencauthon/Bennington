@@ -51,6 +51,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(PageNameSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
 			contentNodeProviderDraft.Name = domainEvent.Name;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
@@ -58,6 +60,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(PageActionSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
 			contentNodeProviderDraft.Action = domainEvent.Action;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
@@ -65,6 +69,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(MetaTitleSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
 			contentNodeProviderDraft.MetaTitle = domainEvent.MetaTitle;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
@@ -72,6 +78,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(MetaDescriptionSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
 			contentNodeProviderDraft.MetaDescription = domainEvent.MetaDescription;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
@@ -79,7 +87,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(PageUrlSegmentSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
-			
+            if (contentNodeProviderDraft == null)
+                return;
 			contentNodeProviderDraft.UrlSegment = domainEvent.UrlSegment;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
@@ -87,6 +96,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(HeaderTextSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
 			contentNodeProviderDraft.HeaderText = domainEvent.HeaderText;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
@@ -94,6 +105,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(BodySetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
 			contentNodeProviderDraft.Body = domainEvent.Body;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
@@ -101,6 +114,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(PageSequenceSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
 			contentNodeProviderDraft.Sequence = domainEvent.PageSequence;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
@@ -116,6 +131,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(PageTreeNodeIdSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
 			contentNodeProviderDraft.TreeNodeId = domainEvent.TreeNodeId.ToString();
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
@@ -123,6 +140,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(PageHiddenSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
 			contentNodeProviderDraft.Hidden = domainEvent.Hidden;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
@@ -130,6 +149,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(PageInactiveSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
 			contentNodeProviderDraft.Inactive = domainEvent.Inactive;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
@@ -137,6 +158,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 		public void Handle(PageHeaderImageSetEvent domainEvent)
 		{
 			var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
 			contentNodeProviderDraft.HeaderImage = domainEvent.HeaderImage;
 			contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 		}
@@ -144,6 +167,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 	    public void Handle(PageLastModifyBySetEvent domainEvent)
 	    {
             var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
             contentNodeProviderDraft.LastModifyBy = domainEvent.LastModifyBy;
             contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 	    }
@@ -151,6 +176,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 	    public void Handle(PageLastModifyDateSetEvent domainEvent)
 	    {
             var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
             contentNodeProviderDraft.LastModifyDate = domainEvent.DateTime;
             contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 	    }
@@ -158,6 +185,8 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 	    public void Handle(MetaKeywordSetEvent domainEvent)
 	    {
             var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null)
+                return;
             contentNodeProviderDraft.MetaKeywords = domainEvent.MetaKeywords;
             contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
         }
