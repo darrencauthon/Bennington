@@ -183,6 +183,10 @@
       <Project>{2932BB2B-8274-4E38-9EB0-EAB81659D0C4}</Project>
       <Name>Bennington.Content.Sql</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bennington.ContentTree.Caching\Bennington.ContentTree.Caching.csproj">
+      <Project>{70590A70-555A-4ACC-9F67-13EAE5085037}</Project>
+      <Name>Bennington.ContentTree.Caching</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bennington.ContentTree.Providers.ContentNodeProvider\Bennington.ContentTree.Providers.ContentNodeProvider.csproj">
       <Project>{BA1AC304-5E93-4EE3-ACE1-E1E2DEC5C93D}</Project>
       <Name>Bennington.ContentTree.Providers.ContentNodeProvider</Name>

@@ -38,12 +38,12 @@ namespace Bennington.ContentTree
 			this.treeNodeRepository = treeNodeRepository;
 		}
 
-	    public IEnumerable<ContentTreeNode> GetRootNodes()
+	    public virtual IEnumerable<ContentTreeNode> GetRootNodes()
 	    {
 	        return GetChildren(RootNodeId);
 	    }
 
-        public string Create(string parentNodeId, string providerTypeAssemblyQualifiedName, string controllerName)
+        public virtual string Create(string parentNodeId, string providerTypeAssemblyQualifiedName, string controllerName)
 		{
 			ThrowExceptionIfTheProviderTypeDoesNotImplementIContentTreeNodeProvider(Type.GetType(providerTypeAssemblyQualifiedName));
 
@@ -66,16 +66,21 @@ namespace Bennington.ContentTree
 				throw new Exception(string.Format("Provider type must implement {0}", typeof(IContentTreeNodeProvider).FullName));
 		}
 
-		public IEnumerable<ContentTreeNode> GetChildren(string parentNodeId)
+        public virtual IEnumerable<ContentTreeNode> GetChildren(string parentNodeId)
 		{
 			var allNodes = treeNodeRepository.GetAll();
 			var childNodes = from node in allNodes
-							 where (node.ParentTreeNodeId == parentNodeId)
+							 where ((node.ParentTreeNodeId == parentNodeId) || (parentNodeId == null))
 							 select GetTreeNodeSummaryForTreeNode(node);
 			return childNodes.Where(a => a != null);
 		}
 
-		public ContentTreeNode GetById(string nodeId)
+        public virtual IEnumerable<ContentTreeNode> GetAllContentTreeNodes()
+        {
+            return GetChildren(null);
+        }
+
+        public virtual ContentTreeNode GetById(string nodeId)
 		{
 			var treeNode = treeNodeRepository.GetAll().Where(a => a.TreeNodeId == nodeId).FirstOrDefault();
 			if (treeNode == null) return null;

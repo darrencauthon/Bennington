@@ -479,6 +479,57 @@ namespace Bennington.ContentTree.Tests.Contexts
 			Assert.AreEqual(2, result.Count());
 		}
 
+        [TestMethod]
+        public void Returns_flat_set_of_results_instead_of_filtering_by_parent_when_passed_null()
+        {
+            var fakeTreeNodeExtensionProvider = new Mock<IContentTreeNodeProvider>();
+            fakeTreeNodeExtensionProvider.Setup(a => a.GetAll())
+                .Returns(new[]
+				         	{
+								new ContentTreeNode()
+									{
+										Id = "1",
+									}, 
+								new ContentTreeNode()
+									{
+										Id = "2",
+										Name = "fake tree node name",
+									}, 
+								new ContentTreeNode()
+									{
+										Id = "3",
+									}, 
+				         	}.AsQueryable());
+            mocker.GetMock<IContentTreeNodeProviderContext>().Setup(a => a.GetProviderForTreeNode(It.Is<TreeNode>(b => b.Type == "FakeTreeNodeExtensionProvider")))
+                                                             .Returns(fakeTreeNodeExtensionProvider.Object);
+            mocker.GetMock<ITreeNodeRepository>().Setup(a => a.GetAll())
+                .Returns(new TreeNode[]
+				         	{
+				         		new TreeNode()
+				         			{
+										TreeNodeId = "1",
+										Type = "FakeTreeNodeExtensionProvider",
+				         			}, 
+				         		new TreeNode()
+				         			{
+										TreeNodeId = "2",
+										ParentTreeNodeId = "1",
+										Type = "FakeTreeNodeExtensionProvider",
+				         			}, 
+				         		new TreeNode()
+				         			{
+										TreeNodeId = "3",
+				         				ParentTreeNodeId = "1",
+										Type = "FakeTreeNodeExtensionProvider",
+				         			}, 
+							}.AsQueryable());
+
+            var treeNodeSummarContext = mocker.Resolve<ContentTree>();
+            var result = treeNodeSummarContext.GetChildren(null);
+
+            Assert.AreEqual(3, result.Count());
+        }
+
 		[TestMethod]
 		public void Returns_empty_set_when_passed_null()
 		{

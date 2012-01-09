@@ -11,7 +11,7 @@ namespace Bennington.ContentTree.Caching.Blades
     {
         public override void Spin(IRotorContext context)
         {
-            context.ServiceLocator.Register<IContentTree, Bennington.ContentTree.Caching.ContentTree>();
+            context.ServiceLocator.Register<IContentTree, Bennington.ContentTree.Caching.ContentTreeCacheImplementation>();
         }
     }
 }

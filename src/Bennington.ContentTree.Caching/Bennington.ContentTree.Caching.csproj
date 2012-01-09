@@ -56,7 +56,7 @@
     <Compile Include="Blades\ContentTreeCacheImplementationRegistrationBlade.cs" />
     <Compile Include="Blades\ContentTreeCacheInvalidationBlade.cs" />
     <Compile Include="Blades\RegisterSingletonsBlade.cs" />
-    <Compile Include="ContentTree.cs" />
+    <Compile Include="ContentTreeCacheImplementation.cs" />
     <Compile Include="Controllers\BenningtonContentTreeCacheInvalidationController.cs" />
     <Compile Include="GetVaryByCustomStringHelper.cs" />
     <Compile Include="Models\InvalidateViewModel.cs" />
