@@ -15,7 +15,7 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Mappers
 
 	public class SectionNodeProviderDraftToContentTreeSectionNodeMapper : Mapper<SectionNodeProviderDraft, ContentTreeSectionNode>, ISectionNodeProviderDraftToContentTreeSectionNodeMapper
 	{
-	    private ITreeNodeRepository treeNodeRepository;
+	    private readonly ITreeNodeRepository treeNodeRepository;
 
 	    public SectionNodeProviderDraftToContentTreeSectionNodeMapper(ITreeNodeRepository treeNodeRepository)
 	    {

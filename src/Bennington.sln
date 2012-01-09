@@ -78,6 +78,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.EmailCommunicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.EmailCommunication.Tests", "Bennington.EmailCommunication.Tests\Bennington.EmailCommunication.Tests.csproj", "{74046ABB-FDCF-4466-BF1C-2D142A612397}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.ContentTree.Caching", "Bennington.ContentTree.Caching\Bennington.ContentTree.Caching.csproj", "{70590A70-555A-4ACC-9F67-13EAE5085037}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Bennington.vsmdi
@@ -223,6 +225,10 @@ Global
 		{74046ABB-FDCF-4466-BF1C-2D142A612397}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74046ABB-FDCF-4466-BF1C-2D142A612397}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74046ABB-FDCF-4466-BF1C-2D142A612397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70590A70-555A-4ACC-9F67-13EAE5085037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70590A70-555A-4ACC-9F67-13EAE5085037}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70590A70-555A-4ACC-9F67-13EAE5085037}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70590A70-555A-4ACC-9F67-13EAE5085037}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

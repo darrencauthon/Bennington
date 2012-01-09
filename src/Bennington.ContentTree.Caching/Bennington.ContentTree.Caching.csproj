@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{70590A70-555A-4ACC-9F67-13EAE5085037}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bennington.ContentTree.Caching</RootNamespace>
+    <AssemblyName>Bennington.ContentTree.Caching</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapperAssist">
+      <HintPath>..\packages\AutoMapperAssist.2.0\lib\AutoMapperAssist.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcTurbine">
+      <HintPath>..\packages\MVCTurbine.3.4\lib\MvcTurbine.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleCqrs">
+      <HintPath>..\packages\SimpleCqrs.1.0\lib\SimpleCqrs.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Blades\ContentTreeCacheImplementationRegistrationBlade.cs" />
+    <Compile Include="Blades\ContentTreeCacheInvalidationBlade.cs" />
+    <Compile Include="Blades\RegisterSingletonsBlade.cs" />
+    <Compile Include="ContentTree.cs" />
+    <Compile Include="Controllers\BenningtonContentTreeCacheInvalidationController.cs" />
+    <Compile Include="GetVaryByCustomStringHelper.cs" />
+    <Compile Include="Models\InvalidateViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Routing\BenningtonContentTreeCacheInvalidationControllerRouteRegistrator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bennington.ContentTree.Domain\Bennington.ContentTree.Domain.csproj">
+      <Project>{9F36EE92-6F9A-4C57-AA4B-81328423D0DA}</Project>
+      <Name>Bennington.ContentTree.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bennington.ContentTree.Providers.ContentNodeProvider\Bennington.ContentTree.Providers.ContentNodeProvider.csproj">
+      <Project>{BA1AC304-5E93-4EE3-ACE1-E1E2DEC5C93D}</Project>
+      <Name>Bennington.ContentTree.Providers.ContentNodeProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bennington.ContentTree.Providers.SectionNodeProvider\Bennington.ContentTree.Providers.SectionNodeProvider.csproj">
+      <Project>{F5B06173-0873-4E7E-BBD5-9F58D69E077F}</Project>
+      <Name>Bennington.ContentTree.Providers.SectionNodeProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bennington.ContentTree.Providers.ToolLinkNodeProvider\Bennington.ContentTree.Providers.ToolLinkNodeProvider.csproj">
+      <Project>{BD01E5D0-D160-4E39-B18B-61D2B375977B}</Project>
+      <Name>Bennington.ContentTree.Providers.ToolLinkNodeProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bennington.ContentTree\Bennington.ContentTree.csproj">
+      <Project>{97981EC9-A1C5-460E-9244-9D5C9169E47F}</Project>
+      <Name>Bennington.ContentTree</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bennington.Core\Bennington.Core.csproj">
+      <Project>{AAB424EE-5CFA-42BE-9F9A-2350C5C8E715}</Project>
+      <Name>Bennington.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bennington.Repository\Bennington.Repository.csproj">
+      <Project>{C46BBBB8-68BF-4A57-BE88-0734B26CD51C}</Project>
+      <Name>Bennington.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\BenningtonContentTreeCacheInvalidation\Invalidate.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
