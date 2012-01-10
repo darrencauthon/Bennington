@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Runtime.Caching;
+using System.Web;
 using Bennington.Content.Data;
 using Bennington.Content.Sql.Data;
 using Bennington.Core.Caching;
@@ -12,17 +13,18 @@ namespace Bennington.Content.Sql
         private readonly string connectionString;
         private readonly InvalidateCacheEndpoint cacheEndpoint;
         private readonly ObjectCache contentTreeCache = MemoryCache.Default;
-        private const string ContentTreeCacheKey = "contentTreeItems";
+        private const string ContentTreeCacheKey = "Bennington.ContentTree";
 
         public SqlContentTreeProvider(string connectionString, Uri invalidateCacheUri)
         {
             ContentChanged += (sender, e) => { };
             this.connectionString = connectionString;
-            cacheEndpoint = new InvalidateCacheEndpoint(invalidateCacheUri, InvalidateCache);
+            cacheEndpoint = new InvalidateCacheEndpoint(invalidateCacheUri);
+            cacheEndpoint.CacheInvalidated += InvalidateCache;
             cacheEndpoint.Open();
         }
 
-        private void InvalidateCache(string cacheKey)
+        private void InvalidateCache(object sender, CacheInvalidatedEventArgs cacheInvalidatedEventArgs)
         {
             contentTreeCache.Remove(ContentTreeCacheKey);
             ContentChanged(this, new EventArgs());
@@ -32,7 +34,7 @@ namespace Bennington.Content.Sql
 
         public void Refresh()
         {
-            InvalidateCache(string.Empty);
+            InvalidateCache(this, new CacheInvalidatedEventArgs(string.Empty));
         }
 
         public ContentTree GetContentTree()

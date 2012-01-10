@@ -25,6 +25,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
             return View();
         }
 
+        //[OutputCache(Duration = 28800, VaryByParam = "treeNodeId;actionId", VaryByCustom = "Bennington.ContentTree")]
         public virtual ActionResult Display(string treeNodeId, string actionId)
         {
             return PartialView("Display", contentTreeNodeDisplayViewModelBuilder().BuildViewModel(treeNodeId, actionId));

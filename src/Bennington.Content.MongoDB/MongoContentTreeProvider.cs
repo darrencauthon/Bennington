@@ -19,20 +19,21 @@ namespace Bennington.Content.MongoDB
             this.collectionName = collectionName;
             databaseName = builder.DatabaseName;
             mongoServer = MongoServer.Create(connectionString);
-            cacheEndpoint = new InvalidateCacheEndpoint(invalidateCacheUri, InvalidateCache);
+            cacheEndpoint = new InvalidateCacheEndpoint(invalidateCacheUri);
+            cacheEndpoint.CacheInvalidated += InvalidateCache;
             cacheEndpoint.Open();
         }
 
-        private void InvalidateCache(string cacheKey)
+        private void InvalidateCache(object sender, CacheInvalidatedEventArgs e)
         {
-            ContentChanged(this, new EventArgs());
+            ContentChanged(this, e);
         }
 
         public event EventHandler<EventArgs> ContentChanged;
 
         public void Refresh()
         {
-            InvalidateCache(string.Empty);
+            InvalidateCache(this, new CacheInvalidatedEventArgs(string.Empty));
         }
 
         public ContentTree GetContentTree()

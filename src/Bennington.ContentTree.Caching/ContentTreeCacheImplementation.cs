@@ -16,7 +16,7 @@ namespace Bennington.ContentTree.Caching
     {
         private readonly ObjectCache cache = MemoryCache.Default;
         private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
-
+        public const string ContentTreeOutputCacheKey = "Bennington.ContentTree";
 
         public ContentTreeCacheImplementation(ITreeNodeRepository treeNodeRepository, 
                            IContentTreeNodeProviderContext contentTreeNodeProviderContext, 

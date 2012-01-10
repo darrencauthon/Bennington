@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Caching;
 using System.Text;
 using System.Web;
 
@@ -33,16 +34,27 @@ namespace Bennington.ContentTree.Caching
 
         private static string GetStringFromApplicationSession(HttpContext context, string sessionKey)
         {
-            if (!context.Application.AllKeys.Where(a => a == sessionKey).Any())
+            var cache = MemoryCache.Default;
+            var cacheItem = cache.Get(sessionKey) as string;
+            if (cacheItem == null)
             {
-                context.Application[sessionKey] = Guid.NewGuid().ToString();
+                var guid = Guid.NewGuid().ToString();
+                cache.Set(sessionKey, guid, new DateTimeOffset(DateTime.Now.AddHours(8)));
+                return guid;
             }
-            return context.Application[sessionKey].ToString();
+
+            return cacheItem;
+
+            //if (!context.Application.AllKeys.Where(a => a == sessionKey).Any())
+            //{
+            //    context.Application[sessionKey] = Guid.NewGuid().ToString();
+            //}
+            //return context.Application[sessionKey].ToString();
         }
 
         private static IEnumerable<string> GetCacheKeys(string arg)
         {
-            return arg.Split('|').OrderBy(a => a);
+            return arg.Split(';').OrderBy(a => a);
         }
     }
 }

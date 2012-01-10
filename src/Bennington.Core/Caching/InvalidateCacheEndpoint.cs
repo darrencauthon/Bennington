@@ -6,13 +6,13 @@ namespace Bennington.Core.Caching
     public class InvalidateCacheEndpoint : IDisposable
     {
         private readonly Uri invalidateCacheUri;
-        private readonly Action<string> invalidateCache;
         private ServiceHost cacheServiceHost;
+        public event EventHandler<CacheInvalidatedEventArgs> CacheInvalidated;
 
-        public InvalidateCacheEndpoint(Uri invalidateCacheUri, Action<string> invalidateCache)
+        public InvalidateCacheEndpoint(Uri invalidateCacheUri)
         {
             this.invalidateCacheUri = invalidateCacheUri;
-            this.invalidateCache = invalidateCache;
+            CacheInvalidated += (sender, e) => { };
         }
 
         public void Open()
@@ -54,7 +54,7 @@ namespace Bennington.Core.Caching
 
         private void OpenServiceHost()
         {
-            cacheServiceHost = new ServiceHost(new InvalidateCacheService(invalidateCache, () => cacheServiceHost.Close()), invalidateCacheUri);
+            cacheServiceHost = new ServiceHost(new InvalidateCacheService(CacheInvalidated, () => cacheServiceHost.Close()), invalidateCacheUri);
             cacheServiceHost.AddServiceEndpoint(typeof(IInvalidateCacheService), new NetNamedPipeBinding(), invalidateCacheUri);
             cacheServiceHost.Open();
         }

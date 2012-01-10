@@ -63,7 +63,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                                            });                
             }
 
-            InvalidateRoutingCache();
+            InvalidateCaches();
         }
 
         private string GetIdForContentTreeRow(string treeNodeId, string controllerAction)
@@ -72,11 +72,12 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
             return contentTreeRow == null ? Guid.NewGuid().ToString() : contentTreeRow.Id;
         }
 
-        private void InvalidateRoutingCache()
+        private void InvalidateCaches()
         {
-            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["Bennington.Content.RoutingCacheKey"]))
-                return;
-            InvalidateCacheClient.Invalidate(new Uri(string.Format("net.pipe://localhost/caching/{0}/content_tree", ConfigurationManager.AppSettings["Bennington.Content.RoutingCacheKey"])));
+            if (!string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["Bennington.Content.RoutingCacheKey"]))
+                InvalidateCacheClient.Invalidate(new Uri(string.Format("net.pipe://localhost/caching/{0}/content_tree", ConfigurationManager.AppSettings["Bennington.Content.RoutingCacheKey"])));
+
+            InvalidateCacheClient.Invalidate(new Uri(string.Format("net.pipe://localhost/caching/{0}/content_tree", "Bennington.ContentTree.CacheKey")));
         }
 
         private string GetActionId(ContentNodeProviderDraft draft)
@@ -103,7 +104,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
                 contentTreeRepository.Delete(contentTreeNodeRow.Id);
             }
 
-            InvalidateRoutingCache();
+            InvalidateCaches();
         }
     }
 }
