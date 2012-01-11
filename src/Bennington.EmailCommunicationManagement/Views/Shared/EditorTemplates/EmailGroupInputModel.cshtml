@@ -27,6 +27,7 @@
             @Html.LabelFor(model => model.Name)
         </div>
         <div class="editor-field">@Model.Name</div>
+        @Html.HiddenFor(a => a.Name)
     }
 
     @if (thisUserIsASuperUser)
