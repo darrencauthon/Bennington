@@ -128,5 +128,31 @@ namespace Bennington.EmailCommunication.Tests.Mappers
 
             Assert.IsTrue(result.IsBodyHtml);
         }
+
+        [TestMethod]
+        public void Does_not_throw_when_to_email_is_not_provided()
+        {
+            mocker.Resolve<EmailModelToMailMessageWithAnIdMapper>()
+                            .CreateInstance(new EmailModel()
+                                {
+                                    FromEmail = "from@from.net",
+                                    BccEmails = "1@1.net;2@2.net",
+                                    IsBodyHtml = true,
+                                    BodyText = "body text",
+                                });
+        }
+
+        [TestMethod]
+        public void Does_not_throw_when_from_email_is_not_provided()
+        {
+            mocker.Resolve<EmailModelToMailMessageWithAnIdMapper>()
+                            .CreateInstance(new EmailModel()
+                            {
+                                ToEmail = "to@to.net",
+                                BccEmails = "1@1.net;2@2.net",
+                                IsBodyHtml = true,
+                                BodyText = "body text",
+                            });
+        }
     }
 }

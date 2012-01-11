@@ -9,6 +9,7 @@ namespace Bennington.EmailCommunicationManagement.Models
         [Hidden]
         public string Id { get; set; }
 
+        [DisplayName("Email Group Name")]
         public string Name { get; set; }
 
         [DisplayName("Email Group ID")]
@@ -22,6 +23,7 @@ namespace Bennington.EmailCommunicationManagement.Models
 
     public class EmailInputModel
     {
+        [DisplayName("Email Name")]
         public string Name { get; set; }
 
         [DisplayName("The text administrators see")]

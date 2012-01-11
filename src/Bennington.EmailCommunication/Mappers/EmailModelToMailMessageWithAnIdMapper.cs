@@ -18,7 +18,7 @@ namespace Bennington.EmailCommunication.Mappers
         public override void DefineMap(AutoMapper.IConfiguration configuration)
         {
             configuration.CreateMap<EmailModel, MailMessageWithAnId>()
-                .ForMember(a => a.From, b => b.MapFrom(c => GetFrom(c)))
+                .ForMember(a => a.From, b => b.Ignore())
                 .ForMember(a => a.Sender, b => b.Ignore())
                 .ForMember(a => a.ReplyTo, b => b.Ignore())
                 .ForMember(a => a.ReplyToList, b => b.Ignore())
@@ -53,8 +53,12 @@ namespace Bennington.EmailCommunication.Mappers
         {
             var result = base.CreateInstance(emailModel);
 
-            result.To.Add(emailModel.ToEmail);
-            
+            if (!string.IsNullOrWhiteSpace(emailModel.ToEmail))
+                result.To.Add(emailModel.ToEmail);
+
+            if (!string.IsNullOrWhiteSpace(emailModel.FromEmail))
+                result.From = new MailAddress(emailModel.FromEmail);
+
             if (!string.IsNullOrWhiteSpace(emailModel.CcEmails))
                 result.CC.Add(emailModel.CcEmails.Replace(';', ','));
             
@@ -65,11 +69,6 @@ namespace Bennington.EmailCommunication.Mappers
             result.IsBodyHtml = emailModel.IsBodyHtml;
 
             return result;
-        }
-
-        private static MailAddress GetFrom(EmailModel emailModel)
-        {
-            return new MailAddress(emailModel.FromEmail);
         }
     }
 }
