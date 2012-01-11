@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmailCommunicationContext.cs" />
+    <Compile Include="EmailService.cs" />
     <Compile Include="Mappers\EmailModelToMailMessageWithAnIdMapper.cs" />
     <Compile Include="Models\EmailGroup.cs" />
     <Compile Include="Models\MailMessageWithAnId.cs" />

@@ -7,14 +7,25 @@
 }
 
 <fieldset>
-    <div style="padding-top:20px;"></div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.Name)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.Name)
-        @Html.ValidationMessageFor(model => model.Name)
-    </div>
+    @if (thisUserIsASuperUser)
+    {
+        <div style="padding-top:20px;"></div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+    }
+    else
+    {
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">@Model.Name</div>
+        @Html.HiddenFor(a => a.Name)
+    }
 
     @if (thisUserIsASuperUser)
     {
@@ -65,10 +76,28 @@
             @Html.EditorFor(model => model.ShowToField)
             @Html.ValidationMessageFor(model => model.ShowToField)
         </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShowFromField)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShowFromField)
+            @Html.ValidationMessageFor(model => model.ShowFromField)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShowSubjectField)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShowSubjectField)
+            @Html.ValidationMessageFor(model => model.ShowSubjectField)
+        </div>
     }
     else
     {
         @Html.HiddenFor(a => a.ShowToField)
+        @Html.HiddenFor(a => a.ShowFromField)
+        @Html.HiddenFor(a => a.ShowSubjectField)
     }
 
     @if (Model.ShowToField)
@@ -86,37 +115,65 @@
         @Html.HiddenFor(a => a.ToEmail)
     }
 
-    <div class="editor-label">
-        @Html.LabelFor(model => model.CcEmails)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.CcEmails)
-        @Html.ValidationMessageFor(model => model.CcEmails)
-    </div>
+    @if (Model.ShowToField)
+    {
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CcEmails)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CcEmails)
+            @Html.ValidationMessageFor(model => model.CcEmails)
+        </div>
+    }
+    else
+    {
+        @Html.HiddenFor(a => a.CcEmails)
+    }
 
-    <div class="editor-label">
-        @Html.LabelFor(model => model.BccEmails)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.BccEmails)
-        @Html.ValidationMessageFor(model => model.BccEmails)
-    </div>
+    @if (Model.ShowBccField)
+    {
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BccEmails)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BccEmails)
+            @Html.ValidationMessageFor(model => model.BccEmails)
+        </div>
+    }
+    else
+    {
+        @Html.HiddenFor(a => a.BccEmails)
+    }
 
-    <div class="editor-label">
-        @Html.LabelFor(model => model.FromEmail)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.FromEmail)
-        @Html.ValidationMessageFor(model => model.FromEmail)
-    </div>
+    @if (Model.ShowFromField)
+    {
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromEmail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FromEmail)
+            @Html.ValidationMessageFor(model => model.FromEmail)
+        </div>
+    }
+    else
+    {
+        @Html.HiddenFor(a => a.FromEmail)
+    }
 
-    <div class="editor-label">
-        @Html.LabelFor(model => model.Subject)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.Subject)
-        @Html.ValidationMessageFor(model => model.Subject)
-    </div>
+    @if (Model.ShowSubjectField)
+    {
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Subject)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Subject)
+            @Html.ValidationMessageFor(model => model.Subject)
+        </div>
+    }
+    else
+    {
+        @Html.HiddenFor(a => a.Subject)
+    }
 
     <div class="editor-label">
         @Html.LabelFor(model => model.BodyText)

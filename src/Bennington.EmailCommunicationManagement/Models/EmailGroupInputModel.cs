@@ -53,5 +53,13 @@ namespace Bennington.EmailCommunicationManagement.Models
         [HtmlEditor]
         [DisplayName("Body Text")]
         public string BodyText { get; set; }
+
+        public bool ShowSubjectField { get; set; }
+
+        public bool ShowCcField { get; set; }
+
+        public bool ShowBccField { get; set; }
+
+        public bool ShowFromField { get; set; }
     }
 }
