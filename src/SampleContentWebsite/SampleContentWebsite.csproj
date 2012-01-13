@@ -187,6 +187,10 @@
       <Project>{70590A70-555A-4ACC-9F67-13EAE5085037}</Project>
       <Name>Bennington.ContentTree.Caching</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bennington.ContentTree.Domain.SimpleCqrsRuntime\Bennington.ContentTree.Domain.SimpleCqrsRuntime.csproj">
+      <Project>{A3141F33-55EA-4A70-AEB3-3C37FFAA86B5}</Project>
+      <Name>Bennington.ContentTree.Domain.SimpleCqrsRuntime</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bennington.ContentTree.Providers.ContentNodeProvider\Bennington.ContentTree.Providers.ContentNodeProvider.csproj">
       <Project>{BA1AC304-5E93-4EE3-ACE1-E1E2DEC5C93D}</Project>
       <Name>Bennington.ContentTree.Providers.ContentNodeProvider</Name>
