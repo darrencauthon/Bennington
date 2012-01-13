@@ -12,6 +12,7 @@ using SimpleCqrs.Commanding;
 
 namespace Bennington.ContentTree.Providers.ToolLinkNodeProvider.Controllers
 {
+    [ValidateInput(false)]
     public class ToolLinkProviderNodeController : Controller
     {
     	private readonly IModifyViewModelBuilder modifyViewModelBuilder;
