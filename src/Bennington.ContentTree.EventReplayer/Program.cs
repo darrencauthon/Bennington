@@ -8,6 +8,7 @@ using Bennington.ContentTree.Data;
 using Bennington.ContentTree.Denormalizers;
 using Bennington.ContentTree.Domain;
 using Bennington.ContentTree.Domain.Events.TreeNode;
+using Bennington.ContentTree.Domain.SimpleCqrsRuntime;
 using Bennington.ContentTree.Providers.ContentNodeProvider;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Mappers;

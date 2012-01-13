@@ -8,7 +8,7 @@ using SimpleCqrs.Eventing;
 using SimpleCqrs.EventStore.SqlServer.Serializers;
 using IServiceLocator = MvcTurbine.ComponentModel.IServiceLocator;
 
-namespace Bennington.ContentTree.Domain.Registration
+namespace Bennington.ContentTree.Domain.SimpleCqrsRuntime
 {
 	public class SimpleCqrsRuntimeBootstrapper : IServiceRegistration
 	{
