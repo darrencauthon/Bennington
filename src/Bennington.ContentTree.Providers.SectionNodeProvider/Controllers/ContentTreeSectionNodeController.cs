@@ -13,6 +13,7 @@ using SimpleCqrs.Commanding;
 
 namespace Bennington.ContentTree.Providers.SectionNodeProvider.Controllers
 {
+    [ValidateInput(false)]
 	public class ContentTreeSectionNodeController : Controller
 	{
 		private readonly IContentTreeSectionNodeRepository contentTreeSectionNodeRepository;
