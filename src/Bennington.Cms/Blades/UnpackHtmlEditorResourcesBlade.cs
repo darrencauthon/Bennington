@@ -24,6 +24,8 @@ namespace Bennington.Cms.Blades
             var thisAssembly = Assembly.GetExecutingAssembly();
             var resourceNames = thisAssembly.GetManifestResourceNames();
             var pathToWebroot = getPathToWebrootHelper.GetPathToWebroot();
+            if (!pathToWebroot.EndsWith(Path.DirectorySeparatorChar + ""))
+                pathToWebroot = pathToWebroot + Path.DirectorySeparatorChar;
 
             foreach (var resourceName in resourceNames)
             {

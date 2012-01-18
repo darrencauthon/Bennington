@@ -9,12 +9,12 @@ using Bennington.EmailCommunication.TextProcessing;
 
 namespace Bennington.EmailCommunication
 {
-    public interface IEmailManagementContext
+    public interface IEmailCommunicationContext
     {
         IEnumerable<MailMessageWithAnId> GetEmailsFromEmailGroup(string emailGroupEngineerId, object emailViewModel);
     }
 
-    public class EmailCommunicationContext : IEmailManagementContext
+    public class EmailCommunicationContext : IEmailCommunicationContext
     {
         private readonly IEmailGroupRepository emailGroupRepository;
         private readonly IEmailModelToMailMessageWithAnIdMapper emailModelToMailMessageWithAnIdMapper;

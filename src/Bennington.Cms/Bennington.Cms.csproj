@@ -184,7 +184,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Scripts\jquery-1.6.4.min.js" />
     <EmbeddedResource Include="Views\Shared\EditorTemplates\HtmlEditor.ascx" />
-    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\jquery.tinymce.js" />
+    <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\jquery_tinymce.js" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\langs\en.js" />
     <EmbeddedResource Include="Scripts\HtmlEditor\tiny_mce\license.txt" />
     <Content Include="Scripts\HtmlEditor\tiny_mce\plugins\advhr\css\advhr.css" />
