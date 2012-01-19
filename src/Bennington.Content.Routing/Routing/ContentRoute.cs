@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -78,7 +79,15 @@ namespace Bennington.Content.Routing
         {
             var routeData = GetRouteData(treeNode);
             var queryString = HttpUtility.ParseQueryString(httpContext.Request.Url.Query);
-            queryString.CopyTo(routeData.Values);
+            var queryStringCollectionToCopy = new NameValueCollection();
+            foreach (var item in queryString.Keys)
+            {
+                if (item != null)
+                {
+                    queryStringCollectionToCopy.Add(item.ToString(), queryString[item.ToString()]);
+                }
+            }
+            queryStringCollectionToCopy.CopyTo(routeData.Values);
 
             return routeData;
         }
