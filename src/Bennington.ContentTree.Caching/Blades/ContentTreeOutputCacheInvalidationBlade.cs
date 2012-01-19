@@ -20,7 +20,7 @@ namespace Bennington.ContentTree.Caching.Blades
             if (string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["Bennington.ContentTree.EnableOutputCacheInvalidation"]))
                 return;
 
-            var invalidateCacheUri = new Uri(string.Format("net.pipe://localhost/caching/{0}/content_tree", "Bennington.ContentTree.CacheKey"));
+            var invalidateCacheUri = new Uri(string.Format("net.pipe://localhost/caching/{0}/content_tree", ConfigurationManager.AppSettings["Bennington.ContentTree.OutputCaching.CacheKey"] ?? "Bennington.ContentTree.CacheKey"));
             cacheEndpoint = new InvalidateCacheEndpoint(invalidateCacheUri);
             cacheEndpoint.CacheInvalidated += InvalidateCache;
             cacheEndpoint.Open();
