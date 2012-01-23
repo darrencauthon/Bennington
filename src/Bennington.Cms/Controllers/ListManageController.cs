@@ -52,6 +52,9 @@ namespace Bennington.Cms.Controllers
 
             UpdateForm(form);
 
+            if (string.Equals(Request.Form["submit"], "save and exit", StringComparison.InvariantCultureIgnoreCase))
+                return RedirectToAction("Index");
+
             return RedirectToAction("Manage", new {id = GetId(form)});
         }
 
