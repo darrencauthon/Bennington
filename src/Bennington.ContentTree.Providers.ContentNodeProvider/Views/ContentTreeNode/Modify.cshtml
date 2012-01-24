@@ -29,7 +29,8 @@
 			 } 
 			@if ((ViewContext.RouteData.Values["Action"].ToString() == "Modify") && (!string.IsNullOrEmpty(Model.ContentTreeNodeInputModel.PageId))) { 
 			<input type="button" class="button" value="Publish" onclick="$('#ContentTreeNodeInputModel_FormAction').val(this.value);$('#form').submit();" />
-			 } 
+            <input type="button" class="button" value="Publish and Exit" onclick="$('#ContentTreeNodeInputModel_FormAction').val(this.value);$('#form').submit();" />
+            } 
 		</div>
 	</div>
 

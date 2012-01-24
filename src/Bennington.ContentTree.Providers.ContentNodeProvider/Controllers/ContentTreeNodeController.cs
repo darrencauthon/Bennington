@@ -189,16 +189,16 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Controllers
 
 			if ((!string.IsNullOrEmpty(contentTreeNodeInputModel.FormAction)) && (contentTreeNodeInputModel.FormAction.StartsWith("Publish")))
 				commandBus.Send(new PublishPageCommand()
-				{
-					PageId = new Guid(contentTreeNodeInputModel.PageId)
-				});
+				                        {
+					                        PageId = new Guid(contentTreeNodeInputModel.PageId)
+				                        });
 
 			if (!string.IsNullOrEmpty(contentTreeNodeInputModel.FormAction))
 			{
-				if (contentTreeNodeInputModel.FormAction.ToLower() == "save and exit")
+				if (contentTreeNodeInputModel.FormAction.ToLower() == "save and exit" || contentTreeNodeInputModel.FormAction.ToLower() == "publish and exit")
 					return new RedirectToRouteResult(new RouteValueDictionary()
 			                                 	{
-			                                 		{"controller", "ContentTree"},
+			                                 		{"controller", "TreeManager"},
 													{"action", "Index"},
 			                                 	});
 			}
