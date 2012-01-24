@@ -14,6 +14,7 @@ namespace Bennington.ContentTree.Caching
 {
     public class ContentTreeCacheImplementation : Bennington.ContentTree.ContentTree, IContentTree
     {
+        private static Object lockObject = new Object();
         private readonly ObjectCache cache = MemoryCache.Default;
         private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
         public const string ContentTreeOutputCacheKey = "Bennington.ContentTree";
@@ -43,13 +44,19 @@ namespace Bennington.ContentTree.Caching
 
             if (contentTreeNodes == null)
             {
-                contentTreeNodes = base.GetChildren(null).ToList();
+                lock (lockObject)
+                {
+                    if (contentTreeNodes == null)
+                    {
+                        contentTreeNodes = base.GetChildren(null).ToList();
 
-                var policy = new CacheItemPolicy();
+                        var policy = new CacheItemPolicy();
 
-                policy.ChangeMonitors.Add(new HostFileChangeMonitor(GetListOfFilePathDependencies()));
+                        policy.ChangeMonitors.Add(new HostFileChangeMonitor(GetListOfFilePathDependencies()));
 
-                cache.Add(GetType().AssemblyQualifiedName, contentTreeNodes, policy);
+                        cache.Add(GetType().AssemblyQualifiedName, contentTreeNodes, policy);                                            
+                    }
+                }
             }
 
             return contentTreeNodes;
