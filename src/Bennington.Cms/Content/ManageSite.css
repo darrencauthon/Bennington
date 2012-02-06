@@ -188,7 +188,9 @@ div.section
 
 div.list-actions
 {
-    background-color: #E3E9EC;
+    background: #fff;
+    padding: 10px;
+    border-top: 2px dotted #ccc;    
 }
 
 div.section .content { padding: 0px; }
