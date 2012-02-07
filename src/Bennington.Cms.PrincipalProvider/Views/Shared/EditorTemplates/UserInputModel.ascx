@@ -51,3 +51,4 @@
                 <%: Html.PasswordFor(model => model.ConfirmPassword) %>
                 <%: Html.ValidationMessageFor(model => model.ConfirmPassword) %>
             </div>
+        </fieldset>
