@@ -21,7 +21,7 @@ namespace Bennington.Core.Caching
             {
                 OpenServiceHost();
             }
-            catch(InvalidOperationException)
+            catch(Exception)
             {
                 var client = new ChannelFactory<IInvalidateCacheService>(new NetNamedPipeBinding(), new EndpointAddress(invalidateCacheUri)).CreateChannel();
                 client.Stop();
@@ -56,7 +56,15 @@ namespace Bennington.Core.Caching
         {
             cacheServiceHost = new ServiceHost(new InvalidateCacheService(CacheInvalidated, () => cacheServiceHost.Close()), invalidateCacheUri);
             cacheServiceHost.AddServiceEndpoint(typeof(IInvalidateCacheService), new NetNamedPipeBinding(), invalidateCacheUri);
-            cacheServiceHost.Open();
+            try
+            {
+                cacheServiceHost.Open();
+            }
+            catch (Exception ex)
+            {
+                cacheServiceHost.Close();
+                cacheServiceHost.Open();
+            }
         }
     }
 }

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Runtime.Caching;
-using System.Text;
-using System.Web;
+using System.ServiceModel;
 using Bennington.Core.Caching;
 using MvcTurbine;
 using MvcTurbine.Blades;
@@ -23,7 +20,16 @@ namespace Bennington.ContentTree.Caching.Blades
             var invalidateCacheUri = new Uri(string.Format("net.pipe://localhost/caching/{0}/content_tree", ConfigurationManager.AppSettings["Bennington.ContentTree.OutputCaching.CacheKey"] ?? "Bennington.ContentTree.CacheKey"));
             cacheEndpoint = new InvalidateCacheEndpoint(invalidateCacheUri);
             cacheEndpoint.CacheInvalidated += InvalidateCache;
-            cacheEndpoint.Open();
+
+            try
+            {
+                cacheEndpoint.Open();
+            }
+            catch (AddressAlreadyInUseException ex)
+            {
+                cacheEndpoint.Dispose();
+                cacheEndpoint.Open();
+            }
         }
 
         private void InvalidateCache(object sender, CacheInvalidatedEventArgs e)
