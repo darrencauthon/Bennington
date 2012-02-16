@@ -84,6 +84,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.ContentTree.Even
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.ContentTree.Domain.SimpleCqrsRuntime", "Bennington.ContentTree.Domain.SimpleCqrsRuntime\Bennington.ContentTree.Domain.SimpleCqrsRuntime.csproj", "{A3141F33-55EA-4A70-AEB3-3C37FFAA86B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bennington.Cms.InputModelAggregateRoot", "Bennington.Cms.InputModelAggregateRoot\Bennington.Cms.InputModelAggregateRoot.csproj", "{882803D2-984F-4771-AB3A-9C6BDEB15CFB}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Bennington.vsmdi
@@ -468,6 +470,16 @@ Global
 		{A3141F33-55EA-4A70-AEB3-3C37FFAA86B5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A3141F33-55EA-4A70-AEB3-3C37FFAA86B5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A3141F33-55EA-4A70-AEB3-3C37FFAA86B5}.Release|x86.ActiveCfg = Release|Any CPU
+		{882803D2-984F-4771-AB3A-9C6BDEB15CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{882803D2-984F-4771-AB3A-9C6BDEB15CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{882803D2-984F-4771-AB3A-9C6BDEB15CFB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{882803D2-984F-4771-AB3A-9C6BDEB15CFB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{882803D2-984F-4771-AB3A-9C6BDEB15CFB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{882803D2-984F-4771-AB3A-9C6BDEB15CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{882803D2-984F-4771-AB3A-9C6BDEB15CFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{882803D2-984F-4771-AB3A-9C6BDEB15CFB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{882803D2-984F-4771-AB3A-9C6BDEB15CFB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{882803D2-984F-4771-AB3A-9C6BDEB15CFB}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
