@@ -1,0 +1,20 @@
+﻿@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@using MvcTurbine.ComponentModel
+@using Bennington.Cms.ReportManagement
+@{
+    Layout = "~/Views/Shared/ManageSite.cshtml";
+    var thisUserIsASuperUser = ServiceLocatorManager.Current.Resolve<IReportAdministratorContext>().IsThisUserASuperUser();
+}
+
+@using (Html.BeginForm(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.EditorForModel()
+
+    <input type="submit" class="button" value="Save" />
+ 
+    if (thisUserIsASuperUser)
+    {
+        <input type="button" class="button important" value="Delete" onclick="if (confirm('Are you sure you want to delete this item')){window.location='@Url.Action("Delete", new { id = Model.Id })';}" />
+    }
+}
