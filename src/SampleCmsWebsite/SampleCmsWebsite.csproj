@@ -203,6 +203,10 @@
       <Project>{BE0B07EB-DEA9-4CA0-9D0D-E6892A1453B3}</Project>
       <Name>Bennington.Cms.PrincipalProvider</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bennington.Cms.ReportManagement\Bennington.Cms.ReportManagement.csproj">
+      <Project>{9EA03ED1-D064-4575-99F8-81851EDF9331}</Project>
+      <Name>Bennington.Cms.ReportManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bennington.Cms\Bennington.Cms.csproj">
       <Project>{FF8F2B28-E0B8-4B6E-92C2-A8FFD0A68C8A}</Project>
       <Name>Bennington.Cms</Name>
