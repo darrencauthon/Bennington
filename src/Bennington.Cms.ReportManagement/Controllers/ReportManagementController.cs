@@ -20,6 +20,11 @@ namespace Bennington.Cms.ReportManagement.Controllers
             this.reportInputModelRepository = reportInputModelRepository;
         }
 
+        public ActionResult Stream(string id, DateTime? startDate, DateTime? endDate)
+        {
+            var csv = "Charlie, Chaplin, Chuckles, " + id;
+            return File(new UTF8Encoding().GetBytes(csv), "text/csv", "Report123.csv");
+        }
         public override void DeleteItem(object id)
         {
             var isThisAStringArray = id as string[];

@@ -8,5 +8,5 @@
 }
 else
 {
-    <a onclick="window.location='@Url.Action("Stream", typeof(ReportManagementController).Name.Replace("Controller", string.Empty), new { id = Model.Id })' + '&StartDate=' + $('StartDate' + '_' +'@Model.Id').val() + '&EndDate=' + $('EndDate' + '_' + '@Model.Id').val();return(false);" href="#">View</a>
+    <a onclick="window.location='@Url.Action("Stream", typeof(ReportManagementController).Name.Replace("Controller", string.Empty), new { id = Model.Id })' + '&StartDate=' + $('#StartDate' + '_' +'@Model.Id').val() + '&EndDate=' + $('#EndDate' + '_' + '@Model.Id').val();return(false);" href="#">View</a>
 }
