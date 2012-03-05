@@ -60,6 +60,7 @@
     <Compile Include="Models\ReportInputModel.cs" />
     <Compile Include="Models\ReportListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportDataRepository.cs" />
     <Compile Include="Repositories\ReportInputModelRepository.cs" />
     <Compile Include="Routing\ReportManagementRouting.cs" />
     <Compile Include="Validators\ReportInputModelValidator.cs">
@@ -103,6 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ReportManagement\CellTemplates\ViewReportLink.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

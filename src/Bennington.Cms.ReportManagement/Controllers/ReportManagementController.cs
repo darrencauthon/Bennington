@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
@@ -14,17 +15,23 @@ namespace Bennington.Cms.ReportManagement.Controllers
     public class ReportManagementController : ListManageController<ReportListViewModel, ReportInputModel>
     {
         private readonly IReportInputModelRepository reportInputModelRepository;
+        private readonly Func<IReportDataRepository> reportRepository;
 
-        public ReportManagementController(IReportInputModelRepository reportInputModelRepository)
+        public ReportManagementController(IReportInputModelRepository reportInputModelRepository,
+                                          Func<IReportDataRepository> reportRepository)
         {
+            this.reportRepository = reportRepository;
             this.reportInputModelRepository = reportInputModelRepository;
         }
 
         public ActionResult Stream(string id, DateTime? startDate, DateTime? endDate)
         {
-            var csv = "Charlie, Chaplin, Chuckles, " + id;
-            return File(new UTF8Encoding().GetBytes(csv), "text/csv", "Report123.csv");
+            var reportInputModel = GetFormById(id);
+            if (reportInputModel == null) throw new Exception("Report not found: " + id);
+
+            return File(new UTF8Encoding().GetBytes(reportRepository().GetData(reportInputModel)), "text/csv", string.IsNullOrWhiteSpace(reportInputModel.Filename) ? "Report.csv" : reportInputModel.Filename);                
         }
+
         public override void DeleteItem(object id)
         {
             var isThisAStringArray = id as string[];

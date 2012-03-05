@@ -26,5 +26,7 @@ namespace Bennington.Cms.ReportManagement.Models
 
         [DisplayName("Dipslay start/end date in list?")]
         public bool DisplayStartDateEndDate { get; set; }
+
+        public string Filename { get; set; }
     }
 }
