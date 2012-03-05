@@ -10,6 +10,7 @@ using Omu.ValueInjecter;
 
 namespace Bennington.Cms.ReportManagement.Controllers
 {
+    [Authorize]
     public class ReportManagementController : ListManageController<ReportListViewModel, ReportInputModel>
     {
         private readonly IReportInputModelRepository reportInputModelRepository;

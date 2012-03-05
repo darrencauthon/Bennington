@@ -4,5 +4,5 @@
 @if (Model.DisplayStartDateEndDate)
 {
     <label>Start Date</label>
-    @Html.Raw(string.Format(@"<input type=""text"" name=""StartDate_{0}"" class=""date"" value="""">", Model.Id))
+    @Html.Raw(string.Format(@"<input type=""text"" name=""StartDate_{0}"" id=""StartDate_{0}"" class=""date"" value="""">", Model.Id))
 }

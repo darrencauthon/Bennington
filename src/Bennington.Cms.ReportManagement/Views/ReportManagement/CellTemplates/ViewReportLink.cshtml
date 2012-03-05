@@ -1,4 +1,5 @@
 ﻿@using Bennington.Cms.ReportManagement.Models
+@using Bennington.Cms.ReportManagement.Controllers
 @model ReportListViewModel
 
 @if (!string.IsNullOrWhiteSpace(Model.UrlToStreamCsv))
@@ -7,5 +8,5 @@
 }
 else
 {
-    @Html.Raw("This feature is unimplemented")
+    <a onclick="window.location='@Url.Action("Stream", typeof(ReportManagementController).Name.Replace("Controller", string.Empty), new { id = Model.Id })' + '&StartDate=' + $('StartDate' + '_' +'@Model.Id').val() + '&EndDate=' + $('EndDate' + '_' + '@Model.Id').val();return(false);" href="#">View</a>
 }
