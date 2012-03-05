@@ -83,7 +83,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Content\Canvas\icondemo.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Views\ReportManagement\CellTemplates\Name.cshtml" />
   </ItemGroup>
@@ -92,6 +91,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ReportManagement\Buttons.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ReportManagement\CellTemplates\StartDate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Shared\EditorTemplates\ReportInputModel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ReportManagement\CellTemplates\EndDate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ReportManagement\CellTemplates\ViewReportLink.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

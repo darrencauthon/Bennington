@@ -19,13 +19,6 @@ namespace Bennington.Cms.ReportManagement.Controllers
             this.reportInputModelRepository = reportInputModelRepository;
         }
 
-        public override System.Web.Mvc.ActionResult Create(ReportInputModel form)
-        {
-            form.Id = Guid.NewGuid().ToString();
-            reportInputModelRepository.SaveAndReturnId(form);
-            return base.Create(form);
-        }
-
         public override void DeleteItem(object id)
         {
             var isThisAStringArray = id as string[];
@@ -35,7 +28,12 @@ namespace Bennington.Cms.ReportManagement.Controllers
             base.DeleteItem(id);
         }
 
-        [HttpPost]
+        public override void InsertForm(ReportInputModel form)
+        {
+            form.Id = Guid.NewGuid().ToString();
+            reportInputModelRepository.SaveAndReturnId(form);
+        }
+
         public override void UpdateForm(ReportInputModel form)
         {
             reportInputModelRepository.SaveAndReturnId(form);

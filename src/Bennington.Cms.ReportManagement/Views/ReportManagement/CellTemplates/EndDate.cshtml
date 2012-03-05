@@ -1,0 +1,8 @@
+﻿@using Bennington.Cms.ReportManagement.Models
+@model ReportListViewModel
+
+@if (Model.DisplayStartDateEndDate)
+{
+    <label>End Date</label>
+    @Html.Raw(string.Format(@"<input type=""text"" name=""EndDate_{0}"" class=""date"" value="""">", Model.Id))
+}

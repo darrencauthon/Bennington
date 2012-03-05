@@ -1,0 +1,56 @@
+﻿@model Bennington.Cms.ReportManagement.Models.ReportInputModel
+
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ConnectionStringIdentifier)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ConnectionStringIdentifier)
+            @Html.ValidationMessageFor(model => model.ConnectionStringIdentifier)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CollectionName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CollectionName)
+            @Html.ValidationMessageFor(model => model.CollectionName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CommaSeparatedListOfFields)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CommaSeparatedListOfFields)
+            @Html.ValidationMessageFor(model => model.CommaSeparatedListOfFields)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UrlToStreamCsv)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UrlToStreamCsv)
+            @Html.ValidationMessageFor(model => model.UrlToStreamCsv)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DisplayStartDateEndDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DisplayStartDateEndDate)
+            @Html.ValidationMessageFor(model => model.DisplayStartDateEndDate)
+        </div>
+    </fieldset>

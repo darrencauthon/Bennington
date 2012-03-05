@@ -12,7 +12,6 @@ namespace Bennington.Cms.ReportManagement.Validators
         public ReportInputModelValidator()
         {
             RuleFor(a => a.Name).Must(b => !string.IsNullOrWhiteSpace(b)).WithMessage("Field Required");
-            RuleFor(a => a.Id).Must(b => !string.IsNullOrWhiteSpace(b)).WithMessage("Field Required");
         }
 
         public override FluentValidation.Results.ValidationResult Validate(ReportInputModel instance)

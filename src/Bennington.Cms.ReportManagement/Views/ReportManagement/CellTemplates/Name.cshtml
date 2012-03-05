@@ -1,4 +1,13 @@
 ﻿@using Bennington.Cms.ReportManagement.Models
 @model ReportListViewModel
 
-<a href="@Url.Action("Manage", new { Id = @Model.Id })">@Model.Name</a>
+@{
+    var reportAdministratorContext = MvcTurbine.ComponentModel.ServiceLocatorManager.Current.Resolve<Bennington.Cms.ReportManagement.IReportAdministratorContext>();
+}
+
+@if (reportAdministratorContext.IsThisUserASuperUser())
+{
+    <a href="@Url.Action("Manage", new { Id = @Model.Id })">@Model.Name</a>
+} else {
+    @Model.Name
+}

@@ -1,0 +1,11 @@
+﻿@using Bennington.Cms.ReportManagement.Models
+@model ReportListViewModel
+
+@if (!string.IsNullOrWhiteSpace(Model.UrlToStreamCsv))
+{
+    <a href="@Html.Raw(Model.UrlToStreamCsv)">View</a>
+}
+else
+{
+    @Html.Raw("This feature is unimplemented")
+}
