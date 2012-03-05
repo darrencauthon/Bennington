@@ -10,14 +10,14 @@ namespace Bennington.Cms.ReportManagement
 {
     public interface IReportDataRepository
     {
-        string GetData(ReportInputModel reportInputModel);
+        string GetCsvData(ReportInputModel reportInputModel);
     }
 
     public class ReportDataRepository : IReportDataRepository
     {
-        public string GetData(ReportInputModel reportInputModel)
+        public string GetCsvData(ReportInputModel reportInputModel)
         {
-            return "test1,test2\na,b\n1,2";
+            throw new NotImplementedException();
         }
     }
 }

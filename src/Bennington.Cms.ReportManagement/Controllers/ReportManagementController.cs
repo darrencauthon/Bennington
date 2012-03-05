@@ -29,7 +29,7 @@ namespace Bennington.Cms.ReportManagement.Controllers
             var reportInputModel = GetFormById(id);
             if (reportInputModel == null) throw new Exception("Report not found: " + id);
 
-            return File(new UTF8Encoding().GetBytes(reportRepository().GetData(reportInputModel)), "text/csv", string.IsNullOrWhiteSpace(reportInputModel.Filename) ? "Report.csv" : reportInputModel.Filename);                
+            return File(new UTF8Encoding().GetBytes(reportRepository().GetCsvData(reportInputModel)), "text/csv", string.IsNullOrWhiteSpace(reportInputModel.Filename) ? "Report.csv" : reportInputModel.Filename);                
         }
 
         public override void DeleteItem(object id)

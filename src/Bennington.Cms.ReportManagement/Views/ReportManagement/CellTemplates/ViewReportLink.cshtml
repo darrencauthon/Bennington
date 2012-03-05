@@ -4,7 +4,7 @@
 
 @if (!string.IsNullOrWhiteSpace(Model.UrlToStreamCsv))
 {
-    <a href="@Html.Raw(Model.UrlToStreamCsv)">View</a>
+    <a href="#" onclick="window.location='@Html.Raw(Model.UrlToStreamCsv)' + '?id=@Model.Id&StartDate=' + $('#StartDate' + '_' +'@Model.Id').val() + '&EndDate=' + $('#EndDate' + '_' + '@Model.Id').val();return(false);">View</a>
 }
 else
 {
