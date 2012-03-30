@@ -41,6 +41,7 @@ namespace Bennington.ContentTree.Denormalizers
 		public void Handle(TreeNodeTypeSetEvent domainEvent)
 		{
 			var treeNode = GetTreeNodeFromDomainEvent(domainEvent);
+            if (domainEvent.Type == null) return;
 			treeNode.Type = domainEvent.Type.AssemblyQualifiedName;
 			treeNodeRepository.Update(treeNode);
 		}
