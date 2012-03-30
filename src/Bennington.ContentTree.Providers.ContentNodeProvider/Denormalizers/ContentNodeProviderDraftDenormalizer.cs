@@ -143,6 +143,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers
 	    public void Handle(PageLastModifyBySetEvent domainEvent)
 	    {
             var contentNodeProviderDraft = GetContentNodeProviderDraft(domainEvent);
+            if (contentNodeProviderDraft == null) return;
             contentNodeProviderDraft.LastModifyBy = domainEvent.LastModifyBy;
             contentNodeProviderDraftRepository.Update(contentNodeProviderDraft);
 	    }
