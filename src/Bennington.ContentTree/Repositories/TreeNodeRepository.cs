@@ -41,7 +41,7 @@ namespace Bennington.ContentTree.Repositories
                 var db = databaseRetriever.GetDatabase();
                 var list = new List<TreeNode>();
                 list.AddRange(db.TreeNodes.All().Cast<TreeNode>());
-
+                
                 treeNodes = list.ToArray();
 
                 var pathToDataStore = Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"TreeNodes.xml");
@@ -59,6 +59,7 @@ namespace Bennington.ContentTree.Repositories
             var db = databaseRetriever.GetDatabase();
             db.TreeNodes.Insert(treeNode);
             TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges();
+            Thread.Sleep(1500);
             return treeNode;
         }
 

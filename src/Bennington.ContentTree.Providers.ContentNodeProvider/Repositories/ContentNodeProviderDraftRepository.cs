@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Caching;
+using System.Threading;
 using Bennington.ContentTree.Helpers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Data;
 using Bennington.Core.Helpers;
@@ -71,6 +72,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
             if (instance.LastModifyDate == DateTime.MinValue) instance.LastModifyDate = new DateTime(1753, 1, 1);
             db.ContentNodeProviderDrafts.Insert(instance);
             TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges();
+            Thread.Sleep(1500);
 		}
 
         private void TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges()
