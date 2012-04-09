@@ -80,6 +80,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blades\CreateTreeNodeTableBlade.cs" />
     <Compile Include="Blades\RegisterAssemblyWithSimpleCqrsServiceLocatorBlade.cs" />
     <Compile Include="Data\ContentAction.cs" />
     <Compile Include="Data\ContentTreeTableRow.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ConnectionStringRetriever.cs" />
     <Compile Include="Helpers\GetUrlOfFrontSideWebsite.cs" />
     <Compile Include="Helpers\TreeNodeIdToUrl.cs" />
     <Compile Include="Helpers\UrlToTreeNodeSummaryMapper.cs" />

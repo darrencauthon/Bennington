@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Caching;
 using System.Threading;
 using Bennington.ContentTree.Data;
+using Bennington.ContentTree.Helpers;
 using Bennington.Core.Helpers;
 
 namespace Bennington.ContentTree.Repositories
@@ -20,6 +21,13 @@ namespace Bennington.ContentTree.Repositories
 
     public class TreeNodeRepository : ITreeNodeRepository
     {
+        private readonly IConnectionStringRetriever connectionStringRetriever;
+
+        public TreeNodeRepository(IConnectionStringRetriever connectionStringRetriever)
+        {
+            this.connectionStringRetriever = connectionStringRetriever;
+        }
+
         public IQueryable<TreeNode> GetAll()
         {
             dynamic db = GetDatabase();
@@ -47,9 +55,9 @@ namespace Bennington.ContentTree.Repositories
             db.TreeNodes.UpdateByTreeNodeId(treeNode);
         }
 
-        private static object GetDatabase()
+        private object GetDatabase()
         {
-            return Simple.Data.Database.OpenConnection(ConfigurationManager.ConnectionStrings["Bennington.ContentTree.Domain.ConnectionString"].ConnectionString);
+            return Simple.Data.Database.OpenConnection(connectionStringRetriever.GetConnectionString());
         }
     }
 }

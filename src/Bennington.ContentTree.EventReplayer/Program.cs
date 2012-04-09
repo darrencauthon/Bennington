@@ -9,6 +9,7 @@ using Bennington.ContentTree.Denormalizers;
 using Bennington.ContentTree.Domain;
 using Bennington.ContentTree.Domain.Events.TreeNode;
 using Bennington.ContentTree.Domain.SimpleCqrsRuntime;
+using Bennington.ContentTree.Helpers;
 using Bennington.ContentTree.Providers.ContentNodeProvider;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Denormalizers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Mappers;
@@ -57,7 +58,7 @@ namespace Bennington.ContentTreeEventReplayer
                         new SqlServerConfiguration(ConfigurationManager.ConnectionStrings["Bennington.ContentTree.Domain.ConnectionString"].ToString()),
                         new JsonDomainEventSerializer()));
 
-                serviceLocator.Register<ITreeNodeRepository>(new TreeNodeRepository());
+                serviceLocator.Register<ITreeNodeRepository>(new TreeNodeRepository(new ConnectionStringRetriever()));
                 serviceLocator.Register<IContentNodeProviderDraftRepository>(new ContentNodeProviderDraftRepository(new ContentTree.Providers.ContentNodeProvider.Data.DataModelDataContext(new XmlFileSerializationHelper(), new GetPathToDataDirectoryService(new ApplicationSettingsValueGetter(), new GetPathToWorkingDirectoryService(new ApplicationSettingsValueGetter())))));
                 serviceLocator.Register<IContentNodeProviderPublishedVersionRepository>(new ContentNodeProviderPublishedVersionRepository(new ContentTree.Providers.ContentNodeProvider.Data.DataModelDataContext(new XmlFileSerializationHelper(), new GetPathToDataDirectoryService(new ApplicationSettingsValueGetter(), new GetPathToWorkingDirectoryService(new ApplicationSettingsValueGetter()))), new GetPathToDataDirectoryService(new ApplicationSettingsValueGetter(), new GetPathToWorkingDirectoryService(new ApplicationSettingsValueGetter()))));
                 serviceLocator.Register<ContentTree.Providers.SectionNodeProvider.Data.IDataModelDataContext>(new Bennington.ContentTree.Providers.SectionNodeProvider.Data.DataModelDataContext(new XmlFileSerializationHelper(), new GetPathToDataDirectoryService(new ApplicationSettingsValueGetter(), new GetPathToWorkingDirectoryService(new ApplicationSettingsValueGetter()))));
