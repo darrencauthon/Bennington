@@ -8,7 +8,7 @@ namespace Bennington.ContentTree.Data
 {
 	
 
-	public class TreeNodeFileBasedDataContext : ITreeNodeDataContext
+	public class TreeNodeFileBasedDataContext //: ITreeNodeDataContext
 	{
 		private static readonly object _lockObject = "lock";
 

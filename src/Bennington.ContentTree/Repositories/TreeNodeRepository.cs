@@ -20,33 +20,36 @@ namespace Bennington.ContentTree.Repositories
 
     public class TreeNodeRepository : ITreeNodeRepository
     {
-        private readonly ITreeNodeDataContext treeNodeDataContext;
-
-        public TreeNodeRepository(ITreeNodeDataContext treeNodeDataContext)
-        {
-            this.treeNodeDataContext = treeNodeDataContext;
-        }
-
         public IQueryable<TreeNode> GetAll()
         {
-            return treeNodeDataContext.TreeNodes;
+            dynamic db = GetDatabase();
+            var list = new List<TreeNode>();
+            list.AddRange(db.TreeNodes.All().Cast<TreeNode>());
+            return list.AsQueryable();
         }
 
         public TreeNode Create(TreeNode treeNode)
         {
-            treeNodeDataContext.Create(treeNode);
-            Thread.Sleep(1500);
+            dynamic db = GetDatabase();
+            db.TreeNodes.Insert(treeNode);
             return treeNode;
         }
 
         public void Delete(string id)
         {
-            treeNodeDataContext.Delete(id);
+            dynamic db = GetDatabase();
+            db.TreeNodes.Delete(TreeNodeId: id);
         }
 
         public void Update(TreeNode treeNode)
         {
-            treeNodeDataContext.Update(treeNode);
+            dynamic db = GetDatabase();
+            db.TreeNodes.UpdateByTreeNodeId(treeNode);
+        }
+
+        private static object GetDatabase()
+        {
+            return Simple.Data.Database.OpenConnection(ConfigurationManager.ConnectionStrings["Bennington.ContentTree.Domain.ConnectionString"].ConnectionString);
         }
     }
 }
