@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Caching;
 using Bennington.ContentTree.Helpers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Data;
 using Bennington.Core.Helpers;
@@ -18,6 +19,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
 
 	public class ContentNodeProviderDraftRepository : IContentNodeProviderDraftRepository
 	{
+        private readonly ObjectCache cache = MemoryCache.Default;
 	    private readonly IDatabaseRetriever databaseRetriever;
 	    private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
 
@@ -29,10 +31,32 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
 
 	    public IQueryable<ContentNodeProviderDraft> GetAllContentNodeProviderDrafts()
 		{
+            var contentNodeProviderDrafts = cache[GetType().AssemblyQualifiedName] as ContentNodeProviderDraft[];
+
+            if (contentNodeProviderDrafts == null)
+            {
+                var db = databaseRetriever.GetDatabase();
+                var list = new List<ContentNodeProviderDraft>();
+                list.AddRange(db.ContentNodeProviderDrafts.All().Cast<ContentNodeProviderDraft>());
+
+                contentNodeProviderDrafts = list.ToArray();
+
+                var pathToDataStore = Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"ContentNodeProviderDrafts.xml");
+                var policy = new CacheItemPolicy();
+                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { pathToDataStore }));
+
+                cache.Add(GetType().AssemblyQualifiedName, contentNodeProviderDrafts, policy);
+            }
+
+	        return contentNodeProviderDrafts.AsQueryable();
+
+
+	        /*
             var db = databaseRetriever.GetDatabase();
             var list = new List<ContentNodeProviderDraft>();
             list.AddRange(db.ContentNodeProviderDrafts.All().Cast<ContentNodeProviderDraft>());
             return list.AsQueryable();
+             * */
 		}
 
 		public void Delete(ContentNodeProviderDraft instance)
