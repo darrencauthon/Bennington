@@ -49,14 +49,6 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
             }
 
 	        return contentNodeProviderDrafts.AsQueryable();
-
-
-	        /*
-            var db = databaseRetriever.GetDatabase();
-            var list = new List<ContentNodeProviderDraft>();
-            list.AddRange(db.ContentNodeProviderDrafts.All().Cast<ContentNodeProviderDraft>());
-            return list.AsQueryable();
-             * */
 		}
 
 		public void Delete(ContentNodeProviderDraft instance)
