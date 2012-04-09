@@ -35,7 +35,7 @@ namespace Bennington.ContentTree.Tests.Data
 		[TestMethod]
 		public void TreeNodes_property_returns_TreeNodes_from_xml_list()
 		{
-			var treeNodes = mocker.Resolve<DataModelDataContext>().TreeNodes;
+			var treeNodes = mocker.Resolve<TreeNodeFileBasedDataContext>().TreeNodes;
 
 			Assert.AreEqual("1", treeNodes.First().TreeNodeId);
 		}
@@ -43,7 +43,7 @@ namespace Bennington.ContentTree.Tests.Data
 		[TestMethod]
 		public void Create_method_adds_a_TreeNode_to_existing_list()
 		{
-			mocker.Resolve<DataModelDataContext>().Create(new TreeNode()
+			mocker.Resolve<TreeNodeFileBasedDataContext>().Create(new TreeNode()
 			                                                    {
 			                                                        TreeNodeId = "2",
 			                                                    });
@@ -57,7 +57,7 @@ namespace Bennington.ContentTree.Tests.Data
 		[TestMethod]
 		public void Update_method_updates_an_existing_TreeNode_to_existing_list()
 		{
-			mocker.Resolve<DataModelDataContext>().Update(new TreeNode()
+			mocker.Resolve<TreeNodeFileBasedDataContext>().Update(new TreeNode()
 			                                              	{
 			                                              		TreeNodeId = "1",
 																Type = "test"
@@ -71,7 +71,7 @@ namespace Bennington.ContentTree.Tests.Data
 		[TestMethod]
 		public void Delete_method_existing_TreeNode_from_list()
 		{
-			mocker.Resolve<DataModelDataContext>().Delete("1");
+			mocker.Resolve<TreeNodeFileBasedDataContext>().Delete("1");
 
 			mocker.GetMock<IXmlFileSerializationHelper>()
 				.Verify(a => a.SerializeListToPath(It.Is<List<TreeNode>>(b => b.Count == 0), It.IsAny<string>()), Times.Once());

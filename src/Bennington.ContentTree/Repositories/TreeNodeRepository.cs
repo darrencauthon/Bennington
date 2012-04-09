@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
@@ -19,49 +20,33 @@ namespace Bennington.ContentTree.Repositories
 
     public class TreeNodeRepository : ITreeNodeRepository
     {
-        private readonly IDataModelDataContext dataModelDataContext;
-        private readonly ObjectCache cache = MemoryCache.Default;
-        private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
+        private readonly ITreeNodeDataContext treeNodeDataContext;
 
-        public TreeNodeRepository(IDataModelDataContext dataModelDataContext, IGetPathToDataDirectoryService getPathToDataDirectoryService)
+        public TreeNodeRepository(ITreeNodeDataContext treeNodeDataContext)
         {
-            this.getPathToDataDirectoryService = getPathToDataDirectoryService;
-            this.dataModelDataContext = dataModelDataContext;
+            this.treeNodeDataContext = treeNodeDataContext;
         }
 
         public IQueryable<TreeNode> GetAll()
         {
-            var treeNodes = cache[GetType().AssemblyQualifiedName] as TreeNode[];
-
-            if (treeNodes == null)
-            {
-                treeNodes = dataModelDataContext.TreeNodes.ToArray();
-
-                var pathToDataStore = Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"TreeNodes.xml");
-                var policy = new CacheItemPolicy();
-                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { pathToDataStore }));
-
-                cache.Add(GetType().AssemblyQualifiedName, treeNodes, policy);
-            }
-
-            return treeNodes.AsQueryable();
+            return treeNodeDataContext.TreeNodes;
         }
 
         public TreeNode Create(TreeNode treeNode)
         {
-            dataModelDataContext.Create(treeNode);
+            treeNodeDataContext.Create(treeNode);
             Thread.Sleep(1500);
             return treeNode;
         }
 
         public void Delete(string id)
         {
-            dataModelDataContext.Delete(id);
+            treeNodeDataContext.Delete(id);
         }
 
         public void Update(TreeNode treeNode)
         {
-            dataModelDataContext.Update(treeNode);
+            treeNodeDataContext.Update(treeNode);
         }
     }
 }

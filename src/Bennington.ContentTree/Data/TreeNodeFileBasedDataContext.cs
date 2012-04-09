@@ -6,15 +6,9 @@ using Bennington.Core.Helpers;
 
 namespace Bennington.ContentTree.Data
 {
-	public interface IDataModelDataContext
-	{
-		IQueryable<TreeNode> TreeNodes { get; set; }
-		void Create(TreeNode treeNode);
-		void Delete(string id);
-		void Update(TreeNode treeNode);
-	}
+	
 
-	public class DataModelDataContext : IDataModelDataContext
+	public class TreeNodeFileBasedDataContext : ITreeNodeDataContext
 	{
 		private static readonly object _lockObject = "lock";
 
@@ -22,7 +16,7 @@ namespace Bennington.ContentTree.Data
 		private readonly IXmlFileSerializationHelper xmlFileSerializationHelper;
 		private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
 
-		public DataModelDataContext(IXmlFileSerializationHelper xmlFileSerializationHelper,
+		public TreeNodeFileBasedDataContext(IXmlFileSerializationHelper xmlFileSerializationHelper,
 									IGetPathToDataDirectoryService getPathToDataDirectoryService)
 		{
 			this.getPathToDataDirectoryService = getPathToDataDirectoryService;
