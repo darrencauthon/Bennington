@@ -27,6 +27,7 @@ namespace Bennington.ContentTree.Blades
 		public void Spin(IRotorContext context)
 		{
 			simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<ITreeNodeRepository>());
+            simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<IConnectionStringRetriever>());
 			simpleCqrsServiceLocator.Register(context.ServiceLocator.Resolve<IGetPathToDataDirectoryService>());
 		}
 	}

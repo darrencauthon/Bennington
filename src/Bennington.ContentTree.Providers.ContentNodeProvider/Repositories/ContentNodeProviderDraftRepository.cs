@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Bennington.ContentTree.Helpers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Data;
 
 namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
@@ -13,32 +16,43 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
 
 	public class ContentNodeProviderDraftRepository : IContentNodeProviderDraftRepository
 	{
-		private readonly IDataModelDataContext dataModelDataContext;
+	    private readonly IConnectionStringRetriever connectionStringRetriever;
 
-		public ContentNodeProviderDraftRepository(IDataModelDataContext dataModelDataContext)
-		{
-			this.dataModelDataContext = dataModelDataContext;
-		}
+	    public ContentNodeProviderDraftRepository(IConnectionStringRetriever connectionStringRetriever)
+	    {
+	        this.connectionStringRetriever = connectionStringRetriever;
+	    }
 
-		public IQueryable<ContentNodeProviderDraft> GetAllContentNodeProviderDrafts()
+	    public IQueryable<ContentNodeProviderDraft> GetAllContentNodeProviderDrafts()
 		{
-			var x = dataModelDataContext.ContentNodeProviderDrafts.ToArray();
-			return x.AsQueryable();
+            dynamic db = GetDatabase();
+            var list = new List<ContentNodeProviderDraft>();
+            list.AddRange(db.ContentNodeProviderDrafts.All().Cast<ContentNodeProviderDraft>());
+            return list.AsQueryable();
 		}
 
 		public void Delete(ContentNodeProviderDraft instance)
 		{
-			dataModelDataContext.Delete(instance);
+            dynamic db = GetDatabase();
+            db.ContentNodeProviderDrafts.Delete(PageId: instance.PageId);
 		}
 
 		public void Update(ContentNodeProviderDraft instance)
 		{
-			dataModelDataContext.Update(instance);
+            dynamic db = GetDatabase();
+            db.ContentNodeProviderDrafts.UpdateByPageId(instance);
 		}
 
 		public void Create(ContentNodeProviderDraft instance)
 		{
-			dataModelDataContext.Create(instance);
+            dynamic db = GetDatabase();
+            if (instance.LastModifyDate == DateTime.MinValue) instance.LastModifyDate = new DateTime(1753, 1, 1);
+            db.ContentNodeProviderDrafts.Insert(instance);
 		}
+
+        private object GetDatabase()
+        {
+            return Simple.Data.Database.OpenConnection(connectionStringRetriever.GetConnectionString());
+        }
 	}
 }
