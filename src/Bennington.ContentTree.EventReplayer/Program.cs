@@ -58,13 +58,13 @@ namespace Bennington.ContentTreeEventReplayer
                         new SqlServerConfiguration(ConfigurationManager.ConnectionStrings["Bennington.ContentTree.Domain.ConnectionString"].ToString()),
                         new JsonDomainEventSerializer()));
 
-                serviceLocator.Register<ITreeNodeRepository>(new TreeNodeRepository(new ConnectionStringRetriever()));
-                serviceLocator.Register<IContentNodeProviderDraftRepository>(new ContentNodeProviderDraftRepository(new ConnectionStringRetriever()));
-                serviceLocator.Register<IContentNodeProviderPublishedVersionRepository>(new ContentNodeProviderPublishedVersionRepository(new ContentTree.Providers.ContentNodeProvider.Data.DataModelDataContext(new XmlFileSerializationHelper(), new GetPathToDataDirectoryService(new ApplicationSettingsValueGetter(), new GetPathToWorkingDirectoryService(new ApplicationSettingsValueGetter()))), new GetPathToDataDirectoryService(new ApplicationSettingsValueGetter(), new GetPathToWorkingDirectoryService(new ApplicationSettingsValueGetter()))));
+                serviceLocator.Register<ITreeNodeRepository>(new TreeNodeRepository(new DatabaseRetriever(new ConnectionStringRetriever())));
+                serviceLocator.Register<IContentNodeProviderDraftRepository>(new ContentNodeProviderDraftRepository(new DatabaseRetriever(new ConnectionStringRetriever())));
+                serviceLocator.Register<IContentNodeProviderPublishedVersionRepository>(new ContentNodeProviderPublishedVersionRepository(new DatabaseRetriever(new ConnectionStringRetriever())));
                 serviceLocator.Register<ContentTree.Providers.SectionNodeProvider.Data.IDataModelDataContext>(new Bennington.ContentTree.Providers.SectionNodeProvider.Data.DataModelDataContext(new XmlFileSerializationHelper(), new GetPathToDataDirectoryService(new ApplicationSettingsValueGetter(), new GetPathToWorkingDirectoryService(new ApplicationSettingsValueGetter()))));
-                serviceLocator.Register<IContentNodeProviderPublishedVersionRepository>(new ContentNodeProviderPublishedVersionRepository(new ContentTree.Providers.ContentNodeProvider.Data.DataModelDataContext(new XmlFileSerializationHelper(), new GetPathToDataDirectoryService(new ApplicationSettingsValueGetter(), new GetPathToWorkingDirectoryService(new ApplicationSettingsValueGetter()))), new GetPathToDataDirectoryService(new ApplicationSettingsValueGetter(), new GetPathToWorkingDirectoryService(new ApplicationSettingsValueGetter()))));
+                serviceLocator.Register<IContentNodeProviderPublishedVersionRepository>(new ContentNodeProviderPublishedVersionRepository(new DatabaseRetriever(new ConnectionStringRetriever())));
                 serviceLocator.Register<IContentNodeProviderDraftToContentNodeProviderPublishedVersionMapper>(new ContentNodeProviderDraftToContentNodeProviderPublishedVersionMapper());
-                serviceLocator.Register<IContentNodeProviderDraftRepository>(new ContentNodeProviderDraftRepository(new ConnectionStringRetriever()));
+                serviceLocator.Register<IContentNodeProviderDraftRepository>(new ContentNodeProviderDraftRepository(new DatabaseRetriever(new ConnectionStringRetriever())));
             }
         }
 

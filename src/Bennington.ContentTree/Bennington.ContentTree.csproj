@@ -94,6 +94,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ConnectionStringRetriever.cs" />
+    <Compile Include="Helpers\DatabaseRetriever.cs" />
     <Compile Include="Helpers\GetUrlOfFrontSideWebsite.cs" />
     <Compile Include="Helpers\TreeNodeIdToUrl.cs" />
     <Compile Include="Helpers\UrlToTreeNodeSummaryMapper.cs" />

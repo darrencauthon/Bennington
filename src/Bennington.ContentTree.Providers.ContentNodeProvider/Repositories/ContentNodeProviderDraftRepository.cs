@@ -16,16 +16,16 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
 
 	public class ContentNodeProviderDraftRepository : IContentNodeProviderDraftRepository
 	{
-	    private readonly IConnectionStringRetriever connectionStringRetriever;
+	    private readonly IDatabaseRetriever databaseRetriever;
 
-	    public ContentNodeProviderDraftRepository(IConnectionStringRetriever connectionStringRetriever)
+	    public ContentNodeProviderDraftRepository(IDatabaseRetriever databaseRetriever)
 	    {
-	        this.connectionStringRetriever = connectionStringRetriever;
+	        this.databaseRetriever = databaseRetriever;
 	    }
 
 	    public IQueryable<ContentNodeProviderDraft> GetAllContentNodeProviderDrafts()
 		{
-            dynamic db = GetDatabase();
+            var db = databaseRetriever.GetDatabase();
             var list = new List<ContentNodeProviderDraft>();
             list.AddRange(db.ContentNodeProviderDrafts.All().Cast<ContentNodeProviderDraft>());
             return list.AsQueryable();
@@ -33,26 +33,21 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
 
 		public void Delete(ContentNodeProviderDraft instance)
 		{
-            dynamic db = GetDatabase();
+            var db = databaseRetriever.GetDatabase();
             db.ContentNodeProviderDrafts.Delete(PageId: instance.PageId);
 		}
 
 		public void Update(ContentNodeProviderDraft instance)
 		{
-            dynamic db = GetDatabase();
+            var db = databaseRetriever.GetDatabase();
             db.ContentNodeProviderDrafts.UpdateByPageId(instance);
 		}
 
 		public void Create(ContentNodeProviderDraft instance)
 		{
-            dynamic db = GetDatabase();
+            var db = databaseRetriever.GetDatabase();
             if (instance.LastModifyDate == DateTime.MinValue) instance.LastModifyDate = new DateTime(1753, 1, 1);
             db.ContentNodeProviderDrafts.Insert(instance);
 		}
-
-        private object GetDatabase()
-        {
-            return Simple.Data.Database.OpenConnection(connectionStringRetriever.GetConnectionString());
-        }
 	}
 }

@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Runtime.Caching;
+using Bennington.ContentTree.Helpers;
 using Bennington.ContentTree.Providers.ContentNodeProvider.Data;
 using Bennington.Core.Helpers;
 
@@ -18,46 +20,38 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
 
     public class ContentNodeProviderPublishedVersionRepository : IContentNodeProviderPublishedVersionRepository
     {
-        private readonly IDataModelDataContext dataModelDataContext;
-        private readonly ObjectCache cache = MemoryCache.Default;
-        private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
+        private readonly IDatabaseRetriever databaseRetriever;
 
-        public ContentNodeProviderPublishedVersionRepository(IDataModelDataContext dataModelDataContext,
-                                                            IGetPathToDataDirectoryService getPathToDataDirectoryService)
+        public ContentNodeProviderPublishedVersionRepository(IDatabaseRetriever databaseRetriever)
         {
-            this.getPathToDataDirectoryService = getPathToDataDirectoryService;
-            this.dataModelDataContext = dataModelDataContext;
+            this.databaseRetriever = databaseRetriever;
         }
 
         public IQueryable<ContentNodeProviderPublishedVersion> GetAllContentNodeProviderPublishedVersions()
         {
-            var items = cache[GetType().AssemblyQualifiedName] as ContentNodeProviderPublishedVersion[];
-
-            if (items == null)
-            {
-                items = dataModelDataContext.ContentNodeProviderPublishedVersions.ToArray();
-                var policy = new CacheItemPolicy();
-                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"ContentNodeProviderPublishedVersions.xml") }));
-
-                cache.Add(GetType().AssemblyQualifiedName, items, policy);
-            }
-
-            return items.AsQueryable();
+            var db = databaseRetriever.GetDatabase();
+            var list = new List<ContentNodeProviderPublishedVersion>();
+            list.AddRange(db.ContentNodeProviderPublishedVersions.All().Cast<ContentNodeProviderPublishedVersion>());
+            return list.AsQueryable();
         }
 
         public void Update(ContentNodeProviderPublishedVersion instance)
         {
-            dataModelDataContext.Update(instance);
+            var db = databaseRetriever.GetDatabase();
+            db.ContentNodeProviderPublishedVersions.UpdateByPageId(instance);
         }
 
         public void Create(ContentNodeProviderPublishedVersion instance)
         {
-            dataModelDataContext.Create(instance);
+            var db = databaseRetriever.GetDatabase();
+            if (instance.LastModifyDate == DateTime.MinValue) instance.LastModifyDate = new DateTime(1753, 1, 1);
+            db.ContentNodeProviderPublishedVersions.Insert(instance);
         }
 
         public void Delete(ContentNodeProviderPublishedVersion instance)
         {
-            dataModelDataContext.Delete(instance);
+            var db = databaseRetriever.GetDatabase();
+            db.ContentNodeProviderPublishedVersions.Delete(PageId: instance.PageId);
         }
     }
 }

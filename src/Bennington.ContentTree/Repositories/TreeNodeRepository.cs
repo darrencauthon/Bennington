@@ -21,16 +21,16 @@ namespace Bennington.ContentTree.Repositories
 
     public class TreeNodeRepository : ITreeNodeRepository
     {
-        private readonly IConnectionStringRetriever connectionStringRetriever;
+        private readonly IDatabaseRetriever databaseRetriever;
 
-        public TreeNodeRepository(IConnectionStringRetriever connectionStringRetriever)
+        public TreeNodeRepository(IDatabaseRetriever databaseRetriever)
         {
-            this.connectionStringRetriever = connectionStringRetriever;
+            this.databaseRetriever = databaseRetriever;
         }
 
         public IQueryable<TreeNode> GetAll()
         {
-            dynamic db = GetDatabase();
+            var db = databaseRetriever.GetDatabase();
             var list = new List<TreeNode>();
             list.AddRange(db.TreeNodes.All().Cast<TreeNode>());
             return list.AsQueryable();
@@ -38,26 +38,21 @@ namespace Bennington.ContentTree.Repositories
 
         public TreeNode Create(TreeNode treeNode)
         {
-            dynamic db = GetDatabase();
+            var db = databaseRetriever.GetDatabase();
             db.TreeNodes.Insert(treeNode);
             return treeNode;
         }
 
         public void Delete(string id)
         {
-            dynamic db = GetDatabase();
+            var db = databaseRetriever.GetDatabase();
             db.TreeNodes.Delete(TreeNodeId: id);
         }
 
         public void Update(TreeNode treeNode)
         {
-            dynamic db = GetDatabase();
+            var db = databaseRetriever.GetDatabase();
             db.TreeNodes.UpdateByTreeNodeId(treeNode);
-        }
-
-        private object GetDatabase()
-        {
-            return Simple.Data.Database.OpenConnection(connectionStringRetriever.GetConnectionString());
         }
     }
 }
