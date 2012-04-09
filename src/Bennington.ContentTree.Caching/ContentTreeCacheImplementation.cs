@@ -66,8 +66,9 @@ namespace Bennington.ContentTree.Caching
         {
             return new List<string>
                 {
-                    Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"TreeNodex.xml"),
+                    Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"TreeNodes.xml"),
                     Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"SectionNodeProviderDrafts.xml"),
+                    Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"ContentNodeProviderDrafts.xml"),
                     Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"ContentNodeProviderPublishedVersions.xml"),
                     Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), typeof(ToolLinkProviderDraft).FullName),
                 };
