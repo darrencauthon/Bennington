@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Bennington.ContentTree.Helpers;
@@ -16,62 +17,65 @@ namespace Bennington.ContentTree.Providers.SectionNodeProvider.Data
 
 	public class DataModelDataContext : IDataModelDataContext
 	{
-		public const string PathToSectionNodeProviderXmlFileAppSettingsKey = "PathToSectionNodeProviderXmlFile";
-		private static readonly object _lockObject = "lock";
-		private readonly IXmlFileSerializationHelper xmlFileSerializationHelper;
-		private readonly IApplicationSettingsValueGetter applicationSettingsValueGetter;
-		private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
+	    private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
+	    private readonly IDatabaseRetriever databaseRetriever;
 
-		public DataModelDataContext(IXmlFileSerializationHelper xmlFileSerializationHelper, 
-									IGetPathToDataDirectoryService getPathToDataDirectoryService)
-		{
-			this.getPathToDataDirectoryService = getPathToDataDirectoryService;
-			this.xmlFileSerializationHelper = xmlFileSerializationHelper;
-		}
+	    public DataModelDataContext(IDatabaseRetriever databaseRetriever, 
+                                    IGetPathToDataDirectoryService getPathToDataDirectoryService)
+	    {
+	        this.databaseRetriever = databaseRetriever;
+	        this.getPathToDataDirectoryService = getPathToDataDirectoryService;
+	    }
 
-		public IEnumerable<SectionNodeProviderDraft> GetAllSectionNodeProviderDrafts()
-		{
-			lock(_lockObject)
-			{
-				var sectionNodeProviderDrafts = xmlFileSerializationHelper.DeserializeListFromPath<SectionNodeProviderDraft>(GetPathToSectionNodeXmlFile());
-				return sectionNodeProviderDrafts;
-			}
-		}
+	    public IEnumerable<SectionNodeProviderDraft> GetAllSectionNodeProviderDrafts()
+	    {
+            var db = databaseRetriever.GetDatabase();
+            var list = new List<SectionNodeProviderDraft>();
+            list.AddRange(db.SectionNodeProviderDrafts.All().Cast<SectionNodeProviderDraft>());
 
-		public void Create(SectionNodeProviderDraft instance)
-		{
-			lock(_lockObject)
-			{
-				var data = xmlFileSerializationHelper.DeserializeListFromPath<SectionNodeProviderDraft>(GetPathToSectionNodeXmlFile());
-				data.Add(instance);
-				xmlFileSerializationHelper.SerializeListToPath(data, GetPathToSectionNodeXmlFile());				
-			}
-		}
+	        return list;
+	    }
 
-		public void Update(SectionNodeProviderDraft instance)
-		{
-			lock(_lockObject)
-			{
-				var data = xmlFileSerializationHelper.DeserializeListFromPath<SectionNodeProviderDraft>(GetPathToSectionNodeXmlFile());
-				data.Remove(data.Where(a => a.SectionId == instance.SectionId).FirstOrDefault());
-				data.Add(instance);
-				xmlFileSerializationHelper.SerializeListToPath(data, GetPathToSectionNodeXmlFile());				
-			}
-		}
+	    public void Create(SectionNodeProviderDraft instance)
+	    {
+            var db = databaseRetriever.GetDatabase();
+            if (instance.LastModifyDate == DateTime.MinValue) instance.LastModifyDate = new DateTime(1753, 1, 1);
+            db.SectionNodeProviderDrafts.Insert(instance);
 
-		public void Delete(SectionNodeProviderDraft instance)
-		{
-			lock(_lockObject)
-			{
-				var data = xmlFileSerializationHelper.DeserializeListFromPath<SectionNodeProviderDraft>(GetPathToSectionNodeXmlFile());
-				data.Remove(data.Where(a => a.SectionId == instance.SectionId).FirstOrDefault());
-				xmlFileSerializationHelper.SerializeListToPath(data, GetPathToSectionNodeXmlFile());
-			}
-		}
+	        TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges();
+	    }
 
-		private string GetPathToSectionNodeXmlFile()
-		{
-			return getPathToDataDirectoryService.GetPathToDirectory() + Path.DirectorySeparatorChar + "SectionNodeProviderDrafts.xml";
-		}
+	    public void Update(SectionNodeProviderDraft instance)
+	    {
+            var db = databaseRetriever.GetDatabase();
+            db.SectionNodeProviderDrafts.UpdateBySectionId(instance);
+	        
+            TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges();
+	    }
+
+	    public void Delete(SectionNodeProviderDraft instance)
+	    {
+            var db = databaseRetriever.GetDatabase();
+            db.SectionNodeProviderDrafts.Delete(SectionId: instance.SectionId);
+
+            TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges();
+	    }
+
+        private void TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges()
+        {
+            var path = string.Format("{0}SectionNodeProviderDrafts.xml", getPathToDataDirectoryService.GetPathToDirectory());
+
+            if (!File.Exists(path))
+            {
+                using (var fileStream = File.Create(path))
+                {
+                }
+            }
+
+            using (var writer = File.AppendText(path))
+            {
+                writer.WriteLine(string.Empty);
+            }
+        }
 	}
 }
