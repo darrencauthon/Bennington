@@ -21,6 +21,7 @@ namespace Bennington.ContentTree.Repositories
 
     public class TreeNodeRepository : ITreeNodeRepository
     {
+        private readonly ObjectCache cache = MemoryCache.Default;
         private readonly IDatabaseRetriever databaseRetriever;
         private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
 
@@ -33,10 +34,24 @@ namespace Bennington.ContentTree.Repositories
 
         public IQueryable<TreeNode> GetAll()
         {
-            var db = databaseRetriever.GetDatabase();
-            var list = new List<TreeNode>();
-            list.AddRange(db.TreeNodes.All().Cast<TreeNode>());
-            return list.AsQueryable();
+            var treeNodes = cache[GetType().AssemblyQualifiedName] as TreeNode[];
+
+            if (treeNodes == null)
+            {
+                var db = databaseRetriever.GetDatabase();
+                var list = new List<TreeNode>();
+                list.AddRange(db.TreeNodes.All().Cast<TreeNode>());
+
+                treeNodes = list.ToArray();
+
+                var pathToDataStore = Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"TreeNodes.xml");
+                var policy = new CacheItemPolicy();
+                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { pathToDataStore }));
+
+                cache.Add(GetType().AssemblyQualifiedName, treeNodes, policy);
+            }
+
+            return treeNodes.AsQueryable();
         }
 
         public TreeNode Create(TreeNode treeNode)
