@@ -21,9 +21,12 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
     public class ContentNodeProviderPublishedVersionRepository : IContentNodeProviderPublishedVersionRepository
     {
         private readonly IDatabaseRetriever databaseRetriever;
+        private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
 
-        public ContentNodeProviderPublishedVersionRepository(IDatabaseRetriever databaseRetriever)
+        public ContentNodeProviderPublishedVersionRepository(IDatabaseRetriever databaseRetriever,
+                                                            IGetPathToDataDirectoryService getPathToDataDirectoryService)
         {
+            this.getPathToDataDirectoryService = getPathToDataDirectoryService;
             this.databaseRetriever = databaseRetriever;
         }
 
@@ -39,6 +42,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
         {
             var db = databaseRetriever.GetDatabase();
             db.ContentNodeProviderPublishedVersions.UpdateByPageId(instance);
+            TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges();
         }
 
         public void Create(ContentNodeProviderPublishedVersion instance)
@@ -46,12 +50,31 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
             var db = databaseRetriever.GetDatabase();
             if (instance.LastModifyDate == DateTime.MinValue) instance.LastModifyDate = new DateTime(1753, 1, 1);
             db.ContentNodeProviderPublishedVersions.Insert(instance);
+            TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges();
         }
 
         public void Delete(ContentNodeProviderPublishedVersion instance)
         {
             var db = databaseRetriever.GetDatabase();
             db.ContentNodeProviderPublishedVersions.Delete(PageId: instance.PageId);
+            TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges();
+        }
+
+        private void TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges()
+        {
+            var path = string.Format("{0}ContentNodeProviderPublishedVersions.xml", getPathToDataDirectoryService.GetPathToDirectory());
+
+            if (!File.Exists(path))
+            {
+                using (var fileStream = File.Create(path))
+                {
+                }
+            }
+
+            using (var writer = File.AppendText(path))
+            {
+                writer.WriteLine(string.Empty);
+            }
         }
     }
 }

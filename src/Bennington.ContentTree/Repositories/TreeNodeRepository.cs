@@ -22,9 +22,12 @@ namespace Bennington.ContentTree.Repositories
     public class TreeNodeRepository : ITreeNodeRepository
     {
         private readonly IDatabaseRetriever databaseRetriever;
+        private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
 
-        public TreeNodeRepository(IDatabaseRetriever databaseRetriever)
+        public TreeNodeRepository(IDatabaseRetriever databaseRetriever,
+                                  IGetPathToDataDirectoryService getPathToDataDirectoryService)
         {
+            this.getPathToDataDirectoryService = getPathToDataDirectoryService;
             this.databaseRetriever = databaseRetriever;
         }
 
@@ -40,6 +43,7 @@ namespace Bennington.ContentTree.Repositories
         {
             var db = databaseRetriever.GetDatabase();
             db.TreeNodes.Insert(treeNode);
+            TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges();
             return treeNode;
         }
 
@@ -47,12 +51,31 @@ namespace Bennington.ContentTree.Repositories
         {
             var db = databaseRetriever.GetDatabase();
             db.TreeNodes.Delete(TreeNodeId: id);
+            TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges();
         }
 
         public void Update(TreeNode treeNode)
         {
             var db = databaseRetriever.GetDatabase();
             db.TreeNodes.UpdateByTreeNodeId(treeNode);
+            TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges();
+        }
+
+        private void TouchLegacyFilestorePathToInvalidateAnyCachesThatAreListeningForChanges()
+        {
+            var path = string.Format("{0}TreeNodes.xml", getPathToDataDirectoryService.GetPathToDirectory());
+
+            if (!File.Exists(path))
+            {
+                using (var fileStream = File.Create(path))
+                {
+                }
+            }
+
+            using (var writer = File.AppendText(path))
+            {
+                writer.WriteLine(string.Empty);
+            }
         }
     }
 }
