@@ -20,6 +20,7 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
 
     public class ContentNodeProviderPublishedVersionRepository : IContentNodeProviderPublishedVersionRepository
     {
+        private readonly ObjectCache cache = MemoryCache.Default;
         private readonly IDatabaseRetriever databaseRetriever;
         private readonly IGetPathToDataDirectoryService getPathToDataDirectoryService;
 
@@ -32,10 +33,24 @@ namespace Bennington.ContentTree.Providers.ContentNodeProvider.Repositories
 
         public IQueryable<ContentNodeProviderPublishedVersion> GetAllContentNodeProviderPublishedVersions()
         {
-            var db = databaseRetriever.GetDatabase();
-            var list = new List<ContentNodeProviderPublishedVersion>();
-            list.AddRange(db.ContentNodeProviderPublishedVersions.All().Cast<ContentNodeProviderPublishedVersion>());
-            return list.AsQueryable();
+            var contentNodeProviderPublishedVersions = cache[GetType().AssemblyQualifiedName] as ContentNodeProviderPublishedVersion[];
+
+            if (contentNodeProviderPublishedVersions == null)
+            {
+                var db = databaseRetriever.GetDatabase();
+                var list = new List<ContentNodeProviderPublishedVersion>();
+                list.AddRange(db.ContentNodeProviderPublishedVersions.All().Cast<ContentNodeProviderPublishedVersion>());
+
+                contentNodeProviderPublishedVersions = list.ToArray();
+
+                var pathToDataStore = Path.Combine(getPathToDataDirectoryService.GetPathToDirectory(), @"ContentNodeProviderPublishedVersions.xml");
+                var policy = new CacheItemPolicy();
+                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { pathToDataStore }));
+
+                cache.Add(GetType().AssemblyQualifiedName, contentNodeProviderPublishedVersions, policy);
+            }
+
+            return contentNodeProviderPublishedVersions.AsQueryable();
         }
 
         public void Update(ContentNodeProviderPublishedVersion instance)
